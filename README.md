@@ -8,7 +8,7 @@ A Ruby on Rails project for AllsWell Hospital HND graded unit 2. Please see the 
 * Treat patients
 * Make prescriptions
 
-#Getting Started
+# Getting Started
 * Ruby version 2.4.1
 
 * System dependencies

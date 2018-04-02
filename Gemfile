@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source('https://rubygems.org')
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -39,6 +39,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -52,3 +53,25 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+source('https://rails-assets.org') do
+  # Bootstrap
+  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-jquery'
+  gem 'rails-assets-tether'
+end
+
+# Application YML file configurator
+gem 'figaro'
+
+# Composite Primary Keys support for Active Record
+gem 'composite_primary_keys'
+
+# Clearance authentication system, however no longer needed
+# gem 'clearance'
+
+# Devise authentication system, Active in use
+gem 'devise'
+
+# Authorisation with Pundit
+gem 'pundit'
