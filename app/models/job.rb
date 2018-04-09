@@ -1,6 +1,6 @@
 class Job < ApplicationRecord
-  # Composite-UID
-  self.primary_keys :staff, :job_title
+  # Composite-UID, discarding as causing error
+  # self.primary_keys :staff, :job_title
 
   # Association
   belongs_to :staff

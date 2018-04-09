@@ -1,5 +1,5 @@
 <h1 class="title-container">Register New Staff</h1>
-<% @title = 'Register New Staff' %>
+<% @page_title = 'Register New Staff' %>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {autoComplete: :on}) do |f| %>
   <%= devise_error_messages! %>
@@ -26,20 +26,6 @@
               </td>
               <td>
                 <div class="form-group">
-                  <%= f.label(:houseNumber, 'House number') %><br/>
-                  <%= f.text_field(:houseNumber, autofocus: true, autocomplete: "houseNumber") %>
-                </div>
-              </td>
-              <td>
-                <div class="form-group">
-                  <%= f.label :street %><br/>
-                  <%= f.text_field :street, autofocus: true, autocomplete: "street" %>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="form-group">
                   <%= f.label(:dateOfBirth, 'Date of birth') %><br/>
                   <%= f.date_select(:dateOfBirth, autofocus: true, autocomplete: "dateOfBirth") %>
                 </div>
@@ -48,6 +34,21 @@
                 <div class="form-group">
                   <%= f.label(:gender) %><br/>
                   <%= f.select(:gender, options_for_select([:Male, :Female], ''), autofocus: true, autocomplete: "lastName") %>
+                </div>
+              </td>
+
+            </tr>
+            <tr>
+              <td>
+                <div class="form-group">
+                  <%= f.label(:houseNumber, 'House number') %><br/>
+                  <%= f.text_field(:houseNumber, autofocus: true, autocomplete: "houseNumber") %>
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <%= f.label :street %><br/>
+                  <%= f.text_field :street, autofocus: true, autocomplete: "street" %>
                 </div>
               </td>
               <td>
@@ -84,7 +85,7 @@
       </td>
     </tr>
     <tr>
-      <td>
+      <td style="width: 50%; !important;">
         <fieldset>
           <legend>Account Details</legend>
           <table class="table">
@@ -130,20 +131,42 @@
               <td>
                 <div class="form-group">
                   <%= f.label(:speciality) %><br/>
-                  <%= f.select(:speciality, options_for_select([]), autofocus: true, autocomplete: "speciality") %>
+                  <%# TODO remove all autocomplete %>
+                  <%= f.select(:speciality, options_for_select(['fdfdgfgggggfgfgfg']), autofocus: true, autocomplete: "speciality") %>
+                  <%= f.button("Add", {class: 'btn btn-default'}) %>
                 </div>
+                <table class="table">
+                  <thead>
+                  <th>Speciality</th>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td><%= %></td>
+                  </tr>
+                  </tbody>
+                </table>
               </td>
               <td>
                 <div class="form-group">
                   <%= f.label(:jobTitle, 'Job title') %><br/>
-                  <%= f.select(:jobTitle, options_for_select([]), autofocus: true, autocomplete: "jobTitle") %>
+                  <%= f.select(:jobTitle, options_for_select(['fdfdgfgggggfgfgfg']), autofocus: true, autocomplete: "jobTitle") %>
                 </div>
+                <table class="table">
+                  <thead>
+                  <th>Job Title</th>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                  </tbody>
+                </table>
               </td>
             <tr>
               <td>
                 <div class="form-group">
                   <%= f.label(:team) %><br/>
-                  <%= f.select(:team, options_for_select([]), autofocus: true, autocomplete: "team") %>
+                  <%= f.select(:team, options_for_select(['fdfdgfgggggfgfgfg']), autofocus: true, autocomplete: "team") %>
                 </div>
               </td>
             </tr>

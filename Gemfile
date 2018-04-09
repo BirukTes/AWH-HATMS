@@ -64,8 +64,9 @@ end
 # Application YML file configurator
 gem 'figaro'
 
-# Composite Primary Keys support for Active Record
-gem 'composite_primary_keys'
+# Composite Primary Keys support for Active Record, Removing this due to error, NameError: undefined local variable or method `always_initialized' for #<ActiveRecord::AttributeSet::Builder:0x00000004dc2c48>
+# from (irb)
+# gem 'composite_primary_keys'
 
 # Clearance authentication system, however no longer needed
 # gem 'clearance'

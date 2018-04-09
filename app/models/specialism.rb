@@ -1,6 +1,6 @@
 class Specialism < ApplicationRecord
-  # Composite-UID
-  self.primary_keys :staff, :speciality
+  # Composite-UID, Removing this due to error
+  # self.primary_keys :staff, :speciality
 
   # Association
   belongs_to :staff

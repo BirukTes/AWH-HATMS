@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180402124813) do
+ActiveRecord::Schema.define(version: 20180407160333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.string "street"
-    t.string "town"
-    t.string "postcode"
+    t.string "houseNumber", null: false
+    t.string "street", null: false
+    t.string "town", null: false
+    t.string "postcode", null: false
     t.bigint "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,6 +37,15 @@ ActiveRecord::Schema.define(version: 20180402124813) do
     t.datetime "updated_at", null: false
     t.index ["patient_id"], name: "index_admissions_on_patient_id"
     t.index ["ward_id"], name: "index_admissions_on_ward_id"
+  end
+
+  create_table "allocations", force: :cascade do |t|
+    t.bigint "ward_id"
+    t.bigint "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_allocations_on_team_id"
+    t.index ["ward_id"], name: "index_allocations_on_ward_id"
   end
 
   create_table "drugs", force: :cascade do |t|
@@ -84,14 +94,17 @@ ActiveRecord::Schema.define(version: 20180402124813) do
   end
 
   create_table "people", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
-    t.date "dateOfBirth"
+    t.string "firstName", null: false
+    t.string "lastName", null: false
+    t.date "dateOfBirth", null: false
+    t.string "gender"
     t.integer "telHomeNo"
     t.integer "telMobileNo"
-    t.string "gender"
+    t.string "personalDetail_type"
+    t.bigint "personalDetail_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["personalDetail_type", "personalDetail_id"], name: "index_people_on_personalDetail_type_and_personalDetail_id"
   end
 
   create_table "prescriptions", force: :cascade do |t|
@@ -132,7 +145,7 @@ ActiveRecord::Schema.define(version: 20180402124813) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "userId", null: false
-    t.bigint "team_id"
+    t.bigint "team_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_staffs_on_email", unique: true
@@ -144,11 +157,6 @@ ActiveRecord::Schema.define(version: 20180402124813) do
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "head"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tests", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -178,6 +186,8 @@ ActiveRecord::Schema.define(version: 20180402124813) do
   add_foreign_key "addresses", "people"
   add_foreign_key "admissions", "patients"
   add_foreign_key "admissions", "wards"
+  add_foreign_key "allocations", "teams"
+  add_foreign_key "allocations", "wards"
   add_foreign_key "jobs", "job_titles"
   add_foreign_key "jobs", "staffs"
   add_foreign_key "medications", "drugs"
