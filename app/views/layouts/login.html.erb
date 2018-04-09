@@ -4,7 +4,7 @@
   <title><%= @page_title %> </title>
   <%= csrf_meta_tags %>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'login', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -14,13 +14,6 @@
 </header>
 
 <section class="container">
-  <%= render('shared/nav')%>
-  <div id="flash">
-    <% flash.each do |key, value| %>
-      <div class="flash alert <%= alert_class(key) %>"><%= value %></div>
-    <% end %>
-  </div>
-
   <%= yield %>
 </section>
 </body>

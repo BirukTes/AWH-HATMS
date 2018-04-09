@@ -11,7 +11,7 @@ class Staff < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise(:database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable)
+         :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:userId])
 
   # Setup many-to-many association through the corresponding join table
   # Through expects that junctions are declared
@@ -39,11 +39,31 @@ class Staff < ApplicationRecord
 
   accepts_nested_attributes_for(:specialisms, :jobs)
 
+  validates :userId, presence: true, uniqueness: {case_sensitive: false}
+
   def will_save_change_to_email?
     true
   end
 
   def resource_name
     :staff
+  end
+
+  def speciality_options
+    specialities.map do |speciality|
+      [speciality.id, speciality.speciality]
+    end
+  end
+
+  def job_title_options
+    job_titles.map do |job_title|
+      [job_title.id, job_title.title]
+    end
+  end
+
+  def team_options
+    team.map do |team|
+      [team.id, team.name]
+    end
   end
 end

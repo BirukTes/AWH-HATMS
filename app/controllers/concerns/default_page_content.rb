@@ -2,7 +2,6 @@ module DefaultPageContent
   extend ActiveSupport::Concern
 
   included do
-    # Call the method
     before_action :set_page_defaults
   end
 

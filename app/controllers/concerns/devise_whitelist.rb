@@ -1,15 +1,12 @@
-module DeviseWhiteList
+module DeviseWhitelist
   extend ActiveSupport::Concern
 
   included do
     # Run the configuration before devise controllers
     before_action :configure_permitted_parameters, if: :devise_controller?
-
   end
 
-  protected
 
-  # Parameters for devise
   def configure_permitted_parameters
 
     # Permitted attributes during registration for staff, people, specialism, job
