@@ -9,4 +9,26 @@ module ApplicationHelper
         "alert-danger"
     end
   end
+
+  def speciality_options
+    Speciality.all.map do |speciality|
+      [speciality.speciality, speciality.id]
+    end
+  end
+
+  def job_title_options
+    JobTitle.all.map do |job_title|
+      [job_title.title, job_title.id]
+    end
+  end
+
+  def team_options
+    Team.all.map do |team|
+      [team.name, team.id]
+    end
+  end
+
+  def all_staffs
+    Staff.all
+  end
 end

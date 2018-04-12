@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+  get 'job_titles/new'
+
+  get 'job_titles/create'
+
+  get 'job_titles/edit'
+
+  get 'job_titles/update'
+
+  get 'job_titles/destroy'
+
+  get 'specialities/new'
+
+  get 'specialities/create'
+
+  get 'specialities/edit'
+
+  get 'specialities/update'
+
+  get 'specialities/destroy'
+
   # Change devise routes from staffs/login to /login
   devise_for :staffs, path: '',
              path_names: {sign_in: 'login', sign_up: 'register', account_update: 'update'},

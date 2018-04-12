@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -38,8 +38,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
-  gem 'rspec-rails'
+  gem 'selenium-webdriver', '~> 3.11'
+  gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
 end
 
 group :development do
@@ -62,7 +62,7 @@ source('https://rails-assets.org') do
 end
 
 # Application YML file configurator
-gem 'figaro'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 # Composite Primary Keys support for Active Record, Removing this due to error, NameError: undefined local variable or method `always_initialized' for #<ActiveRecord::AttributeSet::Builder:0x00000004dc2c48>
 # from (irb)
@@ -72,7 +72,7 @@ gem 'figaro'
 # gem 'clearance'
 
 # Devise authentication system, Active in use
-gem 'devise'
+gem 'devise', '~> 4.4', '>= 4.4.3'
 
 # Authorisation with Pundit
-gem 'pundit'
+gem 'pundit', '~> 1.1'

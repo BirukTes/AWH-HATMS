@@ -1,3 +1,5 @@
+<%= devise_error_messages! %>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label(:userId, 'User ID') %><br/>
@@ -23,31 +25,33 @@
 
 <%= render("devise/shared/links") %>
 
-<table>
-  <thead>
-  <tr>
-    <th>Registered Test Staffs</th>
-  </tr>
-  <tr>
-    <th>User Id</th>
-    <th>Password</th>
-    <th>Speciality</th>
-    <th>Job Title</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% if @staffs %>
-    <% @staffs.each do |staff| %>
+<br/>
+<fieldset>
+  <legend>Registered Test Staffs</legend>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>User Id</th>
+      <th>Password</th>
+      <th>Speciality</th>
+      <th>Job Title</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%# & symbol used as safe navigation or exits if object is null %>
+    <% all_staffs&.each do |staff| %>
       <tr>
         <td><%= staff.userId %></td>
-        <td><%= staff.password %></td>
-        <td><%= staff.specialities.speciality %></td>
-        <td><%= staff.job_titles.title %></td>
+        <td>password</td>
+        <% staff&.specialities.each do |speciality| %>
+          <td>            <%= speciality.speciality %>          </td>
+        <% end %>
+        <% staff&.job_titles.each do |job_title| %>
+          <td>            <%= job_title.title %>          </td>
+        <% end %>
       </tr>
     <% end %>
-  <% else %>
-    <td>nil</td>
-  <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</fieldset>
 

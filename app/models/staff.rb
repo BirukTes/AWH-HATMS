@@ -11,12 +11,13 @@ class Staff < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise(:database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:userId])
+         :recoverable, :rememberable, :trackable, :validatable,
+         authentication_keys: [:userId])
 
   # Setup many-to-many association through the corresponding join table
   # Through expects that junctions are declared
-  has_many(:specialisms)
-  has_many(:jobs)
+  has_many :specialisms
+  has_many :jobs
   #
   has_many(:specialities, through: :specialisms)
   has_many(:job_titles, through: :jobs)
@@ -24,7 +25,7 @@ class Staff < ApplicationRecord
   # Association to team is nullable/optional
   belongs_to(:team, optional: true)
 
-  # https://stackoverflow.com/a/17540828, attr_accessor.. was overriding attribute values for people
+  # , attr_accessor.. was overriding attribute values for people
   #
   # attr_accessor (:email, :password, :userId, :firstName, :lastName, :team_id, :gender, :dateOfBirth,
   #               :houseNumber, :street, :town, :postcode, :telNumber, :mobileNumber)
@@ -35,35 +36,46 @@ class Staff < ApplicationRecord
   #               :jobTitle, :speciality, :team, :job)
 
   # Association with Person class, as polymorphic
-  has_one :person, as: :personalDetail, dependent: :destroy
+  has_one(:person, as: :personalDetail, dependent: :destroy)
 
-  accepts_nested_attributes_for(:specialisms, :jobs)
+  accepts_nested_attributes_for(:specialisms, allow_destroy: true)
+  accepts_nested_attributes_for(:jobs, allow_destroy: true)
 
-  validates :userId, presence: true, uniqueness: {case_sensitive: false}
-
-  def will_save_change_to_email?
-    true
-  end
+  validates(:userId, presence: true, uniqueness: {case_sensitive: true})
+  #
+  # def will_save_change_to_email?
+  #   true
+  # end
 
   def resource_name
     :staff
   end
 
-  def speciality_options
-    specialities.map do |speciality|
-      [speciality.id, speciality.speciality]
-    end
+
+  # Job Titles as Roles
+  def admin?
+    is_job?('Medical Records Staff')
   end
 
-  def job_title_options
-    job_titles.map do |job_title|
-      [job_title.id, job_title.title]
-    end
+  def consultant?
+    is_job?('Consultant')
   end
 
-  def team_options
-    team.map do |team|
-      [team.id, team.name]
-    end
+  def doctor?
+    is_job?('Doctor')
+  end
+
+  private
+
+  def is_job?(title)
+    # Inverted value checking for if null, so
+    # true => false, and  false => true
+    # TODO may require refactor for multiple job titles to conclude true or false
+    job_title.each.eql?(title)
+  end
+
+  def job_title
+    # Returns an array of title attribute for each job title
+    self.job_titles.map(&:title)
   end
 end
