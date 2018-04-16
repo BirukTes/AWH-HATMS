@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180407160333) do
+ActiveRecord::Schema.define(version: 20180416100802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20180407160333) do
     t.boolean "isPrivate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
   end
 
   create_table "people", force: :cascade do |t|
@@ -98,8 +99,8 @@ ActiveRecord::Schema.define(version: 20180407160333) do
     t.string "lastName", null: false
     t.date "dateOfBirth", null: false
     t.string "gender"
-    t.integer "telHomeNo"
-    t.integer "telMobileNo"
+    t.string "telHomeNo"
+    t.string "telMobileNo"
     t.string "personalDetail_type"
     t.bigint "personalDetail_id"
     t.datetime "created_at", null: false

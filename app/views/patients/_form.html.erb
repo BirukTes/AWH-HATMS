@@ -1,0 +1,206 @@
+<%= form_with(model: patient, html: {autoComplete: :on}, local: true) do |patient_form| %>
+  <table class="table">
+    <tbody>
+    <tr>
+      <td>
+        <%# Get the attributes that belong to the person class %>
+        <%= patient_form.fields_for(:person) do |person_fields| %>
+          <fieldset>
+            <legend>Personal Details</legend>
+            <table class="table">
+              <tbody>
+              <tr>
+                <td>
+                  <div class="form-group">
+                    <%= person_fields.label(:firstName, 'First name') %><br/>
+                    <%= person_fields.text_field(:firstName, html_options: {autofocus: true, autocomplete: 'firstName'}) %>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <%= person_fields.label(:lastName, 'Last name') %><br/>
+                    <%= person_fields.text_field(:lastName, autocomplete: 'lastName') %>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <%= person_fields.label(:dateOfBirth, 'Date of birth') %><br/>
+                    <%= person_fields.text_field(:dateOfBirth, type: 'date', html_options: {autocomplete: 'dateOfBirth', date_separator: "</div><div class='small-4 columns'>"}) %>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <%= person_fields.label(:gender) %><br/>
+                    <%= person_fields.select(:gender, options_for_select([:Male, :Female], ''), autocomplete: 'lastName') %>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <%= person_fields.fields_for(:address) do |address_fields| %>
+                  <td>
+                    <div class="form-group">
+                      <%= address_fields.label(:houseNumber, 'House number') %><br/>
+                      <%= address_fields.text_field(:houseNumber, type: 'number', autocomplete: 'houseNumber') %>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <%= address_fields.label :street %><br/>
+                      <%= address_fields.text_field :street, autocomplete: 'street' %>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <%= address_fields.label(:town) %><br/>
+                      <%= address_fields.text_field(:town, autocomplete: 'town') %>
+
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <%= address_fields.label(:postcode) %><br/>
+                      <%= address_fields.text_field(:postcode, autocomplete: 'postcode') %>
+                    </div>
+                  </td>
+                <% end %>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-group">
+                    <%= person_fields.label(:telHomeNo, 'Telephone number') %><br/>
+                    <%= person_fields.text_field(:telHomeNo, type: 'number', autocomplete: 'telephoneNumber') %>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <%= person_fields.label(:telMobileNo, 'Mobile number') %><br/>
+                    <%= person_fields.text_field(:telMobileNo, type: 'number', autocomplete: 'mobileNumber') %>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </fieldset>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table class="table">
+          <tbody>
+          <tr>
+            <td>
+              <fieldset>
+                <legend>Medical Listing</legend>
+                <table class="table">
+                  <tbody>
+                  <tr>
+                    <td>
+                      <div class="form-group">
+                        <%= patient_form.label(:diabetes, 'Diabetic') %><br/>
+                        <%= patient_form.check_box(:diabetes, {autocomplete: 'diabetes'}, 'true', 'false') %>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <%= patient_form.label(:smokes, 'Smoker') %><br/>
+                        <%= patient_form.check_box(:smokes, {autocomplete: 'smokes'}, 'true', 'false')
+                        %>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-group">
+                        <%= patient_form.label(:asthma, 'Asthmatic') %><br/>
+                        <%= patient_form.check_box(:asthma, {autocomplete: 'diabetic'}, 'true', 'false') %>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <%= patient_form.label(:alcoholic) %><br/>
+                        <%= patient_form.check_box(:alcoholic, {autocomplete: 'smokes'}, 'true', 'false') %>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-group">
+                        <%= patient_form.label(:allergies) %><br/>
+                        <%= patient_form.text_area(:allergies, autocomplete: 'allergies') %>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-group">
+                        <%= patient_form.label(:medicalTestsResults, 'Medical Results Tests') %><br/>
+                        <%= patient_form.text_area(:medicalTestsResults, autocomplete: 'medicalResultsTests') %>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </fieldset>
+            </td>
+            <td>
+              <fieldset>
+                <legend>Other Details</legend>
+                <table class="table">
+                  <tbody>
+                  <tr>
+                    <td>
+                      <div class="form-group">
+                        <%= patient_form.label(:nextOfKin, 'Next Of Kin') %><br/>
+                        <%= patient_form.text_area(:nextOfKin, autocomplete: 'smokes') %>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-group">
+                        <%= patient_form.label(:isPrivate, 'Is Private') %><br/>
+                        <%= patient_form.check_box(:isPrivate, {autocomplete: 'isPrivate'}, 'true', 'false') %>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <!--TODO write js/jquery for to check for -->
+                        <%= patient_form.label(:email) %><br/>
+                        <%= patient_form.email_field(:email, disabled: true, autocomplete: 'medicalResultsTests') %>
+                      </div>
+                    </td>
+                  <tr>
+                    <td>
+                      <div class="actions">
+                        <table class="table">
+                          <tbody>
+                          <tr>
+                            <td>
+                              <% if controller_name == 'patients' %>
+                                <%= link_to('Cancel', patients_path, {class: 'btn btn-default'}) %>
+                              <% elsif controller_name == 'admissions' %>
+                                <%# FIXME rest patient on click %>
+                                <%= link_to('Cancel', new_admission_path, html: {class: 'btn btn-default'}, params: {rest_patient: true}) %>
+                              <% end %>
+                            </td>
+                            <td>  <%= patient_form.submit({class: 'btn btn-primary'}) %></td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </fieldset>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+<% end %>

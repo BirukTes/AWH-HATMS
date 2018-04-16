@@ -40,30 +40,33 @@
                 </td>
               </tr>
               <tr>
-                <td>
-                  <div class="form-group">
-                    <%= person_fields.label(:houseNumber, 'House number') %><br/>
-                    <%= person_fields.text_field(:houseNumber, type: 'number', autocomplete: 'houseNumber') %>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <%= person_fields.label :street %><br/>
-                    <%= person_fields.text_field :street, autocomplete: 'street' %>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <%= person_fields.label(:town) %><br/>
-                    <%= person_fields.text_field(:town, autocomplete: 'town') %>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <%= person_fields.label(:postcode) %><br/>
-                    <%= person_fields.text_field(:postcode, autocomplete: 'postcode') %>
-                  </div>
-                </td>
+                <%= person_fields.fields_for(:address) do |address_fields| %>
+                  <td>
+                    <div class="form-group">
+                      <%= address_fields.label(:houseNumber, 'House number') %><br/>
+                      <%= address_fields.text_field(:houseNumber, type: 'number', autocomplete: 'houseNumber') %>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <%= address_fields.label :street %><br/>
+                      <%= address_fields.text_field :street, autocomplete: 'street' %>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <%= address_fields.label(:town) %><br/>
+                      <%= address_fields.text_field(:town, autocomplete: 'town') %>
+
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <%= address_fields.label(:postcode) %><br/>
+                      <%= address_fields.text_field(:postcode, autocomplete: 'postcode') %>
+                    </div>
+                  </td>
+                <% end %>
               </tr>
               <tr>
                 <td>
@@ -129,43 +132,44 @@
           <table class="table">
             <tbody>
             <tr>
-              <%= staff_form.fields_for(:specialisms) do |specialism_fields| %>
+              <%= staff_form.fields_for(:specialism) do |specialism_fields| %>
                 <td>
                   <div class="form-group">
                     <%= specialism_fields.label(:speciality_id, 'Speciality') %><br/>
                     <%= specialism_fields.select(:speciality_id, speciality_options, autocomplete: 'speciality') %>
                     <%= specialism_fields.button('Add', {class: 'btn btn-default'}) %>
                   </div>
-                  <table class="table">
-                    <thead>
-                    <th>Speciality</th>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td></td>
-                    </tr>
-                    </tbody>
-                  </table>
+                  <!--<table class="table">-->
+                    <!--<thead>-->
+                    <!--<th>Speciality</th>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                      <!--<td></td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                  <!--</table>-->
                 </td>
               <% end %>
-              <%= staff_form.fields_for(:jobs) do |job_fields| %>
+              <%= staff_form.fields_for(:job) do |job_fields| %>
                 <td>
                   <div class="form-group">
                     <%= job_fields.label(:job_title_id, 'Job title') %><br/>
                     <%= job_fields.select(:job_title_id, job_title_options, autocomplete: 'jobTitle') %>
                   </div>
-                  <table class="table">
-                    <thead>
-                    <th>Job Title</th>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td></td>
-                    </tr>
-                    </tbody>
-                  </table>
+                  <!--<table class="table">-->
+                    <!--<thead>-->
+                    <!--<th>Job Title</th>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                      <!--<td></td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                  <!--</table>-->
                 </td>
               <% end %>
+            </tr>
               <tr>
                 <td>
                   <div class="form-group">

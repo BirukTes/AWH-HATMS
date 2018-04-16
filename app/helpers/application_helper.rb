@@ -12,6 +12,7 @@ module ApplicationHelper
 
   def speciality_options
     Speciality.all.map do |speciality|
+      # Hash [key, value]
       [speciality.speciality, speciality.id]
     end
   end
@@ -25,6 +26,12 @@ module ApplicationHelper
   def team_options
     Team.all.map do |team|
       [team.name, team.id]
+    end
+  end
+
+  def ward_options
+    Ward.all.map do |ward|
+      [ward.name, ward.id]
     end
   end
 

@@ -1,0 +1,20 @@
+<h1 class="title-container">Admit Patient</h1>
+<% @page_title = 'Admit Patient' %>
+
+<% if !@patient %>
+  <fieldset>
+    <legend>Find Registered Patient</legend>
+    <%= render('find_form') %>
+  </fieldset>
+<% else %>
+  <fieldset>
+    <legend>Found Patient Details</legend>
+
+    <%= render('patients/form', patient: @patient) %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Admission</legend>
+    <%= render('form', admission: @admission, patient: @patient) %>
+  </fieldset>
+<% end %>
