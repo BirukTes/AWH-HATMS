@@ -15,7 +15,6 @@ class Person < ApplicationRecord
   # @return Person
   def self.find_person_patient(dateOfBirth, lastName)
     # Make sure they  are not null
-    where('"personalDetail_type" = ? AND "dateOfBirth" = ? AND "lastName" = ? ',
-          'Patient', "#{dateOfBirth}", "#{lastName}").first
+    where(personalDetail_type: 'Patient', dateOfBirth: dateOfBirth, lastName: lastName).first
   end
 end

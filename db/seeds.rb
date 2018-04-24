@@ -83,3 +83,11 @@ Ward.create!(name: 'Orthopaedics Medical Block', wardNumber: '4', numberOfBeds: 
 Ward.create!(name: 'Cardiology Centre Block', wardNumber: '5', numberOfBeds: '12', bedStatus: nil, patientGender: 'Female', deptName: 'Cardiology', isPrivate: nil)
 Ward.create!(name: 'Obstetrics Princess Royal Maternity', wardNumber: '6', numberOfBeds: '24', bedStatus: nil, patientGender: 'Female', deptName: 'Obstetrics', isPrivate: nil)
 Ward.create!(name: 'Obstetrics Princess Royal Maternity', wardNumber: '7', numberOfBeds: '12', bedStatus: nil, patientGender: 'Female', deptName: 'Obstetrics', isPrivate: nil)
+
+# Updated bed status
+# Ward.all.each do |ward|
+#   if ward.bedStatus == nil
+#     ward.bedStatus = ward.numberOfBeds
+#     ward.save!
+#   end
+# end

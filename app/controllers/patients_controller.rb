@@ -16,12 +16,12 @@ class PatientsController < ApplicationController
   def create
     @patient = Patient.new(patient_params)
 
-    if @patient.save!
-            redirect_to(patients_path(@patient), notice: 'Patient registration successful')
+    if @patient.save
+      redirect_to(patients_path(@patient), notice: 'Patient registration successful')
     else
       # puts(@patient.errors.inspect)
       # Pass the errors, to the instance variable
-      @errors = @patient.errors.full_message
+      @errors = @patient.errors.full_messages
       render :new
     end
   end
@@ -33,8 +33,8 @@ class PatientsController < ApplicationController
   def update
     @patient = Patient.find(params[:id])
 
-    if @patient.update_attributes!(patient_params)
-      redirect_to(patients_path(@patient), notice: 'Patient updated!')
+    if @patient.update!(patient_params)
+      redirect_to(patients_path, notice: 'Patient updated!')
     else
       @errors = @meal_plan.errors.full_messages
       render :edit
@@ -44,7 +44,7 @@ class PatientsController < ApplicationController
   def destroy
     @patient = Patient.find(params[:id])
     @patient.destroy!
-  redirect_to(patients_path, notice: 'Patient deleted')
+    redirect_to(patients_path, notice: 'Patient deleted')
   end
 
   private
@@ -52,7 +52,7 @@ class PatientsController < ApplicationController
   def patient_params
     params.require(:patient).permit(:id, :allergies, :diabetes, :asthma, :smokes, :alcoholic, :medicalTestsResults, :nextOfKin,
                                     :isPrivate, :email,
-                                    person_attributes: [:firstName, :lastName, :gender, :dateOfBirth, :telHomeNo, :telMobileNo,
-                                                        address_attributes: [:houseNumber, :street, :town, :postcode]])
+                                    person_attributes: [:id, :firstName, :lastName, :gender, :dateOfBirth, :telHomeNo, :telMobileNo,
+                                                        address_attributes: [:id, :houseNumber, :street, :town, :postcode]])
   end
 end

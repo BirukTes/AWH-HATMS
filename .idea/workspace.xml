@@ -2,61 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc0883c8-5e71-4922-b050-6ad158519ec8" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/admissions.coffee" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/patients.coffee" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/admissions.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/patients.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/controllers/admissions_controller.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/controllers/patients_controller.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/helpers/admissions_helper.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/helpers/patients_helper.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/admissions/_find_form.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/admissions/_form.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/admissions/create.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/admissions/destroy.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/admissions/edit.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/admissions/index.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/admissions/new.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/admissions/show.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/admissions/update.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/patients/_form.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/patients/create.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/patients/destroy.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/patients/edit.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/patients/index.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/patients/new.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/patients/show.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/patients/update.html.erb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20180415102152_add_email_to_patients.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20180416100802_change_data_type_for_people.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/controllers/admissions_controller_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/controllers/patients_controller_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/helpers/admissions_helper_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/helpers/patients_helper_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/views/admissions/create.html.erb_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/views/admissions/destroy.html.erb_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/views/admissions/edit.html.erb_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/views/admissions/index.html.erb_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/views/admissions/new.html.erb_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/views/admissions/show.html.erb_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/views/admissions/update.html.erb_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/views/patients/create.html.erb_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/views/patients/destroy.html.erb_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/views/patients/edit.html.erb_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/views/patients/index.html.erb_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/views/patients/new.html.erb_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/views/patients/show.html.erb_spec.rb" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/views/patients/update.html.erb_spec.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/shared/_find_admitted_patient.html.erb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/shared/_side_nav.html.erb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/shared/_top_nav.html.erb" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/admissions.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/admissions.coffee" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admissions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/admissions_controller.rb" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/patients_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/patients_controller.rb" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/tests_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/tests_controller.rb" />
       <change beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/admission.rb" afterPath="$PROJECT_DIR$/app/models/admission.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/allocation.rb" afterPath="$PROJECT_DIR$/app/models/allocation.rb" />
       <change beforePath="$PROJECT_DIR$/app/models/patient.rb" afterPath="$PROJECT_DIR$/app/models/patient.rb" />
       <change beforePath="$PROJECT_DIR$/app/models/person.rb" afterPath="$PROJECT_DIR$/app/models/person.rb" />
-      <change beforePath="$PROJECT_DIR$/app/models/staff.rb" afterPath="$PROJECT_DIR$/app/models/staff.rb" />
-      <change beforePath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/models/team.rb" afterPath="$PROJECT_DIR$/app/models/team.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/ward.rb" afterPath="$PROJECT_DIR$/app/models/ward.rb" />
+      <change beforePath="$PROJECT_DIR$/app/views/admissions/_find_form.html.erb" afterPath="$PROJECT_DIR$/app/views/admissions/_find_form.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/admissions/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/admissions/_form.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/admissions/create.html.erb" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/views/admissions/new.html.erb" afterPath="$PROJECT_DIR$/app/views/admissions/new.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/patients/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/patients/_form.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/patients/create.html.erb" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/views/patients/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/patients/edit.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/patients/new.html.erb" afterPath="$PROJECT_DIR$/app/views/patients/new.html.erb" />
       <change beforePath="$PROJECT_DIR$/app/views/shared/_errors.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_errors.html.erb" />
-      <change beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
+      <change beforePath="$PROJECT_DIR$/app/views/shared/_nav.html.erb" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/views/specialities/create.html.erb" afterPath="" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
       <change beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
       <change beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
@@ -90,68 +67,80 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.869935">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="525">
-          <file leaf-file-name="new.html.erb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/views/patients/new.html.erb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="108">
-                  <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="new.html.erb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/new.html.erb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2847">
-                  <caret line="107" column="6" lean-forward="false" selection-start-line="107" selection-start-column="6" selection-end-line="107" selection-end-column="6" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="person.rb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/models/person.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="459">
-                  <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="admissions_controller.rb" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/controllers/admissions_controller.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="567">
-                  <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="525">
-          <file leaf-file-name="schema.rb" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/db/schema.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="701">
-                  <caret line="96" column="13" lean-forward="false" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
-                  <folding>
-                    <marker date="1523873372451" expanded="true" signature="3959:3965" ph="do ... end" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="525">
+      <file leaf-file-name="admissions_controller.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/admissions_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="28" column="24" lean-forward="false" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_form.html.erb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/patients/_form.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="594">
+              <caret line="22" column="88" lean-forward="false" selection-start-line="22" selection-start-column="88" selection-end-line="22" selection-end-column="88" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new.html.erb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/admissions/new.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="486">
+              <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admissions.coffee" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/admissions.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="526">
+              <caret line="45" column="30" lean-forward="false" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+              <folding>
+                <marker date="1524520217781" expanded="true" signature="1657:1675" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gemfile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Gemfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1689">
+              <caret line="85" column="53" lean-forward="false" selection-start-line="85" selection-start-column="53" selection-end-line="85" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_form.html.erb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/admissions/_form.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="621">
+              <caret line="23" column="59" lean-forward="false" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admission.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/admission.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -161,6 +150,11 @@
       <find>autofocus: true,</find>
       <find>f</find>
       <find>false</find>
+      <find>html_options: {</find>
+      <find>}</find>
+      <find>&quot;</find>
+      <find>wrapper</find>
+      <find>html_options:</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,34 +166,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/models/job_title.rb" />
-        <option value="$PROJECT_DIR$/app/models/job.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20180331203256_create_people.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20180331210821_create_addresses.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20180401201613_devise_create_staffs.rb" />
-        <option value="$PROJECT_DIR$/db/schema.rb" />
-        <option value="$PROJECT_DIR$/config/initializers/new_framework_defaults.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20180404122737_create_people.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20180404235206_create_people.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/person_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/staffs_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/people_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/concerns/DeviseWhiteList.rb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
-        <option value="$PROJECT_DIR$/config/initializers/assets.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/concerns/defualt_page_content.rb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/login.css" />
         <option value="$PROJECT_DIR$/config/initializers/devise.rb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/shared/_nav.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/specialities_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/job_titles_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/login.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/concerns/devise_whitelist.rb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/policies/application_policy.rb" />
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
         <option value="$PROJECT_DIR$/app/models/address.rb" />
@@ -208,21 +182,41 @@
         <option value="$PROJECT_DIR$/app/controllers/registrations_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
         <option value="$PROJECT_DIR$/app/models/staff.rb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/views/shared/_errors.html.erb" />
         <option value="$PROJECT_DIR$/db/migrate/20180416100802_change_data_type_for_people.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/patients_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/patients/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/patients/_find_form.html.erb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/treatments_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/shared/_find_admitted_patient.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/admissions/_find_form.html.erb" />
+        <option value="$PROJECT_DIR$/db/schema.rb" />
+        <option value="$PROJECT_DIR$/app/views/shared/_errors.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/admissions/new.html.erb" />
         <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
         <option value="$PROJECT_DIR$/app/models/person.rb" />
+        <option value="$PROJECT_DIR$/app/models/allocation.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/tests_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/team.rb" />
+        <option value="$PROJECT_DIR$/app/views/shared/_nav.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
+        <option value="$PROJECT_DIR$/app/views/shared/_top_nav.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/shared/_side_nav.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/patients/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/models/patient.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/patients_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/patients/new.html.erb" />
+        <option value="$PROJECT_DIR$/db/migrate/20180331211452_create_patients.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20180423163829_change_column_default_for_patients.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20180423164312_change_column_defaults_for_patients.rb" />
+        <option value="$PROJECT_DIR$/app/models/ward.rb" />
         <option value="$PROJECT_DIR$/db/seeds.rb" />
-        <option value="$PROJECT_DIR$/app/views/patients/_find_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/patients/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/admissions/_find_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/admissions_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/admissions/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/models/admission.rb" />
+        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/views/admissions/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/admissions_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/patients/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/admissions.coffee" />
       </list>
     </option>
   </component>
@@ -271,6 +265,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -282,6 +279,19 @@
               <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="stylesheets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
@@ -300,71 +310,42 @@
               <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admissions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="devise" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="devise" type="462c0819:PsiDirectoryNode" />
-              <item name="registrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="devise" type="462c0819:PsiDirectoryNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="patients" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
               <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="activerecord (v5.1.6, ruby-2.4.4-p296) [gem]" type="70bed36:NamedLibraryElementNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="RailsProjectView" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="C:/Program Files/nodejs/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="en.&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/locales/en.yml&#10;seed&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/seeds.rb&#10;gem&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/Gemfile&#10;see&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/seeds.rb&#10;sch&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/schema.rb&#10;schem&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/schema.rb&#10;rout&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/routes.rb&#10;people&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180407160333_create_people.rb&#10;sche&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/schema.rb&#10;person&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/person.rb&#10;se&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/seeds.rb&#10;patient&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/patient.rb&#10;patien&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180331211452_create_patients.rb&#10;gemfile&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/Gemfile&#10;live tem&#9;ACTION&#9;SurroundWithLiveTemplate&#10;new&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/devise/sessions/new.html.erb&#10;devise&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/initializers/devise.rb&#10;routes&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/routes.rb&#10;application&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/layouts/application.html.erb&#10;per&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/person.rb&#10;staff&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/staff.rb&#10;staf&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180401201613_devise_create_staffs.rb&#10;team&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180331203844_create_teams.rb&#10;ad&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180331210821_create_addresses.rb&#10;peo&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180331203256_create_people.rb&#10;spe&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/speciality.rb&#10;job&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180331205112_create_job_titles.rb&#10;jo&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/job_title.rb&#10;add&#9;null&#9;null&#10;peopl&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180331203256_create_people.rb&#10;special&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180331205137_create_specialities.rb&#10;applic&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/stylesheets/application.css&#10;appli&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/javascripts/application.js&#10;drug&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/drug.rb&#10;testCon&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/tests_controller.rb&#10;gemfi&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/Gemfile&#10;applicatio&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/application_controller.rb&#10;proj&#9;ACTION&#9;ActivateProjectToolWindow&#10;project&#9;ACTION&#9;ManageRecentProjects&#10;projec&#9;ACTION&#9;ActivateProjectToolWindow&#10;pers&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/person.rb&#10;spec&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/speciality.rb" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="SearchEverywhereHistoryKey" value="gem&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/Gemfile&#10;admi&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/javascripts/admissions.coffee&#10;ad&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/admission.rb&#10;admis&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/admissions_controller.rb&#10;seed&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/seeds.rb&#10;migrate&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate&#10;migration&#9;FILE&#9;file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.1.6/lib/active_record/migration&#10;war&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/ward.rb&#10;sch&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/schema.rb&#10;gemfile&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/Gemfile&#10;schem&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/schema.rb&#10;patient&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/patient.rb&#10;routes&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/routes.rb&#10;adm&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/admissions_controller.rb&#10;application&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/layouts/application.html.erb&#10;_nav&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/shared/_nav.html.erb&#10;team&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/team.rb&#10;admission&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/admission.rb&#10;see&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/seeds.rb&#10;person&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/person.rb&#10;admiss&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/admission.rb&#10;rou&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/routes.rb&#10;en.&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/locales/en.yml&#10;rout&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/routes.rb&#10;people&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180407160333_create_people.rb&#10;sche&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/schema.rb&#10;se&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/seeds.rb&#10;patien&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180331211452_create_patients.rb&#10;live tem&#9;ACTION&#9;SurroundWithLiveTemplate&#10;new&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/devise/sessions/new.html.erb&#10;devise&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/initializers/devise.rb&#10;per&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/person.rb&#10;staff&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/staff.rb&#10;staf&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180401201613_devise_create_staffs.rb&#10;peo&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180331203256_create_people.rb&#10;spe&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/speciality.rb&#10;job&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180331205112_create_job_titles.rb&#10;jo&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/job_title.rb&#10;add&#9;null&#9;null&#10;peopl&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180331203256_create_people.rb&#10;special&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/migrate/20180331205137_create_specialities.rb&#10;applic&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/stylesheets/application.css&#10;appli&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/javascripts/application.js&#10;drug&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/drug.rb&#10;testCon&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/tests_controller.rb&#10;gemfi&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/Gemfile&#10;applicatio&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/application_controller.rb&#10;proj&#9;ACTION&#9;ActivateProjectToolWindow&#10;project&#9;ACTION&#9;ManageRecentProjects&#10;projec&#9;ACTION&#9;ActivateProjectToolWindow" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Ruby" />
     <property name="full.screen.before.presentation.mode" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Biruk\OneDrive\Documents\Projects\RailsProjects\AWH-HATMS\app\views\shared" />
       <recent name="C:\Users\Biruk\OneDrive\Documents\Projects\RailsProjects\AWH-HATMS\app\views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Biruk\OneDrive\Documents\Projects\RailsProjects\AWH-HATMS\app\views\shared" />
       <recent name="C:\Users\Biruk\OneDrive\Documents\Projects\RailsProjects\AWH-HATMS\app\views\admissions" />
     </key>
   </component>
@@ -526,12 +507,22 @@
       <workItem from="1523781161526" duration="29132000" />
       <workItem from="1523869878192" duration="5974000" />
       <workItem from="1523886478333" duration="11696000" />
-      <workItem from="1523906817089" duration="8742000" />
+      <workItem from="1523906817089" duration="9767000" />
+      <workItem from="1523966363148" duration="8091000" />
+      <workItem from="1523976382463" duration="3616000" />
+      <workItem from="1523995398096" duration="1100000" />
+      <workItem from="1524040140119" duration="5421000" />
+      <workItem from="1524218282050" duration="2204000" />
+      <workItem from="1524294191702" duration="19787000" />
+      <workItem from="1524399169319" duration="22172000" />
+      <workItem from="1524424218171" duration="8105000" />
+      <workItem from="1524474774739" duration="6293000" />
+      <workItem from="1524485265701" duration="26097000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="240749000" />
+    <option name="totallyTimeSpent" value="344660000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -546,7 +537,7 @@
     <frame x="-12" y="-12" width="2584" height="1464" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19460113" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22522159" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942098" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34150198" sideWeight="0.50333333" order="7" side_tool="true" content_ui="tabs" />
@@ -554,7 +545,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942098" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34820032" sideWeight="0.49666667" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29342723" sideWeight="0.49666667" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -566,6 +557,27 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942098" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942098" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942098" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34150198" sideWeight="0.50333333" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942098" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34820032" sideWeight="0.49666667" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20024174" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942098" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -575,213 +587,57 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Ruby24-x64/lib/ruby/site_ruby/2.4.0/rubygems/test_case.rb">
+    <entry file="file://C:/Ruby24-x64/lib/ruby/2.4.0/rubygems/exceptions.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="45" column="7" lean-forward="false" selection-start-line="45" selection-start-column="7" selection-end-line="45" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/policies/application_policy.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.1.6/lib/active_record/querying.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="23" column="78" lean-forward="false" selection-start-line="23" selection-start-column="78" selection-end-line="23" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/address.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="6" lean-forward="false" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/ide/ide-scripting.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/admissions/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/actionpack-5.1.6/lib/action_controller/metal.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="161" column="17" lean-forward="true" selection-start-line="161" selection-start-column="17" selection-end-line="161" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20180331211452_create_patients.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/actionpack-5.1.6/lib/action_controller/metal/mime_responds.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="23" column="32" lean-forward="false" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/concerns/default_page_content.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="15" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/concerns/devise_whitelist.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="141" lean-forward="false" selection-start-line="13" selection-start-column="55" selection-end-line="14" selection-end-column="141" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.1.6/lib/active_record/connection_adapters/abstract/schema_definitions.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="409" column="25" lean-forward="false" selection-start-line="409" selection-start-column="21" selection-end-line="409" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20180415102152_add_email_to_patients.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20180407160333_create_people.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="34" lean-forward="false" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/registrations_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/staff.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="23" column="43" lean-forward="true" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/treatment.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="20" lean-forward="false" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_errors.html-User-PC.erb" />
-    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/actionview-5.1.6/lib/action_view/helpers/tags/collection_helpers.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/actionview-5.1.6/lib/action_view/helpers/tags/collection_check_boxes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        <state relative-caret-position="737">
+          <caret line="247" column="4" lean-forward="false" selection-start-line="247" selection-start-column="4" selection-end-line="247" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activemodel-5.1.6/lib/active_model/validations.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="288" column="20" lean-forward="false" selection-start-line="288" selection-start-column="14" selection-end-line="288" selection-end-column="20" />
+        <state relative-caret-position="292">
+          <caret line="299" column="22" lean-forward="true" selection-start-line="299" selection-start-column="22" selection-end-line="299" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activemodel-5.1.6/lib/active_model/errors.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/devise/passwords/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="330" column="8" lean-forward="false" selection-start-line="330" selection-start-column="8" selection-end-line="330" selection-end-column="8" />
+        <state relative-caret-position="189">
+          <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.1.6/lib/active_record/suppressor.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/devise/passwords/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="44" column="13" lean-forward="false" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="13" />
+        <state relative-caret-position="243">
+          <caret line="9" column="59" lean-forward="false" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="61" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_errors.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/admissions/_find_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="10" lean-forward="false" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+        <state relative-caret-position="486">
+          <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.1.6/lib/active_record/core.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/prescriptions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="329" column="8" lean-forward="false" selection-start-line="329" selection-start-column="8" selection-end-line="329" selection-end-column="8" />
+        <state relative-caret-position="108">
+          <caret line="4" column="10" lean-forward="false" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/actionview-5.1.6/lib/action_view/helpers/url_helper.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20180420095952_add_column_to_patients.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="22" lean-forward="false" selection-start-line="1" selection-start-column="22" selection-end-line="2" selection-end-column="24" />
-          <folding />
+        <state relative-caret-position="108">
+          <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -792,90 +648,228 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/devise/sessions/new.html.erb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20180415102152_add_email_to_patients.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="41" column="7" lean-forward="false" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_errors.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="837">
-          <caret line="31" column="18" lean-forward="false" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+        <state relative-caret-position="0">
+          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20180420134828_add_column_to_admissions.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/actionview-5.1.6/lib/action_view/helpers/form_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="741" column="28" lean-forward="true" selection-start-line="741" selection-start-column="28" selection-end-line="741" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/patient.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20180420100557_add_team_reference_to_admissions.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/policies/application_policy.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/patients_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/staff.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="46" column="19" lean-forward="false" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
-          <folding />
+        <state relative-caret-position="270">
+          <caret line="10" column="47" lean-forward="false" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/devise/shared/_links.html.erb">
+    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.1.6/lib/active_record/core.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        <state relative-caret-position="288">
+          <caret line="197" column="10" lean-forward="false" selection-start-line="197" selection-start-column="10" selection-end-line="197" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
+    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.1.6/lib/active_record/dynamic_matchers.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="47" column="35" lean-forward="true" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/schema.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="96" column="13" lean-forward="false" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
-          <folding>
-            <marker date="1523873372451" expanded="true" signature="3959:3965" ph="do ... end" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/admission.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="288">
+          <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/person.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
-          <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+          <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/application_record.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/actionview-5.1.6/lib/action_view/helpers/form_options_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="827" column="56" lean-forward="false" selection-start-line="827" selection-start-column="56" selection-end-line="827" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/rubystubs24/kernel.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17064">
+          <caret line="632" column="19" lean-forward="false" selection-start-line="632" selection-start-column="19" selection-end-line="632" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/tests_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/allocation.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="34" column="20" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/team.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="17" column="18" lean-forward="true" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="73" column="62" lean-forward="false" selection-start-line="73" selection-start-column="62" selection-end-line="73" selection-end-column="62" />
+        <state relative-caret-position="823">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="877">
+          <caret line="113" column="16" lean-forward="false" selection-start-line="113" selection-start-column="16" selection-end-line="113" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/patients/_form.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_top_nav.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="186" column="62" lean-forward="false" selection-start-line="186" selection-start-column="62" selection-end-line="186" selection-end-column="62" />
+        <state relative-caret-position="540">
+          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_side_nav.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="18" column="52" lean-forward="true" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/patients/edit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="14" lean-forward="false" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activemodel-5.1.6/lib/active_model/errors.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="352" column="48" lean-forward="false" selection-start-line="352" selection-start-column="48" selection-end-line="352" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/patient.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby24-x64/lib/ruby/site_ruby/2.4.0/bundler/dsl.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="207" column="8" lean-forward="false" selection-start-line="207" selection-start-column="8" selection-end-line="207" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20180423164312_change_column_defaults_for_patients.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="62" lean-forward="false" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20180423163829_change_column_default_for_patients.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20180331211452_create_patients.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -883,20 +877,36 @@
     <entry file="file://$PROJECT_DIR$/app/views/patients/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/new.html.erb">
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2847">
-          <caret line="107" column="6" lean-forward="false" selection-start-line="107" selection-start-column="6" selection-end-line="107" selection-end-column="6" />
+        <state relative-caret-position="-41">
+          <caret line="90" column="40" lean-forward="false" selection-start-line="90" selection-start-column="40" selection-end-line="90" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/patients/destroy.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/models/ward.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="40" lean-forward="false" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/people_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -904,51 +914,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/actionview-5.1.6/lib/action_view/helpers/form_helper.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/patients_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="1190" column="40" lean-forward="false" selection-start-line="1190" selection-start-column="40" selection-end-line="1190" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/admissions/_find_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/locales/en.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="34" column="29" lean-forward="true" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/admissions/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="28" column="59" lean-forward="false" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="59" />
+        <state relative-caret-position="283">
+          <caret line="23" column="45" lean-forward="false" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/admissions/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="13" column="13" lean-forward="true" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        <state relative-caret-position="486">
+          <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1689">
+          <caret line="85" column="53" lean-forward="false" selection-start-line="85" selection-start-column="53" selection-end-line="85" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/admissions/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="23" column="59" lean-forward="false" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/admission.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/admissions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+        <state relative-caret-position="202">
+          <caret line="28" column="24" lean-forward="false" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/patients/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="22" column="88" lean-forward="false" selection-start-line="22" selection-start-column="88" selection-end-line="22" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/admissions.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="45" column="30" lean-forward="false" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+          <folding>
+            <marker date="1524520217781" expanded="true" signature="1657:1675" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

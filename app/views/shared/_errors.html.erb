@@ -1,8 +1,7 @@
-<% if @errors.present? %>
+<% if errors.present? %>
   <div class="alert alert-danger errors">
-    <p>YEs</p>
     <ul>
-      <% @errors.each do |error| %>
+      <% errors.each do |error| %>
         <li><%= error %></li>
       <% end %>
     </ul>

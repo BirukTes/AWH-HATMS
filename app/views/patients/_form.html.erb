@@ -1,4 +1,5 @@
-<%= form_with(model: patient, html: {autoComplete: :on}, local: true) do |patient_form| %>
+<%= form_with(model: patient, html: { autoComplete: :on }, local: true, validate: true) do |patient_form| %>
+  <%= render 'shared/errors', errors: @errors %>
   <table class="table">
     <tbody>
     <tr>
@@ -13,7 +14,7 @@
                 <td>
                   <div class="form-group">
                     <%= person_fields.label(:firstName, 'First name') %><br/>
-                    <%= person_fields.text_field(:firstName, html_options: {autofocus: true, autocomplete: 'firstName'}) %>
+                    <%= person_fields.text_field(:firstName, { autofocus: true, autocomplete: 'First Name' }) %>
                   </div>
                 </td>
                 <td>
@@ -25,13 +26,13 @@
                 <td>
                   <div class="form-group">
                     <%= person_fields.label(:dateOfBirth, 'Date of birth') %><br/>
-                    <%= person_fields.text_field(:dateOfBirth, type: 'date', html_options: {autocomplete: 'dateOfBirth', date_separator: "</div><div class='small-4 columns'>"}) %>
+                    <%= person_fields.text_field(:dateOfBirth, { autocomplete: 'dateOfBirth', type: 'date' }) %>
                   </div>
                 </td>
                 <td>
                   <div class="form-group">
                     <%= person_fields.label(:gender) %><br/>
-                    <%= person_fields.select(:gender, options_for_select([:Male, :Female], ''), autocomplete: 'lastName') %>
+                    <%= person_fields.select(:gender, options_for_select([:Male, :Female], selected: patient.person.gender), { include_blank: true }, { autocomplete: 'lastName' }) %>
                   </div>
                 </td>
               </tr>
@@ -40,7 +41,7 @@
                   <td>
                     <div class="form-group">
                       <%= address_fields.label(:houseNumber, 'House number') %><br/>
-                      <%= address_fields.text_field(:houseNumber, type: 'number', autocomplete: 'houseNumber') %>
+                      <%= address_fields.text_field(:houseNumber, {autocomplete: 'houseNumber'}) %>
                     </div>
                   </td>
                   <td>
@@ -98,13 +99,13 @@
                     <td>
                       <div class="form-group">
                         <%= patient_form.label(:diabetes, 'Diabetic') %><br/>
-                        <%= patient_form.check_box(:diabetes, {autocomplete: 'diabetes'}, 'true', 'false') %>
+                        <%= patient_form.check_box(:diabetes, { autocomplete: 'diabetes' }, 'true', 'false') %>
                       </div>
                     </td>
                     <td>
                       <div class="form-group">
                         <%= patient_form.label(:smokes, 'Smoker') %><br/>
-                        <%= patient_form.check_box(:smokes, {autocomplete: 'smokes'}, 'true', 'false')
+                        <%= patient_form.check_box(:smokes, { autocomplete: 'smokes' }, 'true', 'false')
                         %>
                       </div>
                     </td>
@@ -113,13 +114,13 @@
                     <td>
                       <div class="form-group">
                         <%= patient_form.label(:asthma, 'Asthmatic') %><br/>
-                        <%= patient_form.check_box(:asthma, {autocomplete: 'diabetic'}, 'true', 'false') %>
+                        <%= patient_form.check_box(:asthma, { autocomplete: 'diabetic' }, 'true', 'false') %>
                       </div>
                     </td>
                     <td>
                       <div class="form-group">
                         <%= patient_form.label(:alcoholic) %><br/>
-                        <%= patient_form.check_box(:alcoholic, {autocomplete: 'smokes'}, 'true', 'false') %>
+                        <%= patient_form.check_box(:alcoholic, { autocomplete: 'smokes' }, 'true', 'false') %>
                       </div>
                     </td>
                   </tr>
@@ -160,7 +161,7 @@
                     <td>
                       <div class="form-group">
                         <%= patient_form.label(:isPrivate, 'Is Private') %><br/>
-                        <%= patient_form.check_box(:isPrivate, {autocomplete: 'isPrivate'}, 'true', 'false') %>
+                        <%= patient_form.check_box(:isPrivate, { autocomplete: 'isPrivate' }, 'true', 'false') %>
                       </div>
                     </td>
                     <td>
@@ -178,13 +179,13 @@
                           <tr>
                             <td>
                               <% if controller_name == 'patients' %>
-                                <%= link_to('Cancel', patients_path, {class: 'btn btn-default'}) %>
+                                <%= link_to('Cancel', patients_path, { class: 'btn btn-default' }) %>
                               <% elsif controller_name == 'admissions' %>
                                 <%# FIXME rest patient on click %>
-                                <%= link_to('Cancel', new_admission_path, html: {class: 'btn btn-default'}, params: {rest_patient: true}) %>
+                                <%= link_to('Cancel', new_admission_path, html: { class: 'btn btn-default' }, params: { rest_patient: true }) %>
                               <% end %>
                             </td>
-                            <td>  <%= patient_form.submit({class: 'btn btn-primary'}) %></td>
+                            <td>  <%= patient_form.submit({ class: 'btn btn-primary' }) %></td>
                           </tr>
                           </tbody>
                         </table>

@@ -1,0 +1,338 @@
+= ..nnaammee
+
+(from gem arel-8.0.0)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  AArreell::::NNooddeess::::NNaammeeddFFuunnccttiioonn
+------------------------------------------------------------------------------
+
+
+(from gem arel-8.0.0)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  AArreell::::NNooddeess::::NNaammeeddWWiinnddooww
+------------------------------------------------------------------------------
+
+
+(from gem arel-8.0.0)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  UUnnqquuaalliiffiieeddCCoolluummnn
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+
+(from gem arel-8.0.0)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  AArreell::::TTaabbllee
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::CCLLII::::CCoonnffiigg
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::CCLLII::::GGeemm
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::CCLLII::::IInnjjeecctt
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::CCLLII::::OOppeenn
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  DDeeppPPrrooxxyy
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::EEnnddppooiinnttSSppeecciiffiiccaattiioonn
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  LLoowwMMeetthhooddss
+------------------------------------------------------------------------------
+  name(*)
+
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  GGeemmHHeellppeerr
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::LLaazzyySSppeecciiffiiccaattiioonn
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  RReessoolluuttiioonnSSttaattee
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+(see Bundler::Molinillo::ResolutionState#name)
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::MMoolliinniilllloo::::DDeeppeennddeennccyyGGrraapphh::::DDeettaacchhVVeerrtteexxNNaammeedd
+------------------------------------------------------------------------------
+
+@return [String] the name of the vertex to detach
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::MMoolliinniilllloo::::DDeeppeennddeennccyyGGrraapphh::::VVeerrtteexx
+------------------------------------------------------------------------------
+
+@return [String] the name of the vertex
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::PPaarraalllleellIInnssttaalllleerr::::SSppeeccIInnssttaallllaattiioonn
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::PPeerrssiisstteenntt::::NNeett::::HHTTTTPP::::PPeerrssiisstteenntt
+------------------------------------------------------------------------------
+
+A name for this connection.  Allows you to keep your connections apart from
+everybody else's.
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::PPlluuggiinn::::AAPPII::::SSoouurrccee
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::RReemmootteeSSppeecciiffiiccaattiioonn
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::RReessoollvveerr::::SSppeeccGGrroouupp
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::RReettrryy
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  GGiitt
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::SSoouurrccee::::PPaatthh
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  RRuubbyyggeemmss
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+
+(from gem bundler-1.16.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  BBuunnddlleerr::::WWoorrkkeerr
+------------------------------------------------------------------------------
+
+@return [String] the name of the worker
+
+
+(from gem mail-2.7.0)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  AAddddrreessss
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+Sometimes an address will not have a display name, but might have the name as
+a comment field after the address.  This returns that name if it exists.
+
+  a = Address.new('mikel@test.lindsaar.net (Mikel Lindsaar)')
+  a.name #=> 'Mikel Lindsaar'
+
+
+(from gem mail-2.7.0)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  CCoonntteennttIIddFFiieelldd
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+
+(from gem mail-2.7.0)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  FFiieelldd
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+
+(from gem mail-2.7.0)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  MMeessssaaggeeIIddFFiieelldd
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+
+(from gem mail-2.7.0)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  RReesseennttMMeessssaaggeeIIddFFiieelldd
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+
+(from gem mini_portile2-2.3.0)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  MMiinniiPPoorrttiillee
+------------------------------------------------------------------------------
+
+
+(from gem nokogiri-1.8.2)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  EEnnccooddiinnggHHaannddlleerr
+------------------------------------------------------------------------------
+  name
+
+------------------------------------------------------------------------------
+
+Get the name of this EncodingHandler
+
+
+(from gem nokogiri-1.8.2)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  EElleemmeennttDDeessccrriippttiioonn
+------------------------------------------------------------------------------
+  name
+
+------------------------------------------------------------------------------
+
+Get the tag name for this ElemementDescription
+
+
+(from gem nokogiri-1.8.2)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  CCDDAATTAA
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+Get the name of this CDATA node
+
+
+(from gem nokogiri-1.8.2)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  DDooccuummeenntt
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+The name of this document.  Always returns "document"
+
+
+(from gem nokogiri-1.8.2)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  DDooccuummeennttFFrraaggmmeenntt
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+return the name for DocumentFragment
+
+
+(from gem nokogiri-1.8.2)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  EElleemmeennttCCoonntteenntt
+------------------------------------------------------------------------------
+  name
+
+------------------------------------------------------------------------------
+
+Get the require element name
+
+
+(from gem nokogiri-1.8.2)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  NNooddee
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+
+(from gem nokogiri-1.8.2)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  RReeaaddeerr
+------------------------------------------------------------------------------
+  name
+
+------------------------------------------------------------------------------
+
+Get the name of the node. Returns a utf-8 encoded string.
+
+
+(from gem sprockets-3.7.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  RRaakkee::::SSpprroocckkeettssTTaasskk
+------------------------------------------------------------------------------
+
+Name of the task. Defaults to "assets".
+
+The name will also be used to suffix the clean and clobber tasks,
+"clean_assets" and "clobber_assets".
+
+
+(from gem sprockets-3.7.1)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  LLeeggaaccyyPPrrooccPPrroocceessssoorr
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+
+(from gem tzinfo-1.2.5)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  CCoouunnttrryy
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+The name of the country.
+
+
+(from gem tzinfo-1.2.5)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  TTZZIInnffoo::::CCoouunnttrryyIInnffoo
+------------------------------------------------------------------------------
+
+The name of the country.
+
+
+(from gem tzinfo-1.2.5)
+=== IImmpplleemmeennttaattiioonn  ffrroomm  TTiimmeezzoonnee
+------------------------------------------------------------------------------
+  name()
+
+------------------------------------------------------------------------------
+
+An alias for identifier.
+
+

@@ -1,4 +1,4 @@
-<%= form_with(model: admission, html: {autoComplete: :on}, local: true) do |admission_form| %>
+<%= form_with(model: admission, validate: true) do |admission_form| %>
   <table class="table">
     <tbody>
     <tr>
@@ -7,13 +7,13 @@
         <%= admission_form.hidden_field(:admissionDate, value: Date.today) %>
         <div class="form-group">
           <%= admission_form.label(:currentMedications, 'Current Medications') %><br/>
-          <%= admission_form.text_area(:currentMedications, html_options: {autocomplete: 'currentMedications'}) %>
+          <%= admission_form.text_area(:currentMedications, autocomplete: 'currentMedications') %>
         </div>
       </td>
       <td>
         <div class="form-group">
           <%= admission_form.label(:admissionNote, 'Admission Note') %><br/>
-          <%= admission_form.text_area(:admissionNote, html_options: {autocomplete: 'admissionNote'}) %>
+          <%= admission_form.text_area(:admissionNote, autocomplete: 'admissionNote') %>
         </div>
       </td>
     </tr>
@@ -21,22 +21,29 @@
       <td>
         <div class="form-group">
           <%= admission_form.label(:ward_id, 'Ward') %><br/>
-          <%= admission_form.select(:ward_id, ward_options, html_options: {autocomplete: 'ward_id'}) %>
+          <%= admission_form.select(:ward_id, ward_options('admission', patient.person.gender), { include_blank: 'Select ward for allocation' }, { id: 'ward_id_select', autocomplete: 'ward_id' }) %>
         </div>
-      </td>      <td>
+      </td>
+      <td>
         <div class="form-group">
-          <%= admission_form.label(:admissionDate, 'Admission Date') %><br/>
+          <%= admission_form.label(:team_id, 'Caring Team') %><br/>
+          <%= admission_form.select(:team_id, ['blank'], { include_blank: 'Select ward first...' }, { id: 'team_id_select', autocomplete: 'team_id', disabled: true }) %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <%= admission_form.label(:admissionDate, 'Date') %><br/>
           <%= admission_form.label(:admissionDate, localize(Date.today)) %>
         </div>
       </td>
     </tr>
     <tr>
       <td>
-        <%= link_to('Cancel', @admission, html_options: {class: 'btn btn-primary'}) %>
+        <%= link_to('Cancel', admission, class: 'btn btn-primary') %>
       </td>
       <td>
         <div class="form-group">
-          <%= admission_form.submit(html_options: {class: 'btn btn-primary'}) %>
+          <%= admission_form.submit(class: 'btn btn-primary') %>
         </div>
       </td>
     </tr>

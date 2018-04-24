@@ -9,19 +9,28 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
-<body>
-<header class="container">
+<body class="body">
+<header class="">
 </header>
 
-<section class="container">
-  <%= render('shared/nav')%>
-  <div id="flash">
-    <% flash.each do |key, value| %>
-      <div class="flash alert <%= alert_class(key) %>"><%= value %></div>
-    <% end %>
-  </div>
 
-  <%= yield %>
+<section class="d-flex align-items-stretch">
+  <%= render('shared/side_nav') %>
+  <section class="nav-and-content">
+    <div class="top-nav">
+      <%= render('shared/top_nav') %>
+    </div>
+    <div class="content p-4">
+      <div id="flash">
+        <% flash.each do |key, value| %>
+          <div class="flash alert <%= alert_class(key) %>"><%= value %></div>
+        <% end %>
+      </div>
+
+      <%= yield %>
+
+    </div>
+  </section>
 </section>
 </body>
 </html>

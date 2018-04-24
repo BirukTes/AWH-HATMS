@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-   resources :patients
-   resources :admissions
-   resources :specialities
-   resources :job_titles
+
+  resources :patients
+  resources :admissions
+  resources :treatments
+  resources :prescriptions
+  resources :specialities
+  resources :job_titles
 
   # Change devise routes from staffs/login to /login
   devise_for :staffs, path: '',

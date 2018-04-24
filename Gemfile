@@ -16,8 +16,10 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
+# #See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
+gem 'responders', '~> 2.4'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -36,6 +38,9 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Breakpoint Debugger, extension to byebug
+  gem 'pry-byebug', '~> 3.6'
+
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver', '~> 3.11'
@@ -56,7 +61,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 source('https://rails-assets.org') do
   # Bootstrap
-  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-bootstrap4'
   gem 'rails-assets-jquery'
   gem 'rails-assets-tether'
 end
@@ -76,3 +81,6 @@ gem 'devise', '~> 4.4', '>= 4.4.3'
 
 # Authorisation with Pundit
 gem 'pundit', '~> 1.1'
+
+# Client Side Validations
+gem 'client_side_validations', '~> 11.1', '>= 11.1.2'

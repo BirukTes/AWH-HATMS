@@ -1,8 +1,0 @@
-<div id="user_nav">
-<% if staff_signed_in? %>
-  Signed in as <%= current_staff.email %>.
-  <%= link_to('Sign out', destroy_staff_session_path, method: :delete) %>
-<% else %>
-  <%= link_to('Register', new_staff_registration_path) %> or <%= link_to('Sign in', new_staff_session_path) %>
-<% end %>
-</div>

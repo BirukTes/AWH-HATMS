@@ -29,13 +29,19 @@ module ApplicationHelper
     end
   end
 
-  def ward_options
-    Ward.all.map do |ward|
-      [ward.name, ward.id]
+  def ward_options(filter_by = nil, patient_gender = nil)
+    case filter_by
+      when 'admission'
+        Ward.admission_options(patient_gender)
+      else
+        Ward.all.map do |ward|
+          [ward.name, ward.id]
+        end
     end
   end
 
   def all_staffs
     Staff.all
   end
+
 end

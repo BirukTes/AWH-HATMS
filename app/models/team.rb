@@ -7,4 +7,7 @@ class Team < ApplicationRecord
 
   # One-to-many
   has_many :staffs
+
+   validates(:name, presence: true)
+   validates(:head, presence: true)
 end

@@ -1,0 +1,24 @@
+<table class="table" style="width: 40%; !important;">
+  <tbody>
+  <tr>
+    <%# Local disables remote/ajax request so it reload the page %>
+    <%= form_with(name: nil, url: new_treatment_path, method: :get, local: true) do |form| %>
+      <td>
+        <label>Date of Birth</label><br/>
+        <%# TODO add date range, to all date types %>
+        <%= form.text_field(:dateOfBirth, type: 'date') %>
+      </td>
+      <td>
+        <label>Last name</label><br/>
+        <%= form.text_field(:lastName) %><br/>
+      </td>
+      </tr>
+      <tr>
+        <td>
+          <%#   %>
+          <%=  form.submit('Find', class: 'btn btn-primary', data: { disable_with: false }) %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>

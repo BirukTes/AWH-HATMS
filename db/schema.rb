@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180416100802) do
+ActiveRecord::Schema.define(version: 20180423164312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,10 @@ ActiveRecord::Schema.define(version: 20180416100802) do
     t.bigint "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "team_id"
+    t.string "status"
     t.index ["patient_id"], name: "index_admissions_on_patient_id"
+    t.index ["team_id"], name: "index_admissions_on_team_id"
     t.index ["ward_id"], name: "index_admissions_on_ward_id"
   end
 
@@ -82,16 +85,17 @@ ActiveRecord::Schema.define(version: 20180416100802) do
 
   create_table "patients", force: :cascade do |t|
     t.string "allergies"
-    t.boolean "diabetes"
-    t.boolean "asthma"
-    t.boolean "smokes"
-    t.boolean "alcoholic"
+    t.boolean "diabetes", default: false
+    t.boolean "asthma", default: false
+    t.boolean "smokes", default: false
+    t.boolean "alcoholic", default: false
     t.text "medicalTestsResults"
     t.text "nextOfKin"
-    t.boolean "isPrivate"
+    t.boolean "isPrivate", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email"
+    t.string "occupation"
   end
 
   create_table "people", force: :cascade do |t|
@@ -186,6 +190,7 @@ ActiveRecord::Schema.define(version: 20180416100802) do
 
   add_foreign_key "addresses", "people"
   add_foreign_key "admissions", "patients"
+  add_foreign_key "admissions", "teams"
   add_foreign_key "admissions", "wards"
   add_foreign_key "allocations", "teams"
   add_foreign_key "allocations", "wards"
