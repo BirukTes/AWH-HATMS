@@ -1,2 +1,61 @@
-<h1>Admissions#index</h1>
-<p>Find me in app/views/admissions/index.html.erb</p>
+<h1>Admissions</h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Admission Date</th>
+    <th>Admission No</th>
+    <th>Patient Name</th>
+    <th>Ward Number</th>
+    <th>Ward Name</th>
+    <th>Discharge Date</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @admissions.each do |admission| %>
+    <% patient = Patient.find(admission.patient_id) %>
+    <% ward = Ward.find(admission.ward_id) %>
+    <tr>
+      <td>
+        <%= localize(admission.admissionDate) %>
+      </td>
+      <td>
+        <%= admission.id %>
+      </td>
+      <td>
+        <%= patient.person.firstName + ' ' + patient.person.lastName %>
+      </td>
+      <td>
+        <%= ward.wardNumber %>
+      </td>
+      <td>
+        <%= ward.name %>
+      </td>
+      <td>
+        <%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %>
+      </td>
+      <td>
+        <%= admission.status %>
+      </td>
+      <td>
+        <%# modal_trigger('Discharge', href: discharge_admission_path(patient) + '/' + '#authorise_discharge', ) if admission.dischargeDate.nil? %>
+        <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#authoris_discharge">-->
+        <!--Discharge-->
+        <!--</button>-->
+
+        <%= link_to_if(admission.dischargeDate.nil?, 'Discharge', discharge_admission_path(patient)) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= modal(id: 'authorise_discharge') do %>
+  <%= modal_header('Authorise Discharge') %>
+<%= modal_body do %>
+  <% end %>
+  <%= modal_footer do %>
+
+  <% end %>
+<% end %>

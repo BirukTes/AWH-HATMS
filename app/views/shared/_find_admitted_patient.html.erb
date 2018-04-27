@@ -4,19 +4,21 @@
     <%# Local disables remote/ajax request so it reload the page %>
     <%= form_with(name: nil, url: new_treatment_path, method: :get, local: true) do |form| %>
       <td>
-        <label>Date of Birth</label><br/>
+        <label>Ward</label><br/>
         <%# TODO add date range, to all date types %>
-        <%= form.text_field(:dateOfBirth, type: 'date') %>
+        <% %>
+        <%= form.select(:ward_id, ward_options('wards_for_current_staff'), { include_blank: 'Select patient admission ward' }, { id: 'ward_id_select_find_admitted' }) %>
       </td>
       <td>
-        <label>Last name</label><br/>
-        <%= form.text_field(:lastName) %><br/>
+        <label>Patient</label><br/>
+        <%= form.select(:patient_id, {}, { include_blank: 'Select patient' }, { id: 'patient_id_select', disabled: true }) %>
+        <br/>
       </td>
       </tr>
       <tr>
         <td>
           <%#   %>
-          <%=  form.submit('Find', class: 'btn btn-primary', data: { disable_with: false }) %>
+          <%= form.submit('Find', class: 'btn btn-primary', data: { disable_with: false }) %>
         </td>
       </tr>
     <% end %>

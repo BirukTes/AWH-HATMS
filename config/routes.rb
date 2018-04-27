@@ -1,16 +1,28 @@
 Rails.application.routes.draw do
 
   resources :patients
-  resources :admissions
+  resources :admissions do
+    member do
+      get :discharge
+    end
+    collection do
+      post :authorise_discharge
+    end
+  end
   resources :treatments
   resources :prescriptions
   resources :specialities
   resources :job_titles
 
+  namespace :search do
+    get 'find_patients_in_ward', to: 'find#find_patients_in_ward'
+  end
+
+
   # Change devise routes from staffs/login to /login
   devise_for :staffs, path: '',
-             path_names: {sign_in: 'login', sign_up: 'register', account_update: 'update'},
-             controllers: {sessions: 'sessions'}
+             path_names: { sign_in: 'login', sign_up: 'register', account_update: 'update' },
+             controllers: { sessions: 'sessions' }
 
   devise_scope :staff do
     authenticated :staff do

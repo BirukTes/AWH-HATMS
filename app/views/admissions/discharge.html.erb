@@ -1,0 +1,27 @@
+<%# Rails Modal %>
+<h4 class="title-container">Authorise Discharge</h4>
+<% patient = Patient.find(@admission.patient_id) %>
+<table class="table">
+  <tbody>
+  <tr>
+    <td>Admission No. <%= @admission.id %></td>
+    <td>Patient Name:  <%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+  </tr>
+  <%= form_with(url: authorise_discharge_admissions_path, method: :post) do |admission_discharge_form| %>
+    <tr>
+      <td>
+        <%# TODO humanize  %>
+        <%= admission_discharge_form.datetime_field(:dischargeDate) %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to('Discharge Now', admissions_path(@admission), method: :delete, class: 'btn btn-default') %>
+      </td>
+      <td>
+        <%= admission_discharge_form.submit('Authorise Discharge', class: 'btn btn-default') %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

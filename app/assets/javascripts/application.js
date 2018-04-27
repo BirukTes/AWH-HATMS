@@ -15,6 +15,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require bootstrap
+//= require datetimepicker
 //= require_tree .
 // /* off-canvas sidebar toggle */
 // $('[data-toggle=offcanvas]').click(function() {

@@ -33,3 +33,14 @@ en:
    date:
       formats:
           default: "%d/%m/%Y"
+
+   time:
+      formats:
+          default: "%d/%m/%Y %I:%M%p"
+
+   activerecord:
+      attributes:
+         admission:
+            admissionDate: 'Admission Date'
+            dischargeDate: 'Discharge Date'
+

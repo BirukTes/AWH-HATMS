@@ -1,2 +1,10 @@
-<h1>Treatments#new</h1>
-<p>Find me in app/views/treatments/new.html.erb</p>
+<h1>Treat Patient</h1>
+
+
+
+<% if @patient.nil? %>
+  <%= render 'shared/find_admitted_patient' %>
+<% else %>
+  <%= render 'patients/form', patient: @patient %>
+  <%= render 'form', treatment: @treatment, patient: @patient %>
+<% end %>

@@ -2,7 +2,7 @@
   <tbody>
   <tr>
     <%# Local disables remote/ajax request so it reload the page %>
-    <%= form_with(name: nil, url: new_admission_path, method: :get, local: true) do |form| %>
+    <%= form_with(url: new_admission_path, method: :get, local: true, validate: true, html: {class: 'validations'}) do |form| %>
       <td>
         <label>Date of Birth</label><br/>
         <%# TODO add date range, to all date types %>
@@ -16,7 +16,7 @@
       <tr>
         <td>
           <%#   %>
-          <%=  form.submit('Find', class: 'btn btn-primary', data: { disable_with: false }) %>
+          <%= form.submit('Find', class: 'btn btn-primary', id: 'find_registered_patient_submit', data: { disable_with: false }) %>
         </td>
       </tr>
     <% end %>

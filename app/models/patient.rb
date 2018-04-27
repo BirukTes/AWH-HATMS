@@ -4,7 +4,7 @@ class Patient < ApplicationRecord
   has_many :treatments, dependent: :destroy
 
   # Many to Many association through join table, cascade delete
-  has_many :Admissions
+  has_many :admissions
 
   has_one :person, as: :personalDetail, dependent: :destroy
 

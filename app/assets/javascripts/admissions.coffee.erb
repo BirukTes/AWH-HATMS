@@ -43,10 +43,22 @@ $(document).on('change', '#ward_id_select', ->
           if !($('.lblMsg').length)
             $('<br/><label class="lblMsg" style="font-weight: bold;">No teams in this ward.</label>').insertAfter('#team_id_select')
 
-        if $('#ward_id_select :selected').attr('value') == ''
+        if $('#ward_id_select :selected').val() == ''
           $('#team_id_select').attr('disabled', 'disabled')
           $('#team_id_select option:eq(0)').attr("selected", true)
           if ($('.lblMsg').length)
             $('.lblMsg').remove()
 
+
     }))
+
+if ($('#admissionsDate').length)
+  $('#admissionsDate').dateTimePicker()
+
+if ($('#dischargeDate').length)
+  $('#dischargeDate').dateTimePicker()
+
+$('#modal-body').html()
+$('#authorise_discharge').on('shown.bs.modal', ->
+  $('form[data-validate]').enableClientSideValidations
+).modal('show')

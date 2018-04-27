@@ -1,12 +1,13 @@
 class AdmissionsController < ApplicationController
   # Sets the admission object for the following actions
-  before_action(:set_admission, only: [:index, :show, :edit, :update, :destroy])
+  before_action(:set_admission, only: [:show, :edit, :update, :destroy, :discharge])
 
   # This defines the responses types, or It is referencing the response that will
   # be sent to the View (which is going to the browser) https://stackoverflow.com/a/9492463/5124710
-  respond_to :html, :json
+  respond_to :html, :json, :js
 
-  def index;
+  def index
+    @admissions = Admission.all
   end
 
   def show;
@@ -14,8 +15,6 @@ class AdmissionsController < ApplicationController
 
   def new
     @admission = Admission.new
-    puts((params.key?(:dateOfBirth) && params.key?(:lastName)))
-
 
     if params.key?(:dateOfBirth) && !params[:dateOfBirth].blank?
       params.key?(:lastName) && !params[:lastName].blank? && @patient.eql?(nil)
@@ -75,7 +74,7 @@ class AdmissionsController < ApplicationController
         # puts(@admission.inspect)
         # Pass the errors, to the instance variable, TODO errors
         format.html { render :new }
-        format.html { render json: @admission.errors, status: :unprocessable_entity }
+        format.json { render json: @admission.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -109,11 +108,37 @@ class AdmissionsController < ApplicationController
   # @return [params]
   def admission_params
     params.require(:admission).permit(:id, :admissionDate, :dischargeDate, :currentMedications, :admissionNote,
-                                      :ward_id, :patient_id, :dateOfBirth, :lastName, :team_category, :ward_id_selected)
+                                      :ward_id, :patient_id, :dateOfBirth, :lastName, :team_category, :ward_id_selected,
+                                      :team_id)
   end
+
 
   # @return [admission]
   def set_admission
     @admission = Admission.find(params[:id])
   end
+
+  def discharge
+    @admission = Admission.find(params[:id])
+
+    respond_to do |format|
+      format.html { render @admission, notice: 'Successful discharge authorisation.' }
+      format.js { render json: @admission }
+    end
+  end
+
+  def authorise_discharge
+    @admission = Admission.find(params[:id])
+
+    respond_to do |format|
+      if @admission.update(admission_params)
+        format.html { render @admission, notice: 'Successful discharge authorisation.' }
+        format.json { render json: @admission }
+      else
+        format.html { render :discharge }
+        format.json { render json: @admission, status: :unprocessable_entity }
+      end
+    end
+  end
+
 end

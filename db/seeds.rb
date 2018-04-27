@@ -23,7 +23,7 @@
 
 # puts 'Create/update specialities'
 # Speciality.create!(speciality: 'Administration')
-# specialityPaediatrics = Speciality.find(1).update_attributes!(speciality: 'Paediatrics')
+# specialityPaediatrics = Speciality.search(1).update_attributes!(speciality: 'Paediatrics')
 # specialityPaediatricsId = 1
 
 # specialityCoronaryId = 3

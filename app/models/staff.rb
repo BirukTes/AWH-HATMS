@@ -31,6 +31,8 @@ class Staff < ApplicationRecord
   #   true
   # end
 
+  # TODO enum methods
+
   def resource_name
     :staff
   end

@@ -61,9 +61,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 source('https://rails-assets.org') do
   # Bootstrap
-  gem 'rails-assets-bootstrap4'
+  gem 'rails-assets-bootstrap'
   gem 'rails-assets-jquery'
   gem 'rails-assets-tether'
+  gem 'rails-assets-datetimepicker'
 end
 
 # Application YML file configurator

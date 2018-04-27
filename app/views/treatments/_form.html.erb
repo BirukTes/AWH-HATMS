@@ -1,0 +1,41 @@
+<%= render 'shared/errors', model: treatment %>
+<%= form_with(model: treatment, validate: true) do |treatment_form| %>
+  <%= treatment_form.hidden_field(:patient_id, value: patient.id) %>
+  <%= treatment_form.hidden_field(:date, value: Date.today) %>
+  <%= treatment_form.hidden_field(:issuedBy, value: current_staff.userId) %>
+  <table class="table">
+    <tbody>
+    <tr>
+      <td>
+        <div class="form-group">
+          <%= treatment_form.label(:note) %><br/>
+          <%= treatment_form.text_area(:note, autocomplete: 'note') %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <%= treatment_form.label(:date) %><br/>
+          <%= treatment_form.label(:date, localize(Date.today)) %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <%= treatment_form.label(:issuedBy, 'Issued By') %><br/>
+          <%#	  TODO current will be changed during edit also, is this the preferred behavior? %>
+          <%= treatment_form.label(:issuedBy, current_staff.person.firstName + ' ' + current_staff.person.lastName) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to('Cancel', treatment, class: 'btn btn-primary') %>
+      </td>
+      <td>
+        <div class="form-group">
+          <%= treatment_form.submit(class: 'btn btn-primary') %>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+<% end %>

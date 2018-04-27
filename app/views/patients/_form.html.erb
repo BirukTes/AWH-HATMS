@@ -1,5 +1,5 @@
 <%= form_with(model: patient, html: { autoComplete: :on }, local: true, validate: true) do |patient_form| %>
-  <%= render 'shared/errors', errors: @errors %>
+  <%= render 'shared/errors', model: patient %>
   <table class="table">
     <tbody>
     <tr>
@@ -182,7 +182,10 @@
                                 <%= link_to('Cancel', patients_path, { class: 'btn btn-default' }) %>
                               <% elsif controller_name == 'admissions' %>
                                 <%# FIXME rest patient on click %>
-                                <%= link_to('Cancel', new_admission_path, html: { class: 'btn btn-default' }, params: { rest_patient: true }) %>
+                                <%= link_to('Cancel', new_admission_path, html: { class: 'btn btn-default' }, params: { rest_patient: true }) %>                              <% elsif controller_name == 'admissions' %>
+                              <% elsif controller_name == 'treatments' %>
+                                <%# FIXME rest patient on click %>
+                                <%= link_to('Cancel', new_treatment_path, html: { class: 'btn btn-default' }, params: { rest_patient: true }) %>
                               <% end %>
                             </td>
                             <td>  <%= patient_form.submit({ class: 'btn btn-primary' }) %></td>

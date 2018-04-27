@@ -33,6 +33,10 @@ module ApplicationHelper
     case filter_by
       when 'admission'
         Ward.admission_options(patient_gender)
+      when 'wards_for_current_staff'
+        current_staff.team.wards.map do |ward|
+          [ward.name, ward.id]
+        end
       else
         Ward.all.map do |ward|
           [ward.name, ward.id]

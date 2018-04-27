@@ -1,2 +1,46 @@
-<h1>Treatments#show</h1>
-<p>Find me in app/views/treatments/show.html.erb</p>
+<% patient = Patient.find(@treatment.patient_id) %>
+<% ward = Ward.find(patient.admissions.find_by(status: 'Admitted').ward_id) %>
+<h1 class="title-container">Treatment For <%= patient.person.firstName + ' ' + patient.person.lastName %></h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Treatment Date</th>
+    <th>Treatment No</th>
+    <th>Ward Number</th>
+    <th>Ward Name</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr>
+    <td>
+      <%= localize(@treatment.date) %>
+    </td>
+    <td>
+      <%= @treatment.id %>
+    </td>
+    <td>
+      <%= ward.wardNumber %>
+    </td>
+    <td>
+      <%= ward.name %>
+    </td>
+    <td>
+      <%= link_to('Edit', edit_treatment_path(@treatment.id)) %>
+      <%= link_to('Delete', treatment_path(@treatment.id), method: :delete, data: { confirm: "Should this treatment no. #{@treatment.id} be deleted?"}) %>
+    </td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+  </tr>
+  <tr>
+    <td><p><%= @treatment.note %></p></td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to('Back', treatments_path) %>
+    </td>
+  </tr>
+  </tbody>
+</table>

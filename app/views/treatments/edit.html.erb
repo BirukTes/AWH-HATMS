@@ -1,2 +1,3 @@
-<h1>Treatments#edit</h1>
-<p>Find me in app/views/treatments/edit.html.erb</p>
+<% patient = Patient.find(@treatment.patient_id) %>
+<h1>Update Treatment For <%= patient.person.firstName + ' ' + patient.person.lastName %></h1>
+<%= render 'form', treatment: @treatment, patient: patient%>
