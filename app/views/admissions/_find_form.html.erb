@@ -1,24 +1,34 @@
-<table class="table" style="width: 40%; !important;">
-  <tbody>
-  <tr>
-    <%# Local disables remote/ajax request so it reload the page %>
-    <%= form_with(url: new_admission_path, method: :get, local: true, validate: true, html: {class: 'validations'}) do |form| %>
+<%# Local disables remote/ajax request so it reload the page %>
+<%= form_with(url: new_admission_path, method: :get, local: true, validate: true, html: { class: 'validations' }) do |form| %>
+  <table class="table borderless" style="width: 40%; !important;">
+    <tbody>
+    <tr>
       <td>
-        <label>Date of Birth</label><br/>
-        <%# TODO add date range, to all date types %>
-        <%= form.text_field(:dateOfBirth, type: 'date') %>
+        <div class="form-group">
+          <label>Date of Birth</label><br/>
+          <%# TODO add date range, to all date types %>
+          <%= form.text_field(:dateOfBirth, type: 'date', required: true) %>
+        </div>
       </td>
       <td>
-        <label>Last name</label><br/>
-        <%= form.text_field(:lastName) %><br/>
+        <div class="form-group">
+          <label>Last name</label><br/>
+          <%= form.text_field(:lastName, required: true) %><br/>
+        </div>
       </td>
-      </tr>
-      <tr>
-        <td>
-          <%#   %>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
           <%= form.submit('Find', class: 'btn btn-primary', id: 'find_registered_patient_submit', data: { disable_with: false }) %>
-        </td>
-      </tr>
-    <% end %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <%= link_to('Register Patient', new_patient_path(admission_register: true), {role: 'button', class: 'btn btn-secondary'})%>
+        </div>
+      </td>
+    </tr>
     </tbody>
-</table>
+  </table>
+<% end %>

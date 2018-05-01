@@ -1,2 +1,8 @@
-<h1>Prescriptions#new</h1>
-<p>Find me in app/views/prescriptions/new.html.erb</p>
+<h1 class="title-container">Prescribe</h1>
+
+<% if @patient.nil? %>
+  <%= render 'shared/find_admitted_patient', action_controller_url: new_prescription_path %>
+<% else %>
+  <%= render 'patients/form', patient: @patient %>
+  <%= render 'form', prescription: @prescription, patient: @patient %>
+<% end %>

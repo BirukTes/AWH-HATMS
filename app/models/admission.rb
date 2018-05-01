@@ -9,7 +9,9 @@ class Admission < ApplicationRecord
   validates(:team_id, presence: true)
 
   human_attribute_name(:admissionDate)
-  human_attribute_name(:admissionDate)
+  human_attribute_name(:dischargeDate)
+
+  enum status: { admitted: 'Admitted', discharged: 'Discharged'}
 
   def self.admitted?(patient_id)
     if Admission.find_by(patient_id: patient_id)
@@ -20,6 +22,20 @@ class Admission < ApplicationRecord
   def self.find_admitted_patients(ward_id)
     patients = []
     admissions = where(ward_id: ward_id, status: 'Admitted').all
+    if admissions
+      i = 0
+      admissions.each do |admission|
+        patients[i] = Patient.find(admission.patient_id)
+        i += 1
+      end
+    end
+
+    return patients
+  end
+
+  def self.find_discharge_unauthorised_admitted_patients(ward_id)
+    patients = []
+    admissions = where(ward_id: ward_id, status: 'Admitted', dischargeDate: nil).all
     if admissions
       i = 0
       admissions.each do |admission|

@@ -30,17 +30,34 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-   date:
+    date:
       formats:
-          default: "%d/%m/%Y"
+        default: '%d/%m/%Y'
+        custom: '%d %b %Y'
 
-   time:
+    time:
       formats:
-          default: "%d/%m/%Y %I:%M%p"
+        default: "%d/%m/%Y %I:%M%p"
 
-   activerecord:
+    activerecord:
       attributes:
-         admission:
-            admissionDate: 'Admission Date'
-            dischargeDate: 'Discharge Date'
+        admission:
+          admissionDate: 'Admission Date'
+          dischargeDate: 'Discharge Date'
+
+        prescription:
+          treatmentLength: 'Length of Treatment'
+
+        ward:
+          wardnumber: 'Ward Number'
+          numberofbeds: 'Number of Beds'
+          bedstatus: 'Bed Status'
+          patientgender: 'Gender'
+          deptName: 'Department'
+          isPrivate: 'Private'
+
+
+
+
+
 

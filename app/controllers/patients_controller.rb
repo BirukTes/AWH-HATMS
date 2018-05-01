@@ -11,19 +11,31 @@ class PatientsController < ApplicationController
     @patient = Patient.new
     @patient.build_person
     @patient.person.build_address
+
+    # Pass the param for redirection
+    if params.include?(:admission_register)
+      session[:admission_register] = true
+      puts('sessioned')
+    end
   end
 
   def create
     @patient = Patient.new(patient_params)
 
-    if @patient.save
-      redirect_to(patients_path(@patient), notice: 'Patient registration successful')
-    else
+    # if @patient.save
+      if session[:admission_register]
+        puts('scs')
+      redirect_to(new_admission_path(dateOfBirth: @patient.person.dateOfBirth, lastName: @patient.person.lastName),
+                  notice: 'Patient registration successful')
+      else
+        redirect_to(patients_path(@patient), notice: 'Patient registration successful')
+      end
+    # else
       # puts(@patient.errors.inspect)
       # Pass the errors, to the instance variable
-      @errors = @patient.errors.full_messages
-      render :new
-    end
+      # @errors = @patient.errors.full_messages
+      # render :new
+    # end
   end
 
   def edit
@@ -51,7 +63,7 @@ class PatientsController < ApplicationController
 
   def patient_params
     params.require(:patient).permit(:id, :allergies, :diabetes, :asthma, :smokes, :alcoholic, :medicalTestsResults, :nextOfKin,
-                                    :isPrivate, :email,
+                                    :isPrivate, :email, :admission_register,
                                     person_attributes: [:id, :firstName, :lastName, :gender, :dateOfBirth, :telHomeNo, :telMobileNo,
                                                         address_attributes: [:id, :houseNumber, :street, :town, :postcode]])
   end

@@ -1,2 +1,34 @@
-<h1>Patients#index</h1>
-<p>Find me in app/views/patients/index.html.erb</p>
+<h1>Patients</h1>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>ID No</th>
+    <th>Full Name</th>
+    <th>Date Of Birth</th>
+    <th>Gender</th>
+    <th>Address</th>
+    <th>Home Telephone No</th>
+    <th>Mobile Telephone No</th>
+    <th>Register Date</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @patients.each do |patient| %>
+    <tr>
+      <td><%= patient.id %></td>
+
+      <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+      <td><%= localize(patient.person.dateOfBirth) %></td>
+      <td><%= patient.person.gender %></td>
+      <td><%= patient.person.address.houseNumber + ', ' + patient.person.address.street + ', ' +
+                  patient.person.address.town + ', ' + patient.person.address.postcode %>
+      </td>
+      <td><%= patient.person.telHomeNo %></td>
+      <td><%= patient.person.telMobileNo %></td>
+      <td><%= localize(patient.created_at) %></td>
+      <td><%= link_to('View Details', patients_path(patient.id)) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

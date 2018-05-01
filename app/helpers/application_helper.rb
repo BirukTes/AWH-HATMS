@@ -29,6 +29,12 @@ module ApplicationHelper
     end
   end
 
+  def drug_options
+    Drug.all.map do |drug|
+      [drug.name, drug.id]
+    end
+  end
+
   def ward_options(filter_by = nil, patient_gender = nil)
     case filter_by
       when 'admission'
@@ -45,7 +51,7 @@ module ApplicationHelper
   end
 
   def all_staffs
-    Staff.all
+    Staff.all.limit(4)
   end
 
 end

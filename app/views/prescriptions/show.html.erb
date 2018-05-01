@@ -1,2 +1,48 @@
-<h1>Prescriptions#show</h1>
-<p>Find me in app/views/prescriptions/show.html.erb</p>
+<% patient = Patient.find(@prescription.patient_id) %>
+<% staff = Staff.find_by(userId: treatment.issuedBy) %>
+<% ward = Ward.find(patient.admissions.find_by(status: 'Admitted').ward_id) %>
+<h1 class="title-container">Prescription For <%= patient.person.firstName + ' ' + patient.person.lastName %></h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Prescription Date</th>
+    <th>Prescription No</th>
+    <th>Length of Treatment</th>
+    <th>Issued By</th>
+    <th>Ward Name</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr>
+    <td>
+      <%= localize(@prescription.date) %>
+    </td>
+    <td>
+      <%= @prescription.id %>
+    </td>
+    <td>
+      <%= staff.person.firstName + ' ' + staff.person.lastName %>
+    </td>
+    <td>
+      <%= ward.name %>
+    </td>
+    <td>
+      <%= link_to('Edit', edit_treatment_path(@prescription.id)) %>
+      <%= link_to('Delete', treatment_path(@prescription.id), method: :delete, data: { confirm: "Should this prescription no. #{@prescription.id} be deleted?"}) %>
+    </td>
+  </tr>
+  <tr>
+    <th>Dosage</th>
+  </tr>
+  <tr>
+    <td><p><%= @prescription.dosage %></p></td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to('Back', treatments_path) %>
+    </td>
+  </tr>
+  </tbody>
+</table>

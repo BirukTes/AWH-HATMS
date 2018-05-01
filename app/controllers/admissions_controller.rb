@@ -1,7 +1,6 @@
 class AdmissionsController < ApplicationController
   # Sets the admission object for the following actions
   before_action(:set_admission, only: [:show, :edit, :update, :destroy, :discharge])
-
   # This defines the responses types, or It is referencing the response that will
   # be sent to the View (which is going to the browser) https://stackoverflow.com/a/9492463/5124710
   respond_to :html, :json, :js
@@ -68,13 +67,11 @@ class AdmissionsController < ApplicationController
     respond_to do |format|
       # It is important to check it save it
       if @admission.save
-        format.html { redirect_to(@admission, notice: 'Admission successful') }
-        format.json { render :show, status: :created, location: @product }
+        format.html { redirect_to(admissions_path, notice: 'Admission successful') }
       else
         # puts(@admission.inspect)
         # Pass the errors, to the instance variable, TODO errors
         format.html { render :new }
-        format.json { render json: @admission.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -98,9 +95,46 @@ class AdmissionsController < ApplicationController
 
   def destroy
     # Admitted / Discharged
+    @admission.dischargeDate = Time.now
     @admission.status = 'Discharged'
-    @admission.save
+
+    if @admission.save!
+      redirect_to(admissions_path, notice: 'Patient discharged')
+    end
   end
+
+  def find_and_discharge
+    if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
+      @admission = Admission.where(patient_id: params[:patient_id], ward_id: params[:ward_id]).first
+      if @admission
+        redirect_to(discharge_admission_path(@admission.id))
+      end
+    elsif params.include?(:rest_patient)
+      @patient = nil
+    end
+  end
+
+  def discharge
+    puts(@admission.inspect)
+    respond_modal_with(@admission)
+  end
+
+  def authorise_discharge
+    if params.include?(:dischargeDate) && !params[:dischargeDate].blank?
+      respond_to do |format|
+        if @admission.update(dischargeDate: params[:dischargeDate])
+          format.html { render @admission, notice: 'Successful discharge authorisation.' }
+        else
+          format.html { render :discharge }
+          format.json { render json: @admission, status: :unprocessable_entity }
+        end
+      end
+    else
+      @errors = ['Fill the discharge date.']
+      render :discharge
+    end
+  end
+
 
   # Private methods
   private
@@ -117,28 +151,4 @@ class AdmissionsController < ApplicationController
   def set_admission
     @admission = Admission.find(params[:id])
   end
-
-  def discharge
-    @admission = Admission.find(params[:id])
-
-    respond_to do |format|
-      format.html { render @admission, notice: 'Successful discharge authorisation.' }
-      format.js { render json: @admission }
-    end
-  end
-
-  def authorise_discharge
-    @admission = Admission.find(params[:id])
-
-    respond_to do |format|
-      if @admission.update(admission_params)
-        format.html { render @admission, notice: 'Successful discharge authorisation.' }
-        format.json { render json: @admission }
-      else
-        format.html { render :discharge }
-        format.json { render json: @admission, status: :unprocessable_entity }
-      end
-    end
-  end
-
 end

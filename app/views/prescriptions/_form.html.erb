@@ -1,0 +1,57 @@
+<%= render 'shared/errors', model: prescription %>
+<%= form_with(model: prescription, validate: true) do |prescription_form| %>
+  <%= prescription_form.hidden_field(:patient_id, value: patient.id) %>
+  <%= prescription_form.hidden_field(:date, value: Date.today) %>
+  <%= prescription_form.hidden_field(:issuedBy, value: current_staff.userId) %>
+  <table class="table">
+    <tbody>
+    <tr>
+      <%= prescription_form.fields_for(:midecation) do |medication_fields| %>
+        <td>
+          <div class="form-group">
+            <%= medication_fields.label(:drug_id, 'Drug Name') %><br/>
+            <%= medication_fields.select(:drug_id, drug_options, { include_blank: 'Select drug' }, { autocomplete: 'drug_id', id: 'drug_select' }) %>
+          </div>
+        </td>
+      <% end %>
+      <td>
+        <div class="form-group">
+          <%= prescription_form.label(:dosage) %><br/>
+          <%= prescription_form.text_area(:dosage, autocomplete: 'dosage') %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <%= prescription_form.label(:treatmentLength) %><br/>
+          <%= prescription_form.text_field(:treatmentLength, type: 'number', autocomplete: 'treatmentLength') %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+          <%= prescription_form.label(:date) %><br/>
+          <%= prescription_form.label(:date, localize(Date.today)) %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <%= prescription_form.label(:issuedBy, 'Issued By') %><br/>
+          <%#	  TODO current will be changed during edit also, is this the preferred behavior? %>
+          <%= prescription_form.label(:issuedBy, current_staff.person.firstName + ' ' + current_staff.person.lastName) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to('Cancel', prescription, class: 'btn btn-primary') %>
+      </td>
+      <td>
+        <div class="form-group">
+          <%= prescription_form.submit(class: 'btn btn-primary') %>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+<% end %>

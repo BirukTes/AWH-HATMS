@@ -1,0 +1,26 @@
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Ward No</th>
+    <th>Ward Name</th>
+    <th>Patient Name</th>
+    <th>Admission Date</th>
+    <th>Discharge Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% admissions.each do |admission| %>
+    <% if admission.dischargeDate == Date.today %>
+      <% patient = Patient.find(admission.patient_id) %>
+      <% ward = Ward.find(admission.ward_id) %>
+      <tr>
+        <td><%= ward.wardNumber %></td>
+        <td><%= ward.name %></td>
+        <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+        <td><%= admission.admissionDate ? localize(admission.admissionDate) : '--' %></td>
+        <td><%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>

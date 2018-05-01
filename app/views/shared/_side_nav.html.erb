@@ -1,10 +1,15 @@
-<div class="sidebar bg-dark flexbox-child">
+<div class="sidebar bg-dark">
+  <div class="sidebar-toggle-holder" style="padding: 18px;">
+    <a class="sidebar-toggle text-light">
+      <i class="fas fa-bars fa-2x"></i>
+    </a>
+  </div>
+  <br/>
+  <br/>
+  <br/>
   <ul class="list-unstyled">
-    <!--<li><a href="#"><i class="fa fa-fw fa-link"></i>toggle-menu</a></li>-->
-    <br/>
-    <br/>
     <li>
-      <a href="#submenu1" data-toggle="collapse"><i class="fa fa-fw fa-address-card"></i>Report</a>
+      <a href="#submenu1" data-toggle="collapse"><i class="fas fa-file-alt fa-2x"></i><label class='lbl-nav'>&nbsp; Report &nbsp; &nbsp; </label></a>
       <ul id="submenu1" class="list-unstyled collapse">
         <li><a href="#">Report</a></li>
         <li><a href="#">Admission</a></li>
@@ -13,31 +18,31 @@
       </ul>
     </li>
     <li>
-      <a href="#submenu2" data-toggle="collapse"><i class="fa fa-fw fa-address-card"></i>Admission</a>
+      <a href="#submenu2" data-toggle="collapse"><i class="fas fa-address-card fa-2x"></i><label class='lbl-nav'>&nbsp; Admission &nbsp; &nbsp; </label></a>
       <ul id="submenu2" class="list-unstyled collapse">
         <li><%= link_to('View All', admissions_path) %></li>
-        <li><%= link_to('Admit', new_admission_url) %></li>
-        <li><%= link_to('Discharge', authorise_discharge_admissions_path) %></li>
+        <li><%= link_to('Admit Patient', new_admission_path) %></li>
+        <li><%= link_to('Find and Discharge', find_and_discharge_admissions_path) %></li>
       </ul>
     </li>
     <li>
-      <a href="#submenu3" data-toggle="collapse"><i class="fa fa-fw fa-address-card"></i>Treatment</a>
+      <a href="#submenu3" data-toggle="collapse"><i class="fas fa-file-medical fa-2x"></i><label class='lbl-nav'>&nbsp; Treatment &nbsp; &nbsp; </label></a>
       <ul id="submenu3" class="list-unstyled collapse">
-        <li><a href="#">Submenu Item</a></li>
-        <li><a href="#">Submenu Item</a></li>
+        <li><a href="/treatments">Treatments</a></li>
+        <li><a href="/treaments">Treat Patient</a></li>
         <li><a href="#">Submenu Item</a></li>
       </ul>
     </li>
     <li>
-      <a href="#submenu4" data-toggle="collapse"><i class="fa fa-fw fa-address-card"></i>Prescription</a>
+      <a href="#submenu4" data-toggle="collapse"><i class="fas fa-pills fa-2x"></i><label class='lbl-nav'>&nbsp; Prescription &nbsp; &nbsp; </label></a>
       <ul id="submenu4" class="list-unstyled collapse">
         <li><a href="/prescriptions">View all</a></li>
-        <li><a href="#">Submenu Item</a></li>
+        <li><a href="/prescriptions/new">Prescribe</a></li>
         <li><a href="#">Submenu Item</a></li>
       </ul>
     </li>
     <li>
-      <a href="#submenu5" data-toggle="collapse"><i class="fa fa-fw fa-address-card"></i>Hospital Administration</a>
+      <a href="#submenu5" data-toggle="collapse"><i class="fas fa-hospital fa-2x"></i><label class='lbl-nav'>&nbsp; Hospital Admin &nbsp; &nbsp; </label></a>
       <ul id="submenu5" class="list-unstyled collapse">
         <li><a href="/staffs">Staff</a></li>
         <li><a href="/patients">Patients</a></li>
@@ -48,6 +53,6 @@
         <li><a href="/specialities">Specialities</a></li>
       </ul>
     </li>
-    <li><a href="/"><i class="fa fa-fw fa-angle-right"></i>Home</a></li>
+    <li><a href="/"><i class="fas fa-home fa-2x"></i><label class='lbl-nav'>&nbsp; Home</label></a></li>
   </ul>
 </div>

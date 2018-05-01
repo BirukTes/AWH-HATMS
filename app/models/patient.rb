@@ -9,6 +9,7 @@ class Patient < ApplicationRecord
   has_one :person, as: :personalDetail, dependent: :destroy
 
   accepts_nested_attributes_for(:person, update_only: true, allow_destroy: true)
+  validates_associated(:person, presence: true)
 
   def self.find_patient(dateOfBirth, lastName)
     if dateOfBirth && lastName

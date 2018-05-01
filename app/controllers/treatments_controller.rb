@@ -14,7 +14,6 @@ class TreatmentsController < ApplicationController
   def new
     @treatment = Treatment.new
 
-    # TODO check for blank
     if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
       @patient = Patient.find(params[:patient_id])
 
@@ -45,7 +44,6 @@ class TreatmentsController < ApplicationController
     else
       respond_with(:edit)
     end
-
   end
 
   def destroy

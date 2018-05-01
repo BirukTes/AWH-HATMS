@@ -85,3 +85,6 @@ gem 'pundit', '~> 1.1'
 
 # Client Side Validations
 gem 'client_side_validations', '~> 11.1', '>= 11.1.2'
+
+# Chart helper
+gem 'chartkick', '~> 2.3', '>= 2.3.4'

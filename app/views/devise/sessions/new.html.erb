@@ -1,57 +1,78 @@
 <%= devise_error_messages! %>
+<div class="card " style="width: 32rem; padding: 30px;  position: relative; transform: translateY(25%) translateX(50%); display: flex; align-items: center;">
+  <h4>Login to AllsWell Hospital</h4>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label(:userId, 'User ID') %><br/>
-    <%= f.text_field(:userId, autofocus: true, autocomplete: 'userId') %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br/>
-    <%= f.password_field :password, autocomplete: 'off' %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render("devise/shared/links") %>
-
-<br/>
-<fieldset>
-  <legend>Registered Test Staffs</legend>
-  <table class="table">
-    <thead>
-    <tr>
-      <th>User Id</th>
-      <th>Password</th>
-      <th>Speciality</th>
-      <th>Job Title</th>
-    </tr>
-    </thead>
-    <tbody>
-    <%# & symbol used as safe navigation or exits if object is null %>
-    <% all_staffs&.each do |staff| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <table class="table borderless">
+      <tbody>
       <tr>
-        <td><%= staff.userId %></td>
-        <td>password</td>
-        <% staff&.specialities.each do |speciality| %>
-          <td>            <%= speciality.speciality %>          </td>
-        <% end %>
-        <% staff&.job_titles.each do |job_title| %>
-          <td>            <%= job_title.title %>          </td>
-        <% end %>
+        <td>
+          <div class="field">
+            <%= f.text_field(:userId, autofocus: true, autocomplete: 'userId', placeholder: 'User ID') %>
+          </div>
+        </td>
       </tr>
-    <% end %>
-    </tbody>
-  </table>
-</fieldset>
+      <tr>
+        <td>
+          <div class="field">
+            <%= f.password_field :password, autocomplete: 'off', placeholder: :password %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <% if devise_mapping.rememberable? -%>
+            <div class="field">
+              <%= f.check_box :remember_me, class: 'chj' %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%></td>
+      </tr>
+      <tr>
+        <td><%= render("devise/shared/links") %></td>
+        <td>
+          <div class="actions">
+            <%= f.submit "Log in", class: 'btn btn-primary' %>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+<br/>
+<br/>
+<div>
+  <fieldset >
+    <legend>Registered Test Staffs</legend>
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>User Id</th>
+        <th>Password</th>
+        <th>Active</th>
+        <th>Speciality</th>
+        <th>Job Title</th>
+      </tr>
+      </thead>
+      <tbody>
 
+      <%# & symbol used as safe navigation or exits if object is null %>
+      <% all_staffs&.each do |staff| %>
+        <tr>
+          <td><%= staff.userId %></td>
+          <td>password</td>
+          <td><%= staff.active %></td>
+          <% staff&.specialities.each do |speciality| %>
+            <td><%= speciality.speciality %></td>
+          <% end %>
+          <% staff&.job_titles.each do |job_title| %>
+            <td><%= job_title.title %></td>
+          <% end %>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </fieldset>
+
+</div>

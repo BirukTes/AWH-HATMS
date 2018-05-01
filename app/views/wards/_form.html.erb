@@ -1,0 +1,52 @@
+<%= form_with(model: ward, local: true) do |form| %>
+  <% if ward.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ward.errors.count, "error") %> prohibited this ward from being saved:</h2>
+
+      <ul>
+      <% ward.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :ward_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wardNumber %>
+    <%= form.number_field :wardNumber, id: :ward_wardNumber %>
+  </div>
+
+  <div class="field">
+    <%= form.label :numberOfBeds %>
+    <%= form.number_field :numberOfBeds, id: :ward_numberOfBeds %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bedStatus %>
+    <%= form.number_field :bedStatus, id: :ward_bedStatus %>
+  </div>
+
+  <div class="field">
+    <%= form.label :patientGender %>
+    <%= form.text_field :patientGender, id: :ward_patientGender %>
+  </div>
+
+  <div class="field">
+    <%= form.label :deptName %>
+    <%= form.text_field :deptName, id: :ward_deptName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :isPrivate %>
+    <%= form.check_box :isPrivate, id: :ward_isPrivate %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

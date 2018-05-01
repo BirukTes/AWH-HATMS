@@ -1,6 +1,6 @@
 <% if model.errors.any? %>
   <div id="error_explanation alert alert-danger errors">
-    <h3><%= pluralize(model.errors.count, "error") %> prohibited this eval(model).inspect from being saved:</h3>
+    <h3><%= pluralize(model.errors.count, "error") %> prohibited this <%= model.class %> from being saved:</h3>
     <ul>
       <% model.errors.full_messages.each do |message| %>
         <li><%= message %></li>

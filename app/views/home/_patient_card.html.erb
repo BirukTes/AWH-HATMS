@@ -1,0 +1,40 @@
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Patient No</th>
+    <th>Patient Name</th>
+    <th>Ward No</th>
+    <th>Ward Name</th>
+  </tr>
+  <tr>
+    <th>Date</th>
+    <th>Drug Code</th>
+    <th>Drug Name</th>
+    <th>Dosage</th>
+    <th>Length of Treatment</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% admissions.each do |admission| %>
+    <% patient = Patient.find(admission.patient_id) %>
+    <% ward = Ward.find(admission.ward_id) %>
+    <% prescriptions = patient&.prescriptions %>
+    <tr>
+      <td><%= patient.id %></td>
+      <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+      <td><%= ward.wardNumber %></td>
+      <td><%= ward.name %></td>
+    </tr>
+    <tr>
+      <% prescriptions&.each do |prescription| %>
+        <% prescription&.drugs.each do |drug| %>
+          <td><%= drug.code %> </td>
+          <td><%= drug.name %> </td>
+        <% end %>
+        <td><%= prescription.dosage %></td>
+        <td><%= prescription.treatmentLength %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

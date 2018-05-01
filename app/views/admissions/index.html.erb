@@ -1,6 +1,6 @@
 <h1>Admissions</h1>
-<table class="table">
-  <thead>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
   <tr>
     <th>Admission Date</th>
     <th>Admission No</th>
@@ -39,23 +39,9 @@
         <%= admission.status %>
       </td>
       <td>
-        <%# modal_trigger('Discharge', href: discharge_admission_path(patient) + '/' + '#authorise_discharge', ) if admission.dischargeDate.nil? %>
-        <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#authoris_discharge">-->
-        <!--Discharge-->
-        <!--</button>-->
-
-        <%= link_to_if(admission.dischargeDate.nil?, 'Discharge', discharge_admission_path(patient)) %>
+        <%= link_to('Discharge', discharge_admission_path(admission.id), data: { modal: true }) if admission.dischargeDate.nil? %>
       </td>
     </tr>
   <% end %>
   </tbody>
 </table>
-
-<%= modal(id: 'authorise_discharge') do %>
-  <%= modal_header('Authorise Discharge') %>
-<%= modal_body do %>
-  <% end %>
-  <%= modal_footer do %>
-
-  <% end %>
-<% end %>

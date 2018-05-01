@@ -16,24 +16,40 @@
 //= require turbolinks
 //= require bootstrap
 //= require datetimepicker
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
-// /* off-canvas sidebar toggle */
-// $('[data-toggle=offcanvas]').click(function() {
-//     $('.row-offcanvas').toggleClass('active');
-//     $('.collapse').toggleClass('in').toggleClass('hidden-xs').toggleClass('visible-xs');
-// });
 
-// toggle sidebar when button clicked
-$('.sidebar-toggle').on('click', function () {
-    $('.sidebar').toggleClass('toggled');
+$(document).ready(function () {
+    // toggle sidebar when button clicked
+    $('.sidebar-toggle').on('click', function () {
+        if ($(window).width() >= 768) {
+            $('.sidebar').toggleClass('toggled');
+            if ($('.sidebar').hasClass('toggled')) {
+                $('a').find('label').hide();
+            }
+            else if (!$('.sidebar').hasClass('toggled')) {
+                $('a').find('label').show();
+            }
+        }
+    });
+
+    // auto-expand submenu if an item is active
+    var active = $('.sidebar .active');
+
+    if (active.length && active.parent('.collapse').length) {
+        var parent = active.parent('.collapse');
+
+        parent.prev('a').attr('aria-expanded', true);
+        parent.addClass('show');
+    }
+
+
+    // Bootstrap alert clear up
+    $(".alert" ).fadeOut(3000);
+
+    $(".alert-success" ).fadeOut(3000);
+
+    $(".alert-danger" ).fadeOut(3000);
 });
 
-// auto-expand submenu if an item is active
-var active = $('.sidebar .active');
-
-if (active.length && active.parent('.collapse').length) {
-    var parent = active.parent('.collapse');
-
-    parent.prev('a').attr('aria-expanded', true);
-    parent.addClass('show');
-}

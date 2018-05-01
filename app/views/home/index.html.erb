@@ -1,0 +1,56 @@
+<table class="table borderless">
+  <tbody>
+  <tr>
+    <td><h6>Today - <%= localize(Date.today, format: :custom) %></h6></td>
+  </tr>
+  <tr>
+    <td>
+      <%= render('card', cardTitle: @home_presenter.admissions.count.to_s, cardDescription: 'Admissions') %>
+    </td>
+    <td>
+      <%= render('card', cardTitle: @home_presenter.staffs.count.to_s, cardDescription: 'Staff') %>
+    </td>
+    <td>
+      <%= render('card', cardTitle: @home_presenter.patients.count.to_s, cardDescription: 'Patients') %>
+    </td>
+  <tr>
+    <td>
+      <%= render('card', cardTitle: @home_presenter.wards.count.to_s, cardDescription: 'Wards') %>
+    </td>
+    <td>
+      <%= pie_chart([['All Beds', @home_presenter.ward_all_beds], ['Available Beds', @home_presenter.ward_available_beds]],colors: ["#b00", "#666"] ) %>
+    </td>
+    <td>
+      <%= pie_chart([['Admissions', @home_presenter.admissions.map { |a| a.admitted? }.count], ['Discharged', @home_presenter.admissions.map { |a| a.discharged? }.count]]) %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <h2>Ward List </h2> <br/>
+      <%= render('ward_list', admissions: @home_presenter.admissions) %>
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <h2>Discharge List</h2><br/>
+      <%= render('discharge_list', admissions: @home_presenter.admissions) %>
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <h2>Medications List</h2><br/>
+      <%= render('medications_list', admissions: @home_presenter.admissions) %>
+      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <h2>Patient Card - Week Beginning <%= localize(Date.today.beginning_of_week, format: :custom) %></h2><br/>
+      <%= render('patient_card', admissions: @home_presenter.admissions) %>
+      <br/>
+    </td>
+  </tr>
+  </tbody>
+</table>

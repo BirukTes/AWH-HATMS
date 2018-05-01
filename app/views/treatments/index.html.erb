@@ -5,14 +5,15 @@
     <th>Treatment Date</th>
     <th>Treatment No</th>
     <th>Patient Name</th>
-    <th>Ward Number</th>
+    <th>Issued By</th>
     <th>Ward Name</th>
     <th>Action</th>
   </tr>
   </thead>
   <tbody>
-  <% @treatments.each do |treatment| %>
+  <% @treatments&.each do |treatment| %>
     <% patient = Patient.find(treatment.patient_id) %>
+    <% staff = Staff.find_by(userId: treatment.issuedBy) %>
     <% ward = Ward.find(patient.admissions.find_by(status: 'Admitted').ward_id) %>
     <tr>
       <td>
@@ -25,7 +26,7 @@
         <%= patient.person.firstName + ' ' + patient.person.lastName %>
       </td>
       <td>
-        <%= ward.wardNumber %>
+        <%= staff.person.firstName + ' ' + staff.person.lastName %>
       </td>
       <td>
         <%= ward.name %>
@@ -37,12 +38,3 @@
   <% end %>
   </tbody>
 </table>
-
-<%= modal(id: 'authorise_discharge') do %>
-  <%= modal_header('Authorise Discharge') %>
-  <%= modal_body do %>
-  <% end %>
-  <%= modal_footer do %>
-
-  <% end %>
-<% end %>

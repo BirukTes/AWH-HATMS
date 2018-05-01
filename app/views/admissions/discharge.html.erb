@@ -1,27 +1,27 @@
 <%# Rails Modal %>
-<h4 class="title-container">Authorise Discharge</h4>
-<% patient = Patient.find(@admission.patient_id) %>
-<table class="table">
-  <tbody>
-  <tr>
-    <td>Admission No. <%= @admission.id %></td>
-    <td>Patient Name:  <%= patient.person.firstName + ' ' + patient.person.lastName %></td>
-  </tr>
-  <%= form_with(url: authorise_discharge_admissions_path, method: :post) do |admission_discharge_form| %>
+<% content_for :title, 'Authorise Discharge' %>
+<%= form_with(model: @admission, url: authorise_discharge_admission_path, method: :post, remote: request.xhr?, html: { data: { modal: true } }) do |admission_discharge_form| %>
+  <% patient = Patient.find(@admission.patient_id) %>
+  <table class="table borderless">
+    <tbody>
+    <tr>
+      <td>Admission No. <%= @admission.id %></td>
+      <td>Patient Name:  <%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+    </tr>
     <tr>
       <td>
-        <%# TODO humanize  %>
-        <%= admission_discharge_form.datetime_field(:dischargeDate) %>
+        <%= admission_discharge_form.label(:dischargeDate,) %><br/>
+        <%= admission_discharge_form.datetime_field(:dischargeDate, required: true) %>
       </td>
     </tr>
     <tr>
       <td>
-        <%= link_to('Discharge Now', admissions_path(@admission), method: :delete, class: 'btn btn-default') %>
+        <%= link_to('Discharge Now', admission_path(@admission.id), method: :delete, class: 'btn btn-secondary', role: 'button') %>
       </td>
       <td>
-        <%= admission_discharge_form.submit('Authorise Discharge', class: 'btn btn-default') %>
+        <%= admission_discharge_form.submit('Authorise Discharge', class: 'btn btn-primary') %>
       </td>
     </tr>
-  <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+<% end %>

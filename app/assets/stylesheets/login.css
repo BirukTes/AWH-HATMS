@@ -4,5 +4,19 @@
 */
 
 body {
-    background: #999999;
+}
+
+.top-stripe {
+    background: #383738;
+    height: 45%;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+}
+table.borderless td, table.borderless th {
+    border: none !important;
+}
+
+table.borderless {
+    margin-bottom: 0 !important;
 }

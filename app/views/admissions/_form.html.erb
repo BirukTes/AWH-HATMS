@@ -1,11 +1,10 @@
 <%= form_with(model: admission, validate: true) do |admission_form| %>
   <%= admission_form.hidden_field(:patient_id, value: patient.id) %>
   <%= admission_form.hidden_field(:admissionDate, value: Time.now.to_s) %>
-  <table class="table">
+  <table class="table borderless">
     <tbody>
     <tr>
       <td>
-
         <div class="form-group">
           <%= admission_form.label(:currentMedications, 'Current Medications') %><br/>
           <%= admission_form.text_area(:currentMedications, autocomplete: 'currentMedications') %>

@@ -3,9 +3,7 @@ module Bootstrap::CardHelper
     options = canonicalize_options(options)
     options = ensure_class(options, %w(card))
     content_tag(:div, options) do
-      content_tag(:div, class: 'card-block') do
         yield
-      end
     end
   end
 
@@ -14,7 +12,7 @@ module Bootstrap::CardHelper
   end
 
   def card_title(*args, &block)
-    bootstrap_generator(*args, 'card-title', :h5, &block)
+    bootstrap_generator(*args, 'card-title', :h2, &block)
   end
 
   def card_subtitle(*args, &block)
@@ -22,6 +20,9 @@ module Bootstrap::CardHelper
   end
 
   def card_body(*args, &block)
+    bootstrap_generator(*args, 'card-body', :div, &block)
+  end
+  def card_text(*args, &block)
     bootstrap_generator(*args, 'card-text', :p, &block)
   end
 

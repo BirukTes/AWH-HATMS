@@ -21,16 +21,22 @@ class Staff < ApplicationRecord
   has_one(:person, as: :personalDetail, dependent: :destroy)
 
   # For nested forms
+  # reject_if: proc { |attributes| attributes[:attribute].blank? }
   accepts_nested_attributes_for(:specialisms, allow_destroy: true)
   accepts_nested_attributes_for(:jobs, allow_destroy: true)
 
-  validates(:userId, presence: true, uniqueness: {case_sensitive: true})
+  accepts_nested_attributes_for(:person, update_only: true, allow_destroy: true)
+  validates_associated :person, presence: true
+  validates_associated(:specialisms, presence: true)
+  validates_associated(:jobs, presence: true)
+
+
+  validates(:userId, presence: true, uniqueness: { case_sensitive: true })
 
   #
   # def will_save_change_to_email?
   #   true
   # end
-
   # TODO enum methods
 
   def resource_name
@@ -62,6 +68,13 @@ class Staff < ApplicationRecord
     is_job?('Ward Sister')
   end
 
+  # Method to only authenticated active staff
+  def active_for_authentication?
+    # Uncomment the below debug statement to view the properties of the returned self model values.
+    # logger.debug self.to_yaml
+
+    super && active?
+  end
 
   private
 
