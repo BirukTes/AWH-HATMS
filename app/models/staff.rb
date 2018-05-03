@@ -33,11 +33,7 @@ class Staff < ApplicationRecord
 
   validates(:userId, presence: true, uniqueness: { case_sensitive: true })
 
-  #
-  # def will_save_change_to_email?
-  #   true
-  # end
-  # TODO enum methods
+  # TODO try enum methods
 
   def resource_name
     :staff
@@ -73,6 +69,7 @@ class Staff < ApplicationRecord
     # Uncomment the below debug statement to view the properties of the returned self model values.
     # logger.debug self.to_yaml
 
+    # Add active condition to existing base
     super && active?
   end
 
@@ -84,8 +81,11 @@ class Staff < ApplicationRecord
   def is_job?(title)
     # Loop through the returned titles and return when true is found
     title_attributes.each do |current_title|
-      break if current_title.eql?(title)
+      return true if current_title.eql?(title)
     end
+
+    # Otherwise return false
+    false
   end
 
   # @return [title:string]

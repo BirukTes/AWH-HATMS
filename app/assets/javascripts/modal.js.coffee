@@ -28,3 +28,13 @@ $ ->
 
     false
 
+    $(document).on('ajax:error','form[data-modal]', (jqXHR, textStatus, errorThrown) ->
+      if (textStatus == 'timeout')
+        console.log('The server is not responding')
+
+      if (textStatus == 'error')
+        console.log(errorThrown))
+
+
+
+

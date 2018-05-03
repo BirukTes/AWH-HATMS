@@ -1,48 +1,65 @@
 <% patient = Patient.find(@prescription.patient_id) %>
-<% staff = Staff.find_by(userId: treatment.issuedBy) %>
-<% ward = Ward.find(patient.admissions.find_by(status: 'Admitted').ward_id) %>
-<h1 class="title-container">Prescription For <%= patient.person.firstName + ' ' + patient.person.lastName %></h1>
-<table class="table">
-  <thead>
+<% staff = Staff.find_by(userId: @prescription.issuedBy) %>
+<h1 class="title-container">Prescription for <%= patient.person.firstName + ' ' + patient.person.lastName %></h1>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
   <tr>
     <th>Prescription Date</th>
     <th>Prescription No</th>
     <th>Length of Treatment</th>
     <th>Issued By</th>
-    <th>Ward Name</th>
     <th>Action</th>
   </tr>
   </thead>
   <tbody>
-
   <tr>
+    <td><%= localize(@prescription.date) %></td>
+    <td><%= @prescription.id %></td>
+    <td><p><%= @prescription.treatmentLength %></p></td>
+    <td><%= staff.person.firstName + ' ' + staff.person.lastName %></td>
     <td>
-      <%= localize(@prescription.date) %>
-    </td>
-    <td>
-      <%= @prescription.id %>
-    </td>
-    <td>
-      <%= staff.person.firstName + ' ' + staff.person.lastName %>
-    </td>
-    <td>
-      <%= ward.name %>
-    </td>
-    <td>
-      <%= link_to('Edit', edit_treatment_path(@prescription.id)) %>
-      <%= link_to('Delete', treatment_path(@prescription.id), method: :delete, data: { confirm: "Should this prescription no. #{@prescription.id} be deleted?"}) %>
-    </td>
-  </tr>
-  <tr>
-    <th>Dosage</th>
-  </tr>
-  <tr>
-    <td><p><%= @prescription.dosage %></p></td>
-  </tr>
-  <tr>
-    <td>
-      <%= link_to('Back', treatments_path) %>
+      <%= link_to('Edit', edit_prescription_path(@prescription.id), role: 'button', class: 'btn btn-secondary') %>
+      <%= link_to('Delete', prescription_path(@prescription.id), method: :delete, data: { confirm: "Should this prescription no. #{@prescription.id} be deleted?" }, role: 'button', class: 'btn btn-secondary') %>
     </td>
   </tr>
   </tbody>
 </table>
+<br/>
+<br/>
+<h6>Drugs</h6>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Drug Code</th>
+    <th>Drug Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @prescription.drugs.each do |drug| %>
+    <tr>
+      <td> <%= drug.code %> </td>
+      <td> <%= drug.name %> </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br/>
+<br/>
+<h6>Dosage</h6>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Dosage</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><p><%= @prescription.dosage %></p></td>
+  </tr>
+  </tbody>
+</table>
+
+<%= content_for(:navigationButtons) do %>
+  <%= link_to('Back', prescriptions_path, role: 'button', class: 'btn btn-primary') %>
+<% end %>

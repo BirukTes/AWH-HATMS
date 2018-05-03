@@ -3,17 +3,14 @@
   <%= prescription_form.hidden_field(:patient_id, value: patient.id) %>
   <%= prescription_form.hidden_field(:date, value: Date.today) %>
   <%= prescription_form.hidden_field(:issuedBy, value: current_staff.userId) %>
-  <table class="table">
+  <table class="table borderless">
     <tbody>
+    <%= prescription_form.fields_for(:medications) do |medication_field| %>
+      <tr class="drugs">
+      <%= render('medication_fields', f: medication_field) %>
+      </tr>
+    <% end %>
     <tr>
-      <%= prescription_form.fields_for(:midecation) do |medication_fields| %>
-        <td>
-          <div class="form-group">
-            <%= medication_fields.label(:drug_id, 'Drug Name') %><br/>
-            <%= medication_fields.select(:drug_id, drug_options, { include_blank: 'Select drug' }, { autocomplete: 'drug_id', id: 'drug_select' }) %>
-          </div>
-        </td>
-      <% end %>
       <td>
         <div class="form-group">
           <%= prescription_form.label(:dosage) %><br/>
@@ -44,7 +41,9 @@
     </tr>
     <tr>
       <td>
-        <%= link_to('Cancel', prescription, class: 'btn btn-primary') %>
+        <%= link_to('Cancel', prescription, class: 'btn btn-secondary') %>
+        <%= link_to_add_association('Add drug', prescription_form, :medications, class: 'btn btn-primary',
+                                    data: { association_insertion_node: '.drugs', association_insertion_method: :after }) %>
       </td>
       <td>
         <div class="form-group">

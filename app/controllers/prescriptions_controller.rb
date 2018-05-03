@@ -50,7 +50,7 @@ class PrescriptionsController < ApplicationController
   # @return [params]
   def prescription_params
     params.require(:prescription).permit(:id, :date, :dosage, :treatmentLength, :issuedBy,
-                                         :ward_id, :patient_id, medications_attributes: [:drug_id])
+                                         :ward_id, :patient_id, medications_attributes: [:id,:drug_id, :_destroy])
   end
 
 

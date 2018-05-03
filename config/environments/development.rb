@@ -9,7 +9,7 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  # Show full error reports.
+  # Show full error reports. Allows to production errors
   config.consider_all_requests_local = true
 
   # Default URL option, Configure the mailer to create full URLs in emails

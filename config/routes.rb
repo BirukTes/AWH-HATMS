@@ -47,5 +47,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'sessions#login'
 
-
+match '/404', to: 'error#not_found', via: :all
+match '/500', to: 'error#internal_server_error', via: :all
 end

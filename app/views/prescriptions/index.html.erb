@@ -1,12 +1,11 @@
 <h1 class="title-container">Prescriptions</h1>
-<table class="table">
-  <thead>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
   <tr>
     <th>Prescription Date</th>
     <th>Prescription No</th>
     <th>Patient Name</th>
     <th>Issued By</th>
-    <th>Ward Name</th>
     <th>Action</th>
   </tr>
   </thead>
@@ -14,7 +13,6 @@
   <% @prescriptions&.each do |prescription| %>
     <% patient = Patient.find(prescription.patient_id) %>
     <% staff = Staff.find_by(userId: prescription.issuedBy) %>
-    <% ward = Ward.find(patient.admissions.find_by(status: 'Admitted').ward_id) %>
     <tr>
       <td>
         <%= localize(prescription.date) %>
@@ -29,10 +27,7 @@
         <%= staff.person.firstName + ' ' + staff.person.lastName %>
       </td>
       <td>
-        <%= ward.name %>
-      </td>
-      <td>
-        <%= link_to('View', prescription_path(prescription.id)) %>
+        <%= link_to('View', prescription_path(prescription.id), role: 'button', class: 'btn btn-primary') %>
       </td>
     </tr>
   <% end %>

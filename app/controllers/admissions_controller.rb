@@ -1,12 +1,21 @@
 class AdmissionsController < ApplicationController
   # Sets the admission object for the following actions
-  before_action(:set_admission, only: [:show, :edit, :update, :destroy, :discharge])
+  before_action(:set_admission, only: [:show, :edit, :update, :destroy, :discharge, :authorise_discharge])
+
   # This defines the responses types, or It is referencing the response that will
   # be sent to the View (which is going to the browser) https://stackoverflow.com/a/9492463/5124710
   respond_to :html, :json, :js
 
+  # Authorisation callbacks
+  # Make sure all actions perform authorisation, (individual records),
+  # index retrieves multiple records so exclude
+  after_action(:verify_authorized, except: :index)
+
+  # Verify authorisation for all admissions (multiple records), which index only does
+  after_action(:verify_policy_scoped, only: :index)
+
   def index
-    @admissions = Admission.all
+    @admissions = policy_scope(Admission).reverse
   end
 
   def show;
@@ -14,6 +23,7 @@ class AdmissionsController < ApplicationController
 
   def new
     @admission = Admission.new
+    authorize @admission
 
     if params.key?(:dateOfBirth) && !params[:dateOfBirth].blank?
       params.key?(:lastName) && !params[:lastName].blank? && @patient.eql?(nil)
@@ -55,6 +65,7 @@ class AdmissionsController < ApplicationController
 
   def create
     @admission = Admission.new(admission_params)
+    authorize @admission
 
     # Validation
     if @admission.valid?
@@ -81,8 +92,6 @@ class AdmissionsController < ApplicationController
   end
 
   def update
-    @admission = Admission.find(params[:id])
-
     respond_to do |format|
       if @admission.update(admission_params)
         format.html { redirect_to(@admission, notice: 'Admission update successful.') }
@@ -104,6 +113,7 @@ class AdmissionsController < ApplicationController
   end
 
   def find_and_discharge
+    authorize @admission
     if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
       @admission = Admission.where(patient_id: params[:patient_id], ward_id: params[:ward_id]).first
       if @admission
@@ -115,23 +125,14 @@ class AdmissionsController < ApplicationController
   end
 
   def discharge
-    puts(@admission.inspect)
     respond_modal_with(@admission)
   end
 
   def authorise_discharge
-    if params.include?(:dischargeDate) && !params[:dischargeDate].blank?
-      respond_to do |format|
-        if @admission.update(dischargeDate: params[:dischargeDate])
-          format.html { render @admission, notice: 'Successful discharge authorisation.' }
-        else
-          format.html { render :discharge }
-          format.json { render json: @admission, status: :unprocessable_entity }
-        end
-      end
+    if @admission.update!(admission_params)
+      redirect_to(admissions_path, notice: 'Successful discharge authorisation.')
     else
-      @errors = ['Fill the discharge date.']
-      render :discharge
+      respond_modal_with(@admission, location: discharge_admission_path(@admission.id))
     end
   end
 
@@ -150,5 +151,6 @@ class AdmissionsController < ApplicationController
   # @return [admission]
   def set_admission
     @admission = Admission.find(params[:id])
+    authorize @admission
   end
 end

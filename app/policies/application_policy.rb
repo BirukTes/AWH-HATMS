@@ -1,8 +1,8 @@
 class ApplicationPolicy
   attr_reader :staff, :record
 
-  def initialize(user, record)
-    @staff = user
+  def initialize(staff, record)
+    @staff = staff
     @record = record
   end
 
@@ -35,14 +35,16 @@ class ApplicationPolicy
   end
 
   def scope
-    Pundit.policy_scope!(user, record.class)
+    Pundit.policy_scope!(staff, record.class)
   end
 
   class Scope
     attr_reader :staff, :scope
 
-    def initialize(user, scope)
-      @staff = user
+    def initialize(staff, scope)
+      # Defines a filter that redirects unauthenticated users to the login page.
+      raise Pundit::NotAuthorizedError, "must be logged in" unless staff
+      @staff = staff
       @scope = scope
     end
 

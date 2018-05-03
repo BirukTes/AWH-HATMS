@@ -18,6 +18,7 @@
 //= require datetimepicker
 //= require Chart.bundle
 //= require chartkick
+//= require cocoon
 //= require_tree .
 
 $(document).ready(function () {
@@ -46,10 +47,12 @@ $(document).ready(function () {
 
 
     // Bootstrap alert clear up
-    $(".alert" ).fadeOut(3000);
+    $(".alert" ).fadeOut(5000);
 
-    $(".alert-success" ).fadeOut(3000);
+    $(".alert-success" ).fadeOut(5000);
 
-    $(".alert-danger" ).fadeOut(3000);
+    $(".alert-warning").fadeOut(5000);
+
+    $(".alert-danger" ).fadeOut(5000);
 });
 

@@ -88,3 +88,6 @@ gem 'client_side_validations', '~> 11.1', '>= 11.1.2'
 
 # Chart helper
 gem 'chartkick', '~> 2.3', '>= 2.3.4'
+
+# Nested forms helper
+gem 'cocoon', '~> 1.2', '>= 1.2.11'

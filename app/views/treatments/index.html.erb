@@ -1,12 +1,11 @@
 <h1 class="title-container">Treatments</h1>
-<table class="table">
-  <thead>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
   <tr>
     <th>Treatment Date</th>
     <th>Treatment No</th>
     <th>Patient Name</th>
     <th>Issued By</th>
-    <th>Ward Name</th>
     <th>Action</th>
   </tr>
   </thead>
@@ -14,7 +13,6 @@
   <% @treatments&.each do |treatment| %>
     <% patient = Patient.find(treatment.patient_id) %>
     <% staff = Staff.find_by(userId: treatment.issuedBy) %>
-    <% ward = Ward.find(patient.admissions.find_by(status: 'Admitted').ward_id) %>
     <tr>
       <td>
         <%= localize(treatment.date) %>
@@ -29,10 +27,7 @@
         <%= staff.person.firstName + ' ' + staff.person.lastName %>
       </td>
       <td>
-        <%= ward.name %>
-      </td>
-      <td>
-        <%= link_to('View', treatment_path(treatment.id)) %>
+        <%= link_to('View', treatment_path(treatment.id), role: 'button', class: 'btn btn-primary') %>
       </td>
     </tr>
   <% end %>
