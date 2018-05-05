@@ -3,9 +3,16 @@ class AdmissionPolicy < ApplicationPolicy
     def resolve
       # FIXME nill
       if staff.medical_staff_admin?
+        scope.all
+      else
         scope.where(status: 'Admitted')
       end
     end
+  end
+
+  def index?
+    # All staff
+    true
   end
 
   # Override definition in the application policy

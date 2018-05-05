@@ -19,6 +19,7 @@
 //= require Chart.bundle
 //= require chartkick
 //= require cocoon
+//= require DataTables
 //= require_tree .
 
 $(document).ready(function () {
@@ -47,12 +48,22 @@ $(document).ready(function () {
 
 
     // Bootstrap alert clear up
-    $(".alert" ).fadeOut(5000);
+    $(".alert").stop().fadeOut(5000);
 
-    $(".alert-success" ).fadeOut(5000);
-
-    $(".alert-warning").fadeOut(5000);
-
-    $(".alert-danger" ).fadeOut(5000);
+    // $(document).ajaxStop(function () {
+    //
+    //     $('[data-toggle="collapse"]').popover({
+    //         trigger: 'hover',
+    //         html: true,
+    //         'placement': 'top'
+    //     });
+    // });
 });
 
+$(document).on('turbolinks:load', function(){
+    $("table[role='datatable']").each(function(){
+        $(this).DataTable({
+
+        });
+    });
+})

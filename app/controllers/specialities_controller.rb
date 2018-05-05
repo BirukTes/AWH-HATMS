@@ -1,6 +1,10 @@
 class SpecialitiesController < ApplicationController
+  # Authorisation callbacks
+  after_action(:verify_authorized, except: :index)
+  after_action(:verify_policy_scoped, only: :index)
+
   def new
-    @speciality = Speciality.new
+    @speciality = policy_scope(Speciality)
   end
 
   def create

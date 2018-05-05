@@ -91,3 +91,6 @@ gem 'chartkick', '~> 2.3', '>= 2.3.4'
 
 # Nested forms helper
 gem 'cocoon', '~> 1.2', '>= 1.2.11'
+
+# For sortable and searchable tables
+gem 'rails-assets-DataTables', source: 'https://rails-assets.org'

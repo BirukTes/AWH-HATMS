@@ -4,8 +4,12 @@ class TreatmentsController < ApplicationController
   # Declaration of respond-able formats
   respond_to(:html, :json)
 
+  # Authorisation callbacks
+  after_action(:verify_authorized, except: :index)
+  after_action(:verify_policy_scoped, only: :index)
+
   def index
-    @treatments = Treatment.all
+    @treatments = policy_scope(Treatment)
   end
 
   def show
@@ -13,6 +17,7 @@ class TreatmentsController < ApplicationController
 
   def new
     @treatment = Treatment.new
+    authorize @treatment
 
     if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
       @patient = Patient.find(params[:patient_id])
@@ -24,6 +29,7 @@ class TreatmentsController < ApplicationController
 
   def create
     @treatment = Treatment.new(treatment_params)
+    authorize @treatment
 
     if @treatment.save
       redirect_to(treatments_path, notice: 'Treatment saved')
@@ -59,6 +65,7 @@ class TreatmentsController < ApplicationController
 
   def set_treatment
     @treatment = Treatment.find(params[:id])
+    authorize @treatment
   end
 
 end

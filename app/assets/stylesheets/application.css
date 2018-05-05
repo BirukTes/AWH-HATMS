@@ -15,6 +15,7 @@
  *
  *= require bootstrap
  *= require datetimepicker
+ *= require DataTables
  *= require_self
  */
 

@@ -1,7 +1,13 @@
 class PrescriptionsController < ApplicationController
-  before_action(:set_prescription, only: [:show, :edit, :update])
+  before_action(:set_prescription, only: [:show, :edit, :update, :destroy])
+
+  # Authorisation callbacks
+  after_action(:verify_authorized, except: :index)
+  # after_action(:verify_policy_scoped, only: :index)
 
   def index
+    # Needs to know the policy, which is of prescription
+    authorize(:prescription)
     @prescriptions = Prescription.all
   end
 
@@ -9,6 +15,7 @@ class PrescriptionsController < ApplicationController
   end
 
   def new
+    authorize(:prescription)
     @prescription = Prescription.new
     @prescription.medications.build
 
@@ -21,6 +28,7 @@ class PrescriptionsController < ApplicationController
   end
 
   def create
+    authorize(:prescription)
     @prescription = Prescription.new(prescription_params)
 
     if @prescription.save
@@ -32,7 +40,7 @@ class PrescriptionsController < ApplicationController
   end
 
   def update
-    if @prescription.update(prescription_params)
+        if @prescription.update(prescription_params)
       redirect_to(prescriptions_path, notice: 'Update successful')
     else
       respond_with(:edit)
@@ -56,6 +64,7 @@ class PrescriptionsController < ApplicationController
 
   # @return [admission]
   def set_prescription
+    authorize(:prescription)
     @prescription = Prescription.find(params[:id])
   end
 end

@@ -1,14 +1,22 @@
 class PatientsController < ApplicationController
+
+  before_action(:set_patient, only: [:show, :edit, :update, :destroy])
+
+  # Authorisation callbacks
+  after_action(:verify_authorized, except: :index)
+  after_action(:verify_policy_scoped, only: :index)
+
   def index
-    @patients = Patient.all
+    @patients = policy_scope(Patient)
   end
 
   def show
-    @patient = Patient.find(params[:id])
   end
 
   def new
     @patient = Patient.new
+    authorize @patient
+
     @patient.build_person
     @patient.person.build_address
 
@@ -21,6 +29,7 @@ class PatientsController < ApplicationController
 
   def create
     @patient = Patient.new(patient_params)
+    authorize @patient
 
     # if @patient.save
       if session[:admission_register]
@@ -39,12 +48,9 @@ class PatientsController < ApplicationController
   end
 
   def edit
-    @patient = Patient.find(params[:id])
   end
 
   def update
-    @patient = Patient.find(params[:id])
-
     if @patient.update!(patient_params)
       redirect_to(patients_path, notice: 'Patient updated!')
     else
@@ -54,7 +60,6 @@ class PatientsController < ApplicationController
   end
 
   def destroy
-    @patient = Patient.find(params[:id])
     @patient.destroy!
     redirect_to(patients_path, notice: 'Patient deleted')
   end
@@ -66,5 +71,10 @@ class PatientsController < ApplicationController
                                     :isPrivate, :email, :admission_register,
                                     person_attributes: [:id, :firstName, :lastName, :gender, :dateOfBirth, :telHomeNo, :telMobileNo,
                                                         address_attributes: [:id, :houseNumber, :street, :town, :postcode]])
+  end
+
+  def set_patient
+    @patient = Patient.find(params[:id])
+    authorize @patient
   end
 end

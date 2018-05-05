@@ -12,10 +12,11 @@ class AdmissionsController < ApplicationController
   after_action(:verify_authorized, except: :index)
 
   # Verify authorisation for all admissions (multiple records), which index only does
-  after_action(:verify_policy_scoped, only: :index)
+  # after_action(:verify_policy_scoped, only: :index)
 
   def index
-    @admissions = policy_scope(Admission).reverse
+    authorize(:admission)
+    @admissions = Admission.all
   end
 
   def show;
@@ -23,7 +24,7 @@ class AdmissionsController < ApplicationController
 
   def new
     @admission = Admission.new
-    authorize @admission
+    authorize(:admission)
 
     if params.key?(:dateOfBirth) && !params[:dateOfBirth].blank?
       params.key?(:lastName) && !params[:lastName].blank? && @patient.eql?(nil)
@@ -31,25 +32,25 @@ class AdmissionsController < ApplicationController
       @patient = Patient.find_patient(params[:dateOfBirth], params[:lastName])
 
       if @patient.nil?
-        @errors = ['Patient not found']
+        flash[:alert] = 'Patient not found'
       else
         if Admission.admitted?(@patient.id)
           @patient = nil
-          @errors = ['Patient is already admitted.']
+          flash[:alert] = 'Patient is already admitted.'
         end
       end
     elsif params.include?(:rest_patient)
       @patient = nil
     else
       if params.key?(:dateOfBirth) && params.key?(:lastName)
-        @errors = case params[:dateOfBirth].blank? || params[:lastName].blank?
-                    when params[:dateOfBirth].blank?
-                      ['Please fill in the date of birth.']
-                    when params[:lastName].blank?
-                      ['Please fill in the last name.']
-                    else
-                      ['Please fill in the all fields.']
-                  end
+        flash[:alert] = case params[:dateOfBirth].blank? || params[:lastName].blank?
+                          when params[:dateOfBirth].blank?
+                            'Please fill in the date of birth.'
+                          when params[:lastName].blank?
+                            'Please fill in the last name.'
+                          else
+                            'Please fill in the all fields.'
+                        end
       end
     end
 
@@ -64,14 +65,14 @@ class AdmissionsController < ApplicationController
   end
 
   def create
+    authorize(:admission)
     @admission = Admission.new(admission_params)
-    authorize @admission
 
-    # Validation
+    binding.pry # break point Pry Debugger
+    # Validation, FIXME
     if @admission.valid?
       # Admitted, Discharged
       @admission.status = 'Admitted'
-      # TODO for discharge also
       @admission.ward.bedStatus = @admission.ward.numberOfBeds - 1
     end
 
@@ -106,6 +107,7 @@ class AdmissionsController < ApplicationController
     # Admitted / Discharged
     @admission.dischargeDate = Time.now
     @admission.status = 'Discharged'
+    @admission.ward.bedStatus = @admission.ward.numberOfBeds - 1
 
     if @admission.save!
       redirect_to(admissions_path, notice: 'Patient discharged')
@@ -113,7 +115,7 @@ class AdmissionsController < ApplicationController
   end
 
   def find_and_discharge
-    authorize @admission
+    authorize :admission
     if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
       @admission = Admission.where(patient_id: params[:patient_id], ward_id: params[:ward_id]).first
       if @admission
@@ -150,7 +152,7 @@ class AdmissionsController < ApplicationController
 
   # @return [admission]
   def set_admission
+    authorize(:admission)
     @admission = Admission.find(params[:id])
-    authorize @admission
   end
 end

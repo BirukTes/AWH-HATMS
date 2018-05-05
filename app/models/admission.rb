@@ -14,9 +14,16 @@ class Admission < ApplicationRecord
   enum status: { admitted: 'Admitted', discharged: 'Discharged'}
 
   def self.admitted?(patient_id)
+    # First check if anything exists by the patient id
     if Admission.find_by(patient_id: patient_id)
-      Admission.find_by(patient_id: patient_id).status == 'Admitted'
+      # Get all occurrences and loop see if there is current admission
+      Admission.where(patient_id: patient_id).all.each do |a|
+        if a.status == 'admitted'
+          return true
+        end
+      end
     end
+    false
   end
 
   def self.find_admitted_patients(ward_id)
