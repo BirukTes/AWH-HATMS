@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430161629) do
+ActiveRecord::Schema.define(version: 20180506151619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,25 @@ ActiveRecord::Schema.define(version: 20180430161629) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "invoice_details", force: :cascade do |t|
+    t.string "treatment"
+    t.decimal "price"
+    t.bigint "invoice_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_invoice_details_on_invoice_id"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.date "date"
+    t.date "dateDue"
+    t.boolean "paymentRecieved"
+    t.bigint "patient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_invoices_on_patient_id"
   end
 
   create_table "job_titles", force: :cascade do |t|
@@ -194,6 +213,8 @@ ActiveRecord::Schema.define(version: 20180430161629) do
   add_foreign_key "admissions", "wards"
   add_foreign_key "allocations", "teams"
   add_foreign_key "allocations", "wards"
+  add_foreign_key "invoice_details", "invoices"
+  add_foreign_key "invoices", "patients"
   add_foreign_key "jobs", "job_titles"
   add_foreign_key "jobs", "staffs"
   add_foreign_key "medications", "drugs"

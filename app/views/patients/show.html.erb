@@ -117,6 +117,6 @@
 
 <%= content_for(:navigationButtons) do %>
   <%# FIXME find  back method  %>
-  <% session[:return_url] = request.referrer || patients_path %>
+  <% session[:return_url] = request.referrer if request.referrer != patient_path(@patient.id)  %>
   <%= link_to('Back', session[:return_url], role: 'button', class: 'btn btn-primary') %>
 <% end %>
