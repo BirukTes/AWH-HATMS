@@ -20,12 +20,12 @@
     <tr>
       <td>
         <div class="form-group">
-          <%= form.submit('Find', class: 'btn btn-primary', id: 'find_registered_patient_submit', data: { disable_with: false }) %>
+          <%= link_to('Register Patient', new_patient_path(admission_register: true), { role: 'button', class: 'btn btn-secondary' }) %>
         </div>
       </td>
       <td>
         <div class="form-group">
-          <%= link_to('Register Patient', new_patient_path(admission_register: true), {role: 'button', class: 'btn btn-secondary'})%>
+          <%= form.submit('Find', class: 'btn btn-primary', id: 'find_registered_patient_submit', data: { disable_with: false }) %>
         </div>
       </td>
     </tr>

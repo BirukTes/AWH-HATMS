@@ -14,32 +14,18 @@
   </thead>
   <tbody>
   <% @admissions.each do |admission| %>
-    <% patient = Patient.find(admission.patient_id) %>
-    <% ward = Ward.find(admission.ward_id) %>
+    <% patient = Patient.get_patient(admission.patient_id) %>
+    <% ward = Ward.get_ward(admission.ward_id) %>
     <tr>
+      <td><%= localize(admission.admissionDate) %></td>
+      <td><%= admission.id %></td>
+      <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+      <td><%= ward.wardNumber %></td>
+      <td><%= ward.name %></td>
+      <td><%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %></td>
+      <td><%= admission.status %></td>
       <td>
-        <%= localize(admission.admissionDate) %>
-      </td>
-      <td>
-        <%= admission.id %>
-      </td>
-      <td>
-        <%= patient.person.firstName + ' ' + patient.person.lastName %>
-      </td>
-      <td>
-        <%= ward.wardNumber %>
-      </td>
-      <td>
-        <%= ward.name %>
-      </td>
-      <td>
-        <%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %>
-      </td>
-      <td>
-        <%= admission.status %>
-      </td>
-      <td>
-        <%= link_to('Discharge', discharge_admission_path(admission.id), data: { modal: true }) if admission.dischargeDate.nil? %>
+        <%= link_to('Discharge', discharge_admission_path(admission.id), data: { modal: true, role: 'button', class: 'btn btn-secondary' }) if admission.dischargeDate.nil? %>
       </td>
     </tr>
   <% end %>

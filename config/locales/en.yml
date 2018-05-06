@@ -47,6 +47,7 @@ en:
 
         prescription:
           treatmentLength: 'Length of Treatment'
+          issuedBy: 'Issued By'
 
         ward:
           wardnumber: 'Ward Number'

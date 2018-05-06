@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @ward.name %>
@@ -34,6 +32,51 @@
   <strong>Isprivate:</strong>
   <%= @ward.isPrivate %>
 </p>
+<br/>
+<br/>
+<h3>Patients</h3>
+<table class="table table-bordered table-striped" role="datatable">
+  <thead class="thead-light">
+  <tr>
+    <th>ID No</th>
+    <th>Full Name</th>
+    <th>Date Of Birth</th>
+    <th>Gender</th>
+    <th>Address</th>
+    <th>Home Telephone No</th>
+    <th>Mobile Telephone No</th>
+    <th>Register Date</th>
+    <th>Admission Date</th>
+    <th>Admission No</th>
+    <th>Discharge Date</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <%# Only admitted patients to this  %>
+  <% @ward.admissions.where(status: 'admitted').all&.each do |admission| %>
+    <% patient = Patient.get_patient(admission.patient_id) %>
+    <tbody>
+    <tr>
+      <td><%= patient.id %></td>
+      <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+      <td><%= localize(patient.person.dateOfBirth) %></td>
+      <td><%= patient.person.gender %></td>
+      <td><%= patient.person.address.houseNumber + ', ' + patient.person.address.street + ', ' +
+                  patient.person.address.town + ', ' + patient.person.address.postcode %>
+      </td>
+      <td><%= patient.person.telHomeNo %></td>
+      <td><%= patient.person.telMobileNo %></td>
+      <td><%= localize(patient.created_at) %></td>
+      <td><%= localize(admission.admissionDate) %></td>
+      <td><%= admission.id %></td>
+      <td>
+        <%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %>
+      </td>
 
+      <td><%= link_to('View Details', patient_path(patient.id)) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 <%= link_to 'Edit', edit_ward_path(@ward) %> |
 <%= link_to 'Back', wards_path %>

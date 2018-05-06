@@ -14,18 +14,10 @@
     <% patient = Patient.find(prescription.patient_id) %>
     <% staff = Staff.find_by(userId: prescription.issuedBy) %>
     <tr>
-      <td>
-        <%= localize(prescription.date) %>
-      </td>
-      <td>
-        <%= prescription.id %>
-      </td>
-      <td>
-        <%= patient.person.firstName + ' ' + patient.person.lastName %>
-      </td>
-      <td>
-        <%= staff.person.firstName + ' ' + staff.person.lastName %>
-      </td>
+      <td><%= localize(prescription.date) %></td>
+      <td><%= prescription.id %></td>
+      <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+      <td><%= staff.person.firstName + ' ' + staff.person.lastName %></td>
       <td>
         <%= link_to('View', prescription_path(prescription.id), role: 'button', class: 'btn btn-primary') %>
       </td>

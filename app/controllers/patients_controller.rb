@@ -3,19 +3,20 @@ class PatientsController < ApplicationController
   before_action(:set_patient, only: [:show, :edit, :update, :destroy])
 
   # Authorisation callbacks
-  after_action(:verify_authorized, except: :index)
-  after_action(:verify_policy_scoped, only: :index)
+  after_action(:verify_authorized)
+  # after_action(:verify_policy_scoped, only: :index)
 
   def index
-    @patients = policy_scope(Patient)
+    authorize(:patient)
+    @patients = Patient.all
   end
 
   def show
   end
 
   def new
+    authorize(:patient)
     @patient = Patient.new
-    authorize @patient
 
     @patient.build_person
     @patient.person.build_address
@@ -28,8 +29,8 @@ class PatientsController < ApplicationController
   end
 
   def create
+    authorize(:patient)
     @patient = Patient.new(patient_params)
-    authorize @patient
 
     # if @patient.save
       if session[:admission_register]
@@ -74,7 +75,7 @@ class PatientsController < ApplicationController
   end
 
   def set_patient
+    authorize(:patient)
     @patient = Patient.find(params[:id])
-    authorize @patient
   end
 end

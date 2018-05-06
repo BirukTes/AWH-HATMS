@@ -9,7 +9,7 @@ class AdmissionsController < ApplicationController
   # Authorisation callbacks
   # Make sure all actions perform authorisation, (individual records),
   # index retrieves multiple records so exclude
-  after_action(:verify_authorized, except: :index)
+  after_action(:verify_authorized)
 
   # Verify authorisation for all admissions (multiple records), which index only does
   # after_action(:verify_policy_scoped, only: :index)
@@ -23,8 +23,8 @@ class AdmissionsController < ApplicationController
   end
 
   def new
-    @admission = Admission.new
     authorize(:admission)
+    @admission = Admission.new
 
     if params.key?(:dateOfBirth) && !params[:dateOfBirth].blank?
       params.key?(:lastName) && !params[:lastName].blank? && @patient.eql?(nil)
@@ -68,17 +68,22 @@ class AdmissionsController < ApplicationController
     authorize(:admission)
     @admission = Admission.new(admission_params)
 
-    binding.pry # break point Pry Debugger
+    # binding.pry # break point Pry Debugger
     # Validation, FIXME
     if @admission.valid?
       # Admitted, Discharged
       @admission.status = 'Admitted'
-      @admission.ward.bedStatus = @admission.ward.numberOfBeds - 1
     end
 
     respond_to do |format|
       # It is important to check it save it
       if @admission.save
+        @admission.ward.update(:bedStatus => if @admission.ward.bedStatus.nil? || @admission.ward.bedStatus == 0
+                                               @admission.ward.numberOfBeds - 1
+                                             else
+                                               @admission.ward.bedStatus - 1
+                                             end)
+
         format.html { redirect_to(admissions_path, notice: 'Admission successful') }
       else
         # puts(@admission.inspect)
@@ -103,19 +108,22 @@ class AdmissionsController < ApplicationController
     end
   end
 
+  # Discharges patient now/today
   def destroy
     # Admitted / Discharged
     @admission.dischargeDate = Time.now
     @admission.status = 'Discharged'
-    @admission.ward.bedStatus = @admission.ward.numberOfBeds - 1
 
     if @admission.save!
+      # Return the one bed, and update the ward bedStatus
+      @admission.ward.update(:bedStatus => @admission.ward.bedStatus + 1)
       redirect_to(admissions_path, notice: 'Patient discharged')
     end
   end
 
+  # Finds patient to discharge
   def find_and_discharge
-    authorize :admission
+    authorize(:admission)
     if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
       @admission = Admission.where(patient_id: params[:patient_id], ward_id: params[:ward_id]).first
       if @admission
@@ -126,10 +134,12 @@ class AdmissionsController < ApplicationController
     end
   end
 
+  # Displays discharge modal/dialog
   def discharge
     respond_modal_with(@admission)
   end
 
+  # Authorises discharge
   def authorise_discharge
     if @admission.update!(admission_params)
       redirect_to(admissions_path, notice: 'Successful discharge authorisation.')

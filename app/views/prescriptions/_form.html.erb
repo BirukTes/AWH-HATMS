@@ -14,13 +14,13 @@
       <td>
         <div class="form-group">
           <%= prescription_form.label(:dosage) %><br/>
-          <%= prescription_form.text_area(:dosage, autocomplete: 'dosage') %>
+          <%= prescription_form.text_area(:dosage, autocomplete: 'dosage', required: true) %>
         </div>
       </td>
       <td>
         <div class="form-group">
           <%= prescription_form.label(:treatmentLength) %><br/>
-          <%= prescription_form.text_field(:treatmentLength, type: 'number', autocomplete: 'treatmentLength') %>
+          <%= prescription_form.text_field(:treatmentLength, type: 'number', autocomplete: 'treatmentLength', required: true) %>
         </div>
       </td>
     </tr>
@@ -33,7 +33,7 @@
       </td>
       <td>
         <div class="form-group">
-          <%= prescription_form.label(:issuedBy, 'Issued By') %><br/>
+          <%= prescription_form.label(:issuedBy) %><br/>
           <%#	  TODO current will be changed during edit also, is this the preferred behavior? %>
           <%= prescription_form.label(:issuedBy, current_staff.person.firstName + ' ' + current_staff.person.lastName) %>
         </div>

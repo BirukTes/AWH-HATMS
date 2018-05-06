@@ -6,6 +6,7 @@ class Prescription < ApplicationRecord
   accepts_nested_attributes_for(:medications, allow_destroy: true)
 
   human_attribute_name(:treatmentLength)
+  human_attribute_name(:issuedBy)
 
   validates(:date, presence: true)
   validates(:dosage, presence: true)

@@ -1,6 +1,7 @@
 class Ward < ApplicationRecord
   has_many :allocations
   has_many :teams, through: :allocations
+  has_many :admissions
   has_many :patients, through: :admissions
 
   validates(:name, presence: true)
@@ -14,5 +15,9 @@ class Ward < ApplicationRecord
     where('"patientGender" = ? AND ("bedStatus" != 0 OR "bedStatus" != Null)', "#{patient_gender}").map do |ward|
       [ward.name, ward.id]
     end
+  end
+
+  def self.get_ward(ward_id)
+    find(ward_id)
   end
 end

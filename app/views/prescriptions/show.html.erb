@@ -1,4 +1,4 @@
-<% patient = Patient.find(@prescription.patient_id) %>
+<% patient = Patient.get_patient(@prescription.patient_id) %>
 <% staff = Staff.find_by(userId: @prescription.issuedBy) %>
 <h1 class="title-container">Prescription for <%= patient.person.firstName + ' ' + patient.person.lastName %></h1>
 <table class="table table-bordered table-striped">

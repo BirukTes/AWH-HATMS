@@ -7,7 +7,7 @@
 <td>
   <div class="form-group">
     <%= f.label(:drug_id, 'Drug Name') %><br/>
-    <%= f.select(:drug_id, drug_options, { include_blank: 'Select drug' }, { autocomplete: 'drug_id', id: 'drug_select' }) %>
+    <%= f.select(:drug_id, drug_options, { include_blank: 'Select drug' }, { autocomplete: 'drug_id', id: 'drug_select', required: true}) %>
   </div>
 </td>
 </tr>

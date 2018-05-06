@@ -14,7 +14,7 @@
   </tr>
   </thead>
   <tbody>
-  <% @patients.each do |patient| %>
+  <% @patients&.each do |patient| %>
     <tr>
       <td><%= patient.id %></td>
 
@@ -27,7 +27,7 @@
       <td><%= patient.person.telHomeNo %></td>
       <td><%= patient.person.telMobileNo %></td>
       <td><%= localize(patient.created_at) %></td>
-      <td><%= link_to('View Details', patients_path(patient.id)) %></td>
+      <td><%= link_to('View Details', patient_path(patient.id)) %></td>
     </tr>
   <% end %>
   </tbody>

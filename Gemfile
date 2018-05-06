@@ -45,6 +45,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver', '~> 3.11'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
+  gem 'better_errors', '~> 2.4'
+  gem 'binding_of_caller', '~> 0.8.0'
 end
 
 group :development do

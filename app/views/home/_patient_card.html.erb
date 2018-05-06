@@ -16,8 +16,8 @@
   </thead>
   <tbody>
   <% admissions.each do |admission| %>
-    <% patient = Patient.find(admission.patient_id) %>
-    <% ward = Ward.find(admission.ward_id) %>
+    <% patient = Patient.get_patient(admission.patient_id) %>
+    <% ward = Ward.get_ward(admission.ward_id) %>
     <% prescriptions = patient&.prescriptions %>
     <tr>
       <td><%= patient.id %></td>

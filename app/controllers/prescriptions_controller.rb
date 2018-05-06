@@ -2,7 +2,7 @@ class PrescriptionsController < ApplicationController
   before_action(:set_prescription, only: [:show, :edit, :update, :destroy])
 
   # Authorisation callbacks
-  after_action(:verify_authorized, except: :index)
+  after_action(:verify_authorized)
   # after_action(:verify_policy_scoped, only: :index)
 
   def index
@@ -40,7 +40,7 @@ class PrescriptionsController < ApplicationController
   end
 
   def update
-        if @prescription.update(prescription_params)
+    if @prescription.update(prescription_params)
       redirect_to(prescriptions_path, notice: 'Update successful')
     else
       respond_with(:edit)
@@ -58,7 +58,7 @@ class PrescriptionsController < ApplicationController
   # @return [params]
   def prescription_params
     params.require(:prescription).permit(:id, :date, :dosage, :treatmentLength, :issuedBy,
-                                         :ward_id, :patient_id, medications_attributes: [:id,:drug_id, :_destroy])
+                                         :ward_id, :patient_id, medications_attributes: [:id, :drug_id, :_destroy])
   end
 
 

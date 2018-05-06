@@ -18,4 +18,12 @@ class Patient < ApplicationRecord
       person ? find(person.personalDetail_id) : nil
     end
   end
+  # @return [patient]
+  def self.get_patient(patient_id)
+    find(patient_id)
+  end
+  # def self.decorate
+  #   # Optimise subsequent calls with memoisation (||=)
+  #   @decorate ||= PatientDecorator.new(self)
+  # end
 end

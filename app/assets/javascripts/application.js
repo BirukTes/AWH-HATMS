@@ -48,7 +48,10 @@ $(document).ready(function () {
 
 
     // Bootstrap alert clear up
-    $(".alert").stop().fadeOut(5000);
+    $(".alert").stop(true, true).fadeOut(5000, function () {
+        $('#content').animate({inClass: "fade-in"}, 3000, 'linear');
+        $(this).remove();
+    });
 
     // $(document).ajaxStop(function () {
     //
@@ -60,10 +63,8 @@ $(document).ready(function () {
     // });
 });
 
-$(document).on('turbolinks:load', function(){
-    $("table[role='datatable']").each(function(){
-        $(this).DataTable({
-
-        });
+$(document).on('turbolinks:load', function () {
+    $("table[role='datatable']").each(function () {
+        $(this).DataTable({});
     });
 })

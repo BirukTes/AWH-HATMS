@@ -14,18 +14,10 @@
     <% patient = Patient.find(treatment.patient_id) %>
     <% staff = Staff.find_by(userId: treatment.issuedBy) %>
     <tr>
-      <td>
-        <%= localize(treatment.date) %>
-      </td>
-      <td>
-        <%= treatment.id %>
-      </td>
-      <td>
-        <%= patient.person.firstName + ' ' + patient.person.lastName %>
-      </td>
-      <td>
-        <%= staff.person.firstName + ' ' + staff.person.lastName %>
-      </td>
+      <td><%= localize(treatment.date) %> </td>
+      <td><%= treatment.id %></td>
+      <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+      <td><%= staff.person.firstName + ' ' + staff.person.lastName %></td>
       <td>
         <%= link_to('View', treatment_path(treatment.id), role: 'button', class: 'btn btn-primary') %>
       </td>

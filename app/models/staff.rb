@@ -40,6 +40,7 @@ class Staff < ApplicationRecord
   end
 
   # Job Titles as Roles
+  # @return [true/false]
   def medical_staff_admin?
     is_job?('Medical Records Staff')
   end
@@ -73,8 +74,12 @@ class Staff < ApplicationRecord
     super && active?
   end
 
-  private
+  # @return [Staff]
+  def self.find_by_user_id(userId)
+    find_by(userId: userId)
+  end
 
+  private
 
   # @param title the name of the job title
   # @return [boolean]

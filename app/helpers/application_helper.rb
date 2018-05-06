@@ -16,7 +16,7 @@ module ApplicationHelper
     fields = f.simple_fields_for(association, new_object, child_index: id) do |builder|
       render(association.to_s.singularize, f: builder)
     end
-    link_to(name, '#', class: "add_fields " + args[:class], data: {id: id, fields: fields.gsub("\n", "")})
+    link_to(name, '#', class: "add_fields " + args[:class], data: { id: id, fields: fields.gsub("\n", "") })
   end
 
   def speciality_options
@@ -38,12 +38,6 @@ module ApplicationHelper
     end
   end
 
-  def drug_options
-    Drug.all.map do |drug|
-      [drug.name, drug.id]
-    end
-  end
-
   def ward_options(filter_by = nil, patient_gender = nil)
     case filter_by
       when 'admission'
@@ -62,5 +56,4 @@ module ApplicationHelper
   def all_staffs
     Staff.all.limit(4)
   end
-
 end

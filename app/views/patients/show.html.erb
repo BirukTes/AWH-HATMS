@@ -1,2 +1,122 @@
-<h1>Patients#show</h1>
-<p>Find me in app/views/patients/show.html.erb</p>
+<h1>Patient: <%= @patient.person.firstName + ' ' + @patient.person.lastName %> </h1>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>ID No</th>
+    <th>Date Of Birth</th>
+    <th>Gender</th>
+    <th>Address</th>
+    <th>Home Telephone No</th>
+    <th>Mobile Telephone No</th>
+    <th>Register Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= @patient.id %></td>
+    <td><%= localize(@patient.person.dateOfBirth) %></td>
+    <td><%= @patient.person.gender %></td>
+    <td><%= @patient.person.address.houseNumber + ', ' + @patient.person.address.street + ', ' +
+                @patient.person.address.town + ', ' + @patient.person.address.postcode %>
+    </td>
+    <td><%= @patient.person.telHomeNo %></td>
+    <td><%= @patient.person.telMobileNo %></td>
+    <td><%= localize(@patient.created_at) %></td>
+  </tr>
+  </tbody>
+</table>
+<br/>
+<br/>
+<h2>History</h2>
+<h4>Admissions</h4>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Admission Date</th>
+    <th>Admission No</th>
+    <th>Ward No</th>
+    <th>Ward Name</th>
+    <th>Discharge Date</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @patient.admissions.each do |admission| %>
+    <tr>
+      <td><%= localize(admission.admissionDate) %></td>
+      <td><%= admission.id %></td>
+      <td><%= admission.ward.wardNumber %></td>
+      <td><%= admission.ward.name %></td>
+      <td><%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %>      </td>
+      <td><%= admission.status %></td>
+      <td>
+        <%= link_to('Discharge', discharge_admission_path(admission.id), data: { modal: true }, role: 'button', class: 'btn btn-secondary') if (admission.dischargeDate.nil? && policy(:admission).discharge?) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<br/>
+<br/>
+<h4>Treatments</h4>
+<fieldset class="none-bs-fieldset">
+  <legend class="none-bs-legend">Prescriptions</legend>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-light">
+    <tr>
+      <th>Prescription Date</th>
+      <th>Prescription No</th>
+      <th>Issued By</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @patient.prescriptions&.each do |prescription| %>
+      <% staff = Staff.find_by_user_id(prescription.issuedBy) %>
+      <tr>
+        <td><%= localize(prescription.date) %></td>
+        <td><%= prescription.id %></td>
+        <td><%= staff.person.firstName + ' ' + staff.person.lastName %></td>
+        <td>
+          <%= link_to('View', prescription_path(prescription.id), role: 'button', class: 'btn btn-secondary') %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</fieldset>
+<br/>
+<br/>
+<fieldset class="none-bs-fieldset">
+  <legend class="none-bs-legend">Diagnosis</legend>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-light">
+    <tr>
+      <th>Treatment Date</th>
+      <th>Treatment No</th>
+      <th>Issued By</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @patient.treatments&.each do |treatment| %>
+      <% staff = Staff.find_by_user_id(treatment.issuedBy) %>
+      <tr>
+        <td><%= localize(treatment.date) %> </td>
+        <td><%= treatment.id %></td>
+        <td><%= staff.person.firstName + ' ' + staff.person.lastName %></td>
+        <td>
+          <%= link_to('View', treatment_path(treatment.id), role: 'button', class: 'btn btn-secondary') %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</fieldset>
+
+<%= content_for(:navigationButtons) do %>
+  <%# FIXME find  back method  %>
+  <% session[:return_url] = request.referrer || patients_path %>
+  <%= link_to('Back', session[:return_url], role: 'button', class: 'btn btn-primary') %>
+<% end %>
