@@ -1,2 +1,6 @@
-<h1>JobTitles#edit</h1>
-<p>Find me in app/views/job_titles/edit.html.erb</p>
+<h1>Editing Job Title</h1>
+
+<%= render 'form', job_title: @job_title %>
+
+<%= link_to 'Show', @job_title %> |
+<%= link_to 'Back', job_titles_path %>

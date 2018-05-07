@@ -1,15 +1,16 @@
 class StaffsController < ApplicationController
   # Verify authorisation for all admissions (multiple records), which index only does
   after_action(:verify_authorized)
-  after_action(:verify_policy_scoped, only: :index)
+  # after_action(:verify_policy_scoped, only: :index)
 
   def index
-    @staffs = policy_scope(Staff)
+    authorize(:staff)
+    @staffs = Staff.all
   end
 
   def new
+    authorize(:staff)
     @staff = Staff.new
-    authorize @staff
     @staff.build_person
     @staff.person.build_address
     @staff.specialisms.build
@@ -17,8 +18,8 @@ class StaffsController < ApplicationController
   end
 
   def create
+    authorize(:staff)
     @staff = Staff.new(user_params)
-    authorize @staff
 
     if @staff.save!
       redirect_to(staffs_path, notice: 'Staff registration successful')

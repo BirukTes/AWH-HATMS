@@ -1,2 +1,5 @@
-<h1>Specialities#new</h1>
-<p>Find me in app/views/specialities/new.html.erb</p>
+<h1>New Speciality</h1>
+
+<%= render 'form', speciality: @speciality %>
+
+<%= link_to 'Back', specialities_path %>

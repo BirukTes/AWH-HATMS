@@ -2,7 +2,8 @@
 #
 class Staff < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and :omniauthable,
+  # not using :registerable, instead custom staffs
   devise(:database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          authentication_keys: [:userId])

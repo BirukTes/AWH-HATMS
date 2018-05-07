@@ -69,7 +69,7 @@ source('https://rails-assets.org') do
   gem 'rails-assets-datetimepicker'
 end
 
-# Application YML file configurator
+# Application YML file configurator, for environment variables
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 # Composite Primary Keys support for Active Record, Removing this due to error, NameError: undefined local variable or method `always_initialized' for #<ActiveRecord::AttributeSet::Builder:0x00000004dc2c48>
@@ -96,3 +96,12 @@ gem 'cocoon', '~> 1.2', '>= 1.2.11'
 
 # For sortable and searchable tables
 gem 'rails-assets-DataTables', source: 'https://rails-assets.org'
+
+# Stripe for invoice payment
+# gem 'stripe', '~> 3.13'
+
+# BrainTree instead, for PayPal payments
+gem 'braintree', '~> 2.88'
+
+# Redis server, data structure
+gem 'redis', '~> 4.0', '>= 4.0.1'

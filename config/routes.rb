@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :wards
   resources :drugs
   resources :patients
+  resources :teams
   resources :admissions do
     member do
       get :discharge
@@ -40,6 +41,8 @@ Rails.application.routes.draw do
     unauthenticated :staff do
       root to: 'sessions#new'
     end
+
+
   end
 
   resources :staffs

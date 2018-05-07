@@ -28,13 +28,13 @@
                 <td>
                   <div class="form-group">
                     <%= person_fields.label(:dateOfBirth, 'Date of birth') %><br/>
-                    <%= person_fields.text_field(:dateOfBirth, type: 'date', html_options: {autocomplete: 'dateOfBirth', date_separator: "</div><div class='small-4 columns'>"}) %>
+                    <%= person_fields.text_field(:dateOfBirth, type: 'date', autocomplete: 'dateOfBirth', date_separator: "</div><div class='small-4 columns'>") %>
                   </div>
                 </td>
                 <td>
                   <div class="form-group">
                     <%= person_fields.label(:gender) %><br/>
-                    <%= person_fields.select(:gender, options_for_select([:Male, :Female], @staff.person.gender), include_blank: 'Select gender', autocomplete: 'lastName', required: true) %>
+                    <%= person_fields.select(:gender, options_for_select([:Male, :Female], @staff.person.gender), include_blank: 'Select gender', autocomplete: 'gender', required: true) %>
                   </div>
                 </td>
               </tr>
@@ -101,7 +101,7 @@
                 </div>
                 <div class="form-group">
                   <%= staff_form.label(:email) %><br/>
-                  <%= staff_form.email_field(:email, autocomplete: 'email', required: true) %>
+                  <%= staff_form.email_field(:email, autocomplete: 'email', pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$",  required: true) %>
                 </div>
                 <div class="form-group">
                   <%= staff_form.label(:password) %>
