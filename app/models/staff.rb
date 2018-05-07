@@ -86,17 +86,11 @@ class Staff < ApplicationRecord
   # @return [boolean]
   def is_job?(title)
     # Loop through the returned titles and return when true is found
-    title_attributes.each do |current_title|
+    self.job_titles.map(&:title).each do |current_title|
       return true if current_title.eql?(title)
     end
 
     # Otherwise return false
     false
-  end
-
-  # @return [title:string]
-  def title_attributes
-    # Returns an array of title attribute for each job title
-    self.job_titles.map(&:title)
   end
 end
