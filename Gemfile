@@ -30,7 +30,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 
@@ -105,5 +105,16 @@ gem 'rails-assets-DataTables', source: 'https://rails-assets.org'
 # BrainTree instead, for PayPal payments
 gem 'braintree', '~> 2.88'
 
-# Redis server, data structure
-gem 'redis', '~> 4.0', '>= 4.0.1'
+# Excel spreadsheet generation, fixme lib/active_support/dependencies.rb:292:in `require': cannot load such file -- zip/zip (LoadError)
+# gem 'axlsx'
+
+# Allows to schedule tasks/jobs (Cron)
+# gem 'whenever', '~> 0.10.0'
+
+# Allows to schedule tasks/jobs (Redis)
+gem 'sidekiq', '~> 5.1', '>= 5.1.3'
+
+# Background work/schedule tasks/jobs (Cron)
+gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.1'
+
+

@@ -1,37 +1,75 @@
-<%= form_with(model: invoice, local: true) do |form| %>
+<%= form_with(model: invoice, local: true) do |invoice_form| %>
   <% if invoice.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
 
       <ul>
-      <% invoice.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% invoice.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
+  <table>
+    <tbody>
+    <tr>
+      <td>
+        <fieldset class="none-bs-fieldset">
+          <legend class="none-bs-legend">Invoice</legend>
+          <table>
+            <tbody>
+            <tr>
+              <td>
+                <div class="form-group">
+                  <%= invoice_form.label :date %>
+                  <%= invoice_form.text_field(:date, id: :invoice_date, type: :date, class: 'form-control') %>
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <%= invoice_form.label :dateDue %>
+                  <%= invoice_form.text_field(:dateDue, id: :invoice_dateDue, type: :date, class: 'form-control') %>
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <%= invoice_form.label :patient_id %>
+                  <%= invoice_form.text_field :patient_id, id: :invoice_patient_id, class: 'form-control' %>
+                </div>
 
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date, id: :invoice_date %>
-  </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <fieldset class="none-bs-fieldset">
+                  <legend class="none-bs-legend">Invoice Details</legend>
+                  <div class="form-group" style="float: right;">
+                    <%= link_to_add_association('Add', invoice_form, :invoice_details, class: 'btn btn-primary',
+                                                data: { association_insertion_node: '.invoiceDetails', association_insertion_method: :append }) %>
 
-  <div class="field">
-    <%= form.label :dateDue %>
-    <%= form.date_select :dateDue, id: :invoice_dateDue %>
-  </div>
-
-  <div class="field">
-    <%= form.label :paymentRecieved %>
-    <%= form.check_box :paymentRecieved, id: :invoice_paymentRecieved %>
-  </div>
-
-  <div class="field">
-    <%= form.label :patient_id %>
-    <%= form.text_field :patient_id, id: :invoice_patient_id %>
-  </div>
-
+                  </div>
+                  <br/>
+                  <br/>
+                  <div class="invoiceDetails">
+                    <%= invoice_form.fields_for(:invoice_details) do |invoice_detail_fields| %>
+                      <table>
+                        <tbody>
+                        <%= render('invoice_detail_fields', f: invoice_detail_fields) %>
+                        </tbody>
+                      </table>
+                    <% end %>
+                  </div>
+                </fieldset>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </fieldset>
+      </td>
+    </tr>
+    </tbody>
+  </table>
   <div class="actions">
-    <%= form.submit %>
+    <%= invoice_form.submit %>
   </div>
 <% end %>

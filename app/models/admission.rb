@@ -11,7 +11,7 @@ class Admission < ApplicationRecord
   human_attribute_name(:admissionDate)
   human_attribute_name(:dischargeDate)
 
-  enum status: { admitted: 'Admitted', discharged: 'Discharged'}
+  enum status: { admitted: 'Admitted', discharged: 'Discharged' }
 
   def self.admitted?(patient_id)
     # First check if anything exists by the patient id
@@ -52,5 +52,16 @@ class Admission < ApplicationRecord
     end
 
     return patients
+  end
+
+  def self.set_status_discharge(admission_id)
+    find(admission_id).auto_discharge
+  end
+  def auto_discharge
+    # Admitted / Discharged
+    self.update(status: 'Discharged')
+    # Return the one bed, and update the ward bedStatus
+    # TODO check for max
+    self.ward.update(bedStatus: ward.bedStatus + 1)
   end
 end

@@ -6,18 +6,18 @@ class TreatmentsController < ApplicationController
 
   # Authorisation callbacks
   after_action(:verify_authorized)
-  after_action(:verify_policy_scoped, only: :index)
 
   def index
-    @treatments = policy_scope(Treatment)
+    authorize(:treatment)
+    @treatments = Treatment.all
   end
 
   def show
   end
 
   def new
+    authorize(:treatment)
     @treatment = Treatment.new
-    authorize @treatment
 
     if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
       @patient = Patient.find(params[:patient_id])
@@ -28,8 +28,9 @@ class TreatmentsController < ApplicationController
   end
 
   def create
+    authorize(:treatment)
     @treatment = Treatment.new(treatment_params)
-    authorize @treatment
+
 
     if @treatment.save
       redirect_to(treatments_path, notice: 'Treatment saved')
@@ -64,8 +65,8 @@ class TreatmentsController < ApplicationController
   end
 
   def set_treatment
+    authorize(:treatment)
     @treatment = Treatment.find(params[:id])
-    authorize @treatment
   end
 
 end

@@ -11,7 +11,9 @@
 <% else %>
   <fieldset class="none-bs-fieldset">
     <legend class="none-bs-legend">Found Patient Details</legend>
-    <%= render('patients/form', patient: @patient) %>
+    <div class="admission_patient_holder">
+      <%= render('patients/form', patient: @patient) %>
+    </div>
   </fieldset>
 
   <fieldset class="none-bs-fieldset">

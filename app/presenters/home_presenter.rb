@@ -39,7 +39,5 @@ module HomePresenter
         ward.bedStatus
       end.sum.to_s
     end
-
-
   end
 end

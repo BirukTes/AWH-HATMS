@@ -11,10 +11,10 @@
     <li>
       <a href="#submenu1" data-toggle="collapse"><i class="fas fa-file-alt fa-2x"></i><label class='lbl-nav'>&nbsp; Report &nbsp; &nbsp; </label></a>
       <ul id="submenu1" class="list-unstyled collapse">
-        <li><a href="#">Report</a></li>
-        <li><a href="#">Admission</a></li>
-        <li><a href="#">Treatment</a></li>
-        <li><a href="#">Prescription</a></li>
+        <li><%= link_to('Ward List', reports_ward_list_path) %></li>
+        <li><%= link_to('Medications List', reports_medications_list_path) %></li>
+        <li><%= link_to('Discharge List', reports_discharge_list_path) %></li>
+        <li><%= link_to('Patient Card', reports_patient_card_path) %></li>
       </ul>
     </li>
     <li>

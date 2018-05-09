@@ -4,6 +4,8 @@ class Invoice < ApplicationRecord
 
   validates_associated(:invoice_details)
 
+  accepts_nested_attributes_for(:invoice_details, allow_destroy: true)
+
   validates(:date, presence: true)
   validates(:dateDue, presence: true)
 end

@@ -1,33 +1,32 @@
 <h1>Admissions</h1>
-<table class="table table-bordered table-striped" role="datatable">
-  <thead class="thead-light">
-  <tr>
-    <th>Admission Date</th>
-    <th>Admission No</th>
-    <th>Patient Name</th>
-    <th>Ward Number</th>
-    <th>Ward Name</th>
-    <th>Discharge Date</th>
-    <th>Status</th>
-    <th>Action</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @admissions.each do |admission| %>
-    <% patient = Patient.get_patient(admission.patient_id) %>
-    <% ward = Ward.get_ward(admission.ward_id) %>
-    <tr>
-      <td><%= localize(admission.admissionDate) %></td>
-      <td><%= admission.id %></td>
-      <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
-      <td><%= ward.wardNumber %></td>
-      <td><%= ward.name %></td>
-      <td><%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %></td>
-      <td><%= admission.status %></td>
-      <td>
-        <%= link_to('Discharge', discharge_admission_path(admission.id), data: { modal: true, role: 'button', class: 'btn btn-secondary' }) if admission.dischargeDate.nil? %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<%= form_with(url: admissions_path, method: :get) do |filter_form| %>
+  <div style="width: 35% !important;">
+    <fieldset class="none-bs-fieldset">
+      <legend class="none-bs-legend">Filter List</legend>
+      <table class="table borderless">
+        <tbody>
+        <tr>
+          <td>
+            <label>Admitted After</label><br/>
+            <%= filter_form.text_field(:filter_admission_by_date, { type: 'date', id: 'filter_admission_by_date', class: 'form-control'}) %>
+          </td>
+          <td>
+            <label>Status</label><br/>
+            <%= filter_form.select(:filter_admission_by_status, options_for_select(['All', 'Admitted', 'Discharged'], 0), {id: 'filter_admission_by_status'}, class: 'form-control') %>
+          </td>
+          <td>
+            <br/>
+            <%= filter_form.submit('Filter', class: 'btn btn-secondary', id: 'enable_form_submit', data: { disable_with: false }) %>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </fieldset>
+  </div>
+<% end %>
+
+<br/>
+<div id="admission_list_holder">
+  <%= render('admissions/admissions_list', admissions: @admissions) %>
+</div>
+

@@ -1,0 +1,22 @@
+<tr>
+    <td>
+    <div class="form-group">
+      <%= f.label(:treatment) %>
+      <%= f.text_field(:treatment, id: :treatment, class: 'form-control') %>
+    </div>
+  </td>
+  <td>
+    <div class="form-group">
+      <%= f.label(:price) %>
+      <%= f.text_field(:price, id: :price, type: :number, step: '0.01', class: 'form-control') %>
+    </div>
+  </td>
+  <td>
+  </td>
+  <td>
+    <div class="form-group">
+      <br/>
+      <%= link_to_remove_association('Remove', f, class: 'btn btn-danger', role: 'button', style: 'float: right; margin-top: 0.5em;') %>
+    </div>
+  </td>
+</tr>

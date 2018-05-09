@@ -49,7 +49,7 @@ $(document).ready(function () {
 
     // Bootstrap alert clear up
     $(".alert").stop(true, true).fadeOut(5000, function () {
-        $('#content').animate({inClass: "fade-in"}, 3000, 'linear');
+        $('#content').animate({inClass: "fade-in"}, 2000, 'linear');
         $(this).remove();
     });
 
@@ -65,6 +65,20 @@ $(document).ready(function () {
 
 $(document).on('turbolinks:load', function () {
     $("table[role='datatable']").each(function () {
-        $(this).DataTable({});
+        $(this).DataTable({
+            process: true
+        });
     });
 })
+
+// Enables form submit on page, now it is on all forms but can be
+$(document).on('page:change', function () {
+    $.rails.enableElement($('#enable_form_submit'));
+
+    $("table[role='datatable']").on('xhr.dt', function (e, settings, json, xhr) {
+        $('#status').html(json.status);
+    }).DataTable({
+        ajax: "data.json"
+    });
+
+});

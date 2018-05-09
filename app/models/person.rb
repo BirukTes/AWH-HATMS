@@ -1,5 +1,5 @@
 class Person < ApplicationRecord
-  has_one :address
+  has_one :address, dependent: :destroy
   # Polymorphic association creation
   belongs_to :personalDetail, polymorphic: true, optional: true
 

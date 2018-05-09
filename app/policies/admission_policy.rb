@@ -1,12 +1,7 @@
 class AdmissionPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      # FIXME nill
-      if staff.medical_staff_admin?
-        scope.all
-      else
-        scope.where(status: 'Admitted')
-      end
+      scope
     end
   end
 
@@ -25,7 +20,7 @@ class AdmissionPolicy < ApplicationPolicy
   end
 
   def destroy?
-    staff.medical_staff_admin?
+    staff.doctor? || staff.consultant?
   end
 
   def discharge?

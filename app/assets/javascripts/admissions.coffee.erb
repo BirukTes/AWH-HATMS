@@ -4,7 +4,7 @@
 
 # JQuery syntax for $(document).ready(function ()... (allows to run a process when the page loads (may not be auto just have it ready))
 # -> creates anonymous function
-#$ ->
+$ ->
 $(document).on('change', '#ward_id_select', ->
   if $(this).val != ''
     console.log('posted')
@@ -62,3 +62,18 @@ $('#modal-body').html()
 $('#authorise_discharge').on('shown.bs.modal', ->
   $('form[data-validate]').enableClientSideValidations
 ).modal('show')
+
+
+
+#$(document).on('change', '#filter_admission_by_status', ->
+#  if $(this).val() == 'All' || $(this).val() == 'Admitted' || $(this).val() == 'Discharged'
+#      console.log('posting  filter status')
+#      $.ajax({
+#        type: 'GET',
+#        async: true,
+#        dataType: 'html',
+#        url: '/admissions/new',
+#        data: {filter_admission_by_status: $('#filter_admission_by_status').val()},
+#        success: (filtered_data) ->
+#          $('#content').html(filtered_data)
+#      }))

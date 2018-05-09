@@ -1,25 +1,33 @@
 Rails.application.routes.draw do
 
+  get 'reports/ward_list'
+  get 'reports/medications_list'
+  get 'reports/discharge_list'
+  get 'reports/patient_card'
+
   resources :invoices
   resources :wards
   resources :drugs
   resources :patients
   resources :teams
+  resources :treatments
+  resources :prescriptions
+  resources :staffs
+  resources :specialities
+  resources :job_titles
   resources :admissions do
+    # Members require admission id
     member do
       get :discharge
     end
     member do
       post :authorise_discharge
     end
+    # Collection do not require id
     collection do
       get :find_and_discharge
     end
   end
-  resources :treatments
-  resources :prescriptions
-  resources :specialities
-  resources :job_titles
 
   # Find controller under search module and it is actions
   namespace :search do
@@ -33,24 +41,21 @@ Rails.application.routes.draw do
              path_names: { sign_in: 'login', sign_up: 'register', account_update: 'update' },
              controllers: { sessions: 'sessions' }
 
+  # On the scope of devise, manage authenticated and unauthenticated users
   devise_scope :staff do
     authenticated :staff do
       root to: 'home#index'
     end
-
     unauthenticated :staff do
       root to: 'sessions#new'
     end
-
-
   end
 
-  resources :staffs
-
   get :home, to: 'home#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   root to: 'sessions#login'
 
-match '/404', to: 'error#not_found', via: :all
-match '/500', to: 'error#internal_server_error', via: :all
+  # Handle errors, must be at end
+  match '/404', to: 'error#not_found', via: :all
+  match '/500', to: 'error#internal_server_error', via: :all
 end

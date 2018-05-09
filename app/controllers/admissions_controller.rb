@@ -16,7 +16,27 @@ class AdmissionsController < ApplicationController
 
   def index
     authorize(:admission)
-    @admissions = Admission.all
+
+    # binding.pry
+    # ! Inverts the blank => false, not blank => true
+
+    @admissions = if !params[:filter_admission_by_status].blank? && !params[:filter_admission_by_status].eql?('All') &&
+        params[:filter_admission_by_date].blank?
+                    Admission.where(status: params[:filter_admission_by_status].downcase).all
+
+                  elsif (!params[:filter_admission_by_status].blank? && !params[:filter_admission_by_status].eql?('All')) && !params[:filter_admission_by_date].blank?
+                    # FIXME only returns nil
+                    Admission.where('"admissionDate" >= ? AND "status" = ?', params[:filter_admission_by_date], params[:filter_admission_by_status].downcase).all
+
+                  elsif !params[:filter_admission_by_date].blank?
+                    Admission.where('"admissionDate" >= ?', params[:filter_admission_by_date]).all
+
+                  else
+                    Admission.all
+                  end
+
+    # This method is aware of what format to respond with (as declared above, js, html, json)
+    respond_with(@admissions)
   end
 
   def show;
@@ -78,11 +98,11 @@ class AdmissionsController < ApplicationController
     respond_to do |format|
       # It is important to check it save it
       if @admission.save
-        @admission.ward.update(:bedStatus => if @admission.ward.bedStatus.nil? || @admission.ward.bedStatus == 0
-                                               @admission.ward.numberOfBeds - 1
-                                             else
-                                               @admission.ward.bedStatus - 1
-                                             end)
+        @admission.ward.update(bedStatus: if @admission.ward.bedStatus.nil? || @admission.ward.bedStatus == 0
+                                            @admission.ward.numberOfBeds - 1
+                                          else
+                                            @admission.ward.bedStatus - 1
+                                          end)
 
         format.html { redirect_to(admissions_path, notice: 'Admission successful') }
       else
@@ -116,7 +136,8 @@ class AdmissionsController < ApplicationController
 
     if @admission.save!
       # Return the one bed, and update the ward bedStatus
-      @admission.ward.update(:bedStatus => @admission.ward.bedStatus + 1)
+      # TODO check for
+      @admission.ward.update(bedStatus: @admission.ward.bedStatus + 1)
       redirect_to(admissions_path, notice: 'Patient discharged')
     end
   end
@@ -127,6 +148,7 @@ class AdmissionsController < ApplicationController
     if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
       @admission = Admission.where(patient_id: params[:patient_id], ward_id: params[:ward_id]).first
       if @admission
+        # respond_modal_with(@admission, location: discharge_admission_path(@admission.id))
         redirect_to(discharge_admission_path(@admission.id))
       end
     elsif params.include?(:rest_patient)
@@ -141,10 +163,18 @@ class AdmissionsController < ApplicationController
 
   # Authorises discharge
   def authorise_discharge
-    if @admission.update!(admission_params)
-      redirect_to(admissions_path, notice: 'Successful discharge authorisation.')
+    if !params[:admission][:dischargeDate].blank?
+      if @admission.update(dischargeDate: params[:admission][:dischargeDate])
+        Admission.delay(run_at: @admission.dischargeDate).set_status_discharge(@admission.id)
+        redirect_to(admissions_path, notice: 'Successful discharge authorisation.')
+      else
+        # In case of error
+        render(:discharge)
+      end
     else
-      respond_modal_with(@admission, location: discharge_admission_path(@admission.id))
+      # TODO modal not working
+      # respond_modal_with(@admission, location: discharge_admission_path(@admission.id))
+      render(:discharge)
     end
   end
 
@@ -156,7 +186,7 @@ class AdmissionsController < ApplicationController
   def admission_params
     params.require(:admission).permit(:id, :admissionDate, :dischargeDate, :currentMedications, :admissionNote,
                                       :ward_id, :patient_id, :dateOfBirth, :lastName, :team_category, :ward_id_selected,
-                                      :team_id)
+                                      :team_id, :filter_admission_by_status, :filter_admission_by_date)
   end
 
 

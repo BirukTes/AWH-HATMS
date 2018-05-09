@@ -9,6 +9,10 @@ class TreatmentPolicy < ApplicationPolicy
     staff.consultant? || staff.doctor? || staff.staff_nurse? || staff.nurse?
   end
 
+  def show?
+    staff.consultant? || staff.doctor? || staff.staff_nurse? || staff.nurse?
+  end
+
   # Override definition in the application policy
   def create?
     staff.consultant? || staff.doctor?

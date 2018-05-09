@@ -12,7 +12,7 @@
   </tr>
   </thead>
   <tbody>
-  <% admissions.each do |admission| %>
+  <% admissions&.each do |admission| %>
     <% patient = Patient.find(admission.patient_id) # TODO DRY this two %>
     <% ward = Ward.find(admission.ward_id) %>
     <tr>
