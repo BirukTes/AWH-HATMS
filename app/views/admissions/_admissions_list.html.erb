@@ -14,8 +14,8 @@
     </thead>
     <tbody>
     <% admissions&.each do |admission| %>
-      <% patient = Patient.get_patient(admission.patient_id) %>
-      <% ward = Ward.get_ward(admission.ward_id) %>
+      <% patient = admission.patient %>
+      <% ward = admission.ward %>
       <tr>
         <td><%= localize(admission.admissionDate) %></td>
         <td><%= admission.id %></td>
@@ -25,7 +25,7 @@
         <td><%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %></td>
         <td><%= admission.status %></td>
         <td>
-          <%= link_to('Discharge', discharge_admission_path(admission.id), data: { modal: true }, role: 'button', class: 'btn btn-secondary') if (admission.dischargeDate.nil? || admission.status.eql?('admitted'))  && policy(:admission).discharge? %>
+          <%= link_to('Discharge', discharge_admission_path(admission.id), data: { modal: true }, role: 'button', class: 'btn btn-secondary') if (admission.dischargeDate.nil? || admission.status.eql?('admitted')) && policy(:admission).discharge? %>
         </td>
       </tr>
     <% end %>

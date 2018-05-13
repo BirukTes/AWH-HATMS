@@ -3,7 +3,6 @@ class PrescriptionsController < ApplicationController
 
   # Authorisation callbacks
   after_action(:verify_authorized)
-  # after_action(:verify_policy_scoped, only: :index)
 
   def index
     # Needs to know the policy, which is of prescription
@@ -20,10 +19,13 @@ class PrescriptionsController < ApplicationController
     @prescription.medications.build
 
     if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
-      @patient = Patient.find(params[:patient_id])
+      admission_id_extract = params[:patient_id].split('|')[1]
+      @diagnosis = Diagnosis.find_by(admission_id: admission_id_extract)
 
+      # Save the admission to session and use it if re-rendering is required (create errors)
+      session[:current_prescribing_admission] = @diagnosis
     elsif params.include?(:rest_patient)
-      @patient = nil
+      @diagnosis = nil
     end
   end
 
@@ -57,7 +59,7 @@ class PrescriptionsController < ApplicationController
 
   # @return [params]
   def prescription_params
-    params.require(:prescription).permit(:id, :date, :dosage, :treatmentLength, :issuedBy,
+    params.require(:prescription).permit(:id, :date, :dosage, :treatmentLength, :issuedBy,:diagnose_id,
                                          :ward_id, :patient_id, medications_attributes: [:id, :drug_id, :_destroy])
   end
 

@@ -1,16 +1,30 @@
 class Search::FindController < ApplicationController
-  respond_to :json, :js, :html
+  # Json only for now
+  respond_to :json
 
-  def find_patients_in_ward
-    patients = Admission.find_admitted_patients(params[:ward_id_selected])
 
-    respond_with(patient_options(patients))
+  def find_discharged_without_invoice_patients_in_ward
+    if params[:ward_id_selected]
+      patients_option = Admission.find_discharged_without_invoice_patients(params[:ward_id_selected])
+
+      respond_with(patients_option)
+    end
+  end
+
+  def find_admitted_patients_in_ward
+    if params[:ward_id_selected]
+      patients = Admission.find_admitted_patients(params[:ward_id_selected])
+
+      respond_with(patients)
+    end
   end
 
   def find_patients_discharge_unauthorised
-    patients = Admission.find_discharge_unauthorised_admitted_patients(params[:ward_id_selected])
+    if params[:ward_id_selected]
+      patients_option = Admission.find_discharge_unauthorised_admitted_patients(params[:ward_id_selected])
 
-    respond_with(patient_options(patients))
+      respond_with(patients_option)
+    end
   end
 
 
@@ -20,9 +34,4 @@ class Search::FindController < ApplicationController
     params.require(:find).permit(:ward_id_selected)
   end
 
-  def patient_options(patients)
-    patients.map do |patient|
-      [patient.person.firstName + ' ' + patient.person.lastName, patient.id]
-    end
-  end
 end

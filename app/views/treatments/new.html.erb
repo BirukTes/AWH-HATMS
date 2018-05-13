@@ -1,6 +1,6 @@
 <h1>Treat Patient</h1>
 
-<% if @patient.nil? %>
+<% if !@patient.nil? %>
   <%= render 'shared/find_admitted_patient', action_controller_url: new_treatment_path %>
 <% else %>
   <%= render 'patients/form', patient: @patient %>

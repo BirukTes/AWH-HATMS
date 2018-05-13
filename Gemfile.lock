@@ -100,6 +100,7 @@ GEM
       thor (~> 0.14)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    hirb (0.7.3)
     i18n (1.0.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -174,6 +175,7 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    rails_refactor (1.4.4)
     railties (5.1.6)
       actionpack (= 5.1.6)
       activesupport (= 5.1.6)
@@ -276,10 +278,10 @@ DEPENDENCIES
   client_side_validations (~> 11.1, >= 11.1.2)
   cocoon (~> 1.2, >= 1.2.11)
   coffee-rails (~> 4.2)
-  delayed_job (~> 4.1, >= 4.1.5)
   delayed_job_active_record (~> 4.1, >= 4.1.1)
   devise (~> 4.4, >= 4.4.3)
   figaro (~> 1.1, >= 1.1.1)
+  hirb (~> 0.7.3)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
@@ -292,6 +294,7 @@ DEPENDENCIES
   rails-assets-datetimepicker!
   rails-assets-jquery!
   rails-assets-tether!
+  rails_refactor (~> 1.4, >= 1.4.4)
   redis (~> 4.0)
   responders (~> 2.4)
   rspec-rails (~> 3.7, >= 3.7.2)

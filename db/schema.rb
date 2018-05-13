@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180509093407) do
+ActiveRecord::Schema.define(version: 20180513171602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(version: 20180509093407) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
+  create_table "diagnoses", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.bigint "admission_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admission_id"], name: "index_diagnoses_on_admission_id"
+  end
+
   create_table "drugs", force: :cascade do |t|
     t.string "code", null: false
     t.string "name", null: false
@@ -75,10 +84,13 @@ ActiveRecord::Schema.define(version: 20180509093407) do
 
   create_table "invoice_details", force: :cascade do |t|
     t.string "treatment"
-    t.decimal "price"
+    t.decimal "unitPrice"
     t.bigint "invoice_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity"
+    t.decimal "tax", default: "0.0"
+    t.decimal "lineTotal", precision: 15, scale: 2
     t.index ["invoice_id"], name: "index_invoice_details_on_invoice_id"
   end
 
@@ -86,10 +98,11 @@ ActiveRecord::Schema.define(version: 20180509093407) do
     t.date "date"
     t.date "dateDue"
     t.boolean "paymentRecieved"
-    t.bigint "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["patient_id"], name: "index_invoices_on_patient_id"
+    t.bigint "admission_id"
+    t.decimal "amount"
+    t.index ["admission_id"], name: "index_invoices_on_admission_id"
   end
 
   create_table "job_titles", force: :cascade do |t|
@@ -150,10 +163,10 @@ ActiveRecord::Schema.define(version: 20180509093407) do
     t.string "dosage"
     t.integer "treatmentLength"
     t.string "issuedBy"
-    t.bigint "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["patient_id"], name: "index_prescriptions_on_patient_id"
+    t.bigint "diagnosis_id"
+    t.index ["diagnosis_id"], name: "index_prescriptions_on_diagnosis_id"
   end
 
   create_table "specialisms", force: :cascade do |t|
@@ -207,6 +220,8 @@ ActiveRecord::Schema.define(version: 20180509093407) do
     t.bigint "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "diagnosis_id"
+    t.index ["diagnosis_id"], name: "index_treatments_on_diagnosis_id"
     t.index ["patient_id"], name: "index_treatments_on_patient_id"
   end
 
@@ -228,15 +243,17 @@ ActiveRecord::Schema.define(version: 20180509093407) do
   add_foreign_key "admissions", "wards"
   add_foreign_key "allocations", "teams"
   add_foreign_key "allocations", "wards"
+  add_foreign_key "diagnoses", "admissions"
   add_foreign_key "invoice_details", "invoices"
-  add_foreign_key "invoices", "patients"
+  add_foreign_key "invoices", "admissions"
   add_foreign_key "jobs", "job_titles"
   add_foreign_key "jobs", "staffs"
   add_foreign_key "medications", "drugs"
   add_foreign_key "medications", "prescriptions"
-  add_foreign_key "prescriptions", "patients"
+  add_foreign_key "prescriptions", "diagnoses"
   add_foreign_key "specialisms", "specialities"
   add_foreign_key "specialisms", "staffs"
   add_foreign_key "staffs", "teams"
+  add_foreign_key "treatments", "diagnoses"
   add_foreign_key "treatments", "patients"
 end

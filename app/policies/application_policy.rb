@@ -57,6 +57,7 @@ class ApplicationPolicy
 
     def initialize(staff, scope)
       # Defines a filter that redirects unauthenticated users to the login page.
+      # Raised only, the action has gotten past the primary authentication layer, Devise
       raise Pundit::NotAuthorizedError, "must be logged in" unless staff
       @staff = staff
       @scope = scope

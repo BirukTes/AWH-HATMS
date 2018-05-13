@@ -11,12 +11,12 @@
   </thead>
   <tbody>
   <% @prescriptions&.each do |prescription| %>
-    <% patient = Patient.find(prescription.patient_id) %>
+    <% patient = Patient.get_patient(prescription.diagnosis.patient.id) if prescription.diagnosis  %>
     <% staff = Staff.find_by(userId: prescription.issuedBy) %>
     <tr>
       <td><%= localize(prescription.date) %></td>
       <td><%= prescription.id %></td>
-      <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+      <td><%= patient.person.firstName + ' ' + patient.person.lastName if patient %></td>
       <td><%= staff.person.firstName + ' ' + staff.person.lastName %></td>
       <td>
         <%= link_to('View', prescription_path(prescription.id), role: 'button', class: 'btn btn-primary') %>

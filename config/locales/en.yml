@@ -56,6 +56,8 @@ en:
           patientgender: 'Gender'
           deptName: 'Department'
           isPrivate: 'Private'
+        invoice:
+          dateDue: 'Date Due'
 
 
 

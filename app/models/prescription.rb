@@ -1,7 +1,7 @@
 class Prescription < ApplicationRecord
-  belongs_to :patient
-  has_many :medications
-  has_many :drugs, through: :medications
+  belongs_to :diagnosis
+  has_many(:medications, dependent: :destroy)
+  has_many(:drugs, through: :medications, dependent: :destroy)
 
   accepts_nested_attributes_for(:medications, allow_destroy: true)
 

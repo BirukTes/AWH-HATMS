@@ -1,13 +1,11 @@
 class PatientsController < ApplicationController
-
-
+  # Permitted formats
   respond_to(:html, :js, :json)
 
   before_action(:set_patient, only: [:show, :edit, :update, :destroy])
 
   # Authorisation callbacks
   after_action(:verify_authorized)
-  # after_action(:verify_policy_scoped, only: :index)
 
 
   def index
@@ -36,20 +34,20 @@ class PatientsController < ApplicationController
     authorize(:patient)
     @patient = Patient.new(patient_params)
 
-    # if @patient.save
-    if session[:admission_register]
-      puts('scs')
-      redirect_to(new_admission_path(dateOfBirth: @patient.person.dateOfBirth, lastName: @patient.person.lastName),
-                  notice: 'Patient registration successful')
+    if @patient.save
+      if session[:admission_register]
+        puts('scs')
+        redirect_to(new_admission_path(dateOfBirth: @patient.person.dateOfBirth, lastName: @patient.person.lastName),
+                    notice: 'Patient registration successful')
+      else
+        redirect_to(patients_path(@patient), notice: 'Patient registration successful')
+      end
     else
-      redirect_to(patients_path(@patient), notice: 'Patient registration successful')
+      puts(@patient.errors.inspect)
+      # Pass the errors, to the instance variable
+      @errors = @patient.errors.full_messages
+      render :new
     end
-    # else
-    # puts(@patient.errors.inspect)
-    # Pass the errors, to the instance variable
-    # @errors = @patient.errors.full_messages
-    # render :new
-    # end
   end
 
   def edit
@@ -85,7 +83,7 @@ class PatientsController < ApplicationController
 
   def patient_params
     params.require(:patient).permit(:id, :allergies, :diabetes, :asthma, :smokes, :alcoholic, :medicalTestsResults, :nextOfKin,
-                                    :isPrivate, :email, :admission_register, :update_patient,
+                                    :isPrivate, :email, :admission_register, :update_patient, :occupation,
                                     person_attributes: [:id, :firstName, :lastName, :gender, :dateOfBirth, :telHomeNo, :telMobileNo,
                                                         address_attributes: [:id, :houseNumber, :street, :town, :postcode]])
   end

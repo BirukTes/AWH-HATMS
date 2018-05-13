@@ -10,7 +10,7 @@ class StaffPolicy < ApplicationPolicy
     staff.medical_staff_admin? || staff.consultant?
   end
 
-  def show
+  def show?
     staff.medical_staff_admin? || staff_profile
   end
 

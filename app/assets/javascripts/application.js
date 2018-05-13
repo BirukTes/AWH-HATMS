@@ -61,19 +61,25 @@ $(document).ready(function () {
     //         'placement': 'top'
     //     });
     // });
-});
 
-$(document).on('turbolinks:load', function () {
+    // $(document).on('', function () {
+    //
+    //
+    // });
+
+    //  Hide remove button on nested fields on load
+    if ($(".nested_fields").length === 1) {
+        $(".remove_fields").eq(0).hide();
+    }
+
+    // Enables form submit on page, now it is on all forms but can be
+    $.rails.enableElement($('#enable_form_submit'));
+
     $("table[role='datatable']").each(function () {
         $(this).DataTable({
             process: true
         });
     });
-})
-
-// Enables form submit on page, now it is on all forms but can be
-$(document).on('page:change', function () {
-    $.rails.enableElement($('#enable_form_submit'));
 
     $("table[role='datatable']").on('xhr.dt', function (e, settings, json, xhr) {
         $('#status').html(json.status);

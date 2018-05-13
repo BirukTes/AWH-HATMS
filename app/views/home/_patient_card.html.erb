@@ -6,18 +6,16 @@
     <th>Ward No</th>
     <th>Ward Name</th>
   </tr>
-  <tr>
-    <th>Date</th>
-    <th>Drug Code</th>
-    <th>Drug Name</th>
-    <th>Dosage</th>
-    <th>Length of Treatment</th>
-  </tr>
   </thead>
   <tbody>
-  <% admissions.each do |admission| %>
-    <% patient = Patient.get_patient(admission.patient_id) %>
-    <% ward = Ward.get_ward(admission.ward_id) %>
+  <% patient_card_admission = admissions.where(admissionDate: Date.today.beginning_of_week).first %>
+  <% if patient_card_admission.blank? %>
+    <tr>
+      <td colspan="5"><p>No patient found from this date.</p></td>
+    </tr>
+  <% else %>
+    <% patient = patient_card_admission.patient %>
+    <% ward = patient_card_admission.ward %>
     <% prescriptions = patient&.prescriptions %>
     <tr>
       <td><%= patient.id %></td>
@@ -25,7 +23,20 @@
       <td><%= ward.wardNumber %></td>
       <td><%= ward.name %></td>
     </tr>
+
+    <thead class="thead-light">
     <tr>
+      <th>Date</th>
+      <th>Drug Code</th>
+      <th>Drug Name</th>
+      <th>Dosage</th>
+      <th>Length of Treatment</th>
+    </tr>
+    </thead>
+    <tr>
+    <% if prescriptions.empty? %>
+      <td colspan="3"><p>No prescriptions found.</p></td>
+    <% else %>
       <% prescriptions&.each do |prescription| %>
         <% prescription&.drugs.each do |drug| %>
           <td><%= drug.code %> </td>
@@ -34,7 +45,8 @@
         <td><%= prescription.dosage %></td>
         <td><%= prescription.treatmentLength %></td>
       <% end %>
+    <% end %>
     </tr>
   <% end %>
   </tbody>
-</table>
+  </table>

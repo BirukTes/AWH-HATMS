@@ -98,6 +98,7 @@ class AdmissionsController < ApplicationController
     respond_to do |format|
       # It is important to check it save it
       if @admission.save
+        # Update the bed status with new value if it nil or 0, otherwise continue to decrement it current value
         @admission.ward.update(bedStatus: if @admission.ward.bedStatus.nil? || @admission.ward.bedStatus == 0
                                             @admission.ward.numberOfBeds - 1
                                           else
@@ -136,8 +137,13 @@ class AdmissionsController < ApplicationController
 
     if @admission.save!
       # Return the one bed, and update the ward bedStatus
-      # TODO check for
-      @admission.ward.update(bedStatus: @admission.ward.bedStatus + 1)
+      # Check for max, in case goes above actual number
+      @admission.ward.update(bedStatus: if @admission.ward.bedStatus >= @admission.ward.numberOfBeds
+                                          # Don't add anything, already max?
+                                          0
+                                        else
+                                          @admission.ward.bedStatus + 1
+                                        end)
       redirect_to(admissions_path, notice: 'Patient discharged')
     end
   end

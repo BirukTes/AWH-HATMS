@@ -1,24 +1,108 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid d-flex">
+  <div class="row">
+    <div class="col">
+      <div class="row">
+        <div class="col">
+          <h3 class="page-header">
+            INVOICE
+          </h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <address>
+          </address>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          To
+          <address>
+          </address>
+        </div>
+        <div class="col-4 offset-4">
+          <div class="row">
+            <div class="row">
+              <div class="col"><label>Invoice #</label></div>
+              <div class="col-xs-7"><p id="modal_invoice_number" class="pull-right"></p></div>
+            </div>
+            <div class="col"></div>
+            <div class="row">
+              <div class="col"><label>Issue Date</label></div>
+              <div class="col"></div>
+            </div>
+            <div class="col"></div>
+            <div class="row">
+              <div class="col"><label>Due Date</label></div>
+              <div class="col"><span class=""></span></div>
+            </div>
+            <div class="col"></div>
+            <div class="row">
+              <div class="form-group">
+                <div class="col"><label>Amount due</label></div>
+                <div class="col" style="text-align:right">
+                  <span>£</span><span class="due">875.00</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-3">
+          <div class="form-group">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="form-group" style="float: right; position: relative;">
+            <br>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <table class="table table-bordered table-hover" id="modal_items">
+                <thead>
+                <tr>
+                  <th class="treatment_head">Treatment</th>
+                  <th class="quantity_head">Quantity</th>
+                  <th class="unit_price_head">Unit Price £</th>
+                  <th class="tax_head">Tax %</th>
+                  <th class="line_total_head">Line Total</th>
+                  <th class="action">Action</th>
+                </tr>
+                </thead>
+                <tbody class="invoice_details_fields_holder">
+                </tbody>
+              </table>
+              <div class="row">
+                <div class="col-6 offset-6">
+                  <div class="table-responsive">
+                    <table class="table table-hover" id="totals">
+                      <tbody>
+                      <tr>
+                        <th>Total:</th>
+                        <td class="balance">
+                          <span>£</span><span class="due" id="invoice_total">0.00</span>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
 
-<p>
-  <strong>Date:</strong>
-  <%= @invoice.date %>
-</p>
-
-<p>
-  <strong>Datedue:</strong>
-  <%= @invoice.dateDue %>
-</p>
-
-<p>
-  <strong>Paymentrecieved:</strong>
-  <%= @invoice.paymentRecieved %>
-</p>
-
-<p>
-  <strong>Patient:</strong>
-  <%= @invoice.patient %>
-</p>
-
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2 offset-4">
+          <div class="actions">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

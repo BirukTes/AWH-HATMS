@@ -1,13 +1,15 @@
-<tr>
-<td>
-  <div class="form-group">
-    <%= link_to_remove_association('Remove Drug', f) %>
+<div class="nested_fields row">
+  <div class="col-8">
+    <div class="form-group">
+      <%= f.label(:drug_id, 'Drug Name') %><br/>
+      <%= f.select(:drug_id, drug_options, { include_blank: 'Select drug' }, { autocomplete: 'drug_id', id: 'drug_select', required: true, class: 'form-control' }) %>
+    </div>
   </div>
-</td>
-<td>
-  <div class="form-group">
-    <%= f.label(:drug_id, 'Drug Name') %><br/>
-    <%= f.select(:drug_id, drug_options, { include_blank: 'Select drug' }, { autocomplete: 'drug_id', id: 'drug_select', required: true}) %>
+
+  <div class="col-1/2">
+    <br/>
+    <div class="form-group">
+      <%= link_to_remove_association('Remove Drug', f, class: 'form-control btn btn-danger') %>
+    </div>
   </div>
-</td>
-</tr>
+</div>

@@ -8,7 +8,7 @@
         <tr>
           <td>
             <label>Admitted After</label><br/>
-            <%= filter_form.text_field(:filter_admission_by_date, { type: 'date', id: 'filter_admission_by_date', class: 'form-control'}) %>
+            <%= filter_form.text_field(:filter_admission_by_date, { type: 'date', min: '2000-05-11', max: Date.today.to_s, id: 'filter_admission_by_date', class: 'form-control'}) %>
           </td>
           <td>
             <label>Status</label><br/>

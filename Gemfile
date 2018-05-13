@@ -117,4 +117,8 @@ gem 'sidekiq', '~> 5.1', '>= 5.1.3'
 # Background work/schedule tasks/jobs (Cron)
 gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.1'
 
+# Improve console inspection output
+gem 'hirb', '~> 0.7.3'
 
+# Refactor
+gem 'rails_refactor', '~> 1.4', '>= 1.4.4'

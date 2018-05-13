@@ -1,6 +1,6 @@
-<% patient = Patient.get_patient(@prescription.patient_id) %>
-<% staff = Staff.find_by(userId: @prescription.issuedBy) %>
-<h1 class="title-container">Prescription for <%= patient.person.firstName + ' ' + patient.person.lastName %></h1>
+<% patient = Patient.get_patient(@prescription.diagnosis.patient.id)  if @prescription.diagnosis %>
+<% staff = Staff.find_by(userId: @prescription.issuedBy)  %>
+<h1 class="title-container">Prescription for <%= patient.person.firstName + ' ' + patient.person.lastName if patient %></h1>
 <table class="table table-bordered table-striped">
   <thead class="thead-light">
   <tr>
@@ -16,7 +16,7 @@
     <td><%= localize(@prescription.date) %></td>
     <td><%= @prescription.id %></td>
     <td><p><%= @prescription.treatmentLength %></p></td>
-    <td><%= staff.person.firstName + ' ' + staff.person.lastName %></td>
+    <td><%= staff.person.firstName + ' ' + staff.person.lastName if patient %></td>
     <td>
       <%= link_to('Edit', edit_prescription_path(@prescription.id), role: 'button', class: 'btn btn-secondary') %>
       <%= link_to('Delete', prescription_path(@prescription.id), method: :delete, data: { confirm: "Should this prescription no. #{@prescription.id} be deleted?" }, role: 'button', class: 'btn btn-secondary') %>
@@ -61,5 +61,5 @@
 </table>
 
 <%= content_for(:navigationButtons) do %>
-  <%= link_to('Back', prescriptions_path, role: 'button', class: 'btn btn-primary') %>
+  <%= link_to('Back',  prescriptions_path, role: 'button', class: 'btn btn-primary') %>
 <% end %>

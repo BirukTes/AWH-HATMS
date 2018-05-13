@@ -1,22 +1,33 @@
-<tr>
-    <td>
+<tr class="nested-fields">
+  <td>
     <div class="form-group">
-      <%= f.label(:treatment) %>
-      <%= f.text_field(:treatment, id: :treatment, class: 'form-control') %>
+      <%= f.text_field(:treatment, class: 'treatment form-control', required: true) %>
     </div>
   </td>
   <td>
     <div class="form-group">
-      <%= f.label(:price) %>
-      <%= f.text_field(:price, id: :price, type: :number, step: '0.01', class: 'form-control') %>
+      <%= f.text_field(:quantity, type: :number, min: '0', class: 'quantity form-control', required: true) %>
     </div>
   </td>
   <td>
+    <div class="form-group">
+      <%= f.text_field(:unitPrice, type: :number, step: '0.01', min: '0.00', class: 'unitPrice form-control', required: true) %>
+    </div>
   </td>
   <td>
     <div class="form-group">
-      <br/>
-      <%= link_to_remove_association('Remove', f, class: 'btn btn-danger', role: 'button', style: 'float: right; margin-top: 0.5em;') %>
+      <%= f.text_field(:tax, type: :number, step: '0.01', min: '0.00', max: '100.00', class: 'tax form-control', required: true) %>
+    </div>
+  </td>
+  <td>
+    <div class="form-group">
+      <label class="form-control"><span>£</span><span class="lineTotal">0.00</span></label>
+      <%= f.hidden_field(:lineTotal, id:'lineTotal') %>
+    </div>
+  </td>
+  <td>
+    <div class="form-group">
+      <%= link_to_remove_association('Remove', f, class: 'btn btn-danger', role: 'button') %>
     </div>
   </td>
 </tr>

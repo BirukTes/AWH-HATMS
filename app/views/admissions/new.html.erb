@@ -3,22 +3,22 @@
 
 <%= render('shared/errors', model: @admission) %>
 
-<% if !@patient %>
+<% if @patient %>
   <fieldset class="none-bs-fieldset">
-    <legend class="none-bs-legend">Find Registered Patient</legend>
-    <%= render('find_form') %>
-  </fieldset>
-<% else %>
-  <fieldset class="none-bs-fieldset">
-    <legend class="none-bs-legend">Found Patient Details</legend>
-    <div class="admission_patient_holder">
-      <%= render('patients/form', patient: @patient) %>
-    </div>
-  </fieldset>
+  <legend class="none-bs-legend">Patient Details</legend>
+  <div class="admission_patient_holder">
+    <%= render('patients/form', patient: @patient) %>
+  </div>
+</fieldset>
 
   <fieldset class="none-bs-fieldset">
     <legend class="none-bs-legend">Admission</legend>
     <%= render('form', admission: @admission, patient: @patient) %>
   </fieldset>  <br/>
   <br/>
+<% else %>
+  <fieldset class="none-bs-fieldset">
+    <legend class="none-bs-legend">Find Registered Patient</legend>
+    <%= render('find_form') %>
+  </fieldset>
 <% end %>

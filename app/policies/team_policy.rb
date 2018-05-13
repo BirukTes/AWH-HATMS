@@ -7,11 +7,11 @@ class TeamPolicy < ApplicationPolicy
 
 
   def index?
-    staff.medical_staff_admin? || staff.consultant?
+    true
   end
 
   def show
-    staff.medical_staff_admin? || staff.consultant?
+    true
   end
 
   def create?

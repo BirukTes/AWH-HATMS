@@ -1,8 +1,8 @@
 module PrescriptionsHelper
   def drug_options
     # Remove the drugs which cannot be used again for today
-    if !@patient.prescriptions.all.empty?
-      @patient.prescriptions.all.each_with_index do |p, index|
+    if !@diagnosis.prescriptions.all.empty?
+      @diagnosis.prescriptions.all.each_with_index do |p, index|
         # binding.pry
         if p.date == Date.today
           # Return all the drugs excluding the drugs used this day,

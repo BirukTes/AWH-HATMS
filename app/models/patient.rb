@@ -1,10 +1,15 @@
 class Patient < ApplicationRecord
-  # One to Many association, cascade delete
-  has_many :prescriptions, dependent: :destroy
-  has_many :treatments, dependent: :destroy
 
   # Many to Many association through join table, cascade delete
   has_many :admissions
+  # Indirect associations
+  has_many :invoices, through: :admissions
+  has_many :diagnosis, through: :admissions
+  has_many :prescriptions, through: :diagnosis
+  #
+
+  scope(:prescriptions, -> { admissions.each { |a| a.diagnoses.each { |d| d.prescriptions } } })
+
 
   has_one :person, as: :personalDetail, dependent: :destroy
 
@@ -18,6 +23,7 @@ class Patient < ApplicationRecord
       person ? find(person.personalDetail_id) : nil
     end
   end
+
   # @return [patient]
   def self.get_patient(patient_id)
     find(patient_id)

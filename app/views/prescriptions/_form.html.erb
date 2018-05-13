@@ -1,56 +1,61 @@
 <%= render 'shared/errors', model: prescription %>
 <%= form_with(model: prescription, validate: true) do |prescription_form| %>
-  <%= prescription_form.hidden_field(:patient_id, value: patient.id) %>
-  <%= prescription_form.hidden_field(:date, value: Date.today) %>
-  <%= prescription_form.hidden_field(:issuedBy, value: current_staff.userId) %>
-  <table class="table borderless">
-    <tbody>
-    <%= prescription_form.fields_for(:medications) do |medication_field| %>
-      <tr class="drugs">
-      <%= render('medication_fields', f: medication_field) %>
-      </tr>
-    <% end %>
-    <tr>
-      <td>
-        <div class="form-group">
-          <%= prescription_form.label(:dosage) %><br/>
-          <%= prescription_form.text_area(:dosage, autocomplete: 'dosage', required: true) %>
+  <%= prescription_form.hidden_field(:diagnose_id, value: prescription.diagnose_id || diagnose.id) %>
+  <%= prescription_form.hidden_field(:date, value: prescription.date || Date.today) %>
+  <%= prescription_form.hidden_field(:issuedBy, value: prescription.issuedBy || current_staff.userId) %>
+  <div class="row">
+    <div class="col offset-1">
+      <div class="row">
+        <%= prescription_form.fields_for(:medications) do |medication_field| %>
+          <div class="drugs col-6">
+            <%= render('medication_fields', f: medication_field) %>
+          </div>
+        <% end %>
+        <div class="col-5">
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <%= prescription_form.label(:dosage) %><br/>
+                <%= prescription_form.text_area(:dosage, autocomplete: 'dosage', required: true, class: 'form-control') %>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <%= prescription_form.label(:treatmentLength) %><br/>
+                <%= prescription_form.text_field(:treatmentLength, type: 'number', autocomplete: 'treatmentLength', required: true, class: 'form-control') %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <%= prescription_form.label(:date) %><br/>
+                <%= prescription_form.label(:date, localize(Date.today)) %>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <%= prescription_form.label(:issuedBy) %><br/>
+                <%= prescription_form.label(:issuedBy, prescription.issuedBy || current_staff.person.firstName + ' ' + current_staff.person.lastName) %>
+              </div>
+            </div>
+          </div>
         </div>
-      </td>
-      <td>
-        <div class="form-group">
-          <%= prescription_form.label(:treatmentLength) %><br/>
-          <%= prescription_form.text_field(:treatmentLength, type: 'number', autocomplete: 'treatmentLength', required: true) %>
+      </div>
+      <br/>
+      <br/>
+      <div class="row">
+
+        <div class="col-2 offset-6">
+          <%= link_to_add_association('Add drug', prescription_form, :medications, class: 'btn btn-primary',
+                                      data: { association_insertion_node: '.drugs', association_insertion_method: :append }) %>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="form-group">
-          <%= prescription_form.label(:date) %><br/>
-          <%= prescription_form.label(:date, localize(Date.today)) %>
+        <div class="col-2 offset-1">
+          <div class="form-group">
+            <%= prescription_form.submit(class: 'btn btn-primary') %>
+          </div>
         </div>
-      </td>
-      <td>
-        <div class="form-group">
-          <%= prescription_form.label(:issuedBy) %><br/>
-          <%#	  TODO current will be changed during edit also, is this the preferred behavior? %>
-          <%= prescription_form.label(:issuedBy, current_staff.person.firstName + ' ' + current_staff.person.lastName) %>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= link_to('Cancel', prescription, class: 'btn btn-secondary') %>
-        <%= link_to_add_association('Add drug', prescription_form, :medications, class: 'btn btn-primary',
-                                    data: { association_insertion_node: '.drugs', association_insertion_method: :after }) %>
-      </td>
-      <td>
-        <div class="form-group">
-          <%= prescription_form.submit(class: 'btn btn-primary') %>
-        </div>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+      </div>
+    </div>
+  </div>
 <% end %>

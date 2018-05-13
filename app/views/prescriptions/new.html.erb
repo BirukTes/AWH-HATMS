@@ -1,8 +1,22 @@
 <h1 class="title-container">Prescribe</h1>
 
-<% if @patient.nil? %>
-  <%= render 'shared/find_admitted_patient', action_controller_url: new_prescription_path %>
+<% if @diagnosis %>
+  <fieldset class="none-bs-fieldset">
+    <legend class="none-bs-legend">Patient Details</legend>
+    <div class="patient_details_holder">
+      <%= render 'patients/form', patient: @diagnosis.patient %>
+    </div>
+  </fieldset>
+  <fieldset class="none-bs-fieldset">
+    <legend class="none-bs-legend">Drug Prescription</legend>
+    <div class="prescription_form_holder">
+      <%= render 'form', prescription: @prescription, diagnose: @diagnosis %>
+    </div>
+  </fieldset>
 <% else %>
-  <%= render 'patients/form', patient: @patient %>
-  <%= render 'form', prescription: @prescription, patient: @patient %>
+  <%= render 'shared/find_admitted_patient', action_controller_url: new_prescription_path %>
+<% end %>
+
+<% content_for(:navigationButtons) do %>
+  <%= link_to('Cancel', request.original_url || prescriptions_path, role: 'button', class: 'btn btn-secondary') %>
 <% end %>

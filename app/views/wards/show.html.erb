@@ -54,7 +54,7 @@
   </thead>
   <%# Only admitted patients to this  %>
   <% @ward.admissions.where(status: 'admitted').all&.each do |admission| %>
-    <% patient = Patient.get_patient(admission.patient_id) %>
+    <% patient = admission.patient %>
     <tbody>
     <tr>
       <td><%= patient.id %></td>

@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
+
   get 'reports/ward_list'
   get 'reports/medications_list'
   get 'reports/discharge_list'
   get 'reports/patient_card'
 
+  resource :invoice_payments
+  resources :diagnoses
   resources :invoices
   resources :wards
   resources :drugs
@@ -31,8 +34,9 @@ Rails.application.routes.draw do
 
   # Find controller under search module and it is actions
   namespace :search do
-    get 'find_patients_in_ward', to: 'find#find_patients_in_ward'
+    get 'find_admitted_patients_in_ward', to: 'find#find_admitted_patients_in_ward'
     get 'find_patients_discharge_unauthorised', to: 'find#find_patients_discharge_unauthorised'
+    get 'find_discharged_without_invoice_patients_in_ward', to: 'find#find_discharged_without_invoice_patients_in_ward'
   end
 
 

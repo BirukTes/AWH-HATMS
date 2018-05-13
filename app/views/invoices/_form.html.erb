@@ -1,75 +1,88 @@
-<%= form_with(model: invoice, local: true) do |invoice_form| %>
-  <% if invoice.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
-
-      <ul>
-        <% invoice.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <table>
-    <tbody>
-    <tr>
-      <td>
-        <fieldset class="none-bs-fieldset">
-          <legend class="none-bs-legend">Invoice</legend>
-          <table>
-            <tbody>
-            <tr>
-              <td>
-                <div class="form-group">
-                  <%= invoice_form.label :date %>
-                  <%= invoice_form.text_field(:date, id: :invoice_date, type: :date, class: 'form-control') %>
-                </div>
-              </td>
-              <td>
-                <div class="form-group">
-                  <%= invoice_form.label :dateDue %>
-                  <%= invoice_form.text_field(:dateDue, id: :invoice_dateDue, type: :date, class: 'form-control') %>
-                </div>
-              </td>
-              <td>
-                <div class="form-group">
-                  <%= invoice_form.label :patient_id %>
-                  <%= invoice_form.text_field :patient_id, id: :invoice_patient_id, class: 'form-control' %>
-                </div>
-
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <fieldset class="none-bs-fieldset">
-                  <legend class="none-bs-legend">Invoice Details</legend>
-                  <div class="form-group" style="float: right;">
-                    <%= link_to_add_association('Add', invoice_form, :invoice_details, class: 'btn btn-primary',
-                                                data: { association_insertion_node: '.invoiceDetails', association_insertion_method: :append }) %>
-
-                  </div>
-                  <br/>
-                  <br/>
-                  <div class="invoiceDetails">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <%= form_with(model: invoice, local: true) do |invoice_form| %>
+        <%= render('shared/errors', model: invoice) %>
+        <%= invoice_form.hidden_field(:admission_id, value: admission.id) %>
+        <% patient = Patient.find(admission.patient_id) %>
+        <div class="row">
+          <div class="col-4">
+            To
+            <address>
+              <div><%= patient.person.firstName + ' ' + patient.person.lastName %></div>
+              <div><%= patient.person.address.houseNumber + ', ' + patient.person.address.street + ',' %></div>
+              <div><%= patient.person.address.town + ', ' %></div>
+              <div><%= patient.person.address.postcode %></div>
+            </address>
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+          <div class="col-3">
+            <div class="form-group">
+              <%= invoice_form.label(:dateDue) %>
+              <%= invoice_form.text_field(:dateDue, id: :invoice_dateDue, type: :date, class: 'form-control', required: true) %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <fieldset class="none-bs-fieldset">
+            <legend class="none-bs-legend">Invoice Details</legend>
+            <div class="form-group">
+              <div class="form-group" style="float: right; position: relative;">
+                <%= link_to_add_association('Add', invoice_form, :invoice_details, class: 'btn btn-primary', id: 'add_fields',
+                                            data: { association_insertion_node: '.invoice_details_fields_holder', association_insertion_method: :append }) %>
+                <br/>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <table class="table table-bordered table-hover" id="modal_items">
+                    <thead>
+                    <tr>
+                      <th class="treatment_head">Treatment</th>
+                      <th class="quantity_head">Quantity</th>
+                      <th class="unit_price_head">Unit Price £</th>
+                      <th class="tax_head">Tax %</th>
+                      <th class="line_total_head">Line Total</th>
+                      <th class="action">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody class="invoice_details_fields_holder">
                     <%= invoice_form.fields_for(:invoice_details) do |invoice_detail_fields| %>
-                      <table>
-                        <tbody>
-                        <%= render('invoice_detail_fields', f: invoice_detail_fields) %>
-                        </tbody>
-                      </table>
+                      <%= render('invoice_detail_fields', f: invoice_detail_fields) %>
                     <% end %>
+                    </tbody>
+                  </table>
+                  <div class="row">
+                    <div class="col-6 offset-6">
+                      <div class="table-responsive">
+                        <table class="table table-hover" id="totals">
+                          <tr>
+                            <th>Total:</th>
+                            <td class="balance">
+                              <span>£</span><span class="due" id="invoice_total">0.00</span>
+                            </td>
+                            <%= invoice_form.hidden_field(:amount, id: 'amount') %>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
                   </div>
-                </fieldset>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </fieldset>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-  <div class="actions">
-    <%= invoice_form.submit %>
+
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="row">
+          <div class="col-2 offset-4">
+            <div class="actions">
+              <%= invoice_form.submit(class: 'btn btn-primary') %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>

@@ -2,14 +2,14 @@
 $(document).on 'turbolinks:load', ->
 # Page is class in init.coffee
   return unless (page.controller() == 'admissions' && page.action() == 'find_and_discharge') ||
-    (page.controller() == 'treatments' && page.action() == 'new') || (page.controller() == 'prescriptions' && page.action() == 'new')
+    (page.controller() == 'treatments' && page.action() == 'new') || (page.controller() == 'prescriptions' && page.action() == 'new') || (page.controller() == 'diagnoses' && page.action() == 'new')
 
   # On change event of the ward select
   $(document).on('change', '#ward_id_select_find_admitted', ->
 
 # Specify url for ajax url
     url = if page.action() == 'new'
-      '/search/find_patients_in_ward'
+      '/search/find_admitted_patients_in_ward'
     else
       if page.action() == 'find_and_discharge'
         '/search/find_patients_discharge_unauthorised'
@@ -26,7 +26,7 @@ $(document).on 'turbolinks:load', ->
         success: (patient_data) ->
           console.log(patient_data)
           # In rare cases, need to show this
-          $('<option value="loading">Loading teams...</option>').appendTo('#patient_id_select').attr("selected", true)
+          $('<option value="loading">Loading patients...</option>').appendTo('#patient_id_select').attr("selected", true)
 
           # Remove the existing items which have values and not the blank
           $('#patient_id_select option').each(->

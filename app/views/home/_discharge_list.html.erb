@@ -9,8 +9,13 @@
   </tr>
   </thead>
   <tbody>
-  <% admissions.each do |admission| %>
-    <% if admission.dischargeDate == Date.today %>
+  <% dischargeAdmissions = admissions.where(dischargeDate: Date.today).all %>
+  <% if dischargeAdmissions.empty? %>
+    <tr>
+      <td colspan="5"><p>No patients due to discharge today.</p></td>
+    </tr>
+  <% else %>
+    <% dischargeAdmissions.each_with_index do |admission, index| %>
       <% patient = Patient.find(admission.patient_id) %>
       <% ward = Ward.find(admission.ward_id) %>
       <tr>

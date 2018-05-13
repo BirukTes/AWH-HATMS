@@ -23,7 +23,7 @@ class TreatmentPolicy < ApplicationPolicy
   end
 
   def destroy?
-    staff.consultant? || staff.doctor?
+    staff.medical_staff_admin?
   end
 end
 
