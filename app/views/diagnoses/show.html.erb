@@ -1,0 +1,25 @@
+<h3>Diagnosis for <%= @diagnosis.admission.patient.person.firstName + ' ' + @diagnosis.admission.patient.person.lastName %></h3>
+<br/>
+<br/>
+<div class="row">
+  <div class="col-2 offset-1">
+    <%= label_tag(:title) %>
+    <%= content_tag(:h6, @diagnosis.title) %>
+  </div>
+  <div class="col-3 offset-1">
+    <%= label_tag(:description) %>
+    <%= content_tag(:p, @diagnosis.description)%>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-1 offset-6">
+    <div class="actions">
+      <%= link_to('Edit', edit_diagnosis_path(@diagnosis), class: 'form-control btn btn-primary') %>
+    </div>
+  </div>
+</div>
+
+<% content_for(:navigationButtons) do %>
+  <%= link_to('Cancel', diagnoses_path, role: 'button', class: 'btn btn-secondary') %>
+<% end %>

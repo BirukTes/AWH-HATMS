@@ -1,0 +1,22 @@
+<h1>New Diagnosis</h1>
+
+<% if @admission %>
+  <fieldset class="none-bs-fieldset">
+    <legend class="none-bs-legend">Patient Details</legend>
+    <div class="diagnosis_patient_holder">
+      <%= render('patients/form', patient: Patient.find(@admission.patient_id)) %>
+    </div>
+  </fieldset>
+  <fieldset class="none-bs-fieldset">
+    <legend class="none-bs-legend">Diagnosis</legend>
+    <div class="diagnosis_form_holder">
+      <%= render 'form', diagnose: @diagnosis, admission: @admission %>
+    </div>
+  </fieldset>
+<% else %>
+  <%= render('shared/find_admitted_patient', action_controller_url: new_diagnosis_path) %>
+<% end %>
+
+<% content_for(:navigationButtons) do %>
+  <%= link_to('Cancel', request.referrer || diagnoses_path, role: 'button', class: 'btn btn-secondary') %>
+<% end %>
