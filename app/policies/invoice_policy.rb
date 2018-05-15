@@ -25,4 +25,12 @@ class InvoicePolicy < ApplicationPolicy
   def destroy?
     staff.medical_staff_admin?
   end
+
+  def receive_payment?
+    staff.medical_staff_admin?
+  end
+
+  def set_payment_received?
+    staff.medical_staff_admin?
+  end
 end

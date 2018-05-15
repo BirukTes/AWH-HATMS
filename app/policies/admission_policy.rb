@@ -34,4 +34,8 @@ class AdmissionPolicy < ApplicationPolicy
   def authorise_discharge?
     staff.doctor? || staff.consultant?
   end
+
+  def search?
+    true
+  end
 end

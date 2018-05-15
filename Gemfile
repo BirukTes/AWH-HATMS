@@ -63,12 +63,17 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# Packaged native web sources
 source('https://rails-assets.org') do
-  # Bootstrap
+  # Bootstrap, jquery
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-jquery'
+
+  # Bootstrap tooltips
   gem 'rails-assets-tether'
-  gem 'rails-assets-datetimepicker'
+
+  # For sortable and searchable tables
+  gem 'rails-assets-DataTables', source: 'https://rails-assets.org'
 end
 
 # Application YML file configurator, for environment variables
@@ -96,8 +101,6 @@ gem 'chartkick', '~> 2.3', '>= 2.3.4'
 # Nested forms helper
 gem 'cocoon', '~> 1.2', '>= 1.2.11'
 
-# For sortable and searchable tables
-gem 'rails-assets-DataTables', source: 'https://rails-assets.org'
 
 # Stripe for invoice payment
 # gem 'stripe', '~> 3.13'
@@ -105,8 +108,16 @@ gem 'rails-assets-DataTables', source: 'https://rails-assets.org'
 # BrainTree instead, for PayPal payments
 gem 'braintree', '~> 2.88'
 
-# Excel spreadsheet generation, fixme lib/active_support/dependencies.rb:292:in `require': cannot load such file -- zip/zip (LoadError)
-# gem 'axlsx'
+# dependence for axlsx
+gem 'rubyzip', '~> 1.2', '>= 1.2.1'
+
+# Excel spreadsheet generation
+gem 'axlsx', '>= 2.0.1'
+
+gem 'axlsx_rails', '>= 0.5.2'
+
+# PDF generation
+gem 'wicked_pdf'
 
 # Allows to schedule tasks/jobs (Cron)
 # gem 'whenever', '~> 0.10.0'
@@ -117,8 +128,12 @@ gem 'sidekiq', '~> 5.1', '>= 5.1.3'
 # Background work/schedule tasks/jobs (Cron)
 gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.1'
 
+# Search ability
+gem 'ransack', '~> 1.8', '>= 1.8.8'
+
 # Improve console inspection output
 gem 'hirb', '~> 0.7.3'
 
 # Refactor
 gem 'rails_refactor', '~> 1.4', '>= 1.4.4'
+

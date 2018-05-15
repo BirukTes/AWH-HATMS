@@ -4,7 +4,7 @@ class AdmissionsController < ApplicationController
 
   # This defines the responses types, or It is referencing the response that will
   # be sent to the View (which is going to the browser) https://stackoverflow.com/a/9492463/5124710
-  respond_to :html, :json, :js
+  respond_to(:html, :json, :js)
 
   # Authorisation callbacks
   # Make sure all actions perform authorisation, (individual records),
@@ -184,7 +184,10 @@ class AdmissionsController < ApplicationController
     end
   end
 
-
+def search
+  authorize(:admission)
+  redirect_to(reports_ward_list_path)
+end
   # Private methods
   private
 

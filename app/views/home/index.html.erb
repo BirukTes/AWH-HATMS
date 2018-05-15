@@ -33,7 +33,7 @@
   <div class="row">
     <div class="col">
       <h2>Ward List </h2> <br/>
-      <%= render('ward_list', admissions: @home_presenter.admissions) %>
+      <%= render('reports/ward_list', admissions: @home_presenter.admissions) %>
       <br/>
     </div>
   </div>
@@ -41,7 +41,7 @@
   <div class="row">
     <div class="col">
       <h2>Discharge List</h2><br/>
-      <%= render('discharge_list', admissions: @home_presenter.admissions) %>
+      <%= render('reports/discharge_list', admissions: @home_presenter.admissions) %>
       <br/>
     </div>
   </div>
@@ -49,7 +49,7 @@
   <div class="row">
     <div class="col">
       <h2>Medications List</h2><br/>
-      <%= render('medications_list', admissions: @home_presenter.admissions) %>
+      <%= render('reports/medications_list', admissions: @home_presenter.admissions) %>
       <br/>
     </div>
   </div>
@@ -57,7 +57,7 @@
   <div class="row">
     <div class="col">
       <h2>Patient Card - Week Beginning <%= localize(Date.today.beginning_of_week, format: :custom) %></h2><br/>
-      <%= render('patient_card', admissions: @home_presenter.admissions) %>
+      <%= render('reports/patient_card', admissions: @home_presenter.admissions) %>
       <br/>
     </div>
   </div>

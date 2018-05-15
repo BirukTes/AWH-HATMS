@@ -21,8 +21,9 @@
   </td>
   <td>
     <div class="form-group">
-      <label class="form-control"><span>£</span><span class="lineTotal">0.00</span></label>
-      <%= f.hidden_field(:lineTotal, id:'lineTotal') %>
+      <label class="form-control"><span>£</span> <%= content_tag(:span, f.object.lineTotal || '0.00', class: 'lineTotal') %>
+      </label>
+      <%= f.hidden_field(:lineTotal, id: 'lineTotal') %>
     </div>
   </td>
   <td>

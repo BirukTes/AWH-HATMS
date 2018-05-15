@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "invoices/show", type: :view do
   before(:each) do
     @invoice = assign(:invoice, Invoice.create!(
-      :paymentRecieved => false,
+      :paymentReceived => false,
       :patient => nil
     ))
   end

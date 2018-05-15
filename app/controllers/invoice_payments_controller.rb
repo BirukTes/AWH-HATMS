@@ -1,5 +1,8 @@
 class InvoicePaymentsController < ApplicationController
 
+  respond_to(:json, :js, :html)
+
+
   def new
     # puts( Rails.application.secrets.braintree_environment,
     # Rails.application.secrets.braintree_merchant_id,
@@ -13,6 +16,8 @@ class InvoicePaymentsController < ApplicationController
     # Get client authorization token,
     # include :customer_id => a_customer_id to identify previous customer
     @client_token = gateway.client_token.generate
+
+    respond_modal_with(@client_token)
   end
 
   def create

@@ -56,8 +56,14 @@ en:
           patientgender: 'Gender'
           deptName: 'Department'
           isPrivate: 'Private'
+
         invoice:
           dateDue: 'Date Due'
+          dateReceived: 'Date Received'
+          paymentReceived: 'Payment Received'
+
+        invoice_detail:
+          unitPrice: 'Unit Price'
 
 
 

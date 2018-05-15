@@ -1,15 +1,26 @@
 Rails.application.routes.draw do
 
-
-  get 'reports/ward_list'
-  get 'reports/medications_list'
-  get 'reports/discharge_list'
-  get 'reports/patient_card'
-
+  namespace :reports do
+    get :ward_list
+    get :medications_list
+    get :discharge_list
+    get :patient_card
+  end
   resource :invoice_payments
   resources :diagnoses
-  resources :invoices
-  resources :wards
+  resources :invoices do
+    member do
+      get :receive_payment
+    end
+    collection do
+      post :set_payment_received
+    end
+  end
+  resources :wards do
+    collection do
+      match 'search' => 'wards#search', via: [:get, :post], as: :search
+    end
+  end
   resources :drugs
   resources :patients
   resources :teams
@@ -22,18 +33,18 @@ Rails.application.routes.draw do
     # Members require admission id
     member do
       get :discharge
-    end
-    member do
       post :authorise_discharge
     end
-    # Collection do not require id
+    # Collections do not require id
     collection do
       get :find_and_discharge
+      match 'search' => 'admissions#search', via: [:get, :post], as: :search
     end
   end
 
   # Find controller under search module and it is actions
   namespace :search do
+    get :search, to: 'search#search', as: :search
     get 'find_admitted_patients_in_ward', to: 'find#find_admitted_patients_in_ward'
     get 'find_patients_discharge_unauthorised', to: 'find#find_patients_discharge_unauthorised'
     get 'find_discharged_without_invoice_patients_in_ward', to: 'find#find_discharged_without_invoice_patients_in_ward'

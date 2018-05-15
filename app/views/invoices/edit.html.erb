@@ -2,5 +2,9 @@
 
 <%= render 'form', invoice: @invoice %>
 
-<%= link_to 'Show', @invoice %> |
-<%= link_to 'Back', invoices_path %>
+<% content_for(:navigationButtons) do %>
+  <% session[:invoices_edit_back_url] = request.referrer || request.original_url if session[:invoices_edit_back_url].nil? %>
+  <%= link_to('Back', session[:invoices_edit_back_url] || invoices_path, class: 'btn btn-secondary') %>
+  &nbsp;
+  <%= link_to('Show', @invoice, class: 'btn btn-secondary') %>
+<% end %>

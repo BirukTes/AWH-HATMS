@@ -8,11 +8,11 @@
         <tr>
           <td>
             <label>Admitted After</label><br/>
-            <%= filter_form.text_field(:filter_admission_by_date, { type: 'date', min: '2000-05-11', max: Date.today.to_s, id: 'filter_admission_by_date', class: 'form-control'}) %>
+            <%= filter_form.text_field(:filter_admission_by_date, { type: 'date', min: '2000-05-11', max: Date.today.to_s, id: 'filter_admission_by_date', class: 'form-control' }) %>
           </td>
           <td>
             <label>Status</label><br/>
-            <%= filter_form.select(:filter_admission_by_status, options_for_select(['All', 'Admitted', 'Discharged'], 0), {id: 'filter_admission_by_status'}, class: 'form-control') %>
+            <%= filter_form.select(:filter_admission_by_status, options_for_select(['All', 'Admitted', 'Discharged'], 0), { id: 'filter_admission_by_status' }, class: 'form-control') %>
           </td>
           <td>
             <br/>
@@ -27,6 +27,11 @@
 
 <br/>
 <div id="admission_list_holder">
-  <%= render('admissions/admissions_list', admissions: @admissions) %>
+  <% if @admissions %>
+    <%= render('admissions/admissions_list', admissions: @admissions) %>
+  <% else %>
+    <p>Nothing found.</p>
+    <%= link_to('Show all', admissions_path, method: :get, remote: true) %>
+  <% end %>
 </div>
 

@@ -4,7 +4,7 @@ class Admission < ApplicationRecord
   belongs_to :patient
   has_one(:invoice, dependent: :destroy)
   # One to Many association, cascade delete
-  has_many(:diagnosis, dependent: :destroy)
+  has_many(:diagnoses, dependent: :destroy)
 
   validates(:admissionDate, presence: true)
   validates(:patient_id, presence: true)
@@ -13,6 +13,18 @@ class Admission < ApplicationRecord
 
   human_attribute_name(:admissionDate)
   human_attribute_name(:dischargeDate)
+
+  # ransack_alias(:patient, :patient_first_name_or_patient_last_name)
+
+  # ransacker :full_name do |parent|
+  #   Arel::Nodes::InfixOperation.new('||',
+  #                                   Arel::Nodes::InfixOperation.new('||', parent.table[:firsName], ' '),
+  #                                   parent.table[:lastName])
+  # end
+  #
+  # ransacker :patientDob do |parent|
+  #   Arel.sql('person.dateOfBirth')
+  # end
 
   enum status: { admitted: 'Admitted', discharged: 'Discharged' }
 

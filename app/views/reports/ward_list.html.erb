@@ -1,43 +1,107 @@
 <h1>Ward List</h1>
 
-<%= form_with(url: reports_ward_list_path, method: :get) do |ward_report_form| %>
-  <div class="form-group" style="width: 35% !important;">
+<!--Large code-->
+<template class="commented">
+<%# form_with(url: reports_ward_list_path, method: :post) do |ward_report_form| %>
+<!--<div class="form-group" style="width: 50% !important;">-->
+<!--<fieldset class="none-bs-fieldset">-->
+<!--<legend class="none-bs-legend">Produce Report</legend>-->
+<!--<div class="container">-->
+<!--<div class="row">-->
+<!--<div class="col">-->
+<!--<div class="row">-->
+<!--<label>Ward</label><br/>-->
+<%# ward_report_form.select(:ward_id, ward_options, { type: 'date', include_blank: 'Select ward', id: 'ward_id' }, class: 'form-control') %>
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-1"></div>-->
+<!--<div class="col">-->
+<!--<div class="row">-->
+<!--<label>From</label><br/>-->
+<!--<%# ward_report_form.text_field(:from_date, { type: 'date', id: 'from_date', min: '2000-01-01', class: 'form-control', required: true }) %>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-1"></div>-->
+<!--<div class="col">-->
+<!--<div class="row">-->
+<!--<label>To</label><br/>-->
+<!--&lt;!&ndash;TODO min date must be over from date&ndash;&gt;-->
+<!--<%#ward_report_form.text_field(:to_date, { type: 'date', id: 'to_date', min: '2000-01-01', max: Date.today.to_s, class: 'form-control', required: true }) %>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<br>-->
+<!--<div class="row">-->
+<!--<div class="col offset-6">-->
+<!--<%# disable_btn_export = @admissions.nil? || @admissions&.empty? ? 'disabled' : '' # TODO fix this link %>-->
+<!--<%# link_to('Export as Excel', reports_ward_list_path(format: :xls), { class: "btn btn-secondary form-control #{disable_btn_export}", role: 'button' }) %>-->
+<!--</div>-->
+<!--<div class="col">-->
+<!--<%# ward_report_form.submit('Search', class: 'btn btn-primary float-right', id: 'enable_form_submit', data: { disable_with: false }) %>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</fieldset>-->
+<!--</div>-->
+<%# end %>
+</template>
+
+<%= search_form_for(@search, url: reports_ward_list_path, method: :get) do |ward_report_form| %>
+  <div class="form-group" style="width: 50% !important;">
     <fieldset class="none-bs-fieldset">
       <legend class="none-bs-legend">Produce Report</legend>
-      <table class="table borderless">
-        <tbody>
-        <tr>
-          <td>
-            <label>Ward</label><br/>
-            <%= ward_report_form.select(:ward_id, ward_options, { type: 'date', include_blank: 'Select ward', id: 'ward_id' }, class: 'form-control') %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label>From</label><br/>
-            <%= ward_report_form.text_field(:from_date, { type: 'date', id: 'from_date', class: 'form-control', required: true }) %>
-          </td>
-          <td>
-            <label>To</label><br/>
-            <%= ward_report_form.text_field(:to_date, { type: 'date', id: 'to_date', class: 'form-control', required: true }) %>
-          </td>
-          <td>
-            <br/>
-            <br/>
-            <%= ward_report_form.submit('Search', class: 'btn btn-primary', id: 'enable_form_submit', data: { disable_with: false }) %>
-          </td>
-          <t>
-            <td>
-              <%= link_to('Export as Excel', reports_ward_list_path(format: :xls), { class: 'btn btn-secondary form-control', role: 'button' }) %>
-            </td>
-          </t>
-        </tr>
-        </tbody>
-      </table>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <label>Ward</label><br/>
+              <%= ward_report_form.select(:ward_id_eq, options_for_select(ward_options, params.dig(:q, :ward_id_eq)),
+                                          { include_blank: 'Select ward', id: 'ward_id' }, class: 'form-control') %>
+            </div>
+          </div>
+          <div class="col-1"></div>
+          <div class="col">
+            <div class="row">
+              <label>Admission Date From</label><br/>
+              <%= ward_report_form.text_field(:admissionDate_gteq, { type: 'date', id: 'from_date', min: '2000-01-01',
+                                                                     max: Date.today.to_s, class: 'form-control',
+                                                                     value: params.dig(:q, :admissionDate_gteq) }) %>
+            </div>
+          </div>
+          <div class="col-1"></div>
+          <div class="col">
+            <div class="row ">
+              <label>Admission Date To</label><br/>
+              <!--TODO min date must be over from date-->
+              <%= ward_report_form.text_field(:admissionDate_lteq, { type: 'date', id: 'to_date', min: '2000-01-01',
+                                                                     max: Date.today.to_s, class: 'form-control',
+                                                                     value: params.dig(:q, :admissionDate_lteq) }) %>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col offset-6">
+            <% disable_btn_export = @admissions.nil? || @admissions&.empty? ? 'disabled' : '' # TODO fix this link %>
+            <%= link_to('Export as Excel', reports_ward_list_path(format: :xls), { class: "btn btn-secondary form-control #{disable_btn_export}",
+                                                                                   role: 'button' }) %>
+          </div>
+          <div class="col">
+            <%= ward_report_form.submit('Search', class: 'btn btn-primary float-right', id: 'enable_form_submit',
+                                        data: { disable_with: false }) %>
+          </div>
+        </div>
+      </div>
     </fieldset>
   </div>
 <% end %>
 &nbsp;
 <div id="ward_list_holder">
-  <%= render('home/ward_list', admissions: @admissions) %>
+  <% if !@admissions.nil? && !@admissions&.empty? %>
+    <%= render('ward_list', admissions: @admissions) %>
+  <% elsif @admissions&.empty? %>
+    <tr>
+      <td colspan="8"><p>No admissions found from this filter.</p></td>
+    </tr>
+  <% end %>
 </div>

@@ -15,7 +15,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require bootstrap
-//= require datetimepicker
+//= require jquery.easy-autocomplete
 //= require Chart.bundle
 //= require chartkick
 //= require cocoon
@@ -24,7 +24,7 @@
 
 $(document).ready(function () {
     // toggle sidebar when button clicked
-    $('.sidebar-toggle').on('click', function () {
+    $(document).on('click', '.sidebar-toggle', function () {
         if ($(window).width() >= 768) {
             $('.sidebar').toggleClass('toggled');
             if ($('.sidebar').hasClass('toggled')) {
@@ -86,5 +86,34 @@ $(document).ready(function () {
     }).DataTable({
         ajax: "data.json"
     });
+
+    // $('#datepicker').datepicker({
+    //     format: 'dd-mm-yyyy'
+    // });
+    //
+    // $('.input-daterange').datepicker({
+    //     format: 'dd-mm-yyyy'
+    // });
+
+    // Allows to consistently use html 5 feature across browsers
+    // webshim.polyfill('forms forms-ext');
+    functionTwo();
+
+    function functionTwo() {
+        console.log("Hello!");
+    }
+
+    setDateRange();
+
+
+    // Prevent date overlap, range in a way
+    $('#from_date, #to_date').on('change', function () {
+        setDateRange();
+    });
+
+    function setDateRange() {
+        console.log('entered date');
+        $('#to_date').attr('min', $('#from_date').val());
+    }
 
 });

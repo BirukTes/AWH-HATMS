@@ -1,2 +1,62 @@
-<h1>Reports#medications_list</h1>
-<p>Find me in app/views/reports/medications_list.html.erb</p>
+<h1>Medications List</h1>
+
+<%= search_form_for(@search, url: reports_medications_list_path, method: :get) do |ward_report_form| %>
+  <div class="form-group" style="width: 50% !important;">
+    <fieldset class="none-bs-fieldset">
+      <legend class="none-bs-legend">Produce Report</legend>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <label>Ward</label><br/>
+              <%= ward_report_form.select(:ward_id_eq, options_for_select(ward_options, params.dig(:q, :ward_id_eq)),
+                                          { include_blank: 'Select ward', id: 'ward_id' }, class: 'form-control') %>
+            </div>
+          </div>
+          <div class="col-1"></div>
+          <div class="col">
+            <div class="row">
+              <label>Admission Date From</label><br/>
+              <%= ward_report_form.text_field(:admissionDate_gteq, { type: 'date', id: 'from_date', min: '2000-01-01',
+                                                                     max: Date.today.to_s, class: 'form-control',
+                                                                     value: params.dig(:q, :admissionDate_gteq) }) %>
+            </div>
+          </div>
+          <div class="col-1"></div>
+          <div class="col">
+            <div class="row ">
+              <label>Admission Date To</label><br/>
+              <!--TODO min date must be over from date-->
+              <%= ward_report_form.text_field(:admissionDate_lteq, { type: 'date', id: 'to_date', min: '2000-01-01',
+                                                                     max: Date.today.to_s, class: 'form-control',
+                                                                     value: params.dig(:q, :admissionDate_lteq) }) %>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col offset-6">
+            <% disable_btn_export = @admissions.nil? || @admissions&.empty? ? 'disabled' : '' # TODO fix this link %>
+            <%= link_to('Export as Excel', reports_ward_list_path(format: :xls), { class: "btn btn-secondary form-control #{disable_btn_export}",
+                                                                                   role: 'button' }) %>
+          </div>
+          <div class="col">
+            <%= ward_report_form.submit('Search', class: 'btn btn-primary float-right', id: 'enable_form_submit',
+                                        data: { disable_with: false }) %>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+<% end %>
+&nbsp;
+
+<div id="medications_list_holder">
+  <% if !@admissions.nil? && !@admissions&.empty? %>
+    <%= render('medications_list', admissions: @admissions, noLimitOrOrder: true) %>
+  <% elsif @admissions&.empty? %>
+    <tr>
+      <td colspan="8"><p>No admissions found from this filter.</p></td>
+    </tr>
+  <% end %>
+</div>

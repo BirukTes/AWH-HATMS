@@ -1,7 +1,7 @@
 <%# Rails Modal %>
 <% content_for :title, 'Authorise Discharge' %>
 <%= form_with(model: @admission, url: authorise_discharge_admission_path, method: :post, remote: request.xhr?, html: { data: { modal: true } }) do |admission_discharge_form| %>
-  <% patient = Patient.find(@admission.patient_id) %>
+  <% patient = @admission.patient %>
   <table class="table borderless">
     <tbody>
     <tr>
@@ -11,7 +11,7 @@
     <tr>
       <td>
         <%= admission_discharge_form.label(:dischargeDate,) %><br/>
-        <%= admission_discharge_form.datetime_field(:dischargeDate, required: true) %>
+        <%= admission_discharge_form.datetime_field(:dischargeDate, min: @admission.admissionDate.to_date.to_s, max: Date.today.to_s, required: true, class: 'form-control') %>
       </td>
     </tr>
     <tr>

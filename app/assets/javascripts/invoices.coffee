@@ -37,17 +37,19 @@ $ ->
   # Check blur event for quantity, unitPrice, and tax  field
   bind_update = ->
 # Blur event is triggered after an element has lost focus, any of these fields
-# are volunerable to change, staff may do in unorderly manne
+# are volunerable to change, staff may do in unorderly manner
+    console.log('Bind invoice update entered...')
     $('.quantity').blur(update_line_total)
     $('.unitPrice').blur(update_line_total)
     $('.tax').blur(update_line_total)
 
 
   # Everytime input is clicked, select
-  $('input').click(->
-    $(this).select())
+  $('#invoices_form').on('click', 'input', ->
+    $(this).select() # Update after select
+    bind_update())
 
-  # Update after select
+  # Bind call
   bind_update()
 
   #

@@ -3,7 +3,7 @@ class CreateInvoices < ActiveRecord::Migration[5.1]
     create_table :invoices do |t|
       t.date :date
       t.date :dateDue
-      t.boolean :paymentRecieved
+      t.boolean :paymentReceived
       t.references :patient, foreign_key: true
 
       t.timestamps

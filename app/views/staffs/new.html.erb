@@ -28,7 +28,7 @@
                 <td>
                   <div class="form-group">
                     <%= person_fields.label(:dateOfBirth, 'Date of birth') %><br/>
-                    <%= person_fields.text_field(:dateOfBirth, type: 'date', autocomplete: 'dateOfBirth', min: '1900-01-01', max: Date.today.to_s, required: true) %>
+                    <%= person_fields.text_field(:dateOfBirth, type: 'date', autocomplete: 'dateOfBirth', min: '1900-01-01', max: Date.today.to_s, required: true, class: 'form-control') %>
                   </div>
                 </td>
                 <td>

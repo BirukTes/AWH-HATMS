@@ -53,6 +53,12 @@ module ApplicationHelper
     end
   end
 
+  def patients_option
+    Patient.all.limit(10).map do |patient|
+      [patient.person.firstName + ' ' + patient.person.lastName, patient.id]
+    end
+  end
+
   def all_staffs
     Staff.all.limit(4)
   end

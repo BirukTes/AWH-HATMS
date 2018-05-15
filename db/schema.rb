@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180513171602) do
+ActiveRecord::Schema.define(version: 20180513224457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,9 +95,9 @@ ActiveRecord::Schema.define(version: 20180513171602) do
   end
 
   create_table "invoices", force: :cascade do |t|
-    t.date "date"
+    t.date "dateReceived"
     t.date "dateDue"
-    t.boolean "paymentRecieved"
+    t.boolean "paymentReceived", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "admission_id"

@@ -1,10 +1,16 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-      <%= form_with(model: invoice, local: true) do |invoice_form| %>
+      <%= form_with(model: invoice, local: true, html: {id: 'invoices_form'}) do |invoice_form| %>
         <%= render('shared/errors', model: invoice) %>
-        <%= invoice_form.hidden_field(:admission_id, value: admission.id) %>
-        <% patient = Patient.find(admission.patient_id) %>
+        <%= invoice_form.hidden_field(:admission_id, value: invoice.admission_id || admission.id) %>
+        <%# Todo apply solution else,  !! #<NameError: undefined local variable or method `admission' for #<#<Class:0x007ffb7cea7a70>:0x007ffb75eaf510>
+Did you mean?  admission_url> %>
+        <% patient = if invoice.admission
+                       invoice.admission.patient
+                     else
+                       admission.patient
+                     end %>
         <div class="row">
           <div class="col-4">
             To
@@ -22,7 +28,7 @@
           <div class="col-3">
             <div class="form-group">
               <%= invoice_form.label(:dateDue) %>
-              <%= invoice_form.text_field(:dateDue, id: :invoice_dateDue, type: :date, class: 'form-control', required: true) %>
+              <%= invoice_form.text_field(:dateDue, id: :invoice_dateDue, type: :date, min: Date.today.to_s, max: (Date.today + 30).to_s, class: 'form-control', required: true) %>
             </div>
           </div>
         </div>

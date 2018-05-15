@@ -14,7 +14,7 @@
  * require_tree .
  *
  *= require bootstrap
- *= require datetimepicker
+ *= require easy-autocomplete
  *= require DataTables
  *= require_self
  */
@@ -30,6 +30,7 @@
 .top-nav {
     display: block;
     float: top;
+
 }
 
 .nav-and-content {

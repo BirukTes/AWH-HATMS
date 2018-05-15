@@ -1,7 +1,9 @@
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :set_invoice, only: [:show, :edit, :update, :destroy, :receive_payment, :set_payment_received]
   # Authorisation callbacks
   after_action(:verify_authorized)
+
+  respond_to(:json, :js, :html)
 
   # GET /invoices
   # GET /invoices.json
@@ -19,12 +21,14 @@ class InvoicesController < ApplicationController
   def new
     authorize(:invoice)
     @invoice = Invoice.new
-    @invoice.invoice_details.build
+
 
     if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
       admission_id_extract = params[:patient_id].split('|')[1]
       @admission = Admission.find(admission_id_extract)
-      # @invoice.admission.prescriptions
+
+      # Setup the details, pre-populate, these can be changed in the future for more relevant treatments
+      pre_populate_invoice_details
 
       # Save the admission to session and use it if re-rendering is required (create errors)
       session[:current_invoicing_admission] = @admission
@@ -82,6 +86,24 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def receive_payment
+    # binding.pry
+    respond_modal_with(@invoice)
+  end
+
+  def set_payment_received
+    if params[:invoice][:dateReceived]
+      if @invoice.update(dateReceived: params[:invoice][:dateReceived], paymentReceived: true)
+        redirect_to(invoices_path(@invoice), notice: 'Payment received.')
+      else
+        render :receive_payment
+      end
+    else
+      render :receive_payment
+      flash[:alert] = 'Please fill the received date field.'
+    end
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_invoice
@@ -91,7 +113,38 @@ class InvoicesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def invoice_params
-    params.require(:invoice).permit(:date, :dateDue, :paymentRecieved, :patient_id, :amount, :admission_id,
-                                    invoice_details_attributes: [:treatment, :quantity, :unitPrice, :tax, :lineTotal, :_destroy])
+    params.require(:invoice).permit(:id, :dateReceived, :dateDue, :paymentReceived, :patient_id, :amount, :admission_id,
+                                    invoice_details_attributes: [:id, :treatment, :quantity, :unitPrice, :tax, :lineTotal, :_destroy])
+  end
+
+  # Populates invoice details for the invoice in creation
+  def pre_populate_invoice_details
+
+    # For nights stay
+    days_as_quantity = ((@admission.dischargeDate - @admission.admissionDate).to_int) / 1.day
+    @invoice.invoice_details.build(
+        treatment: 'Admission-Fee',
+        quantity: days_as_quantity,
+        unitPrice: '250.00',
+        tax: '5.0',
+        lineTotal: (250 * days_as_quantity * ((5 / 100) + 1)))
+
+    # For Diagnoses, TODO 1 is only for the older admissions
+    number_diagnoses = @admission.diagnoses.count
+    @invoice.invoice_details.build(
+        treatment: 'Diagnosis-Fee',
+        quantity: number_diagnoses,
+        unitPrice: '50.00',
+        tax: '2.0',
+        lineTotal: (50 * number_diagnoses * ((2 / 100) + 1)))
+
+    # For prescriptions
+    number_drugs = @admission.diagnoses.map { |diagnoses| diagnoses.prescriptions.map { |prescription| prescription.drugs.count }.sum }.sum
+    @invoice.invoice_details.build(
+        treatment: 'Drugs-Fee',
+        quantity: number_drugs,
+        unitPrice: '20.00',
+        tax: '4.0',
+        lineTotal: (20 * number_drugs * ((4 / 100) + 1)))
   end
 end

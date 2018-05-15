@@ -4,11 +4,11 @@ RSpec.describe "invoices/index", type: :view do
   before(:each) do
     assign(:invoices, [
       Invoice.create!(
-        :paymentRecieved => false,
+        :paymentReceived => false,
         :patient => nil
       ),
       Invoice.create!(
-        :paymentRecieved => false,
+        :paymentReceived => false,
         :patient => nil
       )
     ])

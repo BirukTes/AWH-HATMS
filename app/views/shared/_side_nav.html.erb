@@ -1,4 +1,4 @@
-<div class="sidebar bg-dark">
+<div class="sidebar bg-dark ">
   <div class="sidebar-toggle-holder" style="padding: 18px;">
     <a class="sidebar-toggle text-light">
       <i class="fas fa-bars fa-2x"></i>
@@ -9,7 +9,8 @@
   <br/>
   <ul class="list-unstyled">
     <li>
-      <a href="#submenu1" data-toggle="collapse"><i class="fas fa-file-alt fa-2x"></i><label class='lbl-nav'>&nbsp; Report &nbsp; &nbsp; </label></a>
+      <a href="#submenu1" data-toggle="collapse"><i class="fas fa-file-alt fa-2x"></i><label class='lbl-nav'>&nbsp;
+        Report &nbsp; &nbsp; </label></a>
       <ul id="submenu1" class="list-unstyled collapse">
         <li><%= link_to('Ward List', reports_ward_list_path) %></li>
         <li><%= link_to('Medications List', reports_medications_list_path) %></li>
@@ -18,7 +19,8 @@
       </ul>
     </li>
     <li>
-      <a href="#submenu2" data-toggle="collapse"><i class="fas fa-address-card fa-2x"></i><label class='lbl-nav'>&nbsp; Admission &nbsp; &nbsp; </label></a>
+      <a href="#submenu2" data-toggle="collapse"><i class="fas fa-address-card fa-2x"></i><label class='lbl-nav'>&nbsp;
+        Admission &nbsp; &nbsp; </label></a>
       <ul id="submenu2" class="list-unstyled collapse">
         <li><%= link_to('View All', admissions_path) %></li>
         <li><%= link_to('Admit Patient', new_admission_path) %></li>
@@ -26,21 +28,28 @@
       </ul>
     </li>
     <li>
-      <a href="#submenu3" data-toggle="collapse"><i class="fas fa-file-medical fa-2x"></i><label class='lbl-nav'>&nbsp; Treatment &nbsp; &nbsp; </label></a>
+      <a href="#submenu3" data-toggle="collapse"><i class="fas fa-file-medical fa-2x"></i><label class='lbl-nav'>&nbsp;
+        Treatment &nbsp; &nbsp; </label></a>
       <ul id="submenu3" class="list-unstyled collapse">
+        <li>Diagnosis</li>
+        <li><a href="/diagnoses">View All</a></li>
+        <li><a href="/diagnoses/new">Diagons Patient</a></li>
+        <li>Drugs</li>
+        <li><a href="/prescriptions">View all</a></li>
+        <li><a href="/prescriptions/new">Prescribe</a></li>
+        <li>Notes</li>
         <li><a href="/treatments">View All</a></li>
         <li><a href="/treatments/new">Treat Patient</a></li>
       </ul>
+
     </li>
+    <!--<a href=" <li>#submenu4" data-toggle="collapse"><i class="fas fa-pills fa-2x"></i><label class='lbl-nav'>&nbsp;-->
+    <!--Prescription &nbsp; &nbsp; </label></a>-->
+
+    <!--</li>-->
     <li>
-      <a href="#submenu4" data-toggle="collapse"><i class="fas fa-pills fa-2x"></i><label class='lbl-nav'>&nbsp; Prescription &nbsp; &nbsp; </label></a>
-      <ul id="submenu4" class="list-unstyled collapse">
-        <li><a href="/prescriptions">View all</a></li>
-        <li><a href="/prescriptions/new">Prescribe</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#submenu5" data-toggle="collapse"><i class="fas fa-hospital fa-2x"></i><label class='lbl-nav'>&nbsp; Hospital Admin &nbsp; &nbsp; </label></a>
+      <a href="#submenu5" data-toggle="collapse"><i class="fas fa-hospital fa-2x"></i><label class='lbl-nav'>&nbsp;
+        Hospital Admin &nbsp; &nbsp; </label></a>
       <ul id="submenu5" class="list-unstyled collapse">
         <li><a href="/staffs">Staff</a></li>
         <li><a href="/patients">Patients</a></li>
@@ -52,5 +61,29 @@
       </ul>
     </li>
     <li><a href="/"><i class="fas fa-home fa-2x"></i><label class='lbl-nav'>&nbsp; Home</label></a></li>
+  </ul>
+  <ul class="list-unstyled align-content-end float-end">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
+        <i class="fas fa-user-circle fa-2x"></i>
+        <label class='lbl-nav'>&nbsp;
+          <% if staff_signed_in? %>
+            Signed in as <%= current_staff.email %>.
+          <% else %>
+            <%= link_to('Register', new_staff_registration_path) %>
+            or <%= link_to('Sign in', new_staff_session_path) %>
+          <% end %>&nbsp; &nbsp; </label>
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <label class='lbl-nav'>&nbsp;
+          <% if staff_signed_in? %>
+            <%= link_to('Sign out', destroy_staff_session_path, method: :delete) %>
+          <% else %>
+            <%= link_to('Register', new_staff_registration_path) %>
+            or <%= link_to('Sign in', new_staff_session_path) %>
+          <% end %>&nbsp; &nbsp; </label>
+      </div>
+    </li>
   </ul>
 </div>
