@@ -1,0 +1,42 @@
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Ward No</th>
+    <th>Ward Name</th>
+    <th>Patient Name</th>
+    <th>Drug Name</th>
+    <th>Dosage</th>
+    <th>Length of Treatment</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if !noLimitOrOrder %>
+    <% admissions = admissions.limit(5).order(admissionDate: :desc) %>
+  <% end %>
+  <% admissions.each do |admission| %>
+
+    <% patient = admission.patient %>
+    <% ward = admission.ward %>
+    <% prescriptions = patient.prescriptions.limit(3) %>
+    <tr>
+      <td><%= ward.wardNumber %></td>
+      <td><%= ward.name %></td>
+      <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+      <% if prescriptions.empty? %>
+        <td colspan="3"><p>No prescriptions found.</p></td>
+      <% else %>
+        <% prescriptions&.each do |prescription| %>
+          <% drugs = prescription.drugs %>
+          <td>
+            <% drugs&.each do |drug| %>
+              <%= drug.name %>
+            <% end %>
+          </td>
+          <td><%= prescription.dosage %></td>
+          <td><%= prescription.treatmentLength %></td>
+        <% end %>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

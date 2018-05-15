@@ -1,0 +1,37 @@
+<table class="table table-bordered table-striped" role="datatable">
+  <thead class="thead-light">
+  <tr>
+    <th><%= sort_link(@search, :ward_id, 'Ward No') %></th>
+    <th><%= sort_link(@search, :name, 'Ward Name') %></th>
+    <!--<th><%# sort_link(@search, :full_name, 'Patient Name') %></th>-->
+    <!--<th><%# sort_link(@search, :patientAddress, 'Patient Address') %></th>-->
+    <!--<th><%# sort_link(@search, :dateOfBirth, 'Patient DOB') %></th>#-->
+    <th>Patient Name</th>
+    <th>Patient Address</th>
+    <th>Patient DOB</th>
+    <th>Home Telephone No</th>
+    <th>Mobile Telephone No</th>
+    <!--<th>Date Admitted</th> -->
+    <th><%= sort_link(@search, :admissionDate, 'Date Admitted') %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% admissions.each do |admission| %>
+    <% patient = admission.patient %>
+    <% ward = admission.ward %>
+    <tr>
+      <td><%= ward.wardNumber %></td>
+      <td><%= ward.name %></td>
+      <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+      <td>
+        <%= patient.person.address.houseNumber + ', ' + patient.person.address.street + ', ' +
+                patient.person.address.town + ', ' + patient.person.address.postcode %>
+      </td>
+      <td><%= localize(patient.person.dateOfBirth) %></td>
+      <td><%= patient.person.telHomeNo %></td>
+      <td><%= patient.person.telMobileNo %></td>
+      <td><%= admission.admissionDate ? localize(admission.admissionDate) : '--' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
