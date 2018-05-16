@@ -25,7 +25,8 @@
       <td><%= admission.status %></td>
       <td>
         <%#	 Displayed only the authorised staff (consultant/doctor) and discharge is not set/nil %>
-        <%= link_to('Discharge', discharge_admission_path(admission.id), data: { modal: true }, role: 'button', class: 'btn btn-secondary') if (admission.dischargeDate.nil? || admission.admitted?) && policy(:admission).discharge? %>
+        <%= link_to('Discharge', discharge_admission_path(admission.id), data: { modal: true }, role: 'button',
+                    class: 'btn btn-secondary') if (admission.dischargeDate.nil? || admission.admitted?) && policy(:admission).discharge? %>
       </td>
     </tr>
   <% end %>

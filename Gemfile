@@ -45,7 +45,7 @@ group :development, :test do
 
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver', '~> 3.11'
+  # gem 'selenium-webdriver', '~> 3.11'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'better_errors', '~> 2.4'
   gem 'binding_of_caller', '~> 0.8.0'
@@ -109,7 +109,7 @@ gem 'cocoon', '~> 1.2', '>= 1.2.11'
 gem 'braintree', '~> 2.88'
 
 # dependence for axlsx
-gem 'rubyzip', '~> 1.2', '>= 1.2.1'
+gem 'rubyzip'
 
 # Excel spreadsheet generation
 gem 'axlsx', '>= 2.0.1'
@@ -123,7 +123,7 @@ gem 'wicked_pdf'
 # gem 'whenever', '~> 0.10.0'
 
 # Allows to schedule tasks/jobs (Redis)
-gem 'sidekiq', '~> 5.1', '>= 5.1.3'
+# gem 'sidekiq', '~> 5.1', '>= 5.1.3'
 
 # Background work/schedule tasks/jobs (Cron)
 gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.1'
@@ -135,5 +135,5 @@ gem 'ransack', '~> 1.8', '>= 1.8.8'
 gem 'hirb', '~> 0.7.3'
 
 # Refactor
-gem 'rails_refactor', '~> 1.4', '>= 1.4.4'
+# gem 'rails_refactor', '~> 1.4', '>= 1.4.4'
 

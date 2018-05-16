@@ -7,7 +7,7 @@ body {
 }
 
 .top-stripe {
-    background: #383738;
+    background-color: #343a40;
     height: 45%;
     width: 100%;
     z-index: -1;
@@ -19,4 +19,13 @@ table.borderless td, table.borderless th {
 
 table.borderless {
     margin-bottom: 0 !important;
+}
+
+#login-card {
+    width: 32rem;
+    padding: 30px;
+    transform: translateY(25%) translateX(90%);
+    position: absolute;
+    display: block;
+    align-items: center;
 }

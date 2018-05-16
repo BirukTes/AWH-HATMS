@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   namespace :reports do
     get :ward_list
     get :medications_list
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   end
   resources :wards do
     collection do
-      match 'search' => 'wards#search', via: [:get, :post], as: :search
+      match 'search' => 'wards#search', via: %i[get post], as: :search
     end
   end
   resources :drugs
@@ -38,7 +39,7 @@ Rails.application.routes.draw do
     # Collections do not require id
     collection do
       get :find_and_discharge
-      match 'search' => 'admissions#search', via: [:get, :post], as: :search
+      match 'search' => 'admissions#search', via: %i[get post], as: :search
     end
   end
 
@@ -50,11 +51,10 @@ Rails.application.routes.draw do
     get 'find_discharged_without_invoice_patients_in_ward', to: 'find#find_discharged_without_invoice_patients_in_ward'
   end
 
-
   # Change devise routes from staffs/login to /login
   devise_for :staffs, path: '',
-             path_names: { sign_in: 'login', sign_up: 'register', account_update: 'update' },
-             controllers: { sessions: 'sessions' }
+                      path_names: { sign_in: 'login', sign_up: 'register', account_update: 'update' },
+                      controllers: { sessions: 'sessions', passwords: 'passwords' }
 
   # On the scope of devise, manage authenticated and unauthenticated users
   devise_scope :staff do

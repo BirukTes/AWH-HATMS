@@ -73,7 +73,7 @@
     </thead>
     <tbody>
     <% @patient.prescriptions&.each do |prescription| %>
-      <% staff = Staff.find_by_user_id(prescription.issuedBy) %>
+      <% staff = Staff.find_by(userId: prescription.issuedBy) %>
       <tr>
         <td><%= localize(prescription.date) %></td>
         <td><%= prescription.id %></td>
@@ -101,7 +101,7 @@
     </thead>
     <tbody>
     <% @patient.treatments&.each do |treatment| %>
-      <% staff = Staff.find_by_user_id(treatment.issuedBy) %>
+      <% staff = Staff.find_by(userId: treatment.issuedBy) %>
       <tr>
         <td><%= localize(treatment.date) %> </td>
         <td><%= treatment.id %></td>
@@ -117,6 +117,6 @@
 
 <%= content_for(:navigationButtons) do %>
   <%# FIXME find  back method  %>
-  <% session[:return_url] = request.referrer if request.referrer != patient_path(@patient.id)  %>
+  <% session[:return_url] = request.referrer if request.referrer != patient_path(@patient.id) %>
   <%= link_to('Back', session[:return_url], role: 'button', class: 'btn btn-primary') %>
 <% end %>

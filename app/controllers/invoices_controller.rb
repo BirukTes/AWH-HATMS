@@ -22,7 +22,6 @@ class InvoicesController < ApplicationController
     authorize(:invoice)
     @invoice = Invoice.new
 
-
     if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
       admission_id_extract = params[:patient_id].split('|')[1]
       @admission = Admission.find(admission_id_extract)

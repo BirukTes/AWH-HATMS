@@ -1,19 +1,20 @@
 module HomePresenter
   class IndexPresenter
     def admissions
-      Admission.all
+    Admission.ransack.result
+
     end
 
     def patients
-      Patient.all
+      Patient.ransack.result
     end
 
     def staffs
-      Staff.all
+      Staff.ransack.result
     end
 
     def teams
-      Team.all
+      Team.ransack.result
     end
 
     def job_titles
@@ -25,7 +26,7 @@ module HomePresenter
     end
 
     def wards
-      Ward.all
+     Ward.ransack.result
     end
 
     def ward_all_beds

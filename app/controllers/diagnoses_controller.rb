@@ -2,12 +2,12 @@ class DiagnosesController < ApplicationController
   before_action :set_diagnosis, only: [:show, :edit, :update, :destroy]
 
   # Authorisation callbacks
-  # after_action(:verify_authorized)
+  after_action(:verify_authorized)
 
   # GET /diagnoses
   # GET /diagnoses.json
   def index
-    # authorize(:diagnose)
+    authorize(:diagnosis)
     @diagnoses = Diagnosis.all
   end
 
@@ -19,7 +19,7 @@ class DiagnosesController < ApplicationController
   # GET /diagnoses/new
   def new
     # binding.pry
-    # authorize(:diagnose)
+    authorize(:diagnosis)
     @diagnosis = Diagnosis.new
 
     if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
@@ -40,7 +40,7 @@ class DiagnosesController < ApplicationController
   # POST /diagnoses
   # POST /diagnoses.json
   def create
-    # authorize(:diagnose)
+    authorize(:diagnosis)
     @diagnosis = Diagnosis.new(diagnosis_params)
 
     respond_to do |format|
@@ -79,14 +79,14 @@ class DiagnosesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_diagnosis
-      # authorize(:diagnose)
-      @diagnosis = Diagnosis.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_diagnosis
+    authorize(:diagnosis)
+    @diagnosis = Diagnosis.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def diagnosis_params
-      params.require(:diagnoses).permit(:title, :description, :admission_id, :ward_id, :patient_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def diagnosis_params
+    params.require(:diagnosis).permit(:title, :description, :admission_id, :ward_id, :patient_id)
+  end
 end

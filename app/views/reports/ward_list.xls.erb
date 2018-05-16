@@ -8,7 +8,7 @@
     <Table>
       <Row>
         <Cell>
-          <Data ss:Type="Number">Ward No</Data>
+          <Data ss:Type="String">Ward No</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Ward Name</Data>
@@ -20,21 +20,21 @@
           <Data ss:Type="String">Patient Address</Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Date">Patient DOB</Data>
+          <Data ss:Type="String">Patient DOB</Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">Home Telephone No</Data>
+          <Data ss:Type="String">Home Telephone No</Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">Mobile Telephone No</Data>
+          <Data ss:Type="String">Mobile Telephone No</Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Date">Date Admitted</Data>
+          <Data ss:Type="String">Date Admitted</Data>
         </Cell>
       </Row>
       <% @admissions.each do |admission| %>
-        <% patient = Patient.find(admission.patient_id) # TODO DRY this two %>
-        <% ward = Ward.find(admission.ward_id) %>
+        <% patient = admission.patient %>
+        <% ward = admission.ward %>
         <Row>
           <Cell>
             <Data ss:Type="Number"><%= ward.wardNumber %></Data>
@@ -52,18 +52,17 @@
             </Data>
           </Cell>
           <Cell>
-            <Data ss:Type="Date"><%= localize(patient.person.dateOfBirth) %></Data>
+            <Data ss:Type="String"><%= localize(patient.person.dateOfBirth) %></Data>
           </Cell>
           <Cell>
-            <Data ss:Type="Number"><%= patient.person.telHomeNo %></Data>
+            <Data ss:Type="String"><%= patient.person.telHomeNo %></Data>
           </Cell>
           <Cell>
-            <Data ss:Type="Number"><%= patient.person.telMobileNo %></Data>
+            <Data ss:Type="String"><%= patient.person.telMobileNo %></Data>
           </Cell>
           <Cell>
-            <Data ss:Type="Date"><%= admission.admissionDate ? localize(admission.admissionDate) : '--' %></Data>
+            <Data ss:Type="String"><%= admission.admissionDate ? localize(admission.admissionDate) : '--' %></Data>
           </Cell>
-          </tr>
         </Row>
       <% end %>
     </Table>

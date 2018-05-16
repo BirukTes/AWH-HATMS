@@ -1,4 +1,7 @@
 <h1>Admissions</h1>
+
+
+
 <%= form_with(url: admissions_path, method: :get) do |filter_form| %>
   <div style="width: 35% !important;">
     <fieldset class="none-bs-fieldset">
@@ -26,6 +29,15 @@
 <% end %>
 
 <br/>
+<div class="row">
+  <div class="col-1">
+  <div class="btn-group mr-3">
+    <%= button_tag('Print', class: 'btn btn-outline-secondary mr-3 ', onClick: "printJS({ printable: 'admission_list_holder', type: 'html', header: 'Admission - List - #{Date.today.to_s}'})") %>
+  </div>
+</div>
+</div>
+<br/>
+
 <div id="admission_list_holder">
   <% if @admissions %>
     <%= render('admissions/admissions_list', admissions: @admissions) %>

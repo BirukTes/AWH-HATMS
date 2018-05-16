@@ -5,4 +5,8 @@ class Diagnosis < ApplicationRecord
 
   validates(:title, presence: true)
   validates(:description, presence: true)
+
+  def self.policy_class
+    DiagnosisPolicy
+  end
 end

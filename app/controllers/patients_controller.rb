@@ -7,29 +7,34 @@ class PatientsController < ApplicationController
   # Authorisation callbacks
   after_action(:verify_authorized)
 
-
+  # Handles GET method for index page (all patients/collection)
   def index
     authorize(:patient)
     @patients = Patient.all
   end
 
+  # Handles GET method for show/view page, the individual patient's page
   def show
   end
 
+  # Handles GET method for new page, the register patient page
   def new
     authorize(:patient)
     @patient = Patient.new
 
+
+    # Initialise the fields, for corresponding model
     @patient.build_person
     @patient.person.build_address
 
-    # Pass the param for redirection
+    # Pass the param for redirection, after saving or error
     if params.include?(:admission_register)
       session[:admission_register] = true
       puts('sessioned')
     end
   end
 
+  # Handles the POST saving/creation of the patient, with parameters from the form
   def create
     authorize(:patient)
     @patient = Patient.new(patient_params)
@@ -50,9 +55,11 @@ class PatientsController < ApplicationController
     end
   end
 
+  # Handles GET method for edit page
   def edit
   end
 
+  # Handles POST method for show/view page, the individual patient's page
   def update
     if @patient.update(patient_params)
       if params.include?(:update_patient)
@@ -74,6 +81,7 @@ class PatientsController < ApplicationController
     end
   end
 
+  # Handles PUT/PATCH method for show/view page
   def destroy
     @patient.destroy
     redirect_to(patients_path, notice: 'Patient deleted')
@@ -81,6 +89,7 @@ class PatientsController < ApplicationController
 
   private
 
+  # Permitted parameters
   def patient_params
     params.require(:patient).permit(:id, :allergies, :diabetes, :asthma, :smokes, :alcoholic, :medicalTestsResults, :nextOfKin,
                                     :isPrivate, :email, :admission_register, :update_patient, :occupation,
@@ -88,8 +97,10 @@ class PatientsController < ApplicationController
                                                         address_attributes: [:id, :houseNumber, :street, :town, :postcode]])
   end
 
+  # Sets/declares the record from the database by the id passed in
   def set_patient
     authorize(:patient)
     @patient = Patient.find(params[:id])
   end
+
 end

@@ -10,10 +10,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
-<header class="container">
+<header class="container-fluid">
 </header>
 <div class="top-stripe"></div>
-<section class="container">
+<section class="container-fluid">
   <div id="flash">
     <% flash.each do |key, value| %>
       <div class="flash alert <%= alert_class(key) %>"><%= value %></div>
@@ -21,5 +21,8 @@
   </div>
   <%= yield %>
 </section>
+<footer class="text-center fixed-bottom">
+  <p>Copyright © 2018 AllsWell Hospital. All rights reserved.</p>
+</footer>
 </body>
 </html>

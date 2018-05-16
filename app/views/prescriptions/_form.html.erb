@@ -1,6 +1,6 @@
 <%= render 'shared/errors', model: prescription %>
 <%= form_with(model: prescription, validate: true) do |prescription_form| %>
-  <%= prescription_form.hidden_field(:diagnose_id, value: prescription.diagnose_id || diagnose.id) %>
+  <%= prescription_form.hidden_field(:diagnosis_id, value: prescription.diagnosis_id || diagnose.id) %>
   <%= prescription_form.hidden_field(:date, value: prescription.date || Date.today) %>
   <%= prescription_form.hidden_field(:issuedBy, value: prescription.issuedBy || current_staff.userId) %>
   <div class="row">

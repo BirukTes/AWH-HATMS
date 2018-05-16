@@ -1,30 +1,28 @@
-<%= devise_error_messages! %>
-<div class="card " style="width: 32rem; padding: 30px;  position: relative; transform: translateY(25%) translateX(50%); display: flex; align-items: center;">
+<div class="card " id="login-card">
   <h4>Login to AllsWell Hospital</h4>
-
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <table class="table borderless">
       <tbody>
       <tr>
         <td>
-          <div class="field">
-            <%= f.text_field(:userId, autofocus: true, autocomplete: 'userId', placeholder: 'User ID') %>
+          <div class="form-group">
+            <%= f.text_field(:userId, autofocus: true, autocomplete: 'userId', placeholder: 'User ID', class: 'form-control') %>
           </div>
         </td>
       </tr>
       <tr>
         <td>
-          <div class="field">
-            <%= f.password_field :password, autocomplete: 'off', placeholder: :password %>
+          <div class="form-group">
+            <%= f.password_field(:password, autocomplete: 'off', placeholder: :password, class: 'form-control') %>
           </div>
         </td>
       </tr>
       <tr>
         <td>
           <% if devise_mapping.rememberable? -%>
-            <div class="field">
-              <%= f.check_box :remember_me, class: 'chj' %>
-              <%= f.label :remember_me %>
+            <div class="form-group">
+              <%= f.check_box(:remember_me, class: 'chj') %>
+              <%= f.label(:remember_me) %>
             </div>
           <% end -%></td>
       </tr>
@@ -32,7 +30,7 @@
         <td><%= render("devise/shared/links") %></td>
         <td>
           <div class="actions">
-            <%= f.submit "Log in", class: 'btn btn-primary' %>
+            <%= f.submit('Log in', class: 'btn btn-primary') %>
           </div>
         </td>
       </tr>
@@ -41,38 +39,43 @@
   <% end %>
 </div>
 <br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
 <br/>
-<div>
-  <fieldset >
-    <legend>Registered Test Staffs</legend>
-    <table class="table table-bordered table-striped">
-      <thead>
-      <tr>
-        <th>User Id</th>
-        <th>Password</th>
-        <th>Active</th>
-        <th>Speciality</th>
-        <th>Job Title</th>
-      </tr>
-      </thead>
-      <tbody>
-
-      <%# & symbol used as safe navigation or exits if object is null %>
-      <% all_staffs&.each do |staff| %>
+<div class="row">
+  <div class="col-3">
+    <fieldset>
+      <legend class="text-light">Registered Test Staffs</legend>
+      <table class="table table-bordered table-striped">
+        <thead class="thead-light">
         <tr>
-          <td><%= staff.userId %></td>
-          <td>password</td>
-          <td><%= staff.active %></td>
-          <% staff&.specialities.each do |speciality| %>
-            <td><%= speciality.speciality %></td>
-          <% end %>
-          <% staff&.job_titles.each do |job_title| %>
-            <td><%= job_title.title %></td>
-          <% end %>
+          <th>User Id</th>
+          <th>Password</th>
+          <th>Active</th>
+          <th>Speciality</th>
+          <th>Job Title</th>
         </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </fieldset>
-
+        </thead>
+        <tbody>
+        <%# & symbol used as safe navigation or exits if object is null %>
+        <% all_staffs&.each do |staff| %>
+          <tr>
+            <td><%= staff.userId %></td>
+            <td>password</td>
+            <td><%= staff.active %></td>
+            <% staff&.specialities.each do |speciality| %>
+              <td><%= speciality.speciality %></td>
+            <% end %>
+            <% staff&.job_titles.each do |job_title| %>
+              <td><%= job_title.title %></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </fieldset>
+  </div>
 </div>

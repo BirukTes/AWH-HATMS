@@ -1,0 +1,73 @@
+<table class="table table-bordered table-striped">
+  <tbody>
+  <thead class="thead-light">
+  <tr>
+    <th>Patient No</th>
+    <th>Patient Name</th>
+    <th>Ward No</th>
+    <th>Ward Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%# TODO Recursively check next days until the end the week if none %>
+  <% # Gets the first patient admitted at the beginning of the week
+     patient_card_admission = admissions.where(admissionDate: Date.today.beginning_of_week).order(admissionDate: :asc).first %>
+
+  <% if patient_card_admission.blank? %>
+    <tr>
+      <td colspan="5"><p>No patient found from this date.</p></td>
+    </tr>
+  <% else %>
+    <% patient = admission.patient %>
+    <% ward = admission.ward %>
+    <% prescriptions = patient&.prescriptions %>
+    <tr>
+      <td><%= patient.id %></td>
+      <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+      <td><%= ward.wardNumber %></td>
+      <td><%= ward.name %></td>
+    </tr>
+    <tr>
+      <td>
+        <br>
+        <table class="table table-bordered table-striped">
+          <thead class="thead-light">
+          <tr>
+            <th>Date</th>
+            <th>Drug Code</th>
+            <th>Drug Name</th>
+            <th>Dosage</th>
+            <th>Length of Treatment</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <% if prescriptions&.empty? %>
+              <td colspan="3"><p>No medications found.</p></td>
+            <% else %>
+              <% prescriptions&.each do |prescription| %>
+                <td><%= prescription.date %></td>
+                <td>
+                  <% prescription&.drugs.each do |drug| %>
+                    <%= drug.code %>
+                    <br>
+                  <% end %>
+                </td>
+                <td>
+                  <% prescription&.drugs.each do |drug| %>
+                    <%= drug.name %>
+                    <br>
+                  <% end %>
+                </td>
+                <td><%= prescription.dosage %></td>
+                <td><%= prescription.treatmentLength %></td>
+              <% end %>
+            <% end %>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

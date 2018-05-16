@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col-12">
       <h6>Today - <%= localize(Date.today, format: :custom) %></h6></div>
@@ -22,10 +22,14 @@
     <div class="col">
       <%= render('card', cardTitle: @home_presenter.wards.count.to_s, cardDescription: 'Wards') %>
     </div>
-    <div class="col">
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-6">
       <%= pie_chart([['Available Beds', @home_presenter.ward_available_beds], ['All Beds', @home_presenter.ward_all_beds]], colors: ["#FC3C3C", "#083358"]) %>
     </div>
-    <div class="col">
+    <div class="col-6">
       <%= pie_chart([['Admissions', @home_presenter.admissions.admitted.count], ['Discharged', @home_presenter.admissions.discharged.count]]) %>
     </div>
   </div>
@@ -33,7 +37,7 @@
   <div class="row">
     <div class="col">
       <h2>Ward List </h2> <br/>
-      <%= render('reports/ward_list', admissions: @home_presenter.admissions) %>
+      <%= render('ward_list', admissions: @home_presenter.admissions) %>
       <br/>
     </div>
   </div>
@@ -41,7 +45,7 @@
   <div class="row">
     <div class="col">
       <h2>Discharge List</h2><br/>
-      <%= render('reports/discharge_list', admissions: @home_presenter.admissions) %>
+      <%= render('discharge_list', admissions: @home_presenter.admissions) %>
       <br/>
     </div>
   </div>
@@ -49,7 +53,7 @@
   <div class="row">
     <div class="col">
       <h2>Medications List</h2><br/>
-      <%= render('reports/medications_list', admissions: @home_presenter.admissions) %>
+      <%= render('medications_list', admissions: @home_presenter.admissions) %>
       <br/>
     </div>
   </div>
@@ -57,7 +61,7 @@
   <div class="row">
     <div class="col">
       <h2>Patient Card - Week Beginning <%= localize(Date.today.beginning_of_week, format: :custom) %></h2><br/>
-      <%= render('reports/patient_card', admissions: @home_presenter.admissions) %>
+      <%= render('patient_card', admissions: @home_presenter.admissions) %>
       <br/>
     </div>
   </div>

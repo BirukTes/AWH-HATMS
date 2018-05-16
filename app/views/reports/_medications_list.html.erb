@@ -10,11 +10,7 @@
   </tr>
   </thead>
   <tbody>
-  <% if !noLimitOrOrder %>
-    <% admissions = admissions.limit(5).order(admissionDate: :desc) %>
-  <% end %>
   <% admissions.each do |admission| %>
-
     <% patient = admission.patient %>
     <% ward = admission.ward %>
     <% prescriptions = patient.prescriptions.limit(3) %>

@@ -105,10 +105,10 @@
               </div>
             <% else %>
               <div class="col">
-                <%= link_to('Receive Payment', receive_payment_invoice_path, data: { modal: true }, class: 'btn btn-primary') %>
+                <%= link_to('Receive Payment', receive_payment_invoice_path, data: { modal: true }, class: 'btn btn-primary', role: 'button', remote: request.xhr?) %>
               </div>
               <div class="col offset-1">
-                <%= link_to('Pay now', new_invoice_payments_path, data: { modal: true }, class: 'btn btn-primary') %>
+                <%= link_to('Pay now', new_invoice_payments_path, data: { modal: true }, class: 'btn btn-primary', role: 'button', remote: request.xhr?) %>
               </div>
             <% end %>
           </div>

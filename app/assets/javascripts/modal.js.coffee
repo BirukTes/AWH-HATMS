@@ -11,15 +11,14 @@ $ ->
       find(modal_selector).modal()
     false
 
-  $(document).on 'ajax:success',
-    'form[data-modal]', (event, data, status, xhr)->
+  $(document).on 'ajax:success', 'form[data-modal]', (event, data, status, xhr) ->
     url = xhr.getResponseHeader('Location')
     console.log(xhr, data, status, event)
     if url
-      # Redirect to url
+# Redirect to url
       window.location = url
     else
-      # Remove old modal backdrop
+# Remove old modal backdrop
       $('.modal-backdrop').remove()
 
       # Replace old modal with new one
@@ -28,12 +27,12 @@ $ ->
 
     false
 
-    $(document).on('ajax:error','form[data-modal]', (jqXHR, textStatus, errorThrown) ->
-      if (textStatus == 'timeout')
-        console.log('The server is not responding')
+  $(document).on('ajax:error', 'form[data-modal]', (jqXHR, textStatus, errorThrown) ->
+    if (textStatus == 'timeout')
+      console.log('The server is not responding')
 
-      if (textStatus == 'error')
-        console.log(errorThrown))
+    if (textStatus == 'error')
+      console.log(errorThrown))
 
 
 

@@ -10,7 +10,6 @@
   </thead>
   <tbody>
   <%# dischargeAdmissions = admissions.where(dischargeDate: Date.today).all %>
-
   <% @admissions.each_with_index do |admission| %>
     <% patient = admission.patient %>
     <% ward = admission.ward %>
@@ -22,6 +21,5 @@
       <td><%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %></td>
     </tr>
   <% end %>
-
   </tbody>
 </table>

@@ -1,0 +1,31 @@
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Ward No</th>
+    <th>Ward Name</th>
+    <th>Patient Name</th>
+    <th>Admission Date</th>
+    <th>Discharge Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% dischargeAdmissions = admissions.where(dischargeDate: Date.today).all %>
+  <% if !(dischargeAdmissions.nil? || dischargeAdmissions.empty?) %>
+    <% dischargeAdmissions.limit(5).each do |admission| %>
+      <% patient = admission.patient %>
+      <% ward = admission.ward %>
+      <tr>
+        <td><%= ward.wardNumber %></td>
+        <td><%= ward.name %></td>
+        <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+        <td><%= admission.admissionDate ? localize(admission.admissionDate) : '--' %></td>
+        <td><%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="5"><p>No discharges due today.</p></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

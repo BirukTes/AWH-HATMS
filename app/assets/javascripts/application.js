@@ -11,15 +11,19 @@
 // about supported directives.
 //
 //= require jquery
+// Bootstrap tooltip
 //= require tether
 //= require rails-ujs
 //= require turbolinks
 //= require bootstrap
 //= require jquery.easy-autocomplete
+// Chart Js, from gem chartKick bundle
 //= require Chart.bundle
 //= require chartkick
+// Nested fields
 //= require cocoon
 //= require DataTables
+//= require print.min.js
 //= require_tree .
 
 $(document).ready(function () {

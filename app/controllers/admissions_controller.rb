@@ -48,7 +48,7 @@ class AdmissionsController < ApplicationController
 
     if params.key?(:dateOfBirth) && !params[:dateOfBirth].blank?
       params.key?(:lastName) && !params[:lastName].blank? && @patient.eql?(nil)
-
+# binding.pry
       @patient = Patient.find_patient(params[:dateOfBirth], params[:lastName])
 
       if @patient.nil?

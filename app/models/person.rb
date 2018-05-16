@@ -1,16 +1,19 @@
 class Person < ApplicationRecord
+
   # One-to-one association
   has_one :address, dependent: :destroy
-
   # Polymorphic association, creates multiple table inheritance at database level
   belongs_to :personalDetail, polymorphic: true, optional: true
 
-  validates :firstName, presence: true
-  validates :lastName, presence: true
-  validates :gender, presence: true
-
   # To allow creation of address during creation person
   accepts_nested_attributes_for(:address, allow_destroy: true)
+
+  # Validate uniqueness the person using the date of birth column
+  validates(:firstName, presence: true, :uniqueness => { :case_sensitive => false, scope: :dateOfBirth })
+  validates(:lastName, presence: true, :uniqueness => { :case_sensitive => false, scope: :dateOfBirth })
+  validates(:gender, presence: true)
+  validates_associated(:address, presence: true)
+
 
   # Class method, can be accessed without instantiation
   # Gets the a patient with the details

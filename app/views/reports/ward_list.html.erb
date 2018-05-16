@@ -82,9 +82,6 @@
         <br>
         <div class="row">
           <div class="col offset-6">
-            <% disable_btn_export = @admissions.nil? || @admissions&.empty? ? 'disabled' : '' # TODO fix this link %>
-            <%= link_to('Export as Excel', reports_ward_list_path(format: :xls), { class: "btn btn-secondary form-control #{disable_btn_export}",
-                                                                                   role: 'button' }) %>
           </div>
           <div class="col">
             <%= ward_report_form.submit('Search', class: 'btn btn-primary float-right', id: 'enable_form_submit',
@@ -95,7 +92,18 @@
     </fieldset>
   </div>
 <% end %>
-&nbsp;
+&nbsp;&nbsp;<br/>
+<div class="row">
+  <div class="col-1">
+    <div class="btn-group mr-auto">
+      <% disable_btn_export = @admissions.nil? || @admissions&.empty? ? 'disabled' : '' # TODO fix this link %>
+      <%= button_tag('Print', class: "btn btn-outline-secondary #{disable_btn_export}", onClick: "printJS({ printable: 'ward_list_holder', type: 'html', header: 'Ward - List - #{Date.today.to_s}'})") %>
+      <%= link_to('Export as Excel', reports_ward_list_path(format: :xls), { class: "btn btn-outline-secondary form-control #{disable_btn_export}",
+                                                                             role: 'button' }) %> </div>
+  </div>
+</div>
+<br/>
+
 <div id="ward_list_holder">
   <% if !@admissions.nil? && !@admissions&.empty? %>
     <%= render('ward_list', admissions: @admissions) %>
