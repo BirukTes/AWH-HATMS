@@ -48,6 +48,7 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       if @invoice.save!
+        InvoiceMailer.send_invoice(@invoice.admission.patient)
         format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
         format.json { render :show, status: :created, location: @invoice }
       else
@@ -101,6 +102,10 @@ class InvoicesController < ApplicationController
       render :receive_payment
       flash[:alert] = 'Please fill the received date field.'
     end
+  end
+
+  def send_mail
+    InvoiceMailer.send_invoice(Patient.new).deliver
   end
 
   private

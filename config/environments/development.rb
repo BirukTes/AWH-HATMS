@@ -13,7 +13,19 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   # Default URL option, Configure the mailer to create full URLs in emails
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  # config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+  # config.action_mailer.delivery_method = :smtp
+  #
+  # # SMTP settings for mailgun
+  # ActionMailer::Base.smtp_settings = {
+  #     :port           => 587,
+  #     :address        => Rails.application.secrets.mailgun_smtp_hostname,
+  #     :domain         => Rails.application.secrets.mailgun_domain,
+  #     :user_name      => Rails.application.secrets.mailgun_username,
+  #     :password       => Rails.application.secrets.mailgun_password,
+  #     :authentication => :plain,
+  # }
 
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?

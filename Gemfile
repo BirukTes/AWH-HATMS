@@ -119,6 +119,9 @@ gem 'axlsx_rails', '>= 0.5.2'
 # PDF generation
 gem 'wicked_pdf'
 
+# Mailing API
+gem 'mailgun-ruby', '~> 1.1', '>= 1.1.9'
+
 # Allows to schedule tasks/jobs (Cron)
 # gem 'whenever', '~> 0.10.0'
 
@@ -136,4 +139,5 @@ gem 'hirb', '~> 0.7.3'
 
 # Refactor
 # gem 'rails_refactor', '~> 1.4', '>= 1.4.4'
+
 

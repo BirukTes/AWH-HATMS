@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     end
     collection do
       post :set_payment_received
+      get :send_mail
     end
   end
   resources :wards do
