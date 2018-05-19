@@ -1,3 +1,5 @@
+<%   @invoice = invoice unless @invoice %>
+<%	binding.pry  %>
 <div class="container d-flex">
   <div class="row">
     <div class="col">
@@ -105,10 +107,13 @@
               </div>
             <% else %>
               <div class="col">
-                <%= link_to('Receive Payment', receive_payment_invoice_path, data: { modal: true }, class: 'btn btn-primary', role: 'button', remote: request.xhr?) %>
+                <%= link_to('Receive Payment', receive_payment_invoice_path, data: { modal: true }, class: 'btn btn-primary', role: 'button', remote: true) %>
               </div>
               <div class="col offset-1">
-                <%= link_to('Pay now', new_invoice_payments_path, data: { modal: true }, class: 'btn btn-primary', role: 'button', remote: request.xhr?) %>
+                <%= link_to('Pay now', new_invoice_payments_path, data: { behavior: 'modal' }, class: 'btn btn-primary', role: 'button') %>
+              </div>
+              <div class="col offset-1">
+                <%= link_to('Show PDF', invoice_path(@invoice), data: { behavior: 'modal' }, class: 'btn btn-primary', role: 'button') %>
               </div>
             <% end %>
           </div>

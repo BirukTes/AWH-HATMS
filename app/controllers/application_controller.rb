@@ -10,10 +10,14 @@ class ApplicationController < ActionController::Base
   before_action(:authenticate_staff!)
 
 
+  # This defines the responses types, or It is referencing the response that will
+  # be sent to the View (which is going to the browser) https://stackoverflow.com/a/9492463/5124710
+  respond_to(:html, :json, :js)
+
   def respond_modal_with(*args, &blk)
     options = args.extract_options!
     options[:responder] = ModalResponder
-    respond_with *args, options, &blk
+    respond_with(*args, options, &blk)
   end
 
   # Define the method pundit should use to find current u

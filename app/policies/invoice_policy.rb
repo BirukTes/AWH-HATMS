@@ -33,4 +33,10 @@ class InvoicePolicy < ApplicationPolicy
   def set_payment_received?
     staff.medical_staff_admin?
   end
+
+  def send_mail?
+    staff.medical_staff_admin?
+  end
+
+
 end

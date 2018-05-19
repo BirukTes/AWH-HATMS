@@ -2,10 +2,6 @@ class AdmissionsController < ApplicationController
   # Sets the admission object for the following actions
   before_action(:set_admission, only: [:show, :edit, :update, :destroy, :discharge, :authorise_discharge])
 
-  # This defines the responses types, or It is referencing the response that will
-  # be sent to the View (which is going to the browser) https://stackoverflow.com/a/9492463/5124710
-  respond_to(:html, :json, :js)
-
   # Authorisation callbacks
   # Make sure all actions perform authorisation, (individual records),
   # index retrieves multiple records so exclude

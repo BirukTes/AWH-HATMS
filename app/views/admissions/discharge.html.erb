@@ -1,6 +1,6 @@
 <%# Rails Modal %>
 <% content_for :title, 'Authorise Discharge' %>
-<%= form_with(model: @admission, url: authorise_discharge_admission_path, method: :post, remote: request.xhr?, html: { data: { modal: true } }) do |admission_discharge_form| %>
+<%= form_with(model: @admission, url: authorise_discharge_admission_path, method: :post, html: { data: { modal: true } }) do |admission_discharge_form| %>
   <% patient = @admission.patient %>
   <table class="table borderless">
     <tbody>

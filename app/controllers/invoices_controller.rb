@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: [:show, :edit, :update, :destroy, :receive_payment, :set_payment_received]
+  before_action :set_invoice, only: %i[show edit update destroy receive_payment set_payment_received]
   # Authorisation callbacks
   after_action(:verify_authorized)
 
@@ -15,6 +17,17 @@ class InvoicesController < ApplicationController
   # GET /invoices/1
   # GET /invoices/1.json
   def show
+
+    # update the status so nobody generates a PDF twice
+    # invoice.update_attribute(:status, 'queued')
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'test' # Excluding ".pdf" extension.
+      end
+    end
+
+
   end
 
   # GET /invoices/new
@@ -37,7 +50,7 @@ class InvoicesController < ApplicationController
   end
 
   # GET /invoices/1/edit
-  def edit
+  def edit;
   end
 
   # POST /invoices
@@ -48,7 +61,10 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       if @invoice.save!
-        InvoiceMailer.send_invoice(@invoice.admission.patient)
+
+        # TODO move the method to delayed job
+        generate_pdf_and_invoke_send
+
         format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
         format.json { render :show, status: :created, location: @invoice }
       else
@@ -88,7 +104,8 @@ class InvoicesController < ApplicationController
 
   def receive_payment
     # binding.pry
-    respond_modal_with(@invoice)
+    # render layout: 'layouts/modal'
+    respond_modal_with(@invoice, location: receive_payment_invoice_path)
   end
 
   def set_payment_received
@@ -105,10 +122,15 @@ class InvoicesController < ApplicationController
   end
 
   def send_mail
-    InvoiceMailer.send_invoice(Patient.new).deliver
+    authorize(:invoice)
+    # InvoiceMailer.send_invoice(Patient.new).deliver
+  end
+
+  def pdf_invoice;
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_invoice
     authorize(:invoice)
@@ -118,20 +140,20 @@ class InvoicesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def invoice_params
     params.require(:invoice).permit(:id, :dateReceived, :dateDue, :paymentReceived, :patient_id, :amount, :admission_id,
-                                    invoice_details_attributes: [:id, :treatment, :quantity, :unitPrice, :tax, :lineTotal, :_destroy])
+                                    invoice_details_attributes: %i[id treatment quantity unitPrice tax lineTotal _destroy])
   end
 
   # Populates invoice details for the invoice in creation
   def pre_populate_invoice_details
-
     # For nights stay
-    days_as_quantity = ((@admission.dischargeDate - @admission.admissionDate).to_int) / 1.day
+    days_as_quantity = (@admission.dischargeDate - @admission.admissionDate).to_int / 1.day
     @invoice.invoice_details.build(
         treatment: 'Admission-Fee',
         quantity: days_as_quantity,
         unitPrice: '250.00',
         tax: '5.0',
-        lineTotal: (250 * days_as_quantity * ((5 / 100) + 1)))
+        lineTotal: (250 * days_as_quantity * ((5 / 100) + 1))
+    )
 
     # For Diagnoses, TODO 1 is only for the older admissions
     number_diagnoses = @admission.diagnoses.count
@@ -140,7 +162,8 @@ class InvoicesController < ApplicationController
         quantity: number_diagnoses,
         unitPrice: '50.00',
         tax: '2.0',
-        lineTotal: (50 * number_diagnoses * ((2 / 100) + 1)))
+        lineTotal: (50 * number_diagnoses * ((2 / 100) + 1))
+    )
 
     # For prescriptions
     number_drugs = @admission.diagnoses.map { |diagnoses| diagnoses.prescriptions.map { |prescription| prescription.drugs.count }.sum }.sum
@@ -149,6 +172,35 @@ class InvoicesController < ApplicationController
         quantity: number_drugs,
         unitPrice: '20.00',
         tax: '4.0',
-        lineTotal: (20 * number_drugs * ((4 / 100) + 1)))
+        lineTotal: (20 * number_drugs * ((4 / 100) + 1))
+    )
+  end
+
+  def generate_pdf_and_invoke_send()
+    # enqueue our custom job object that uses delayed_job methods
+    ActionView::Base.send(:define_method, :protect_against_forgery?) { false }
+    # create an instance of ActionView, so we can use the render method outside of a controller
+    av = ActionView::Base.new
+
+    av.view_paths = ActionController::Base.view_paths
+
+    # need these in case your view constructs any links or references any helper methods.
+    av.class_eval do
+      include Rails.application.routes.url_helpers
+      include ApplicationHelper
+    end
+
+    pdf_html = av.render(template: 'invoices/show.pdf.erb', layout: 'layouts/pdf.html.erb', locals: { invoice: @invoice })
+
+    # use wicked_pdf gem to create PDF from the doc HTML
+    invoice_pdf = WickedPdf.new.pdf_from_string(pdf_html, page_size: 'Letter')
+
+    # save PDF to disk
+    pdf_path = Rails.root.join('tmp', "invoice_no#{@invoice.id}.pdf")
+    File.open(pdf_path, 'wb') do |file|
+      file << invoice_pdf
+    end
+
+    InvoiceMailer.send_invoice(@invoice)
   end
 end

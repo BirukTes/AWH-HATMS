@@ -118,6 +118,8 @@ gem 'axlsx_rails', '>= 0.5.2'
 
 # PDF generation
 gem 'wicked_pdf'
+# Dependency for Wicked PDF (WebKit HTML TO PDF)
+gem 'wkhtmltopdf-binary'
 
 # Mailing API
 gem 'mailgun-ruby', '~> 1.1', '>= 1.1.9'

@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <%= form_with(model: @invoice, url: set_payment_received_invoices_path, method: :post, remote: request.xhr?, html: { data: { modal: true } }) do |receive_payment_form| %>
+      <%= form_with(model: @invoice, url: set_payment_received_invoices_path, method: :post, html: { data: { modal: true } }) do |receive_payment_form| %>
         <%= hidden_field_tag(:id, @invoice.id) %>
         <div class="row">
           <div class="col">

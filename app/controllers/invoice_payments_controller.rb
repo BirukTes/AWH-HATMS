@@ -17,7 +17,9 @@ class InvoicePaymentsController < ApplicationController
     # include :customer_id => a_customer_id to identify previous customer
     @client_token = gateway.client_token.generate
 
-    respond_modal_with(@client_token)
+    # respond_modal_with(@client_token)
+    render layout: 'layouts/modal'
+
   end
 
   def create

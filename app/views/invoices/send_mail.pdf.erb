@@ -1,0 +1,791 @@
+<style>
+  <!--
+  /* Font Definitions */
+  @font-face {
+    font-family: "Cambria Math";
+    panose-1: 2 4 5 3 5 4 6 3 2 4;
+  }
+
+  @font-face {
+    font-family: Calibri;
+    panose-1: 2 15 5 2 2 2 4 3 2 4;
+  }
+
+  @font-face {
+    font-family: Tahoma;
+    panose-1: 2 11 6 4 3 5 4 4 2 4;
+  }
+
+  /* Style Definitions */
+  p.MsoNormal, li.MsoNormal, div.MsoNormal {
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 6.0pt;
+    margin-left: 0cm;
+    font-size: 10.0pt;
+    font-family: "Arial", sans-serif;
+    letter-spacing: .25pt;
+  }
+
+  h1 {
+    mso-style-link: "Heading 1 Char";
+    margin-top: 24.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 21.6pt;
+    margin-bottom: .0001pt;
+    text-indent: -21.6pt;
+    page-break-after: avoid;
+    font-size: 12.0pt;
+    font-family: "Arial", sans-serif;
+    color: #00338D;
+    letter-spacing: .25pt;
+  }
+
+  h2 {
+    mso-style-link: "Heading 2 Char";
+    margin-top: 10.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 28.8pt;
+    margin-bottom: .0001pt;
+    text-indent: -28.8pt;
+    page-break-after: avoid;
+    font-size: 11.0pt;
+    font-family: "Arial", sans-serif;
+    color: #00338D;
+    letter-spacing: .25pt;
+  }
+
+  h3 {
+    mso-style-link: "Heading 3 Char";
+    margin-top: 10.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 36.0pt;
+    margin-bottom: .0001pt;
+    text-indent: -36.0pt;
+    page-break-after: avoid;
+    font-size: 11.0pt;
+    font-family: "Arial", sans-serif;
+    color: #00338D;
+    letter-spacing: .25pt;
+  }
+
+  h4 {
+    mso-style-link: "Heading 4 Char";
+    margin-top: 10.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 43.2pt;
+    margin-bottom: .0001pt;
+    text-indent: -43.2pt;
+    page-break-after: avoid;
+    font-size: 10.0pt;
+    font-family: "Cambria", serif;
+    color: #4F81BD;
+    letter-spacing: .25pt;
+    font-style: italic;
+  }
+
+  h5 {
+    mso-style-link: "Heading 5 Char";
+    margin-top: 10.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 50.4pt;
+    margin-bottom: .0001pt;
+    text-indent: -50.4pt;
+    page-break-after: avoid;
+    font-size: 10.0pt;
+    font-family: "Cambria", serif;
+    color: #243F60;
+    letter-spacing: .25pt;
+    font-weight: normal;
+  }
+
+  h6 {
+    mso-style-link: "Heading 6 Char";
+    margin-top: 10.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 57.6pt;
+    margin-bottom: .0001pt;
+    text-indent: -57.6pt;
+    page-break-after: avoid;
+    font-size: 10.0pt;
+    font-family: "Cambria", serif;
+    color: #243F60;
+    letter-spacing: .25pt;
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  p.MsoHeading7, li.MsoHeading7, div.MsoHeading7 {
+    mso-style-link: "Heading 7 Char";
+    margin-top: 10.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 64.8pt;
+    margin-bottom: .0001pt;
+    text-indent: -64.8pt;
+    page-break-after: avoid;
+    font-size: 10.0pt;
+    font-family: "Cambria", serif;
+    color: #404040;
+    letter-spacing: .25pt;
+    font-style: italic;
+  }
+
+  p.MsoHeading8, li.MsoHeading8, div.MsoHeading8 {
+    mso-style-link: "Heading 8 Char";
+    margin-top: 10.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 72.0pt;
+    margin-bottom: .0001pt;
+    text-indent: -72.0pt;
+    page-break-after: avoid;
+    font-size: 10.0pt;
+    font-family: "Cambria", serif;
+    color: #404040;
+    letter-spacing: .25pt;
+  }
+
+  p.MsoHeading9, li.MsoHeading9, div.MsoHeading9 {
+    mso-style-link: "Heading 9 Char";
+    margin-top: 10.0pt;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 79.2pt;
+    margin-bottom: .0001pt;
+    text-indent: -79.2pt;
+    page-break-after: avoid;
+    font-size: 10.0pt;
+    font-family: "Cambria", serif;
+    color: #404040;
+    letter-spacing: .25pt;
+    font-style: italic;
+  }
+
+  p.MsoToc1, li.MsoToc1, div.MsoToc1 {
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 5.0pt;
+    margin-left: 0cm;
+    font-size: 10.0pt;
+    font-family: "Arial", sans-serif;
+    letter-spacing: .25pt;
+  }
+
+  p.MsoToc2, li.MsoToc2, div.MsoToc2 {
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 5.0pt;
+    margin-left: 12.0pt;
+    font-size: 10.0pt;
+    font-family: "Arial", sans-serif;
+    letter-spacing: .25pt;
+  }
+
+  p.MsoHeader, li.MsoHeader, div.MsoHeader {
+    mso-style-link: "Header Char";
+    margin: 0cm;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Arial", sans-serif;
+    letter-spacing: .25pt;
+  }
+
+  p.MsoFooter, li.MsoFooter, div.MsoFooter {
+    mso-style-link: "Footer Char";
+    margin: 0cm;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Arial", sans-serif;
+    letter-spacing: .25pt;
+  }
+
+  p.MsoCaption, li.MsoCaption, div.MsoCaption {
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 6.0pt;
+    margin-left: 0cm;
+    font-size: 11.0pt;
+    font-family: "Arial", sans-serif;
+    letter-spacing: .25pt;
+    font-weight: bold;
+  }
+
+  p.MsoTitle, li.MsoTitle, div.MsoTitle {
+    mso-style-link: "Title Char";
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 15.0pt;
+    margin-left: 0cm;
+    font-size: 26.0pt;
+    font-family: "Arial", sans-serif;
+    color: #17365D;
+    letter-spacing: .25pt;
+    font-weight: bold;
+  }
+
+  p.MsoTitleCxSpFirst, li.MsoTitleCxSpFirst, div.MsoTitleCxSpFirst {
+    mso-style-link: "Title Char";
+    margin: 0cm;
+    margin-bottom: .0001pt;
+    font-size: 26.0pt;
+    font-family: "Arial", sans-serif;
+    color: #17365D;
+    letter-spacing: .25pt;
+    font-weight: bold;
+  }
+
+  p.MsoTitleCxSpMiddle, li.MsoTitleCxSpMiddle, div.MsoTitleCxSpMiddle {
+    mso-style-link: "Title Char";
+    margin: 0cm;
+    margin-bottom: .0001pt;
+    font-size: 26.0pt;
+    font-family: "Arial", sans-serif;
+    color: #17365D;
+    letter-spacing: .25pt;
+    font-weight: bold;
+  }
+
+  p.MsoTitleCxSpLast, li.MsoTitleCxSpLast, div.MsoTitleCxSpLast {
+    mso-style-link: "Title Char";
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 15.0pt;
+    margin-left: 0cm;
+    font-size: 26.0pt;
+    font-family: "Arial", sans-serif;
+    color: #17365D;
+    letter-spacing: .25pt;
+    font-weight: bold;
+  }
+
+  p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle {
+    mso-style-link: "Subtitle Char";
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 6.0pt;
+    margin-left: 0cm;
+    font-size: 10.0pt;
+    font-family: "Arial", sans-serif;
+    color: #00338D;
+    letter-spacing: .75pt;
+    font-style: italic;
+  }
+
+  a:link, span.MsoHyperlink {
+    color: blue;
+    text-decoration: underline;
+  }
+
+  a:visited, span.MsoHyperlinkFollowed {
+    color: purple;
+    text-decoration: underline;
+  }
+
+  em {
+    color: #00338D;
+  }
+
+  p.MsoAcetate, li.MsoAcetate, div.MsoAcetate {
+    mso-style-link: "Balloon Text Char";
+    margin: 0cm;
+    margin-bottom: .0001pt;
+    font-size: 8.0pt;
+    font-family: "Tahoma", sans-serif;
+    letter-spacing: .25pt;
+  }
+
+  p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing {
+    margin: 0cm;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Arial", sans-serif;
+    letter-spacing: .25pt;
+  }
+
+  p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph {
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 6.0pt;
+    margin-left: 36.0pt;
+    font-size: 10.0pt;
+    font-family: "Arial", sans-serif;
+    letter-spacing: .25pt;
+  }
+
+  p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst {
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 36.0pt;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Arial", sans-serif;
+    letter-spacing: .25pt;
+  }
+
+  p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle {
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 0cm;
+    margin-left: 36.0pt;
+    margin-bottom: .0001pt;
+    font-size: 10.0pt;
+    font-family: "Arial", sans-serif;
+    letter-spacing: .25pt;
+  }
+
+  p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast {
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 6.0pt;
+    margin-left: 36.0pt;
+    font-size: 10.0pt;
+    font-family: "Arial", sans-serif;
+    letter-spacing: .25pt;
+  }
+
+  p.MsoQuote, li.MsoQuote, div.MsoQuote {
+    mso-style-link: "Quote Char";
+    margin-top: 0cm;
+    margin-right: 0cm;
+    margin-bottom: 6.0pt;
+    margin-left: 0cm;
+    font-size: 10.0pt;
+    font-family: "Arial", sans-serif;
+    color: black;
+    letter-spacing: .25pt;
+    font-style: italic;
+  }
+
+  p.MsoIntenseQuote, li.MsoIntenseQuote, div.MsoIntenseQuote {
+    mso-style-link: "Intense Quote Char";
+    margin-top: 10.0pt;
+    margin-right: 46.8pt;
+    margin-bottom: 14.0pt;
+    margin-left: 46.8pt;
+    border: none;
+    padding: 0cm;
+    font-size: 10.0pt;
+    font-family: "Arial", sans-serif;
+    color: #00338D;
+    letter-spacing: .25pt;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  span.MsoSubtleEmphasis {
+    font-family: "Arial", sans-serif;
+    color: #00338D;
+    font-style: italic;
+  }
+
+  span.MsoIntenseEmphasis {
+    color: #00338D;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  span.MsoSubtleReference {
+    font-variant: small-caps;
+    color: #00338D;
+    text-decoration: underline;
+  }
+
+  span.MsoIntenseReference {
+    font-variant: small-caps;
+    color: #00338D;
+    letter-spacing: .25pt;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  span.MsoBookTitle {
+    font-variant: small-caps;
+    letter-spacing: .25pt;
+    font-weight: bold;
+  }
+
+  span.Heading1Char {
+    mso-style-name: "Heading 1 Char";
+    mso-style-link: "Heading 1";
+    font-family: "Times New Roman", serif;
+    color: #00338D;
+    font-weight: bold;
+  }
+
+  span.Heading2Char {
+    mso-style-name: "Heading 2 Char";
+    mso-style-link: "Heading 2";
+    font-family: "Times New Roman", serif;
+    color: #00338D;
+    font-weight: bold;
+  }
+
+  span.TitleChar {
+    mso-style-name: "Title Char";
+    mso-style-link: Title;
+    font-family: "Times New Roman", serif;
+    color: #17365D;
+    font-weight: bold;
+  }
+
+  span.SubtitleChar {
+    mso-style-name: "Subtitle Char";
+    mso-style-link: Subtitle;
+    font-family: "Times New Roman", serif;
+    color: #00338D;
+    letter-spacing: .75pt;
+    font-style: italic;
+  }
+
+  span.HeaderChar {
+    mso-style-name: "Header Char";
+    mso-style-link: Header;
+  }
+
+  span.FooterChar {
+    mso-style-name: "Footer Char";
+    mso-style-link: Footer;
+  }
+
+  span.Heading3Char {
+    mso-style-name: "Heading 3 Char";
+    mso-style-link: "Heading 3";
+    font-family: "Times New Roman", serif;
+    color: #00338D;
+    font-weight: bold;
+  }
+
+  span.Heading4Char {
+    mso-style-name: "Heading 4 Char";
+    mso-style-link: "Heading 4";
+    font-family: "Cambria", serif;
+    color: #4F81BD;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  span.Heading5Char {
+    mso-style-name: "Heading 5 Char";
+    mso-style-link: "Heading 5";
+    font-family: "Cambria", serif;
+    color: #243F60;
+  }
+
+  span.Heading6Char {
+    mso-style-name: "Heading 6 Char";
+    mso-style-link: "Heading 6";
+    font-family: "Cambria", serif;
+    color: #243F60;
+    font-style: italic;
+  }
+
+  span.Heading7Char {
+    mso-style-name: "Heading 7 Char";
+    mso-style-link: "Heading 7";
+    font-family: "Cambria", serif;
+    color: #404040;
+    font-style: italic;
+  }
+
+  span.Heading8Char {
+    mso-style-name: "Heading 8 Char";
+    mso-style-link: "Heading 8";
+    font-family: "Cambria", serif;
+    color: #404040;
+  }
+
+  span.Heading9Char {
+    mso-style-name: "Heading 9 Char";
+    mso-style-link: "Heading 9";
+    font-family: "Cambria", serif;
+    color: #404040;
+    font-style: italic;
+  }
+
+  span.IntenseQuoteChar {
+    mso-style-name: "Intense Quote Char";
+    mso-style-link: "Intense Quote";
+    color: #00338D;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  span.QuoteChar {
+    mso-style-name: "Quote Char";
+    mso-style-link: Quote;
+    color: black;
+    font-style: italic;
+  }
+
+  span.BalloonTextChar {
+    mso-style-name: "Balloon Text Char";
+    mso-style-link: "Balloon Text";
+    font-family: "Tahoma", sans-serif;
+  }
+
+  .MsoChpDefault {
+    font-size: 12.0pt;
+    font-family: "Arial", sans-serif;
+    letter-spacing: .25pt;
+  }
+
+  .MsoPapDefault {
+    margin-bottom: 10.0pt;
+    line-height: 115%;
+  }
+
+  /* Page Definitions */
+  @page WordSection1 {
+    size: 595.3pt 841.9pt;
+    margin: 72.0pt 72.0pt 56.75pt 72.0pt;
+  }
+
+  div.WordSection1 {
+    page: WordSection1;
+  }
+
+  /* List Definitions */
+  ol {
+    margin-bottom: 0cm;
+  }
+
+  ul {
+    margin-bottom: 0cm;
+  }
+
+  -->
+</style>
+
+
+
+<div class='container'>
+
+  <p class=MsoNoSpacing align=right style='text-align:right'><b>AllsWell Hospital</b></p>
+
+  <p class=MsoNoSpacing align=right style='text-align:right'>&nbsp;</p>
+  <p class=MsoNoSpacing align=right style='text-align:right'>AWH, </p>
+  <p class=MsoNoSpacing align=right style='text-align:right'>King Charles RD,</p>
+  <p class=MsoNoSpacing align=right style='text-align:right'>Surbiton,</p>
+  <p class=MsoNoSpacing align=right style='text-align:right'>KT5 9BH</p>
+
+  <p class=MsoNoSpacing align=right style='text-align:right'><span
+  style='font-size:5.0pt'>&nbsp;</span></p>
+  <p class=MsoNoSpacing align=right style='text-align:right'>020 8673 5497</p>
+  <p class=MsoNoSpacing align=right style='text-align:right'>allswell.hospital@outlook.com</p>
+  <p class=MsoNoSpacing><span style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNoSpacing>&nbsp;</p>
+  <p class=MsoNoSpacing>&nbsp;</p>
+  <p class=MsoNoSpacing><b>Att:</b></p>
+  <p class=MsoNoSpacing><span style='font-size:5.0pt'>&nbsp;</span></p>
+  <p class=MsoNoSpacing><%= patient.person.address.houseNumber + ', '%></p>
+  <p class=MsoNoSpacing><%= patient.person.address.street + ',' %></p>
+  <p class=MsoNoSpacing><%= patient.person.address.town + ', ' %></p>
+  <p class=MsoNoSpacing><%= patient.person.address.postcode %></p>
+  <p class=MsoNoSpacing>&nbsp;</p>
+  <p class=MsoNoSpacing><b>Invoice Number:</b></p>
+  <p class=MsoNoSpacing><b>Invoice Date:</b></p>
+  <p class=MsoNoSpacing>&nbsp;</p>
+  <p class=MsoNoSpacing align=center style='text-align:center'><b><span
+  style='font-size:20.0pt'>INVOICE</span></b></p>
+  <p class=MsoNoSpacing></p>
+  <p class=MsoNoSpacing><span style='font-size:5.0pt'>&nbsp;</span></p>
+  <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=621
+         style='width:466.1pt;border-collapse:collapse;border:none'>
+    <tr>
+      <td width=308 valign=top style='width:231.05pt;border:solid windowtext 1.0pt;
+          border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+        <p class=MsoNoSpacing><b>&nbsp;</b></p>
+        <p class=MsoNoSpacing><b>Patient Title:</b></p>
+        <p class=MsoNoSpacing><b>&nbsp;</b></p>
+      </td>
+      <td width=313 valign=top style='width:235.05pt;border:solid windowtext 1.0pt;
+          border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+        <p class=MsoNoSpacing><b>&nbsp;</b></p>
+        <p class=MsoNoSpacing><b>Patient Surname:</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td width=308 valign=top style='width:231.05pt;border-top:none;border-left:
+          solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:
+          none;padding:0cm 5.4pt 0cm 5.4pt'>
+        <p class=MsoNoSpacing><b>&nbsp;</b></p>
+        <p class=MsoNoSpacing><b>Patient First Name(s):</b></p>
+        <p class=MsoNoSpacing><b>&nbsp;</b></p>
+      </td>
+      <td width=313 valign=top style='width:235.05pt;border-top:none;border-left:
+          none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+          padding:0cm 5.4pt 0cm 5.4pt'>
+        <p class=MsoNoSpacing><b>&nbsp;</b></p>
+        <p class=MsoNoSpacing><b>D.O.B: </b></p>
+      </td>
+    </tr>
+  </table>
+  <p class=MsoNoSpacing>&nbsp;</p>
+  <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=621
+         style='width:466.1pt;border-collapse:collapse;border:none'>
+    <tr style='height:25.85pt'>
+      <td width=621 colspan=4 style='width:466.1pt;border:solid windowtext 1.0pt;
+          border-bottom:none;padding:0cm 5.4pt 0cm 5.4pt;height:25.85pt'>
+        <p class=MsoNoSpacing align=center style='margin-right:-5.4pt;text-align:
+            center'><b><span style='font-size:12.0pt'>Treatment Details</span></b></p>
+      </td>
+    </tr>
+    <tr style='height:19.8pt'>
+      <td width=154 style='width:115.5pt;border:none;border-left:solid windowtext 1.0pt;
+          padding:0cm 5.4pt 0cm 5.4pt;height:19.8pt'>
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th class="treatment_head">Treatment</th>
+            <th class="quantity_head">Quantity</th>
+            <th class="unit_price_head">Unit Price £</th>
+            <th class="tax_head">Tax %</th>
+            <th class="line_total_head">Line Total</th>
+          </tr>
+          </thead>
+          <tbody class="invoice_details_fields_holder">
+          <% @invoice.invoice_details.each do |invoice_detail| %>
+            <tr>
+              <td><%= invoice_detail.treatment %></td>
+              <td><%= invoice_detail.quantity %></td>
+              <td><%= invoice_detail.unitPrice %></td>
+              <td><%= invoice_detail.tax %></td>
+              <td><%= invoice_detail.lineTotal %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+      </td>
+    </tr>
+    <tr style='height:1.0cm'>
+      <td width=154 valign=top style='width:115.5pt;border-top:none;border-left:
+          solid windowtext 1.0pt;border-bottom:solid white 1.0pt;border-right:solid white 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing><span style='font-size:9.0pt;color:red'>Should indicate
+  when the treatment was carried out.</span></p>
+      </td>
+      <td width=184 valign=top style='width:137.75pt;border-top:none;border-left:
+          none;border-bottom:solid white 1.0pt;border-right:solid white 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing><span style='font-size:9.0pt;color:red'>Description of
+  the service carried out and procedure information if the treatment was
+  procedural.</span></p>
+      </td>
+      <td width=199 valign=top style='width:149.05pt;border-top:none;border-left:
+          none;border-bottom:solid white 1.0pt;border-right:solid white 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing><span style='font-size:9.0pt;color:red'>Whether the
+  care is delivered as an inpatient, outpatient, day case, or consulting room.</span></p>
+      </td>
+      <td width=85 valign=top style='width:63.8pt;border-top:none;border-left:none;
+          border-bottom:solid white 1.0pt;border-right:solid windowtext 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing>&nbsp;</p>
+      </td>
+    </tr>
+    <tr style='height:1.0cm'>
+      <td width=154 valign=top style='width:115.5pt;border-top:none;border-left:
+          solid windowtext 1.0pt;border-bottom:solid white 1.0pt;border-right:solid white 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing>&nbsp;</p>
+      </td>
+      <td width=184 valign=top style='width:137.75pt;border-top:none;border-left:
+          none;border-bottom:solid white 1.0pt;border-right:solid white 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing>&nbsp;</p>
+      </td>
+      <td width=199 valign=top style='width:149.05pt;border-top:none;border-left:
+          none;border-bottom:solid white 1.0pt;border-right:solid white 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing>&nbsp;</p>
+      </td>
+      <td width=85 valign=top style='width:63.8pt;border-top:none;border-left:none;
+          border-bottom:solid white 1.0pt;border-right:solid windowtext 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing>&nbsp;</p>
+      </td>
+    </tr>
+    <tr style='height:1.0cm'>
+      <td width=154 valign=top style='width:115.5pt;border-top:none;border-left:
+          solid windowtext 1.0pt;border-bottom:none;border-right:solid white 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing>&nbsp;</p>
+      </td>
+      <td width=184 valign=top style='width:137.75pt;border:none;border-right:solid white 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing>&nbsp;</p>
+      </td>
+      <td width=199 valign=top style='width:149.05pt;border:none;border-right:solid white 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing>&nbsp;</p>
+      </td>
+      <td width=85 valign=top style='width:63.8pt;border:none;border-right:solid windowtext 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing>&nbsp;</p>
+      </td>
+    </tr>
+    <tr style='height:1.0cm'>
+      <td width=154 valign=top style='width:115.5pt;border-top:solid white 1.0pt;
+          border-left:solid windowtext 1.0pt;border-bottom:none;border-right:solid white 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing>&nbsp;</p>
+      </td>
+      <td width=184 valign=top style='width:137.75pt;border-top:solid white 1.0pt;
+          border-left:none;border-bottom:none;border-right:solid white 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing>&nbsp;</p>
+      </td>
+      <td width=199 valign=top style='width:149.05pt;border-top:solid white 1.0pt;
+          border-left:none;border-bottom:none;border-right:solid white 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing>&nbsp;</p>
+      </td>
+      <td width=85 valign=top style='width:63.8pt;border-top:solid white 1.0pt;
+          border-left:none;border-bottom:none;border-right:solid windowtext 1.0pt;
+          background:#DBE5F1;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
+        <p class=MsoNoSpacing>&nbsp;</p>
+      </td>
+    </tr>
+    <tr style='height:19.95pt'>
+      <td width=536 colspan=3 style='width:402.3pt;border-top:none;border-left:
+          solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:
+          none;padding:0cm 5.4pt 0cm 5.4pt;height:19.95pt'>
+        <p class=MsoNoSpacing align=right style='text-align:right'><b>Amount due:</b></p>
+      </td>
+      <td width=85 style='width:63.8pt;border-top:none;border-left:none;border-bottom:
+          solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+          height:19.95pt'>
+        <p class=MsoNoSpacing align=right style='text-align:right'><b>£0.00</b></p>
+      </td>
+    </tr>
+  </table>
+  <div style='border:solid white 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+    <p class=MsoNoSpacing style='border:none;padding:0cm'><span style='font-size:
+        5.0pt'>&nbsp;</span></p>
+  </div>
+  <p class=MsoNoSpacing align=center style='text-align:center'><b><span
+  style='font-size:4.0pt'>&nbsp;</span></b></p>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:9.0pt'>Payment details: Payment must be made within [<b>insert
+payment terms</b>] by cheque or BACS transfer. Cheques must be payable to [<b>payee
+name</b>] and posted to the above address. BACS payments must be transferred to
+[<b>your name</b>] account at <b>[name of bank</b>] Account number [<b>insert
+account number</b>], sort code <b>[insert sort code</b>], account name: [<b>insert
+account name</b>].</span></p>
+  <p class=MsoNormal>------------------------------------------------------------------------------------------------------------------------------</p>
+  <p class=MsoNormal><b>REMITTANCE: Please return with cheque or to notify of
+    BACS payments to [your name]</b></p>
+  <p class=MsoNormal>&nbsp;</p>
+  <p class=MsoNormal>Invoice Number…………………………. Name……………………………… </p>
+  <p class=MsoNormal>Cheque enclosed £……………………..</p>
+  <p class=MsoNormal>BACS payment £……………………...</p>
+</div>
