@@ -1,89 +1,16 @@
 <h1 class="title-container">Register New Staff</h1>
-<% @page_title = 'Register New Staff' %>
+<% @page_title = 'Staff | Register' %>
+
 <%= render('shared/errors', model: @staff) %>
-<%= form_with(model: @staff, html: {autoComplete: :on}, local: true) do |staff_form| %>
-  <table class="table">
+
+<%= form_with(model: @staff, html: { autoComplete: :on }, local: true) do |staff_form| %>
+  <table class="table borderless">
     <tbody>
     <tr>
       <td>
         <%# Get the attributes that belong to the person class %>
         <%= staff_form.fields_for(:person) do |person_fields| %>
-          <fieldset>
-            <legend>Personal Details</legend>
-            <table class="table">
-              <tbody>
-              <tr>
-                <td>
-                  <div class="form-group">
-                    <%= person_fields.label(:firstName, 'First name') %><br/>
-                    <%= person_fields.text_field(:firstName,autofocus: true, autocomplete: 'firstName', required: true) %>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <%= person_fields.label(:lastName, 'Last name') %><br/>
-                    <%= person_fields.text_field(:lastName, autocomplete: 'lastName', required: true) %>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <%= person_fields.label(:dateOfBirth, 'Date of birth') %><br/>
-                    <%= person_fields.text_field(:dateOfBirth, type: 'date', autocomplete: 'dateOfBirth', min: '1900-01-01', max: Date.today.to_s, required: true, class: 'form-control') %>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <%= person_fields.label(:gender) %><br/>
-                    <%= person_fields.select(:gender, options_for_select([:Male, :Female], @staff.person.gender), include_blank: 'Select gender', autocomplete: 'gender', required: true) %>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <%= person_fields.fields_for(:address) do |address_fields| %>
-                  <td>
-                    <div class="form-group">
-                      <%= address_fields.label(:houseNumber, 'House number') %><br/>
-                      <%= address_fields.text_field(:houseNumber, type: 'number', autocomplete: 'houseNumber', required: true) %>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="form-group">
-                      <%= address_fields.label :street %><br/>
-                      <%= address_fields.text_field :street, autocomplete: 'street', required: true %>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="form-group">
-                      <%= address_fields.label(:town) %><br/>
-                      <%= address_fields.text_field(:town, autocomplete: 'town', required: true) %>
-
-                    </div>
-                  </td>
-                  <td>
-                    <div class="form-group">
-                      <%= address_fields.label(:postcode) %><br/>
-                      <%= address_fields.text_field(:postcode, autocomplete: 'postcode', required: true) %>
-                    </div>
-                  </td>
-                <% end %>
-              </tr>
-              <tr>
-                <td>
-                  <div class="form-group">
-                    <%= person_fields.label(:telHomeNo, 'Telephone number') %><br/>
-                    <%= person_fields.text_field(:telHomeNo, autocomplete: 'telephoneNumber') %>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <%= person_fields.label(:telMobileNo, 'Mobile number') %><br/>
-                    <%= person_fields.text_field(:telMobileNo, autocomplete: 'mobileNumber') %>
-                  </div>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </fieldset>
+          <%= render('shared/personal_detail_fields', person_fields: person_fields, disabled: disabled) %>
         <% end %>
       </td>
     </tr>
@@ -91,31 +18,31 @@
       <td style="width: 50%; !important;">
         <fieldset>
           <legend>Account Details</legend>
-          <table class="table">
+          <table class="table borderless">
             <tbody>
             <tr>
               <td>
                 <div class="form-group">
                   <%= staff_form.label(:userId, 'User ID') %><br/>
-                  <%= staff_form.text_field(:userId, autocomplete: 'off', required: true) %>
+                  <%= staff_form.text_field(:userId, autocomplete: 'off', required: true, class: 'form-control') %>
                 </div>
                 <div class="form-group">
                   <%= staff_form.label(:email) %><br/>
-                  <%= staff_form.email_field(:email, autocomplete: 'email', pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$",  required: true) %>
+                  <%= staff_form.email_field(:email, autocomplete: 'email', pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$", required: true, class: 'form-control') %>
                 </div>
                 <div class="form-group">
                   <%= staff_form.label(:password) %>
                   <% if @minimum_password_length %>
                     <em>(<%= @minimum_password_length %> characters minimum)</em>
                   <% end %><br/>
-                  <%= staff_form.password_field(:password, autocomplete: 'password', required: true) %>
+                  <%= staff_form.password_field(:password, autocomplete: 'password', required: true, class: 'form-control') %>
                 </div>
               </td>
               <!--Override bootstrap td specifically here-->
               <td style="vertical-align: bottom; !important;">
                 <div class="form-group">
                   <%= staff_form.label(:password_confirmation, 'Password confirmation') %><br/>
-                  <%= staff_form.password_field(:password_confirmation, autocomplete: 'passwordConfirmation', required: true) %>
+                  <%= staff_form.password_field(:password_confirmation, autocomplete: 'passwordConfirmation', required: true, class: 'form-control') %>
                 </div>
               </td>
               <td></td>
@@ -128,44 +55,23 @@
         <fieldset>
           <legend>Allocations</legend>
           <!--TODO finish this-->
-          <table class="table">
+          <table class="table borderless">
             <tbody>
             <tr>
               <%= staff_form.fields_for(:specialism) do |specialism_fields| %>
                 <td>
                   <div class="form-group">
                     <%= specialism_fields.label(:speciality_id, 'Speciality') %><br/>
-                    <%= specialism_fields.select(:speciality_id, speciality_options, autocomplete: 'speciality') %>
-                    <%= specialism_fields.button('Add', {class: 'btn btn-default'}) %>
+                    <%= specialism_fields.select(:speciality_id, speciality_options, autocomplete: 'speciality', class: 'form-control') %>
                   </div>
-                  <!--<table class="table">-->
-                  <!--<thead>-->
-                  <!--<th>Speciality</th>-->
-                  <!--</thead>-->
-                  <!--<tbody>-->
-                  <!--<tr>-->
-                  <!--<td></td>-->
-                  <!--</tr>-->
-                  <!--</tbody>-->
-                  <!--</table>-->
                 </td>
               <% end %>
               <%= staff_form.fields_for(:job) do |job_fields| %>
                 <td>
                   <div class="form-group">
                     <%= job_fields.label(:job_title_id, 'Job title') %><br/>
-                    <%= job_fields.select(:job_title_id, job_title_options, autocomplete: 'jobTitle') %>
+                    <%= job_fields.select(:job_title_id, job_title_options, autocomplete: 'jobTitle', class: 'form-control') %>
                   </div>
-                  <!--<table class="table">-->
-                  <!--<thead>-->
-                  <!--<th>Job Title</th>-->
-                  <!--</thead>-->
-                  <!--<tbody>-->
-                  <!--<tr>-->
-                  <!--<td></td>-->
-                  <!--</tr>-->
-                  <!--</tbody>-->
-                  <!--</table>-->
                 </td>
               <% end %>
             </tr>
@@ -173,7 +79,7 @@
               <td>
                 <div class="form-group">
                   <%= staff_form.label(:team_id) %><br/>
-                  <%= staff_form.select(:team_id, team_options, autocomplete: 'team', required: true) %>
+                  <%= staff_form.select(:team_id, team_options, autocomplete: 'team', required: true, class: 'form-control') %>
                 </div>
               </td>
             </tr>
@@ -184,13 +90,12 @@
     </tr>
     </tbody>
   </table>
-
-  <div class="actions">
-    <table class="table">
+  <div class="actions form-group">
+    <table class="table borderless">
       <tbody>
       <tr>
-        <td> <%= staff_form.submit('Cancel', {class: 'btn btn-default'}) %></td>
-        <td>  <%= staff_form.submit('Register Staff', {class: 'btn btn-default'}) %></td>
+        <td> <%= staff_form.submit('Cancel', { class: 'btn btn-secondary' }) %></td>
+        <td>  <%= staff_form.submit('Register Staff', { class: 'btn btn-primary' }) %></td>
       </tr>
       </tbody>
     </table>

@@ -17,17 +17,15 @@ class InvoicesController < ApplicationController
   # GET /invoices/1
   # GET /invoices/1.json
   def show
-
     # update the status so nobody generates a PDF twice
     # invoice.update_attribute(:status, 'queued')
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: 'test' # Excluding ".pdf" extension.
+        render pdf: 'PDF'
+        # Excluding ".pdf" extension.
       end
     end
-
-
   end
 
   # GET /invoices/new
@@ -105,7 +103,7 @@ class InvoicesController < ApplicationController
   def receive_payment
     # binding.pry
     # render layout: 'layouts/modal'
-    respond_modal_with(@invoice, location: receive_payment_invoice_path)
+    respond_modal_with(@invoice)
   end
 
   def set_payment_received

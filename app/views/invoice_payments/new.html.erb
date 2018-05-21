@@ -1,7 +1,8 @@
-<%= form_with(url: invoice_payments_path, method: :post, remote: request.xhr?, html: { data: { modal: true } }) do %>
-  <div id="dropin-container"></div>
+<%= form_with(url: invoice_payments_path, method: :post, remote: request.xhr?, html: { id: 'payment-form', data: { modal: true } }) do %>
+  <%= hidden_field_tag(:payment_method_nonce, nil, id: 'nonce') %>
   <button id="submit-button">Request payment method</button>
   <button id="paypal-button" class="btn btn-primary" type="submit">PayPal</button>
+
 <% end %>
 <script src="https://js.braintreegateway.com/web/dropin/1.10.0/js/dropin.min.js"></script>
 
@@ -16,19 +17,28 @@
 
 <script>
     var button = document.querySelector('#submit-button');
+    var form = document.querySelector('#payment-form');
 
     braintree.dropin.create({
         authorization: '<%= @client_token %>',
         container: '#dropin-container',
         paypal: {
-            flow: 'checkout',
-            amount: '10.00',
-            currency: 'USD'
+            flow: 'checkout'
         }
     }, function (createErr, instance) {
-        button.addEventListener('click', function () {
-            instance.requestPaymentMethod(function (err, payload) {
-                // Submit payload.nonce to your server
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            button.addEventListener('click', function () {
+                instance.requestPaymentMethod(function (err, payload) {
+                    if (err) {
+                        console.log('Error', err);
+                        return;
+                    }
+                    // Add the nonce to the form and submit
+                    document.querySelector('#nonce').value = payload.nonce;
+                    form.submit();
+                });
             });
-        });});
+        });
+    });
 </script>

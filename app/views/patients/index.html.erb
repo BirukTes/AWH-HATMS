@@ -1,3 +1,5 @@
+<% @page_title = 'Patient' %>
+
 <h1>Patients</h1>
 <table class="table table-bordered table-striped">
   <thead class="thead-light">
@@ -27,8 +29,12 @@
       <td><%= patient.person.telHomeNo %></td>
       <td><%= patient.person.telMobileNo %></td>
       <td><%= localize(patient.created_at) %></td>
-      <td><%= link_to('View Details', patient_path(patient.id)) %></td>
+      <td><%= link_to('View Details', patient_path(patient.id), class: 'btn btn-secondary') %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
+
+<% content_for(:navigationButtons) do %>
+  <%= link_to('Register Patient', new_patient_path, class: 'btn btn-primary') %>
+<% end %>

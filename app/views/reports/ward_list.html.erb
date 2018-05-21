@@ -97,7 +97,7 @@
   <div class="col-1">
     <div class="btn-group mr-auto">
       <% disable_btn_export = @admissions.nil? || @admissions&.empty? ? 'disabled' : '' # TODO fix this link %>
-      <%= button_tag('Print', class: "btn btn-outline-secondary #{disable_btn_export}", onClick: "printJS({ printable: 'ward_list_holder', type: 'html', header: 'Ward - List - #{Date.today.to_s}'})") %>
+      <%= button_tag('Print', class: "btn btn-outline-secondary #{disable_btn_export}", onClick: "printJS({ printable: 'ward_list_holder', type: 'html', header: 'Ward Report - #{localize(Date.today).to_s}'})") %>
       <%= link_to('Export as Excel', reports_ward_list_path(format: :xls), { class: "btn btn-outline-secondary form-control #{disable_btn_export}",
                                                                              role: 'button' }) %> </div>
   </div>

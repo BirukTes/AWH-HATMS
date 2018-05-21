@@ -1,33 +1,32 @@
-<fieldset >
-  <legend>Registered Test Staffs</legend>
-  <table class="table table-bordered table-striped">
-    <thead>
+<% @page_title = 'Staff' %>
+
+<h1>Staff</h1>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>User Id</th>
+    <th>Password</th>
+    <th>Active</th>
+    <th>Speciality</th>
+    <th>Job Title</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <%# & symbol used as safe navigation or exits if object is null %>
+  <% @staffs&.each do |staff| %>
     <tr>
-      <th>User Id</th>
-      <th>Password</th>
-      <th>Active</th>
-      <th>Speciality</th>
-      <th>Job Title</th>
+      <td><%= staff.userId %></td>
+      <td>password</td>
+      <td><%= staff.active %></td>
+      <% staff&.specialities.each do |speciality| %>
+        <td><%= speciality.speciality %></td>
+      <% end %>
+      <% staff&.job_titles.each do |job_title| %>
+        <td><%= job_title.title %></td>
+      <% end %>
     </tr>
-    </thead>
-    <tbody>
-
-    <%# & symbol used as safe navigation or exits if object is null %>
-    <% @staffs&.each do |staff| %>
-      <tr>
-        <td><%= staff.userId %></td>
-        <td>password</td>
-        <td><%= staff.active %></td>
-        <% staff&.specialities.each do |speciality| %>
-          <td><%= speciality.speciality %></td>
-        <% end %>
-        <% staff&.job_titles.each do |job_title| %>
-          <td><%= job_title.title %></td>
-        <% end %>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-</fieldset>
-
-</div>
+  <% end %>
+  </tbody>
+</table>

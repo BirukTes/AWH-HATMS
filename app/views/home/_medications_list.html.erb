@@ -11,7 +11,7 @@
   </thead>
   <tbody>
   <% if !(admissions.nil? || admissions.empty?) %>
-    <% admissions.limit(5).order(admissionDate: :desc).each do |admission| %>
+    <% admissions.order(admissionDate: :desc).each do |admission| %>
       <% patient = admission.patient %>
       <% ward = admission.ward %>
       <% prescriptions = patient.prescriptions.limit(3) %>

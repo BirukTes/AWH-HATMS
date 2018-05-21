@@ -7,20 +7,20 @@
 
   <div class="row">
     <div class="col">
-      <%= render('card', cardTitle: @home_presenter.admissions.count.to_s, cardDescription: 'Admissions') %>
+      <%= render('card', cardTitle: @home_presenter.admissions_all_count.to_s, cardDescription: 'Admissions') %>
     </div>
     <div class="col">
-      <%= render('card', cardTitle: @home_presenter.staffs.count.to_s, cardDescription: 'Staff') %>
+      <%= render('card', cardTitle: @home_presenter.staffs_count.to_s, cardDescription: 'Staff') %>
     </div>
     <div class="col">
-      <%= render('card', cardTitle: @home_presenter.patients.count.to_s, cardDescription: 'Patients') %>
+      <%= render('card', cardTitle: @home_presenter.patients_count.to_s, cardDescription: 'Patients') %>
     </div>
   </div>
   <br>
   <br>
   <div class="row">
     <div class="col">
-      <%= render('card', cardTitle: @home_presenter.wards.count.to_s, cardDescription: 'Wards') %>
+      <%= render('card', cardTitle: @home_presenter.wards_count.to_s, cardDescription: 'Wards') %>
     </div>
   </div>
   <br>
@@ -30,14 +30,14 @@
       <%= pie_chart([['Available Beds', @home_presenter.ward_available_beds], ['All Beds', @home_presenter.ward_all_beds]], colors: ["#FC3C3C", "#083358"]) %>
     </div>
     <div class="col-6">
-      <%= pie_chart([['Admissions', @home_presenter.admissions.admitted.count], ['Discharged', @home_presenter.admissions.discharged.count]]) %>
+      <%= pie_chart([['Admissions', @home_presenter.admissions_admitted.count], ['Discharged', @home_presenter.admissions_discharged.count]]) %>
     </div>
   </div>
   <br>
   <div class="row">
     <div class="col">
       <h2>Ward List </h2> <br/>
-      <%= render('ward_list', admissions: @home_presenter.admissions) %>
+      <%= render('ward_list', admissions: @home_presenter.admissions_admitted) %>
       <br/>
     </div>
   </div>
@@ -45,7 +45,7 @@
   <div class="row">
     <div class="col">
       <h2>Discharge List</h2><br/>
-      <%= render('discharge_list', admissions: @home_presenter.admissions) %>
+      <%= render('discharge_list', admissions: @home_presenter.admissions_admitted) %>
       <br/>
     </div>
   </div>
@@ -53,7 +53,7 @@
   <div class="row">
     <div class="col">
       <h2>Medications List</h2><br/>
-      <%= render('medications_list', admissions: @home_presenter.admissions) %>
+      <%= render('medications_list', admissions: @home_presenter.admissions_admitted) %>
       <br/>
     </div>
   </div>
@@ -61,7 +61,7 @@
   <div class="row">
     <div class="col">
       <h2>Patient Card - Week Beginning <%= localize(Date.today.beginning_of_week, format: :custom) %></h2><br/>
-      <%= render('patient_card', admissions: @home_presenter.admissions) %>
+      <%= render('patient_card', admissions: @home_presenter.admissions_admitted) %>
       <br/>
     </div>
   </div>

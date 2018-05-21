@@ -49,6 +49,18 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'better_errors', '~> 2.4'
   gem 'binding_of_caller', '~> 0.8.0'
+
+  # Improve console inspection output
+  gem 'hirb', '~> 0.7.3'
+
+  # Refactor
+  # gem 'rails_refactor', '~> 1.4', '>= 1.4.4'
+
+  # Annotate Rails classes with schema and routes info
+  gem 'annotate'
+
+  # Generate an ERD diagram based on Rails application's Active Record models
+  gem 'rails-erd'
 end
 
 group :development do
@@ -58,6 +70,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -136,10 +149,7 @@ gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.1'
 # Search ability
 gem 'ransack', '~> 1.8', '>= 1.8.8'
 
-# Improve console inspection output
-gem 'hirb', '~> 0.7.3'
-
-# Refactor
-# gem 'rails_refactor', '~> 1.4', '>= 1.4.4'
+# Lightweight, agentless error monitoring for front-end, back-end, and mobile
+gem 'rollbar'
 
 

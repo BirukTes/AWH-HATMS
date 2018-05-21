@@ -12,7 +12,7 @@
   </tr>
   </thead>
   <tbody>
-  <% admissions.limit(5).each do |admission| %>
+  <% admissions.each do |admission| %>
     <% patient = admission.patient %>
     <% ward = admission.ward %>
     <tr>

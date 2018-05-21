@@ -24,11 +24,6 @@
         </div>
         <br>
         <div class="row">
-          <div class="col offset-6">
-            <% disable_btn_export = @admission.nil? || @admission&.blank? ? 'disabled' : '' # TODO fix this link %>
-            <%= link_to('Export as Excel', reports_ward_list_path(format: :xls), { class: "btn btn-secondary form-control #{disable_btn_export}",
-                                                                                   role: 'button' }) %>
-          </div>
           <div class="col">
             <%= ward_report_form.submit('Search', class: 'btn btn-primary float-right', id: 'enable_form_submit',
                                         data: { disable_with: false }) %>
@@ -49,7 +44,7 @@
         (concat(@admission&.patient&.person&.firstName + ' ' + @admission&.patient&.person&.lastName))
       else
         ''
-      end) + ', ' + Date.today.to_s}'})   ") %>
+      end) + ', ' + localize(Date.today).to_s}'})   ") %>
 
       <%= link_to('Export as Excel', reports_ward_list_path(format: :xls), { class: "btn btn-outline-secondary form-control disabled",
                                                                              role: 'button' }) %> </div>

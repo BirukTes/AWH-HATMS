@@ -77,12 +77,14 @@
 
 # puts('Create wards')
 # Ward.create!(name: 'Paediatrics Medical Block', wardNumber: '1', numberOfBeds: '20', bedStatus: nil, patientGender: 'Male', deptName: 'Paediatrics', isPrivate: nil)
-# Ward.create!(name: 'Coronary Medical Block', wardNumber: '2', numberOfBeds: '10', bedStatus: nil, patientGender: 'Male', deptName: 'Coronary', isPrivate: nil)
-# Ward.create!(name: 'Coronary Medical Block', wardNumber: '3', numberOfBeds: '10', bedStatus: nil, patientGender: 'Female', deptName: 'Coronary', isPrivate: nil)
-# Ward.create!(name: 'Orthopaedics Medical Block', wardNumber: '4', numberOfBeds: '10', bedStatus: nil, patientGender: 'Male', deptName: 'Orthopaedics', isPrivate: nil)
-# Ward.create!(name: 'Cardiology Centre Block', wardNumber: '5', numberOfBeds: '12', bedStatus: nil, patientGender: 'Female', deptName: 'Cardiology', isPrivate: nil)
-# Ward.create!(name: 'Obstetrics Princess Royal Maternity', wardNumber: '6', numberOfBeds: '24', bedStatus: nil, patientGender: 'Female', deptName: 'Obstetrics', isPrivate: nil)
-# Ward.create!(name: 'Obstetrics Princess Royal Maternity', wardNumber: '7', numberOfBeds: '12', bedStatus: nil, patientGender: 'Female', deptName: 'Obstetrics', isPrivate: nil)
+# Ward.create!(name: '(Private) Paediatrics Medical Block', wardNumber: '1', numberOfBeds: '20', bedStatus: '20', patientGender: 'Male', deptName: 'Paediatrics', isPrivate: true)
+# Ward.create!(name: 'Coronary Medical Block', wardNumber: '2', numberOfBeds: '10', bedStatus: '10', patientGender: 'Male', deptName: 'Coronary', isPrivate: nil)
+# Ward.create!(name: '(Private) Coronary Medical Block', wardNumber: '', numberOfBeds: '10', bedStatus: '10', patientGender: 'Male', deptName: 'Coronary', isPrivate: true)
+# Ward.create!(name: 'Coronary Medical Block', wardNumber: '3', numberOfBeds: '10', bedStatus: '10', patientGender: 'Female', deptName: 'Coronary', isPrivate: nil)
+# Ward.create!(name: 'Orthopaedics Medical Block', wardNumber: '4', numberOfBeds: '10', bedStatus: '10', patientGender: 'Male', deptName: 'Orthopaedics', isPrivate: nil)
+# Ward.create!(name: 'Cardiology Centre Block', wardNumber: '5', numberOfBeds: '12', bedStatus: '12', patientGender: 'Female', deptName: 'Cardiology', isPrivate: nil)
+# Ward.create!(name: 'Obstetrics Princess Royal Maternity', wardNumber: '6', numberOfBeds: '24', bedStatus: '6', patientGender: 'Female', deptName: 'Obstetrics', isPrivate: nil)
+# Ward.create!(name: 'Obstetrics Princess Royal Maternity', wardNumber: '7', numberOfBeds: '12', bedStatus: '7', patientGender: 'Female', deptName: 'Obstetrics', isPrivate: nil)
 
 # Updated bed status
 # Ward.all.each do |ward|

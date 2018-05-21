@@ -1,93 +1,8 @@
-<%   @invoice = invoice unless @invoice %>
-<%	binding.pry  %>
-<div class="container d-flex">
-  <div class="row">
+<% @invoice = invoice unless @invoice %>
+<div class="container align-content-center">
+  <div class="row mx-5 p-5">
     <div class="col">
-      <div class="row">
-        <div class="col">
-          <h3 class="page-header">
-            <span class="float-left">ALLSWELL HOSPITAL</span><span class="float-right">INVOICE</span>
-          </h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-5">
-          <address>
-            <p class="font-weight-normal">AWH King Charles RD,
-              Surbiton, KT5 9BH</p>
-          </address>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          To
-          <% patient = @invoice.admission.patient %>
-          <address>
-            <div><%= patient.person.firstName + ' ' + patient.person.lastName %></div>
-            <div><%= patient.person.address.houseNumber + ', ' + patient.person.address.street + ',' %></div>
-            <div><%= patient.person.address.town + ', ' %></div>
-            <div><%= patient.person.address.postcode %></div>
-          </address>
-        </div>
-        <div class="col-6 offset-2">
-          <div class="row">
-            <div class="col"><label>Invoice #</label></div>
-            <div class="col"><p><%= @invoice.id %></p></div>
-          </div>
-          <div class="col"></div>
-          <div class="row">
-            <div class="col"><label>Issue Date</label></div>
-            <div class="col"><span><%= localize(@invoice.created_at.to_date) %></span></div>
-          </div>
-          <div class="col"></div>
-          <div class="row">
-            <div class="col"><label>Due Date</label></div>
-            <div class="col"><span><%= localize(@invoice.dateDue, formats: :date) %></span></div>
-          </div>
-          <div class="col"></div>
-          <div class="row">
-            <div class="col"><label>Amount</label></div>
-            <div class="col" style="text-align:right">
-              <span>£</span><span><%= @invoice.amount %></span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-      <br>
-      <div class="row">
-        <div class="form-group">
-          <div class="form-group" style="float: right; position: relative;">
-            <br>
-          </div>
-          <div class="row">
-            <div class="col">
-              <table class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                  <th class="treatment_head">Treatment</th>
-                  <th class="quantity_head">Quantity</th>
-                  <th class="unit_price_head">Unit Price £</th>
-                  <th class="tax_head">Tax %</th>
-                  <th class="line_total_head">Line Total</th>
-                </tr>
-                </thead>
-                <tbody class="invoice_details_fields_holder">
-                <% @invoice.invoice_details.each do |invoice_detail| %>
-                  <tr>
-                    <td><%= invoice_detail.treatment %></td>
-                    <td><%= invoice_detail.quantity %></td>
-                    <td><%= invoice_detail.unitPrice %></td>
-                    <td><%= invoice_detail.tax %></td>
-                    <td><%= invoice_detail.lineTotal %></td>
-                  </tr>
-                <% end %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= render('invoice_template', invoice: @invoice) %>
       <div class="row">
         <div class="col offset-3">
           <div class="actions">
@@ -107,13 +22,13 @@
               </div>
             <% else %>
               <div class="col">
-                <%= link_to('Receive Payment', receive_payment_invoice_path, data: { modal: true }, class: 'btn btn-primary', role: 'button', remote: true) %>
+                <%= link_to('Receive Payment', receive_payment_invoice_path, data: { modal: true }, class: 'btn btn-primary', role: 'button') %>
               </div>
               <div class="col offset-1">
-                <%= link_to('Pay now', new_invoice_payments_path, data: { behavior: 'modal' }, class: 'btn btn-primary', role: 'button') %>
+                <%= link_to('Pay now', new_invoice_payments_path, data: { modal: true }, class: 'btn btn-primary', role: 'button') %>
               </div>
               <div class="col offset-1">
-                <%= link_to('Show PDF', invoice_path(@invoice), data: { behavior: 'modal' }, class: 'btn btn-primary', role: 'button') %>
+                <%= button_tag('Print', onClick: "printJS({ printable: 'invoice_holder', type: 'html'})", class: 'btn btn-primary') %>
               </div>
             <% end %>
           </div>

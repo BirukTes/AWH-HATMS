@@ -1,44 +1,56 @@
+# @author Bereketab Gulai
+# May/2018
+#
 module HomePresenter
+
   class IndexPresenter
-    def admissions
-    Admission.ransack.result
-
+    def admissions_all_count
+      #TODO Should not get all admissions, refactor to discharged or admitted
+      Admission.all.count
     end
 
-    def patients
-      Patient.ransack.result
+    def admissions_admitted
+      Admission.admitted.ransack.result.limit(5)
     end
 
-    def staffs
-      Staff.ransack.result
+    def admissions_discharged
+      Admission.discharged.ransack.result.limit(5)
     end
 
-    def teams
-      Team.ransack.result
+    def patients_count
+      Patient.all.count
     end
 
-    def job_titles
-      JobTitle.all.count.to_s
+    def staffs_count
+      Staff.all.count
     end
 
-    def specialities
-      Speciality.all.count.to_s
+    def teams_count
+      Team.all.count
     end
 
-    def wards
-     Ward.ransack.result
+    def job_titles_count
+      JobTitle.all.count
+    end
+
+    def specialities_count
+      Speciality.all.count
+    end
+
+    def wards_count
+      Ward.all.count
     end
 
     def ward_all_beds
       Ward.all.map do |ward|
         ward.numberOfBeds
-      end.sum.to_s
+      end.sum
     end
 
     def ward_available_beds
       Ward.all.map do |ward|
         ward.bedStatus
-      end.sum.to_s
+      end.sum
     end
   end
 end
