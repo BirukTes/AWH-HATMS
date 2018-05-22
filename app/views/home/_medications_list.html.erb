@@ -20,19 +20,21 @@
         <td><%= ward.name %></td>
         <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
         <% if !(prescriptions.empty? || prescriptions.nil?) %>
-          <% prescriptions&.each do |prescription| %>
-            <% drugs = prescription.drugs %>
-            <td>
-              <% drugs&.each do |drug| %>
-                <%= drug.name %>
-              <% end %>
-            </td>
-            <td><%= prescription.dosage %></td>
-            <td><%= prescription.treatmentLength %></td>
+          <% prescriptions&.each_with_index do |prescription, index| %>
+            <% if index >= 1 %>
+            <tr>
+              <td colspan="3">
+                <p>Drug prescription <%= index + 1 %></p>
+                <%= render('prescription_drugs_fields', prescription: prescription) %>
+              </td>
+            </tr>
+          <% else %>
+            <%= render('prescription_drugs_fields', prescription: prescription) %>
           <% end %>
-        <% else %>
-          <td colspan="3"><p>No prescriptions found.</p></td>
         <% end %>
+      <% else %>
+        <td colspan="3"><p>No prescriptions found.</p></td>
+      <% end %>
       </tr>
     <% end %>
   <% else %>

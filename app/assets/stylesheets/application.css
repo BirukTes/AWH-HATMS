@@ -99,7 +99,7 @@ div.dropdown-menu.show label a {
 }
 
 .content {
-    height: 95%;
+    height: 90%;
     overflow: auto;
     position: relative;
 }
@@ -158,4 +158,11 @@ table.borderless {
 .none-bs-legend {
     width: auto;
     padding: 5px;
+}
+
+/* Remove the last column on a table when printing, TODO make this specific, so does not remove in invoices/show
+ */
+@media print {
+    table td:last-child {display:none}
+    table th:last-child {display:none}
 }

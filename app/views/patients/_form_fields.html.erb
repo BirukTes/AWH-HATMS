@@ -4,7 +4,7 @@
     <td>
       <%# Get the attributes that belong to the person class %>
       <%= patient_form.fields_for(:person) do |person_fields| %>
-        <%= render('shared/personal_detail_fields', person_fields: person_fields, disabled: disabled) %>
+        <%= render('shared/personal_detail_fields', person_fields: person_fields, patient: patient, disabled: disabled) %>
       <% end %>
     </td>
   </tr>
@@ -28,8 +28,7 @@
                   <td>
                     <div class="form-group">
                       <%= patient_form.label(:smokes, 'Smoker') %><br/>
-                      <%= patient_form.check_box(:smokes, { autocomplete: 'smokes', disabled: disabled }, 'true', 'false')
-                      %>
+                      <%= patient_form.check_box(:smokes, { autocomplete: 'smokes', disabled: disabled }, 'true', 'false') %>
                     </div>
                   </td>
                 </tr>
@@ -108,15 +107,15 @@
                         <tbody>
                         <tr>
                           <td>
-                            <% if controller_name == 'patients' %>
+                            <% if controller_name == 'patients' && !params.include?(:admission_register) %>
                               <%= link_to('Cancel', patients_path, { class: 'btn btn-secondary' }) %>
-                            <% elsif controller_name == 'admissions' %>
+                            <% elsif controller_name == 'admissions' || params.include?(:admission_register) %>
                               <%# TODO rest patient on click, better option %>
-                              <%= link_to('Cancel', new_admission_path, html: { class: 'btn btn-secondary' }, params: { rest_patient: true }) %>
+                              <%= link_to('Cancel', new_admission_path, { class: 'btn btn-secondary', params: { rest_patient: true } }) %>
                             <% elsif controller_name == 'treatments' %>
-                              <%= link_to('Cancel', new_treatment_path, html: { class: 'btn btn-secondary' }, params: { rest_patient: true }) %>
+                              <%= link_to('Cancel', new_treatment_path, { class: 'btn btn-secondary', params: { rest_patient: true } }) %>
                             <% elsif controller_name == 'prescriptions' %>
-                              <%= link_to('Cancel', new_prescription_path, html: { class: 'btn btn-secondary' }, params: { rest_patient: true }) %>
+                              <%= link_to('Cancel', new_prescription_path, { class: 'btn btn-secondary', params: { rest_patient: true } }) %>
                             <% end %>
                           </td>
                           <td>  <%= patient_form.submit({ class: 'btn btn-primary', disabled: disabled }) if controller_name.eql?('patients') || controller_name.eql?('admissions') %></td>

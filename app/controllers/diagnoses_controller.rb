@@ -7,7 +7,7 @@ class DiagnosesController < ApplicationController
   # GET /diagnoses
   # GET /diagnoses.json
   def index
-    authorize(:diagnosis)
+    authorize(:diagnoses)
     @diagnoses = Diagnosis.all
   end
 
@@ -19,7 +19,7 @@ class DiagnosesController < ApplicationController
   # GET /diagnoses/new
   def new
     # binding.pry
-    authorize(:diagnosis)
+    authorize(:diagnoses)
     @diagnosis = Diagnosis.new
 
     if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
@@ -40,7 +40,7 @@ class DiagnosesController < ApplicationController
   # POST /diagnoses
   # POST /diagnoses.json
   def create
-    authorize(:diagnosis)
+    authorize(:diagnoses)
     @diagnosis = Diagnosis.new(diagnosis_params)
 
     respond_to do |format|
@@ -81,7 +81,7 @@ class DiagnosesController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_diagnosis
-    authorize(:diagnosis)
+    authorize(:diagnoses)
     @diagnosis = Diagnosis.find(params[:id])
   end
 

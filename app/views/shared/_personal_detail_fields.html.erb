@@ -24,7 +24,7 @@
       <td>
         <div class="form-group">
           <%= person_fields.label(:gender) %><br/>
-          <%= person_fields.select(:gender, options_for_select([:Male, :Female], selected: patient.person.gender), { include_blank: 'Select gender' }, { class: 'form-control', autocomplete: 'lastName', required: true, disabled: (disabled if disabled) }) %>
+          <%= person_fields.select(:gender, options_for_select([:Male, :Female], selected: person_fields.object.gender), { include_blank: 'Select gender' }, { class: 'form-control', autocomplete: 'lastName', required: true, disabled: (disabled if disabled) }) %>
         </div>
       </td>
     </tr>
