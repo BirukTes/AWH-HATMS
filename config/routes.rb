@@ -50,12 +50,13 @@ Rails.application.routes.draw do
     get 'find_admitted_patients_in_ward', to: 'find#find_admitted_patients_in_ward'
     get 'find_patients_discharge_unauthorised', to: 'find#find_patients_discharge_unauthorised'
     get 'find_discharged_without_invoice_patients_in_ward', to: 'find#find_discharged_without_invoice_patients_in_ward'
+    get 'find_admitted_diagnosed_patients_in_ward', to: 'find#find_admitted_diagnosed_patients_in_ward'
   end
 
   # Change devise routes from staffs/login to /login
   devise_for :staffs, path: '',
-                      path_names: { sign_in: 'login', sign_up: 'register', account_update: 'update' },
-                      controllers: { sessions: 'sessions', passwords: 'passwords' }
+             path_names: { sign_in: 'login', sign_up: 'register', account_update: 'update' },
+             controllers: { sessions: 'sessions', passwords: 'passwords' }
 
   # On the scope of devise, manage authenticated and unauthenticated users
   devise_scope :staff do

@@ -1,3 +1,4 @@
+# Prescriptions Controller, manages all drup prescriptions requests, index, creation, deletion and more
 class PrescriptionsController < ApplicationController
   before_action(:set_prescription, only: [:show, :edit, :update, :destroy])
 
@@ -23,7 +24,7 @@ class PrescriptionsController < ApplicationController
       @diagnosis = Diagnosis.find_by(admission_id: admission_id_extract)
 
       # Save the admission to session and use it if re-rendering is required (create errors)
-      session[:current_prescribing_admission] = @diagnosis
+      session[:current_prescribing_diagnosis] = @diagnosis
     elsif params.include?(:rest_patient)
       @diagnosis = nil
     end
@@ -59,7 +60,7 @@ class PrescriptionsController < ApplicationController
 
   # @return [params]
   def prescription_params
-    params.require(:prescription).permit(:id, :date, :dosage, :treatmentLength, :issuedBy,:diagnosis_id,
+    params.require(:prescription).permit(:id, :date, :dosage, :treatmentLength, :issuedBy, :diagnosis_id,
                                          :ward_id, :patient_id, medications_attributes: [:id, :drug_id, :_destroy])
   end
 

@@ -18,7 +18,6 @@
       <td><%= diagnosis.admission.patient.person.firstName + ' ' + diagnosis.admission.patient.person.lastName %></td>
       <td><%= link_to('Show', diagnosis, class: 'btn btn-secondary') %></td>
       <td><%= link_to('Edit', edit_diagnosis_path(diagnosis), class: 'btn btn-secondary') %></td>
-      <td><%= link_to('Destroy', diagnosis, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary') %></td>
     </tr>
   <% end %>
   </tbody>

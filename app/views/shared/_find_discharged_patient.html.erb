@@ -7,7 +7,7 @@
         <label>Ward</label><br/>
         <%# TODO add date range, to all date types %>
         <% %>
-        <%= form.select(:ward_id, ward_options, { include_blank: 'Select patient admission ward' }, { id: 'ward_id_select_find_discharged', required: true }) %>
+        <%= form.select(:ward_id, wards_option, { include_blank: 'Select patient admission ward' }, { id: 'ward_id_select_find_discharged', required: true }) %>
       </td>
       <td>
         <label>Patient</label><br/>

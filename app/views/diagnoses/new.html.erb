@@ -18,5 +18,8 @@
 <% end %>
 
 <% content_for(:navigationButtons) do %>
-  <%= link_to('Cancel', request.referrer || diagnoses_path, role: 'button', class: 'btn btn-secondary') %>
+  <%# Save to session, if it is null %>
+  <% session[:diagnoses_new_back_url] = request.referrer unless session[:diagnoses_new_back_url] %>
+
+  <%= link_to('Cancel', session[:diagnoses_new_back_url] || diagnoses_path, role: 'button', class: 'btn btn-secondary') %>
 <% end %>

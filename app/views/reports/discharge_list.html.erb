@@ -9,7 +9,7 @@
           <div class="col">
             <div class="row">
               <label>Ward</label><br/>
-              <%= ward_report_form.select(:ward_id_eq, options_for_select(ward_options, params.dig(:q, :ward_id_eq)),
+              <%= ward_report_form.select(:ward_id_eq, options_for_select(wards_option, params.dig(:q, :ward_id_eq)),
                                           { include_blank: 'Select ward', id: 'ward_id' }, class: 'form-control') %>
             </div>
           </div>

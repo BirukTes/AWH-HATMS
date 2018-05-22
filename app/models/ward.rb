@@ -10,14 +10,19 @@ class Ward < ApplicationRecord
   validates(:patientGender, presence: true)
   validates(:deptName, presence: true)
 
+# TODO future refactor should get even wards are full and indicate this in the list
+#
+# Gets the private or non private wards with given patient, gender
+#
+# @params[patient]
+# @return [Wards]
+  def self.ward_options(patient)
+    if patient.isPrivate
+      where('"patientGender" = ? AND ("bedStatus" != 0 OR "bedStatus" != Null) AND "isPrivate" = true', "#{patient.person.gender}").all
+    else
+      where('"patientGender" = ? AND ("bedStatus" != 0 OR "bedStatus" != Null) AND "isPrivate" = false', "#{patient.person.gender}").all
 
-  def self.admission_options(patient_gender)
-    where('"patientGender" = ? AND ("bedStatus" != 0 OR "bedStatus" != Null)', "#{patient_gender}").map do |ward|
-      [ward.name, ward.id]
+      # From either choice will be mapped
     end
-  end
-
-  def self.get_ward(ward_id)
-    find(ward_id)
   end
 end

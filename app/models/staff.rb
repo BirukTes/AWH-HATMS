@@ -22,20 +22,25 @@ class Staff < ApplicationRecord
   # Association to team is nullable/optional
   belongs_to(:team, optional: true)
 
-  # Setup many-to-many association through the corresponding join table
-  # Through expects that junctions are declared
-  has_many :specialisms
-  has_many :jobs
-  has_many(:specialities, through: :specialisms)
-  has_many(:job_titles, through: :jobs)
   # Association with Person class, as polymorphic
   has_one(:person, as: :personalDetail, dependent: :destroy)
+
+  # Setup many-to-many association through the corresponding join table
+  # Through expects that junctions are declared
+  has_many(:specialisms, dependent: :destroy)
+  has_many(:jobs, dependent: :destroy)
+  has_many(:specialities, through: :specialisms)
+  has_many(:job_titles, through: :jobs)
+
+
 
   # For nested forms
   # Use for additional validations, reject_if: proc { |attributes| attributes[:attribute].blank? }
   accepts_nested_attributes_for(:specialisms, allow_destroy: true)
   accepts_nested_attributes_for(:jobs, allow_destroy: true)
   accepts_nested_attributes_for(:person, update_only: true, allow_destroy: true)
+
+
 
   validates_associated :person, presence: true
   validates_associated(:specialisms, presence: true)
@@ -44,6 +49,7 @@ class Staff < ApplicationRecord
 
   # Provides access to the parent methods, or the class person, not working
   # delegate(:firstName, :lastName, to: :person, prefix: :pd)
+
 
 
   # Gets the first job title of the staff

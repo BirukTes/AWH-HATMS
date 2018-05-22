@@ -1,24 +1,23 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
+  # Gets the Bootstrap class for given flash type
+  #
+  # @return [Bootstrap-Alert-Class]
   def alert_class(flash_type)
     case flash_type.to_sym
       when :notice
-        "alert-success"
+        'alert-success'
       when :alert
-        "alert-warning"
+        'alert-warning'
       when :error
-        "alert-danger"
+        'alert-danger'
     end
   end
 
-  def link_to_add_row(name, f, association, **args)
-    new_object = f.object.send(association).klass.new
-    id = new_object.object_id
-    fields = f.simple_fields_for(association, new_object, child_index: id) do |builder|
-      render(association.to_s.singularize, f: builder)
-    end
-    link_to(name, '#', class: "add_fields " + args[:class], data: { id: id, fields: fields.gsub("\n", "") })
-  end
-
+  # Gets the option for wards
+  #
+  # @return [[ward name, ward id]]
   def speciality_options
     Speciality.all.map do |speciality|
       # Hash [key, value]
@@ -26,33 +25,41 @@ module ApplicationHelper
     end
   end
 
+  # Gets the option for wards, T
+  #
+  # @return [[job title name, ward id]]
   def job_title_options
     JobTitle.all.map do |job_title|
       [job_title.title, job_title.id]
     end
   end
 
-  def team_options
+  # Gets the option for wards
+  #
+  # @return [[team name, team id]]
+  def teams_options
     Team.all.map do |team|
       [team.name, team.id]
     end
   end
 
-  def ward_options(filter_by = nil, patient_gender = nil)
+  # Gets the option for wards
+  #
+  # @return [[ward name, ward id]]
+  def wards_option(filter_by = nil, patient = nil)
     case filter_by
       when 'admission'
-        Ward.admission_options(patient_gender)
+        map_wards_option(Ward.ward_options(patient))
       when 'wards_for_current_staff'
-        current_staff.team.wards.map do |ward|
-          [ward.name, ward.id]
-        end
+        map_wards_option(current_staff.team.wards)
       else
-        Ward.all.map do |ward|
-          [ward.name, ward.id]
-        end
+        map_wards_option(Ward.all)
     end
   end
 
+  # Gets the option for patients
+  #
+  # @return [[patient name, patient id]]
   def patients_option
     Patient.all.limit(10).map do |patient|
       [patient.person.firstName + ' ' + patient.person.lastName, patient.id]
@@ -61,5 +68,28 @@ module ApplicationHelper
 
   def all_staffs
     Staff.all.limit(4)
+  end
+
+  private
+
+  # Maps wards to name and id
+  #
+  # @return [[ward name, ward id]]
+  def map_wards_option(wards)
+    wards.map do |ward|
+      [decorate_ward_name(ward), ward.id]
+    end
+  end
+
+  def decorate_ward_name(ward)
+    if !ward.isPrivate && ward.patientGender.eql?('Male')
+      '(Male) ' + ward.name
+    elsif ward.isPrivate && ward.patientGender.eql?('Male')
+      '(Private, Male) ' + ward.name
+    elsif !ward.isPrivate && ward.patientGender.eql?('Female')
+      '(Female) ' + ward.name
+    elsif ward.isPrivate && ward.patientGender.eql?('Female')
+      '(Private, Female) ' + ward.name
+    end
   end
 end

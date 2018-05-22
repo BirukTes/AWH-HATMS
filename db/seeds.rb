@@ -25,7 +25,7 @@
 # Speciality.create!(speciality: 'Administration')
 # specialityPaediatrics = Speciality.search(1).update_attributes!(speciality: 'Paediatrics')
 # specialityPaediatricsId = 1
-
+#
 # specialityCoronaryId = 3
 # Speciality.create!(speciality: 'Obstetrics')
 # Speciality.create!(speciality: 'Cardiology')
@@ -36,25 +36,33 @@
 # teamPaediatricsId = 1
 # teamCoronaryId = 2
 
+
+puts 'Create staffs'
+# staffANini = Staff.new(email: 'anini@outlook.com', password: 'password', userId: 'anini', team_id: teamPaediatricsId)
 #
-# puts 'Create staffs'
-# staffANini = Staff.create!(email: 'anini@outlook.com', password: 'password', userId: 'anini', team_id: teamPaediatricsId,
-#                            specialisms: [speciality_id: specialityPaediatricsId],
-#                            jobs: [job_title_id: jobTitleConsultantId])
-# staffANini.build_person(firstName: 'Aliza', lastName: 'Nini', dateOfBirth: '1985/03/09', gender: 'Female',
+# staffANini.specialisms.build(speciality_id: specialityPaediatricsId)
+# staffANini.jobs.build(job_title_id: jobTitleConsultantId)
+#
+# staffANini.build_person(firstName: 'Aliza', lastName: 'Nini', dateOfBirth: '1985-03-09', gender: 'Female',
 #                         telHomeNo: '0141656424', telMobileNo: '0734084054')
 #
+# staffANini.person.build_address(houseNumber: '20', street: 'Fulmar Ct', town: 'Surbiton', postcode: 'KT3 1JY')
+
 #
-# staffAJohn = Staff.create!(email: 'ajohn@outlook.com', password: 'password', userId: 'ajohn', team_id: teamCoronaryId,
-#                            specialisms: [speciality_id: specialityCoronaryId],
-#                            job_titles: [job_title_id: jobTitleConsultantId])
-# staffAJohn.build_person(firstName: 'Adam', lastName: 'John', dateOfBirth: '1970/06/24', gender: 'Male',
+# staffAJohn = Staff.new(email: 'ajohn@outlook.com', password: 'password', userId: 'ajohn', team_id: teamCoronaryId)
+#
+# staffAJohn.specialisms.build(speciality_id: specialityCoronaryId)
+# staffAJohn.jobs.build(job_title_id: jobTitleConsultantId)
+#
+# staffAJohn.build_person(firstName: 'Adam', lastName: 'John', dateOfBirth: '1970-06-24', gender: 'Male',
 #                         telHomeNo: '0141668787', telMobileNo: '0757784354')
-
-# puts 'Create staff addresses'
-# Address.create!(houseNumber: '20', street: 'Fulmar Ct', town: 'Surbiton', postcode: 'KT3 1JY', person_id: staffANini.person.id)
-# Address.create!(houseNumber: '33', street: 'Britannia Rd', town: 'Surbiton', postcode: 'KT5 8LJ', person_id: staffAJohn.person.id)
-
+#
+# staffAJohn.person.build_address(houseNumber: '33', street: 'Britannia Rd', town: 'Surbiton', postcode: 'KT5 8LJ')
+#
+#
+# puts 'Saving staff'
+# # staffANini.save!
+# staffAJohn.save!
 
 # puts 'Create patients'
 # patientCaitlin = Patient.create!(allergies: nil, diabetes: true, asthma: true, smokes: nil, alcoholic: nil, medicalTestsResults: nil,

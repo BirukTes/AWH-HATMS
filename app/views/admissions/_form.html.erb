@@ -7,13 +7,13 @@
       <td>
         <div class="form-group">
           <%= admission_form.label(:currentMedications, 'Current Medications') %><br/>
-          <%= admission_form.text_area(:currentMedications, autocomplete: 'currentMedications') %>
+          <%= admission_form.text_area(:currentMedications, autocomplete: 'currentMedications', class: 'form-control') %>
         </div>
       </td>
-      <td>
+      <td colspan="2">
         <div class="form-group">
           <%= admission_form.label(:admissionNote, 'Admission Note') %><br/>
-          <%= admission_form.text_area(:admissionNote, autocomplete: 'admissionNote') %>
+          <%= admission_form.text_area(:admissionNote, autocomplete: 'admissionNote', class: 'form-control') %>
         </div>
       </td>
     </tr>
@@ -21,13 +21,8 @@
       <td>
         <div class="form-group">
           <%= admission_form.label(:ward_id, 'Ward') %><br/>
-          <%= admission_form.select(:ward_id, ward_options('admission', patient.person.gender), { include_blank: 'Select ward for allocation' }, { id: 'ward_id_select', autocomplete: 'ward_id' }) %>
-        </div>
-      </td>
-      <td>
-        <div class="form-group">
-          <%= admission_form.label(:team_id, 'Caring Team') %><br/>
-          <%= admission_form.select(:team_id, ['blank'], { include_blank: 'Select ward first...' }, { id: 'team_id_select', autocomplete: 'team_id', disabled: true }) %>
+          <%#	 binding.pry %>
+          <%= admission_form.select(:ward_id, options_for_select(wards_option('admission', patient), @admission.ward), { include_blank: 'Select ward for allocation' }, { id: 'ward_id_select', autocomplete: 'ward_id', class: 'form-control' }) %>
         </div>
       </td>
       <td>
@@ -39,7 +34,7 @@
     </tr>
     <tr>
       <td>
-        <%= link_to('Cancel', admission, class: 'btn btn-primary') %>
+        <%= link_to('Cancel', admission, class: 'btn btn-secondary') %>
       </td>
       <td>
         <div class="form-group">

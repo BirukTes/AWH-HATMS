@@ -155,6 +155,7 @@
                 <td>
                   <div class="form-group">
                     <%= job_fields.label(:job_title_id, 'Job title') %><br/>
+                    <%# todo refactor to cocoon %>
                     <%= job_fields.select(:job_title_id, job_title_options, autocomplete: 'jobTitle') %>
                   </div>
                   <!--<table class="table">-->

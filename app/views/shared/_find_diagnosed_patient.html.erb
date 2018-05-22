@@ -12,7 +12,12 @@
         </td>
         <td class="form-group">
           <label>Patient</label><br/>
-          <%= form.select(:patient_id, {}, { include_blank: 'Select patient' }, { id: 'patient_id_select', disabled: true, required: true, class: 'form-control' }) %>
+          <%= form.select(:patient_id, {}, { include_blank: 'Select patient' }, { id: 'patient_id_select_find_diagnosed', disabled: true, required: true, class: 'form-control' }) %>
+          <br/>
+        </td>
+        <td class="form-group">
+          <label>Diagnosis</label><br/>
+          <%= form.select(:diagnosis_id, {}, { include_blank: 'Select Diagnosis' }, { id: 'diagnosis_id_select', disabled: true, required: true, class: 'form-control' }) %>
           <br/>
         </td>
       </tr>

@@ -13,9 +13,8 @@ class AdmissionsController < ApplicationController
   def index
     authorize(:admission)
 
-    # binding.pry
+    # TODO CONVERT TO ransack
     # ! Inverts the blank => false, not blank => true
-
     @admissions = if !params[:filter_admission_by_status].blank? && !params[:filter_admission_by_status].eql?('All') &&
         params[:filter_admission_by_date].blank?
                     Admission.where(status: params[:filter_admission_by_status].downcase).all
@@ -24,11 +23,16 @@ class AdmissionsController < ApplicationController
                     # FIXME only returns nil
                     Admission.where('"admissionDate" >= ? AND "status" = ?', params[:filter_admission_by_date], params[:filter_admission_by_status].downcase).all
 
+                  elsif params[:filter_admission_by_status].eql?('All') && !params[:filter_admission_by_date].blank?
+                    Admission.where('"admissionDate" >= ? AND', params[:filter_admission_by_date])
+
                   elsif !params[:filter_admission_by_date].blank?
                     Admission.where('"admissionDate" >= ?', params[:filter_admission_by_date]).all
 
-                  else
+                  elsif params[:filter_admission_by_status].eql?('All')
                     Admission.all
+                  else
+                    Admission.admitted
                   end
 
     # This method is aware of what format to respond with (as declared above, js, html, json)
@@ -44,7 +48,7 @@ class AdmissionsController < ApplicationController
 
     if params.key?(:dateOfBirth) && !params[:dateOfBirth].blank?
       params.key?(:lastName) && !params[:lastName].blank? && @patient.eql?(nil)
-# binding.pry
+
       @patient = Patient.find_patient(params[:dateOfBirth], params[:lastName])
 
       if @patient.nil?
@@ -70,14 +74,6 @@ class AdmissionsController < ApplicationController
       end
     end
 
-    if params.key?(:ward_id_selected)
-      @teams = Ward.find(params[:ward_id_selected]).teams.all
-      tm_options = @teams.map do |team|
-        { name: team.name, id: team.id }
-      end
-
-      respond_with(tm_options)
-    end
   end
 
   def create
@@ -180,18 +176,19 @@ class AdmissionsController < ApplicationController
     end
   end
 
-def search
-  authorize(:admission)
-  redirect_to(reports_ward_list_path)
-end
+  def search
+    authorize(:admission)
+    redirect_to(reports_ward_list_path)
+  end
+
   # Private methods
   private
 
   # @return [params]
   def admission_params
     params.require(:admission).permit(:id, :admissionDate, :dischargeDate, :currentMedications, :admissionNote,
-                                      :ward_id, :patient_id, :dateOfBirth, :lastName, :team_category, :ward_id_selected,
-                                      :team_id, :filter_admission_by_status, :filter_admission_by_date)
+                                      :ward_id, :patient_id, :dateOfBirth, :lastName, :ward_id_selected,
+                                      :filter_admission_by_status, :filter_admission_by_date)
   end
 
 
