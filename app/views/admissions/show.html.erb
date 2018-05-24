@@ -1,2 +1,89 @@
-<h1>Admissions#show</h1>
-<p>Find me in app/views/admissions/show.html.erb</p>
+<h1>Admission No. <%= @admission.id %></h1>
+
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Admission Date</th>
+    <th>Admission No</th>
+    <th>Patient Name</th>
+    <th>Ward Number</th>
+    <th>Ward Name</th>
+    <th>Discharge Date</th>
+    <th>Status</th>
+    <th colspan="3">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% patient = @admission.patient %>
+  <% ward = @admission.ward %>
+  <tr>
+    <td><%= localize(@admission.admissionDate) %></td>
+    <td><%= @admission.id %></td>
+    <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+    <td><%= ward.wardNumber %></td>
+    <td><%= ward.name %></td>
+    <td><%= @admission.dischargeDate ? localize(@admission.dischargeDate) : '--' %></td>
+    <td><span class="badge badge-info"><%= @admission.status %></span></td>
+    <% if (@admission.dischargeDate.nil? || @admission.admitted?) && policy(:admission).discharge? %>
+      <td>
+        <%#	 Displayed only the authorised staff (consultant/doctor) and discharge is not set/nil %>
+        <%= link_to('Discharge', discharge_admission_path(@admission.id), data: { modal: true }, role: 'button',
+                    class: 'btn btn-secondary  btn-sm') %>
+      </td>
+    <% end %>
+    <% if @admission.scheduled? && policy(:admission).admit_scheduled? %>
+
+      <td>
+        <%= link_to('Admit', admit_scheduled_admission_path(@admission.id), data: { confirm: 'Admit now?' }, role: 'button',
+                    class: 'btn btn-success  btn-sm', method: :patch) %>
+      </td>
+    <% end %>
+    <% if @admission.scheduled? && policy(:admission).cancel_scheduled? %>
+      <td>
+        <%= link_to('Cancel', cancel_scheduled_admission_path(@admission.id), data: { title: 'Cancel Scheduled Admission', confirm: "Should this admission no. #{@admission.id} be cancel?" },
+                    role: 'button', class: 'btn btn-danger btn-sm', method: :delete) %>
+      </td>
+    <% end %>
+  </tr>
+  </tbody>
+</table>
+
+<br>
+
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Current Medications</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <p><%= @admission.currentMedications %></p>
+    </td>
+  </tr>
+  </tbody>
+  <thead class="thead-light">
+  <tr>
+    <th>Admission Notes</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <p><%= @admission.admissionNote %></p>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<% content_for(:navigationButtons) do %>
+  <%# session[:admissions_show_back_url] = request.referrer unless session[:admissions_show_back_url] %>
+  <%= link_to('Back',admissions_path, class: 'btn btn-secondary') %>
+
+  <% if (@admission.dischargeDate.nil? || @admission.admitted?) && policy(:admission).update? %>
+    <td>
+      <%= link_to('Edit', edit_admission_path(@admission.id), role: 'button', class: 'btn btn-secondary') %>
+    </td>
+  <% end %>
+<% end %>

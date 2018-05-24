@@ -20,6 +20,11 @@
  *= require_self
  */
 
+.dropright .dropdown-toggle::after {
+    vertical-align: 0.5em;
+    float: right;
+}
+
 div.dropdown-menu.show label a {
     color: #343a40;
 }
@@ -87,11 +92,11 @@ div.dropdown-menu.show label a {
 }
 
 /*.sidebar [aria-expanded="true"]:before {*/
-    /*content: "\f0d8";*/
+/*content: "\f0d8";*/
 /*}*/
 
 .sidebar.toggled {
-    min-width: 60px;
+    min-width: 80px;
 }
 
 .sidebar-toggle-holder, .sidebar ul ul a i {
@@ -112,7 +117,7 @@ div.dropdown-menu.show label a {
 
 @media (max-width: 768px) {
     .sidebar {
-        min-width: 60px;
+        min-width: 80px;
     }
 
     .lbl-nav {
@@ -120,7 +125,7 @@ div.dropdown-menu.show label a {
     }
 
     .sidebar.toggled {
-        min-width: 60px;
+        min-width: 80px;
     }
 }
 
@@ -160,9 +165,19 @@ table.borderless {
     padding: 5px;
 }
 
+.main-side-list {
+    overflow: auto;
+    height: 70%;
+}
+
 /* Remove the last column on a table when printing, TODO make this specific, so does not remove in invoices/show
  */
 @media print {
-    table td:last-child {display:none}
-    table th:last-child {display:none}
+    table td:last-child {
+        display: none
+    }
+
+    table th:last-child {
+        display: none
+    }
 }

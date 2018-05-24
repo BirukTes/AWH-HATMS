@@ -7,13 +7,13 @@
         <div class="form-group">
           <label>Date of Birth</label><br/>
           <%# TODO add date range, to all date types %>
-          <%= form.text_field(:dateOfBirth, type: 'date', min: '1900-01-01', max: Date.today.to_s, required: true) %>
+          <%= form.text_field(:dateOfBirth, type: 'date', min: '1900-01-01', max: Date.today.to_s, required: true, class: 'form-control') %>
         </div>
       </td>
       <td>
         <div class="form-group">
           <label>Last name</label><br/>
-          <%= form.text_field(:lastName, required: true) %><br/>
+          <%= form.text_field(:lastName, required: true, class: 'form-control') %><br/>
         </div>
       </td>
     </tr>

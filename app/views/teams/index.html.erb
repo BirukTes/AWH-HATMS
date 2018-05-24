@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<% @page_title = 'Teams' %>
 
 <h1>Teams</h1>
 
@@ -7,7 +7,7 @@
   <tr>
     <th>Name</th>
     <th>Head</th>
-    <th colspan="3">Action</th>
+    <th colspan="2">Action</th>
   </tr>
   </thead>
   <tbody>
@@ -15,9 +15,8 @@
     <tr>
       <td><%= team.name %></td>
       <td><%= team.head %></td>
-      <td><%= link_to 'Show', team, class: 'btn btn-secondary' %></td>
+      <td><%= link_to 'View', team, class: 'btn btn-secondary' %></td>
       <td><%= link_to 'Edit', edit_team_path(team), class: 'btn btn-secondary' %></td>
-      <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary' %></td>
     </tr>
   <% end %>
   </tbody>

@@ -3,11 +3,10 @@
 class InvoicePaymentsController < ApplicationController
   respond_to(:json, :js, :html)
 
+  before_action(:set_admission, only: %i[new create])
+
   def new
-    # puts( Rails.application.secrets.braintree_environment,
-    # Rails.application.secrets.braintree_merchant_id,
-    # Rails.application.secrets.braintree_public_key,
-    # Rails.application.secrets.braintree_private_key,)
+    # Initial Braintree Gateway and assign to variable
     gateway = Braintree::Gateway.new(environment: Rails.application.secrets.braintree_environment.to_s.to_sym,
                                      merchant_id: Rails.application.secrets.braintree_merchant_id,
                                      public_key: Rails.application.secrets.braintree_public_key,
@@ -22,20 +21,43 @@ class InvoicePaymentsController < ApplicationController
   end
 
   def create
+
     gateway = Braintree::Gateway.new(environment: Rails.application.secrets.braintree_environment.to_s.to_sym,
                                      merchant_id: Rails.application.secrets.braintree_merchant_id,
                                      public_key: Rails.application.secrets.braintree_public_key,
                                      private_key: Rails.application.secrets.braintree_private_key)
     nonce_from_the_client = params[:payment_method_nonce]
+
+    binding.pry
+    result = gateway.customer.create(
+        first_name: @admission.patient.person.firstName,
+        last_name: @admission.patient.person.lastName,
+        email: @admission.patient.email,
+        payment_method_nonce: nonce_from_the_client)
+
+
+    collection = gateway.customer.search do |search|
+      search.email.is(@admission.patient.email)
+    end
+    unless collection
+      puts true
+    end
+
+    if result.success?
+      puts result.customer.id
+      puts result.customer.payment_methods[0].token
+    else
+      puts result.errors
+    end
+
     # Use payment method nonce here...
-    #
+
     result = gateway.transaction.sale(
-      amount: '10.00',
-      payment_method_nonce: nonce_from_the_client,
-      options: {
-        submit_for_settlement: true
-      }
-    )
+        amount: @admission.invoice.amount,
+        payment_method_nonce: nonce_from_the_client,
+        options: {
+            submit_for_settlement: true
+        })
 
     response = { success: result.success? }
     if result.success?
@@ -50,5 +72,17 @@ class InvoicePaymentsController < ApplicationController
       response[:error] = result.errors.inspect
     end
     render json: response
+  end
+
+  private
+
+  def invoice_payment_params
+    params.require(:invoice_payment).permit(:payment_method_nonce, :admission_id)
+  end
+
+  def set_admission
+    # Retrieve the admission
+    binding.pry
+    @admission = Admission.find(params[:admission_id]) if params[:admission_id]
   end
 end

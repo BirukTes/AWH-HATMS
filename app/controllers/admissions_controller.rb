@@ -1,6 +1,7 @@
 class AdmissionsController < ApplicationController
   # Sets the admission object for the following actions
-  before_action(:set_admission, only: [:show, :edit, :update, :destroy, :discharge, :authorise_discharge])
+  before_action(:set_admission, only: [:show, :edit, :update, :destroy, :discharge, :authorise_discharge,
+                                       :admit_scheduled, :cancel_scheduled])
 
   # Authorisation callbacks
   # Make sure all actions perform authorisation, (individual records),
@@ -12,28 +13,8 @@ class AdmissionsController < ApplicationController
 
   def index
     authorize(:admission)
-
-    # TODO CONVERT TO ransack
-    # ! Inverts the blank => false, not blank => true
-    @admissions = if !params[:filter_admission_by_status].blank? && !params[:filter_admission_by_status].eql?('All') &&
-        params[:filter_admission_by_date].blank?
-                    Admission.where(status: params[:filter_admission_by_status].downcase).all
-
-                  elsif (!params[:filter_admission_by_status].blank? && !params[:filter_admission_by_status].eql?('All')) && !params[:filter_admission_by_date].blank?
-                    # FIXME only returns nil
-                    Admission.where('"admissionDate" >= ? AND "status" = ?', params[:filter_admission_by_date], params[:filter_admission_by_status].downcase).all
-
-                  elsif params[:filter_admission_by_status].eql?('All') && !params[:filter_admission_by_date].blank?
-                    Admission.where('"admissionDate" >= ? AND', params[:filter_admission_by_date])
-
-                  elsif !params[:filter_admission_by_date].blank?
-                    Admission.where('"admissionDate" >= ?', params[:filter_admission_by_date]).all
-
-                  elsif params[:filter_admission_by_status].eql?('All')
-                    Admission.all
-                  else
-                    Admission.admitted
-                  end
+    @search = Admission.ransack(params[:q])
+    @admissions = @search.result.includes(:ward, :patient)
 
     # This method is aware of what format to respond with (as declared above, js, html, json)
     respond_with(@admissions)
@@ -62,6 +43,7 @@ class AdmissionsController < ApplicationController
     elsif params.include?(:rest_patient)
       @patient = nil
     else
+      # Extra validation in case otherwise normal should not get past html required attribute
       if params.key?(:dateOfBirth) && params.key?(:lastName)
         flash[:alert] = case params[:dateOfBirth].blank? || params[:lastName].blank?
                           when params[:dateOfBirth].blank?
@@ -80,28 +62,28 @@ class AdmissionsController < ApplicationController
     authorize(:admission)
     @admission = Admission.new(admission_params)
 
-    # binding.pry # break point Pry Debugger
-    # Validation, FIXME
-    if @admission.valid?
-      # Admitted, Discharged
-      @admission.status = 'Admitted'
-    end
-
     respond_to do |format|
       # It is important to check it save it
       if @admission.save
+
+        # Admitted, Discharged, Scheduled
+        @admission.scheduled!
+
         # Update the bed status with new value if it nil or 0, otherwise continue to decrement it current value
+        # At this point it is reserved
         @admission.ward.update(bedStatus: if @admission.ward.bedStatus.nil? || @admission.ward.bedStatus == 0
                                             @admission.ward.numberOfBeds - 1
                                           else
                                             @admission.ward.bedStatus - 1
                                           end)
 
+
         format.html { redirect_to(admissions_path, notice: 'Admission successful') }
       else
         # puts(@admission.inspect)
-        # Pass the errors, to the instance variable, TODO errors
+        # Pass the errors, to the instance variable
         format.html { render :new }
+        format.js { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -112,11 +94,30 @@ class AdmissionsController < ApplicationController
 
   def update
     respond_to do |format|
+      # Detect changed ward
+      ward_id_for_later = @admission.ward_id
+
       if @admission.update(admission_params)
+        if @admission.ward_id_changed?
+          # Update the old ward
+          Ward.find(ward_id_for_later).update(bedStatus: if @admission.ward.bedStatus >= @admission.ward.numberOfBeds
+                                                           # Don't add anything, already max?
+                                                           0
+                                                         else
+                                                           @admission.ward.bedStatus + 1
+                                                         end)
+
+          # Update the new ward
+          @admission.ward.update(bedStatus: if @admission.ward.bedStatus.nil? || @admission.ward.bedStatus == 0
+                                              @admission.ward.numberOfBeds - 1
+                                            else
+                                              @admission.ward.bedStatus - 1
+                                            end)
+        end
         format.html { redirect_to(@admission, notice: 'Admission update successful.') }
       else
         format.html { render(:edit) }
-        format.html { render(json: @admission.errors, status: :unprocessable_entity) }
+        format.js { render(:edit, status: :unprocessable_entity) }
       end
     end
   end
@@ -129,7 +130,7 @@ class AdmissionsController < ApplicationController
 
     if @admission.save!
       # Return the one bed, and update the ward bedStatus
-      # Check for max, in case goes above actual number
+      # Check for max, in case goes above actual number, refactor once stable
       @admission.ward.update(bedStatus: if @admission.ward.bedStatus >= @admission.ward.numberOfBeds
                                           # Don't add anything, already max?
                                           0
@@ -137,6 +138,31 @@ class AdmissionsController < ApplicationController
                                           @admission.ward.bedStatus + 1
                                         end)
       redirect_to(admissions_path, notice: 'Patient discharged')
+    end
+  end
+
+  def admit_scheduled
+    # TODO, actual time admitted
+    # Admitted, Discharged, Scheduled
+    if @admission.admitted!
+      redirect_to(@admission, notice: 'Patient admitted')
+    end
+  end
+
+  def cancel_scheduled
+    # Update first of all
+    # Check for max, in case goes above actual number
+    @admission.ward.update(bedStatus: if @admission.ward.bedStatus >= @admission.ward.numberOfBeds
+                                        # Don't add anything, already max?
+                                        0
+                                      else
+                                        @admission.ward.bedStatus + 1
+                                      end)
+
+
+    # Then delete
+    if @admission.destroy
+      redirect_to(@admission, notice: 'Admission cancelled.')
     end
   end
 
@@ -197,4 +223,5 @@ class AdmissionsController < ApplicationController
     authorize(:admission)
     @admission = Admission.find(params[:id])
   end
+
 end

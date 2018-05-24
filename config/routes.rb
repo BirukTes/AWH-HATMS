@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     member do
       get :discharge
       post :authorise_discharge
+      patch :admit_scheduled
+      delete :cancel_scheduled
     end
     # Collections do not require id
     collection do

@@ -1,3 +1,4 @@
-<% patient = Patient.find(@admission.patient_id) %>
+<% @page_title = 'Admission | Edit' %>
+<% patient = @admission.patient %>
 <h1>Admission Update For <%= patient.person.firstName + ' ' + patient.person.lastName %></h1>
 <%= render('form', admission: @admission, patient: patient) %>

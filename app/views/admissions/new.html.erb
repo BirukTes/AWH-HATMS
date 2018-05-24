@@ -2,8 +2,6 @@
 
 <h1 class="title-container">Admit Patient</h1>
 
-<%= render('shared/errors', model: @admission) %>
-
 <% if @patient %>
   <fieldset class="none-bs-fieldset">
   <legend class="none-bs-legend">Patient Details</legend>
@@ -19,7 +17,6 @@
   <br/>
 <% else %>
   <fieldset class="none-bs-fieldset">
-    <legend class="none-bs-legend">Find Registered Patient</legend>
     <%= render('find_form') %>
   </fieldset>
 <% end %>

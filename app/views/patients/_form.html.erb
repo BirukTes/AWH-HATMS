@@ -4,9 +4,6 @@
     <%= hidden_field_tag(:update_patient, true) %>
   <% end %>
 
-  <%#	 TODO ajax %>
-  <%= render 'shared/errors', model: patient %>
-
   <%#	 Determine whether field will be disabled or not for update %>
   <% if controller_name.eql?('treatments') || controller_name.eql?('prescription') %>
     <%= render('patients/form_fields', patient_form: patient_form, patient: patient, disabled: true) %>

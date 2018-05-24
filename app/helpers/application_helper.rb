@@ -18,7 +18,7 @@ module ApplicationHelper
   # Gets the option for wards
   #
   # @return [[ward name, ward id]]
-  def speciality_options
+  def specialities_option
     Speciality.all.map do |speciality|
       # Hash [key, value]
       [speciality.speciality, speciality.id]
@@ -28,7 +28,7 @@ module ApplicationHelper
   # Gets the option for wards, T
   #
   # @return [[job title name, ward id]]
-  def job_title_options
+  def job_titles_option
     JobTitle.all.map do |job_title|
       [job_title.title, job_title.id]
     end
@@ -37,10 +37,7 @@ module ApplicationHelper
   # Gets the option for wards
   #
   # @return [[team name, team id]]
-  def teams_options
-    Team.all.map do |team|
-      [team.name, team.id]
-    end
+  def teams_option;
   end
 
   # Gets the option for wards
@@ -68,6 +65,20 @@ module ApplicationHelper
 
   def all_staffs
     Staff.all.limit(4)
+  end
+
+  def staffs_option (filter_by = nil)
+    case filter_by
+      when 'consultant'
+        JobTitle.find_by(title: 'Consultant').staffs.each do |staff|
+          unless staff.team
+            ['(' + staff.userId + ')' + ' ' + staff.person.firstName + ' ' + staff.person.lastName, staff.userId]
+          end
+        end
+        []
+      else
+        []
+    end
   end
 
   private

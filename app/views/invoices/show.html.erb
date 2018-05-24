@@ -25,7 +25,7 @@
                 <%= link_to('Receive Payment', receive_payment_invoice_path, data: { modal: true }, class: 'btn btn-primary', role: 'button') %>
               </div>
               <div class="col offset-1">
-                <%= link_to('Pay now', new_invoice_payments_path, data: { modal: true }, class: 'btn btn-primary', role: 'button') %>
+                <%= link_to('Pay now', new_invoice_payments_path + '?admission_id=' + @invoice.admission_id.to_s, data: { modal: true }, class: 'btn btn-primary', role: 'button') %>
               </div>
               <div class="col offset-1">
                 <%= button_tag('Print', onClick: "printJS({ printable: 'invoice_holder', type: 'html'})", class: 'btn btn-primary') %>

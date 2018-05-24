@@ -1,6 +1,10 @@
 <%= form_with(model: admission, validate: true) do |admission_form| %>
   <%= admission_form.hidden_field(:patient_id, value: patient.id) %>
-  <%= admission_form.hidden_field(:admissionDate, value: Time.now.to_s) %>
+  <%# admission_form.hidden_field(:admissionDate, value: Time.now.to_s) %>
+  <div class="error_holder col-10">
+    <%= render('shared/errors', model: @admission) %>
+  </div>
+
   <table class="table borderless">
     <tbody>
     <tr>
@@ -22,13 +26,16 @@
         <div class="form-group">
           <%= admission_form.label(:ward_id, 'Ward') %><br/>
           <%#	 binding.pry %>
-          <%= admission_form.select(:ward_id, options_for_select(wards_option('admission', patient), @admission.ward), { include_blank: 'Select ward for allocation' }, { id: 'ward_id_select', autocomplete: 'ward_id', class: 'form-control' }) %>
+          <%= admission_form.select(:ward_id, options_for_select(wards_option('admission', patient), @admission.ward),
+                                    { include_blank: 'Select ward for allocation' }, { id: 'ward_id_select', autocomplete: 'ward_id',
+                                                                                       class: 'form-control', required: true }) %>
         </div>
       </td>
       <td>
         <div class="form-group">
           <%= admission_form.label(:admissionDate, 'Date') %><br/>
-          <%= admission_form.label(:admissionDate, localize(Time.now)) %>
+          <%= admission_form.text_field(:admissionDate, type: 'datetime-local', class: 'form-control', required: true,
+                                        min: Time.now.to_s, max: Date.new(Date.current.year, -1, -1).to_s) %>
         </div>
       </td>
     </tr>

@@ -1,4 +1,5 @@
-<p id="notice"><%= notice %></p>
+<h1>Team Details</h1>
+<% @page_title = 'Team | ' + @team.name %>
 
 <p>
   <strong>Name:</strong>
@@ -10,5 +11,27 @@
   <%= @team.head %>
 </p>
 
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Staff Name</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @team.staffs.each do |staff| %>
+    <tr>
+      <td><%= staff.person.firstName + ' ' + staff.person.lastName %></td>
+      <td><%= link_to 'View Details', staff_path(staff), class: 'btn btn-secondary' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% content_for(:navigationButtons) do %>
+  <%= link_to 'Edit', edit_team_path(@team), class: 'btn btn-secondary' %> |
+  <%= link_to 'Back', teams_path, class: 'btn btn-secondary' %>
+<% end %>

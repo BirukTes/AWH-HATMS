@@ -8,11 +8,11 @@
   <br/>
   <br/>
   <!--TODO do dropright when toggled with jquery-->
-  <ul class="list-unstyled">
-    <li><a href="/"><i class="fas fa-home fa-2x"></i><label class='lbl-nav'>&nbsp; Home</label></a></li>
+  <ul class="list-unstyled main-side-list">
+    <li><a href="/"><i class="fas fa-home fa-2x"></i><label class='lbl-nav col-sm-auto'>Home</label></a></li>
 
     <li>
-      <a href="#submenu2" data-toggle="collapse"><i class="fas fa-address-card fa-2x"></i><label class='lbl-nav'>&nbsp;
+      <a href="#submenu2" data-toggle="collapse"><i class="fas fa-address-card fa-2x"></i><label class='lbl-nav col-sm-auto'>
         Admission &nbsp; &nbsp; </label></a>
       <ul id="submenu2" class="list-unstyled collapse">
         <li><%= link_to('View All', admissions_path) %></li>
@@ -21,7 +21,7 @@
       </ul>
     </li>
     <li>
-      <a href="#submenu3" data-toggle="collapse"><i class="fas fa-file-medical fa-2x"></i><label class='lbl-nav'>&nbsp;
+      <a href="#submenu3" data-toggle="collapse"><i class="fas fa-file-medical fa-2x"></i><label class='lbl-nav col-sm-auto ml-1'>
         Treatment &nbsp; &nbsp; </label></a>
       <ul id="submenu3" class="list-unstyled collapse">
         <li class="text-light">&nbsp;&nbsp;Diagnosis</li>
@@ -37,7 +37,7 @@
 
     </li>
     <li>
-      <a href="#submenu1" data-toggle="collapse"><i class="fas fa-file-alt fa-2x"></i><label class='lbl-nav'>&nbsp;
+      <a href="#submenu1" data-toggle="collapse"><i class="fas fa-file-alt fa-2x"></i><label class='lbl-nav col-sm-auto ml-1'>
         Report &nbsp; &nbsp; </label></a>
       <ul id="submenu1" class="list-unstyled collapse">
         <li><%= link_to('Ward List', reports_ward_list_path) %></li>
@@ -46,12 +46,12 @@
         <li><%= link_to('Patient Card', reports_patient_card_path) %></li>
       </ul>
     </li>
-    <!--<a href=" <li>#submenu4" data-toggle="collapse"><i class="fas fa-pills fa-2x"></i><label class='lbl-nav'>&nbsp;-->
+    <!--<a href=" <li>#submenu4" data-toggle="collapse"><i class="fas fa-pills fa-2x"></i><label class='lbl-nav col-sm-auto'>&nbsp;-->
     <!--Prescription &nbsp; &nbsp; </label></a>-->
 
     <!--</li>-->
     <li>
-      <a href="#submenu5" data-toggle="collapse"><i class="fas fa-hospital fa-2x"></i><label class='lbl-nav'>&nbsp;
+      <a href="#submenu5" data-toggle="collapse"><i class="fas fa-hospital fa-2x"></i><label class='lbl-nav col-sm-auto'>
         Hospital Admin &nbsp; &nbsp; </label></a>
       <ul id="submenu5" class="list-unstyled collapse">
         <li><a href="/staffs">Staff</a></li>
@@ -70,7 +70,7 @@
     <li class="nav-item dropright">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
         <i class="fas fa-user-circle fa-2x"></i>
-        <label class='lbl-nav '>&nbsp;
+        <label class='lbl-nav col-sm-auto'>
           <% if staff_signed_in? %>
             <%= current_staff.person.firstName + ' ' + current_staff.person.lastName + ', ' + current_staff.role_name %>
           <% else %>

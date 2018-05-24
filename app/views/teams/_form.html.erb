@@ -4,24 +4,24 @@
       <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
 
       <ul>
-      <% team.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% team.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group col-3">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :team_name %>
+    <%= form.text_field(:name, id: :team_name, class: 'form-control') %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-3">
     <%= form.label :head %>
-    <%= form.text_field :head, id: :team_head %>
+    <%= form.select(:head, options_for_select(staffs_option('consultant'), @team.head), include: :blank, id: :team_head, class: 'form-control', disabled: (true if staffs_option('consultant').empty?) ) %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions form-group">
+    <%= form.submit(class: 'btn btn-primary') %>
   </div>
 <% end %>

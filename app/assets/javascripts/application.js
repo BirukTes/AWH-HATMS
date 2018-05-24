@@ -52,10 +52,10 @@ $(document).ready(function () {
 
 
     // Bootstrap alert clear up
-    $(".alert").stop(true, true).fadeOut(5000, function () {
+    $(".alert").fadeOut(5000, function () {
         $('#content').animate({inClass: "fade-in"}, 2000, 'linear');
         $(this).remove();
-    });
+    }).call();
 
     // $(document).ajaxStop(function () {
     //

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admission < ApplicationRecord
   # Only association here, no composite key
   belongs_to :ward
@@ -13,6 +15,55 @@ class Admission < ApplicationRecord
   human_attribute_name(:admissionDate)
   human_attribute_name(:dischargeDate)
 
+  # Creates the methods for each, to retrieve (admission.admitted),
+  # set (admission.discharged!), and check for boolean (admission.scheduled?)
+  #
+  enum status: { admitted: 'Admitted', discharged: 'Discharged', scheduled: 'Scheduled' }
+
+  # Runs the reminder method asynchronously, as defined below
+  after_create(:reminder)
+
+  # Notify the patient of their before admission date and time
+  def reminder
+    account_sid = Rails.application.secrets.twilio_account_sid
+    @client = Twilio::REST::Client.new(account_sid, Rails.application.secrets.twilio_auth_token)
+
+    # Setup the message
+    time_str = admissionDate.localtime.strftime('%I:%M%p on %d %b, %Y')
+
+    # The text layout/formatting matters, in terms how it is displayed on the receiving device
+    reminder = "Hi #{patient.person.firstName}.
+
+Just a reminder that you have an appointment for
+admission at #{time_str}.
+
+
+Regards,
+
+Allswell Hospital
+King Charles RD,
+Surbiton,
+KT5 9BH
++441424400647
+allswell.hospital@outlook.com"
+    binding.pry
+    message = @client.messages.create(
+        from: Rails.application.secrets.twilio_phone_from,
+        to: Rails.application.secrets.twilio_phone_to,
+        body: reminder)
+  end
+
+  # Specifies the time before which the reminder should be sent
+  #
+  # @return [Time]
+  def when_to_run
+    minutes_before_appointment = 5.minutes
+    admissionDate - minutes_before_appointment
+  end
+
+  # Sets delayed job to handle the reminder for the specified date and time
+  handle_asynchronously(:reminder, run_at: proc { |i| i.when_to_run })
+
   # ransack_alias(:patient, :patient_first_name_or_patient_last_name)
 
   # ransacker :full_name do |parent|
@@ -25,17 +76,14 @@ class Admission < ApplicationRecord
   #   Arel.sql('person.dateOfBirth')
   # end
 
-  enum status: { admitted: 'Admitted', discharged: 'Discharged' }
-
   # Check if the patient is admitted
   #
-  # @return [true/false:boolean]
+  # @params [patient_id] specify the patient id, to identify
+  # @return [true/false:boolean] true indicates admitted, otherwise false
   def self.admitted?(patient_id)
     # Get all occurrences and loop see if there is current admission
     where(patient_id: patient_id)&.all&.each do |admission|
-      if admission.status == 'admitted'
-        return true
-      end
+      return true if admission.status == 'admitted'
     end
     # Otherwise false
     false
@@ -59,7 +107,6 @@ class Admission < ApplicationRecord
     where(ward_id: ward_id, patient_id: patient_id, status: 'admitted').first
   end
 
-
   # Get the current admissions and not authorised
   #
   # @return [[ Admission# name : string, id:string]]
@@ -71,7 +118,7 @@ class Admission < ApplicationRecord
       end
 
       # Remove/reject any nulls returned from this function
-    end.reject { |patients_option| patients_option.nil? }
+    end.reject(&:nil?)
   end
 
   # Gets the current admissions and discharge not authorised
@@ -84,7 +131,7 @@ class Admission < ApplicationRecord
     end
   end
 
-  # TODO refactor to find controller
+  # TODO: refactor to find controller
   # Class method, used by +find_discharged_without_invoice_patients+
   #
   # Gets array of name and id of passed in patient
@@ -96,7 +143,6 @@ class Admission < ApplicationRecord
      patient.id.to_s + '|' + admission.id.to_s]
   end
 
-
   # Class method
   #
   # Finds admission with discharge due, runs the method
@@ -107,14 +153,14 @@ class Admission < ApplicationRecord
   # Discharges a scheduled, authorised discharge date
   def auto_discharge
     # Admitted / Discharged
-    self.update(status: 'Discharged')
+    update(status: 'Discharged')
     # Return the one bed, and update the ward bedStatus
     # Just incase goes above max, validation is included
-    self.ward.update(bedStatus: if self.ward.bedStatus >= self.ward.numberOfBeds
-                                  # Don't add anything, already max?
-                                  0
-                                else
-                                  self.ward.bedStatus + 1
-                                end)
+    ward.update(bedStatus: if ward.bedStatus >= ward.numberOfBeds
+                             # Don't add anything, already max?
+                             0
+                           else
+                             ward.bedStatus + 1
+                           end)
   end
 end

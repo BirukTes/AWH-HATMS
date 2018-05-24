@@ -71,10 +71,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
+  # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Packaged native web sources
 source('https://rails-assets.org') do
@@ -146,10 +145,16 @@ gem 'mailgun-ruby', '~> 1.1', '>= 1.1.9'
 # Background work/schedule tasks/jobs (Cron)
 gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.1'
 
+# Need daemons to start delayed_job
+gem 'daemons'
+
 # Search ability
 gem 'ransack', '~> 1.8', '>= 1.8.8'
 
 # Lightweight, agentless error monitoring for front-end, back-end, and mobile
 gem 'rollbar'
+
+# A module for using the Twilio REST API
+gem 'twilio-ruby', '~> 5.10.1'
 
 

@@ -1,19 +1,33 @@
+<script src="https://js.braintreegateway.com/web/dropin/1.11.0/js/dropin.min.js"></script>
+
+
 <%= form_with(url: invoice_payments_path, method: :post, remote: request.xhr?, html: { id: 'payment-form', data: { modal: true } }) do %>
   <%= hidden_field_tag(:payment_method_nonce, nil, id: 'nonce') %>
-  <button id="submit-button">Request payment method</button>
-  <button id="paypal-button" class="btn btn-primary" type="submit">PayPal</button>
+  <%= hidden_field_tag(:admission_id, @admission.id, id: 'admission_id') %>
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label>Invoice Number: <%= @admission.invoice.id %></label>
+      </div>
+      <div class="col">
+        <label>Invoice Date: <%= localize(@admission.invoice.dateDue) %></label>
+      </div>
+      <div class="col">
+        <label>Patient: <%= @admission.patient.person.firstName + ' ' + @admission.patient.person.lastName %></label>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col">
+        <label>Invoice Amount: <%= number_to_currency(@admission.invoice.amount, unit: '£') %></label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div id="dropin-container"></div>
+    <button id="submit-button" class="btn btn-primary form-control" type="submit">Pay</button>
+  </div>
 <% end %>
-<script src="https://js.braintreegateway.com/web/dropin/1.10.0/js/dropin.min.js"></script>
-
-<!-- Load PayPal's checkout.js Library. -->
-<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4 log-level="warn"></script>
-
-<!-- Load the client component. -->
-<script src="https://js.braintreegateway.com/web/3.33.0/js/client.min.js"></script>
-
-<!-- Load the PayPal Checkout component. -->
-<script src="https://js.braintreegateway.com/web/3.33.0/js/paypal-checkout.min.js"></script>
 
 <script>
     var button = document.querySelector('#submit-button');
@@ -24,6 +38,9 @@
         container: '#dropin-container',
         paypal: {
             flow: 'checkout'
+
+            // amount: '10.00',
+            // currency: 'USD'
         }
     }, function (createErr, instance) {
         form.addEventListener('submit', function (event) {

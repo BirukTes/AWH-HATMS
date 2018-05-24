@@ -1,3 +1,6 @@
+<div class="error_holder col-10">
+  <%= render('shared/errors', model: @patient) %>
+</div>
 <table class="table borderless">
   <tbody>
   <tr>
@@ -75,7 +78,7 @@
                   <td colspan="2">
                     <div class="form-group">
                       <%= patient_form.label(:nextOfKin, 'Next Of Kin') %><br/>
-                      <%= patient_form.text_area(:nextOfKin, autocomplete: 'smokes', class: 'form-control', required: true, disabled: disabled) %>
+                      <%= patient_form.text_area(:nextOfKin, autocomplete: 'smokes', class: 'form-control', disabled: disabled) %>
                     </div>
                   </td>
                   <td>

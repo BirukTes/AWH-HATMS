@@ -39,21 +39,21 @@ class PatientsController < ApplicationController
     authorize(:patient)
     @patient = Patient.new(patient_params)
 
-    if @patient.save
-      if session[:admission_register]
-        puts('scs')
-        redirect_to(new_admission_path(dateOfBirth: @patient.person.dateOfBirth, lastName: @patient.person.lastName),
-                    notice: 'Patient registration successful')
+    respond_to do |format|
+      if @patient.save
+        if session[:admission_register]
+          puts('scs')
+          format.html { redirect_to(new_admission_path(dateOfBirth: @patient.person.dateOfBirth, lastName: @patient.person.lastName),
+                                    notice: 'Patient registration successful') }
+        else
+          redirect_to(patients_path(@patient), notice: 'Patient registration successful')
+        end
       else
-        redirect_to(patients_path(@patient), notice: 'Patient registration successful')
+        format.js { render :new, status: :unprocessable_entity }
       end
-    else
-      puts(@patient.errors.inspect)
-      # Pass the errors, to the instance variable
-      @errors = @patient.errors.full_messages
-      render :new
     end
   end
+
 
   # Handles GET method for edit page
   def edit

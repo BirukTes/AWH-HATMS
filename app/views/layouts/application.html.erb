@@ -16,8 +16,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body class="body">
-<header class="">
-</header>
 <section class="d-flex align-items-stretch">
   <%= render('shared/side_nav') %>
   <section class="nav-and-content">
@@ -27,7 +25,7 @@
     <div class="content p-4">
       <div id="flash">
         <% flash.each do |key, value| %>
-          <div class="flash alert <%= alert_class(key) %>"><%= value %></div>
+          <div class="alert <%= alert_class(key) %>"><%= value %></div>
         <% end %>
       </div>
 

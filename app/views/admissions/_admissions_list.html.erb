@@ -8,7 +8,7 @@
     <th>Ward Name</th>
     <th>Discharge Date</th>
     <th>Status</th>
-    <th>Action</th>
+    <th colspan="4">Action</th>
   </tr>
   </thead>
   <tbody>
@@ -22,13 +22,33 @@
       <td><%= ward.wardNumber %></td>
       <td><%= ward.name %></td>
       <td><%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %></td>
-      <td><%= admission.status %></td>
-      <td>
-        <%#	 Displayed only the authorised staff (consultant/doctor) and discharge is not set/nil %>
-        <%= link_to('Discharge', discharge_admission_path(admission.id), data: { modal: true }, role: 'button',
-                    class: 'btn btn-secondary') if (admission.dischargeDate.nil? || admission.admitted?) && policy(:admission).discharge? %>
+      <td><span class="badge badge-info"><%= admission.status %></span></td>
+      <td colspan="<%= colspan_num(admission) %>">
+        <%= link_to('View', admission_path(admission), role: 'button',
+                    class: 'btn btn-secondary  btn-sm') %>
       </td>
+      <% if display_discharge?(admission) %>
+        <td>
+          <%#	 Displayed only the authorised staff (consultant/doctor) and discharge is not set/nil %>
+          <%= link_to('Discharge', discharge_admission_path(admission.id), data: { modal: true }, role: 'button',
+                      class: 'btn btn-secondary  btn-sm') %>
+        </td>
+      <% end %>
+      <% if admission.scheduled? && policy(:admission).admit_scheduled? %>
+
+        <td>
+          <%= link_to('Admit', admit_scheduled_admission_path(admission.id), data: { confirm: 'Admit now?' }, role: 'button',
+                      class: 'btn btn-success  btn-sm', method: :patch) %>
+        </td>
+      <% end %>
+      <% if admission.scheduled? && policy(:admission).cancel_scheduled? %>
+        <td>
+          <%= link_to('Cancel', cancel_scheduled_admission_path(admission.id), data: { title: 'Cancel Scheduled Admission', confirm: "Should this admission no. #{admission.id} be cancel?" },
+                      role: 'button', class: 'btn btn-danger btn-sm', method: :delete) %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>
 </table>
+
