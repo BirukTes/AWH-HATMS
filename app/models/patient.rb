@@ -4,15 +4,15 @@ class Patient < ApplicationRecord
   has_one :person, as: :personalDetail, dependent: :destroy
 
   # Many to Many association through join table, cascade delete
-  has_many :admissions
+  has_many :admissions, dependent: :destroy
 
   # Indirect associations, ActiveRecord will handle joins, using inner join
   has_many :invoices, through: :admissions
   has_many :diagnoses, through: :admissions
   has_many :prescriptions, through: :diagnoses
 
-  # This relationship can removed in the future refactoring
-  has_many :treatments, dependent: :destroy
+  # TODO Name of treatment requires changing
+  has_many :treatments, through: :admissions
 
 
 

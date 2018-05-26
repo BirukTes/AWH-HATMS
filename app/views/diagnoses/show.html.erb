@@ -1,5 +1,14 @@
-<h3>Diagnosis for <%= person_full_name_helper(@diagnosis.admission.patient)%></h3>
+<h3>Diagnosis for <%= person_full_name_helper(@diagnosis.admission.patient) %></h3>
 <br/>
+<div class="row">
+  <div class="col-1">
+    <div class="btn-group mr-3">
+      <%= button_tag('Print', onClick: "printJS({printable: 'diagnosis_holder', type: 'html', header: 'Diagnosis for #{person_full_name_helper(@diagnosis.admission.patient) + ' - ' + localize(Date.today).to_s}'})", class: 'btn btn-outline-secondary') %>
+    </div>
+  </div>
+</div>
+<br/>
+
 <table class=" table table-bordered table-hover" id="diagnosis_holder">
   <thead class="thead-light">
   <tr>
@@ -17,7 +26,7 @@
   </tbody>
 </table>
 
+<br/>
 <% content_for(:navigationButtons) do %>
   <%= link_to('Back', diagnoses_path, role: 'button', class: 'btn btn-secondary') %>
-  <%= button_tag('Print', onClick: "printJS({printable: 'diagnosis_holder', type: 'html', header: 'Diagnosis for #{(person_full_name_helper(patient) if patient) + ', ' + localize(Date.today).to_s}'})", class: 'btn btn-secondary') %>
 <% end %>

@@ -79,17 +79,20 @@ $(document).ready(function () {
     // Enables form submit on page, now it is on all forms but can be
     $.rails.enableElement($('#enable_form_submit'));
 
-    $("table[role='datatable']").each(function () {
-        $(this).DataTable({
-            process: true
-        });
-    });
-
-    $("table[role='datatable']").on('xhr.dt', function (e, settings, json, xhr) {
-        $('#status').html(json.status);
-    }).DataTable({
-        ajax: "data.json"
-    });
+    // $(document).on('turbolinks:load', function(){
+    //     $("table[role='datatable']").each(function(){
+    //         $(this).DataTable({
+    //             processing: true,
+    //             serverSide: true,
+    //             ajax: $(this).data('url')
+    //         });
+    //     });
+    // });
+    // $("table[role='datatable']").on('xhr.dt', function (e, settings, json, xhr) {
+    //     $('#status').html(json.status);
+    // }).DataTable({
+    //     ajax: "data.json"
+    // });
 
     // $('#datepicker').datepicker({
     //     format: 'dd-mm-yyyy'

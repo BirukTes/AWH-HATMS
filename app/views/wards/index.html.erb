@@ -1,7 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Wards</h1>
-
+<br/>
+<div class="row">
+  <div class="col-1">
+    <div class="btn-group mr-3">
+      <%= button_tag('Print', class: 'btn btn-outline-secondary mr-3 ', onClick: "printJS({ printable: 'wards_holder', type: 'html', header: 'Wards - #{localize(Date.today).to_s}'})") %>
+    </div>
+  </div>
+</div>
+<br/>
 <table id="wards_holder" class="table table-bordered table-striped">
   <thead class="thead-light">
   <tr>
@@ -36,6 +44,5 @@
 <br>
 
 <% content_for(:navigationButtons) do %>
-  <%= link_to('New Ward', new_ward_path, class: 'btn btn-primary') %>
-  <%= button_tag('Print', onClick: "printJS({ printable: 'wards_holder', type: 'html', header: 'Wards - #{localize(Date.today).to_s}'})", class: 'btn btn-secondary') %>
+  <%= link_to('Register Ward', new_ward_path, class: 'btn btn-primary') %>
 <% end %>

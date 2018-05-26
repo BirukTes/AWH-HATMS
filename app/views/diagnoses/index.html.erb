@@ -1,5 +1,13 @@
 <h1>Diagnoses</h1>
-
+<br/>
+<div class="row">
+  <div class="col-1">
+    <div class="btn-group mr-3">
+      <%= button_tag('Print', class: 'btn btn-outline-secondary mr-3 ', onClick: "printJS({printable: 'diagnoses_holder_index', type: 'html', header: 'Diagnoses - #{localize(Date.today).to_s}'})") %>
+    </div>
+  </div>
+</div>
+<br/>
 <table class="table table-bordered table-striped" id="diagnoses_holder_index">
   <thead class="thead-light">
   <tr>
@@ -24,5 +32,4 @@
 
 <% content_for(:navigationButtons) do %>
   <%= link_to('Diagnose Patient', new_diagnosis_path, class: 'btn btn-primary') if policy(:diagnoses).new? %>
-  <%= button_tag('Print', onClick: "printJS({printable: 'diagnoses_holder_index', type: 'html', header: 'Diagnoses - #{localize(Date.today).to_s}'})", class: 'btn btn-secondary') %>
 <% end %>

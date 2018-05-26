@@ -12,24 +12,24 @@
     <li><a href="/"><i class="fas fa-home fa-2x"></i><label class='lbl-nav col-sm-auto'>Home</label></a></li>
 
     <li>
-      <a href="#submenu2" data-toggle="collapse"><i class="fas fa-address-card fa-2x"></i><label class='lbl-nav col-sm-auto'>
+      <a href="#submenu1" data-toggle="collapse"><i class="fas fa-address-card fa-2x"></i><label class='lbl-nav col-sm-auto'>
         Admission &nbsp; &nbsp; </label></a>
-      <ul id="submenu2" class="list-unstyled collapse">
+      <ul id="submenu1" class="list-unstyled collapse">
         <li><%= link_to('View All', admissions_path) %></li>
         <li><%= link_to('Admit Patient', new_admission_path) %></li>
         <li><%= link_to('Find and Discharge', find_and_discharge_admissions_path) %></li>
       </ul>
     </li>
     <li>
-      <a href="#submenu3" data-toggle="collapse"><i class="fas fa-file-medical fa-2x"></i><label class='lbl-nav col-sm-auto ml-1'>
+      <a href="#submenu2" data-toggle="collapse"><i class="fas fa-file-medical fa-2x"></i><label class='lbl-nav col-sm-auto ml-1'>
         Treatment &nbsp; &nbsp; </label></a>
-      <ul id="submenu3" class="list-unstyled collapse">
+      <ul id="submenu2" class="list-unstyled collapse">
         <li class="text-light">&nbsp;&nbsp;Diagnosis</li>
         <li><a href="/diagnoses">View All</a></li>
         <li><a href="/diagnoses/new">Diagnose</a></li>
         <li class="text-light">&nbsp;&nbsp;Drugs</li>
         <li><a href="/prescriptions">View all</a></li>
-        <li><a href="/prescriptions/new">Prescribe</a></li>
+        <li><a href="/prescriptions/new">Prescribe Drug</a></li>
         <li class="text-light">&nbsp;&nbsp;Notes</li>
         <li><a href="/treatments">View All</a></li>
         <li><a href="/treatments/new">Make Notes</a></li>
@@ -37,9 +37,25 @@
 
     </li>
     <li>
-      <a href="#submenu1" data-toggle="collapse"><i class="fas fa-file-alt fa-2x"></i><label class='lbl-nav col-sm-auto ml-1'>
+      <a href="#submenu3" data-toggle="collapse"><i class="fas fa-wheelchair fa-2x"></i><label class='lbl-nav col-sm-auto ml-1'>
+        Patient &nbsp; &nbsp; </label></a>
+      <ul id="submenu3" class="list-unstyled collapse">
+        <li><%= link_to('View All', patients_path) %></li>
+        <li><%= link_to('Register Patient', new_patient_path) %></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#submenu4" data-toggle="collapse"><i class="fas fa-bed fa-2x"></i><label class='lbl-nav col-sm-auto ml-1'>
+        Ward &nbsp; &nbsp; </label></a>
+      <ul id="submenu4" class="list-unstyled collapse">
+        <li><%= link_to('View All', wards_path) %></li>
+        <li><%= link_to('Register Ward', new_ward_path) %></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#submenu5" data-toggle="collapse"><i class="fas fa-file-alt fa-2x"></i><label class='lbl-nav col-sm-auto ml-1'>
         Report &nbsp; &nbsp; </label></a>
-      <ul id="submenu1" class="list-unstyled collapse">
+      <ul id="submenu5" class="list-unstyled collapse">
         <li><%= link_to('Ward List', reports_ward_list_path) %></li>
         <li><%= link_to('Medications List', reports_medications_list_path) %></li>
         <li><%= link_to('Discharge List', reports_discharge_list_path) %></li>
@@ -51,17 +67,15 @@
 
     <!--</li>-->
     <li>
-      <a href="#submenu5" data-toggle="collapse"><i class="fas fa-hospital fa-2x"></i><label class='lbl-nav col-sm-auto'>
+      <a href="#submenu6" data-toggle="collapse"><i class="fas fa-hospital fa-2x"></i><label class='lbl-nav col-sm-auto'>
         Hospital Admin &nbsp; &nbsp; </label></a>
-      <ul id="submenu5" class="list-unstyled collapse">
-        <li><a href="/staffs">Staff</a></li>
-        <li><a href="/patients">Patients</a></li>
-        <li><a href="/teams">Teams</a></li>
+      <ul id="submenu6" class="list-unstyled collapse">
         <li><a href="/invoices">Invoice</a></li>
-        <li><a href="/wards">Wards</a></li>
-        <li><a href="/drugs">Drugs</a></li>
+        <li><a href="/teams">Teams</a></li>
+        <li><a href="/staffs">Staff</a></li>
         <li><a href="/job_titles">Job Titles</a></li>
         <li><a href="/specialities">Specialities</a></li>
+        <li><a href="/drugs">Drugs</a></li>
       </ul>
     </li>
 

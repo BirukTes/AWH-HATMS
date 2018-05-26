@@ -61,6 +61,9 @@ group :development, :test do
 
   # Generate an ERD diagram based on Rails application's Active Record models
   gem 'rails-erd'
+
+  # Model and controller UML class diagram generator
+  gem 'railroady'
 end
 
 group :development do

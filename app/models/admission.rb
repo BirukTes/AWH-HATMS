@@ -7,6 +7,7 @@ class Admission < ApplicationRecord
   has_one(:invoice, dependent: :destroy)
   # One to Many association, cascade delete
   has_many(:diagnoses, dependent: :destroy)
+  has_many(:treatments, dependent: :destroy)
 
   validates(:admissionDate, presence: true)
   validates(:patient_id, presence: true)

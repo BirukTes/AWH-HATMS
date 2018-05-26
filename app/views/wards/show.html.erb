@@ -1,82 +1,159 @@
-<p>
-  <strong>Name:</strong>
-  <%= @ward.name %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p>
+        <strong>Name:</strong>
+        <%= @ward.name %>
+      </p>
 
-<p>
-  <strong>Wardnumber:</strong>
-  <%= @ward.wardNumber %>
-</p>
+      <p>
+        <strong>Wardnumber:</strong>
+        <%= @ward.wardNumber %>
+      </p>
 
-<p>
-  <strong>Numberofbeds:</strong>
-  <%= @ward.numberOfBeds %>
-</p>
+      <p>
+        <strong>Numberofbeds:</strong>
+        <%= @ward.numberOfBeds %>
+      </p>
 
-<p>
-  <strong>Bedstatus:</strong>
-  <%= @ward.bedStatus %>
-</p>
+      <p>
+        <strong>Bedstatus:</strong>
+        <%= @ward.bedStatus %>
+      </p>
 
-<p>
-  <strong>Patientgender:</strong>
-  <%= @ward.patientGender %>
-</p>
+      <p>
+        <strong>Patientgender:</strong>
+        <%= @ward.patientGender %>
+      </p>
 
-<p>
-  <strong>Deptname:</strong>
-  <%= @ward.deptName %>
-</p>
+      <p>
+        <strong>Deptname:</strong>
+        <%= @ward.deptName %>
+      </p>
 
-<p>
-  <strong>Isprivate:</strong>
-  <%= @ward.isPrivate %>
-</p>
-<br/>
-<br/>
-<h3>Patients</h3>
-<table class="table table-bordered table-striped" role="datatable">
-  <thead class="thead-light">
-  <tr>
-    <th>ID No</th>
-    <th>Full Name</th>
-    <th>Date Of Birth</th>
-    <th>Gender</th>
-    <th>Address</th>
-    <th>Home Telephone No</th>
-    <th>Mobile Telephone No</th>
-    <th>Register Date</th>
-    <th>Admission Date</th>
-    <th>Admission No</th>
-    <th>Discharge Date</th>
-    <th>Action</th>
-  </tr>
-  </thead>
-  <%# Only admitted patients to this  %>
-  <% @ward.admissions.where(status: 'admitted').all&.each do |admission| %>
-    <% patient = admission.patient %>
-    <tbody>
-    <tr>
-      <td><%= patient.id %></td>
-      <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
-      <td><%= localize(patient.person.dateOfBirth) %></td>
-      <td><%= patient.person.gender %></td>
-      <td><%= patient.person.address.houseNumber + ', ' + patient.person.address.street + ', ' +
-                  patient.person.address.town + ', ' + patient.person.address.postcode %>
-      </td>
-      <td><%= patient.person.telHomeNo %></td>
-      <td><%= patient.person.telMobileNo %></td>
-      <td><%= localize(patient.created_at) %></td>
-      <td><%= localize(admission.admissionDate) %></td>
-      <td><%= admission.id %></td>
-      <td>
-        <%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %>
-      </td>
+      <p>
+        <strong>Isprivate:</strong>
+        <%= @ward.isPrivate %>
+      </p></div>
+  </div>
+  <br/>
+  <br/>
+  <div class="row">
+    <div class="col">
+      <h3>Patients</h3>
 
-      <td><%= link_to('View Details', patient_path(patient.id)) %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-<%= link_to 'Edit', edit_ward_path(@ward) %> |
-<%= link_to 'Back', wards_path %>
+      <fieldset class="none-bs-fieldset">
+        <legend class="none-bs-legend">Admitted</legend>
+        <h3></h3>
+        <table class="table table-bordered table-striped" role="datatable">
+          <thead class="thead-light">
+          <tr>
+            <th>ID No</th>
+            <th>Full Name</th>
+            <th>Date Of Birth</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Home Telephone No</th>
+            <th>Mobile Telephone No</th>
+            <th>Register Date</th>
+            <th>Admission Date</th>
+            <th>Admission No</th>
+            <th>Discharge Date</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <%# Only admitted patients to this  %>
+          <% if @ward.admissions.admitted.any? %>
+            <% @ward.admissions.admitted&.each do |admission| %>
+              <% patient = admission.patient %>
+              <tbody>
+              <tr>
+                <td><%= patient.id %></td>
+                <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+                <td><%= localize(patient.person.dateOfBirth) %></td>
+                <td><%= patient.person.gender %></td>
+                <td><%= patient.person.address.houseNumber + ', ' + patient.person.address.street + ', ' +
+                            patient.person.address.town + ', ' + patient.person.address.postcode %>
+                </td>
+                <td><%= patient.person.telHomeNo %></td>
+                <td><%= patient.person.telMobileNo %></td>
+                <td><%= localize(patient.created_at) %></td>
+                <td><%= localize(admission.admissionDate) %></td>
+                <td><%= admission.id %></td>
+                <td>
+                  <%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %>
+                </td>
+
+                <td><%= link_to('View Details', patient_path(patient.id), class: 'btn btn-secondary') %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="12"><p>No admitted patients found.</p></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </fieldset>
+      <br>
+      <fieldset class="none-bs-fieldset">
+        <legend class="none-bs-legend">Scheduled</legend>
+
+        <table class="table table-bordered table-striped" role="datatable">
+          <thead class="thead-light">
+          <tr>
+            <th>ID No</th>
+            <th>Full Name</th>
+            <th>Date Of Birth</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Home Telephone No</th>
+            <th>Mobile Telephone No</th>
+            <th>Register Date</th>
+            <th>Admission Date</th>
+            <th>Admission No</th>
+            <th>Discharge Date</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <%# Only scheduled patients to this  %>
+          <% if @ward.admissions.scheduled.any? %>
+            <% @ward.admissions.scheduled&.each do |admission| %>
+              <% patient = admission.patient %>
+              <tr>
+                <td><%= patient.id %></td>
+                <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+                <td><%= localize(patient.person.dateOfBirth) %></td>
+                <td><%= patient.person.gender %></td>
+                <td><%= patient.person.address.houseNumber + ', ' + patient.person.address.street + ', ' +
+                            patient.person.address.town + ', ' + patient.person.address.postcode %>
+                </td>
+                <td><%= patient.person.telHomeNo %></td>
+                <td><%= patient.person.telMobileNo %></td>
+                <td><%= localize(patient.created_at) %></td>
+                <td><%= localize(admission.admissionDate) %></td>
+                <td><%= admission.id %></td>
+                <td>
+                  <%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %>
+                </td>
+
+                <td><%= link_to('View Details', patient_path(patient.id), class: 'btn btn-secondary') %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="12"><p>No scheduled patients found.</p></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </fieldset>
+    </div>
+  </div>
+</div>
+<% content_for(:navigationButtons) do %>
+  <%= link_to('Back', wards_path, class: 'btn btn-secondary') %>
+  &nbsp;
+  <%= link_to('Edit', edit_ward_path(@ward), class: 'btn btn-secondary') %>
+<% end %>
