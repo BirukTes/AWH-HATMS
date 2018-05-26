@@ -36,7 +36,7 @@
             <div class="col">
               <div class="form-group">
                 <%= prescription_form.label(:issuedBy) %><br/>
-                <%= prescription_form.label(:issuedBy, prescription.issuedBy || current_staff.person.firstName + ' ' + current_staff.person.lastName) %>
+                <%= prescription_form.label(:issuedBy, (person_full_name_helper(Staff.find_by(userId: prescription.issuedBy)) if prescription.issuedBy) || person_full_name_helper(current_staff)) %>
               </div>
             </div>
           </div>

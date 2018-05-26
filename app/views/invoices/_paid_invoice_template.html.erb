@@ -1,0 +1,595 @@
+<div id="invoice_holder">
+
+  <!--TODO Convert this to Boostrap grid-->
+  <style>
+    <!--
+    /* Font Definitions */
+    @font-face {
+      font-family: "Cambria Math";
+      panose-1: 2 4 5 3 5 4 6 3 2 4;
+    }
+
+    @font-face {
+      font-family: Calibri;
+      panose-1: 2 15 5 2 2 2 4 3 2 4;
+    }
+
+    @font-face {
+      font-family: Tahoma;
+      panose-1: 2 11 6 4 3 5 4 4 2 4;
+    }
+
+    /* Style Definitions */
+    p.MsoNormal, li.MsoNormal, div.MsoNormal {
+      margin-top: 0cm;
+      margin-right: 0cm;
+      margin-bottom: 6.0pt;
+      margin-left: 0cm;
+      font-size: 10.0pt;
+      font-family: "Arial", sans-serif;
+      letter-spacing: .25pt;
+    }
+
+    p.MsoHeading7, li.MsoHeading7, div.MsoHeading7 {
+      mso-style-link: "Heading 7 Char";
+      margin-top: 10.0pt;
+      margin-right: 0cm;
+      margin-bottom: 0cm;
+      margin-left: 64.8pt;
+      margin-bottom: .0001pt;
+      text-indent: -64.8pt;
+      page-break-after: avoid;
+      font-size: 10.0pt;
+      font-family: "Cambria", serif;
+      color: #404040;
+      letter-spacing: .25pt;
+      font-style: italic;
+    }
+
+    p.MsoHeading8, li.MsoHeading8, div.MsoHeading8 {
+      mso-style-link: "Heading 8 Char";
+      margin-top: 10.0pt;
+      margin-right: 0cm;
+      margin-bottom: 0cm;
+      margin-left: 72.0pt;
+      margin-bottom: .0001pt;
+      text-indent: -72.0pt;
+      page-break-after: avoid;
+      font-size: 10.0pt;
+      font-family: "Cambria", serif;
+      color: #404040;
+      letter-spacing: .25pt;
+    }
+
+    p.MsoHeading9, li.MsoHeading9, div.MsoHeading9 {
+      mso-style-link: "Heading 9 Char";
+      margin-top: 10.0pt;
+      margin-right: 0cm;
+      margin-bottom: 0cm;
+      margin-left: 79.2pt;
+      margin-bottom: .0001pt;
+      text-indent: -79.2pt;
+      page-break-after: avoid;
+      font-size: 10.0pt;
+      font-family: "Cambria", serif;
+      color: #404040;
+      letter-spacing: .25pt;
+      font-style: italic;
+    }
+
+    p.MsoToc1, li.MsoToc1, div.MsoToc1 {
+      margin-top: 0cm;
+      margin-right: 0cm;
+      margin-bottom: 5.0pt;
+      margin-left: 0cm;
+      font-size: 10.0pt;
+      font-family: "Arial", sans-serif;
+      letter-spacing: .25pt;
+    }
+
+    p.MsoToc2, li.MsoToc2, div.MsoToc2 {
+      margin-top: 0cm;
+      margin-right: 0cm;
+      margin-bottom: 5.0pt;
+      margin-left: 12.0pt;
+      font-size: 10.0pt;
+      font-family: "Arial", sans-serif;
+      letter-spacing: .25pt;
+    }
+
+    p.MsoHeader, li.MsoHeader, div.MsoHeader {
+      mso-style-link: "Header Char";
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      font-size: 10.0pt;
+      font-family: "Arial", sans-serif;
+      letter-spacing: .25pt;
+    }
+
+    p.MsoFooter, li.MsoFooter, div.MsoFooter {
+      mso-style-link: "Footer Char";
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      font-size: 10.0pt;
+      font-family: "Arial", sans-serif;
+      letter-spacing: .25pt;
+    }
+
+    p.MsoCaption, li.MsoCaption, div.MsoCaption {
+      margin-top: 0cm;
+      margin-right: 0cm;
+      margin-bottom: 6.0pt;
+      margin-left: 0cm;
+      font-size: 11.0pt;
+      font-family: "Arial", sans-serif;
+      letter-spacing: .25pt;
+      font-weight: bold;
+    }
+
+    p.MsoTitle, li.MsoTitle, div.MsoTitle {
+      mso-style-link: "Title Char";
+      margin-top: 0cm;
+      margin-right: 0cm;
+      margin-bottom: 15.0pt;
+      margin-left: 0cm;
+      font-size: 26.0pt;
+      font-family: "Arial", sans-serif;
+      color: #17365D;
+      letter-spacing: .25pt;
+      font-weight: bold;
+    }
+
+    p.MsoTitleCxSpFirst, li.MsoTitleCxSpFirst, div.MsoTitleCxSpFirst {
+      mso-style-link: "Title Char";
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      font-size: 26.0pt;
+      font-family: "Arial", sans-serif;
+      color: #17365D;
+      letter-spacing: .25pt;
+      font-weight: bold;
+    }
+
+    p.MsoTitleCxSpMiddle, li.MsoTitleCxSpMiddle, div.MsoTitleCxSpMiddle {
+      mso-style-link: "Title Char";
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      font-size: 26.0pt;
+      font-family: "Arial", sans-serif;
+      color: #17365D;
+      letter-spacing: .25pt;
+      font-weight: bold;
+    }
+
+    p.MsoTitleCxSpLast, li.MsoTitleCxSpLast, div.MsoTitleCxSpLast {
+      mso-style-link: "Title Char";
+      margin-top: 0cm;
+      margin-right: 0cm;
+      margin-bottom: 15.0pt;
+      margin-left: 0cm;
+      font-size: 26.0pt;
+      font-family: "Arial", sans-serif;
+      color: #17365D;
+      letter-spacing: .25pt;
+      font-weight: bold;
+    }
+
+    p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle {
+      mso-style-link: "Subtitle Char";
+      margin-top: 0cm;
+      margin-right: 0cm;
+      margin-bottom: 6.0pt;
+      margin-left: 0cm;
+      font-size: 10.0pt;
+      font-family: "Arial", sans-serif;
+      color: #00338D;
+      letter-spacing: .75pt;
+      font-style: italic;
+    }
+
+    em {
+      color: #00338D;
+    }
+
+    p.MsoAcetate, li.MsoAcetate, div.MsoAcetate {
+      mso-style-link: "Balloon Text Char";
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      font-size: 8.0pt;
+      font-family: "Tahoma", sans-serif;
+      letter-spacing: .25pt;
+    }
+
+    p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing {
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      font-size: 10.0pt;
+      font-family: "Arial", sans-serif;
+      letter-spacing: .25pt;
+    }
+
+    .apply_padding_table {
+      padding-top: 0cm;
+      padding-right: 5.4pt;
+      padding-left: 5.4pt;
+      padding-bottom: 0cm;
+    }
+
+    p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph {
+      margin-top: 0cm;
+      margin-right: 0cm;
+      margin-bottom: 6.0pt;
+      margin-left: 36.0pt;
+      font-size: 10.0pt;
+      font-family: "Arial", sans-serif;
+      letter-spacing: .25pt;
+    }
+
+    p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst {
+      margin-top: 0cm;
+      margin-right: 0cm;
+      margin-bottom: 0cm;
+      margin-left: 36.0pt;
+      margin-bottom: .0001pt;
+      font-size: 10.0pt;
+      font-family: "Arial", sans-serif;
+      letter-spacing: .25pt;
+    }
+
+    p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle {
+      margin-top: 0cm;
+      margin-right: 0cm;
+      margin-bottom: 0cm;
+      margin-left: 36.0pt;
+      margin-bottom: .0001pt;
+      font-size: 10.0pt;
+      font-family: "Arial", sans-serif;
+      letter-spacing: .25pt;
+    }
+
+    p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast {
+      margin-top: 0cm;
+      margin-right: 0cm;
+      margin-bottom: 6.0pt;
+      margin-left: 36.0pt;
+      font-size: 10.0pt;
+      font-family: "Arial", sans-serif;
+      letter-spacing: .25pt;
+    }
+
+    p.MsoQuote, li.MsoQuote, div.MsoQuote {
+      mso-style-link: "Quote Char";
+      margin-top: 0cm;
+      margin-right: 0cm;
+      margin-bottom: 6.0pt;
+      margin-left: 0cm;
+      font-size: 10.0pt;
+      font-family: "Arial", sans-serif;
+      color: black;
+      letter-spacing: .25pt;
+      font-style: italic;
+    }
+
+    p.MsoIntenseQuote, li.MsoIntenseQuote, div.MsoIntenseQuote {
+      mso-style-link: "Intense Quote Char";
+      margin-top: 10.0pt;
+      margin-right: 46.8pt;
+      margin-bottom: 14.0pt;
+      margin-left: 46.8pt;
+      border: none;
+      padding: 0cm;
+      font-size: 10.0pt;
+      font-family: "Arial", sans-serif;
+      color: #00338D;
+      letter-spacing: .25pt;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    span.MsoSubtleEmphasis {
+      font-family: "Arial", sans-serif;
+      color: #00338D;
+      font-style: italic;
+    }
+
+    span.MsoIntenseEmphasis {
+      color: #00338D;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    span.MsoSubtleReference {
+      font-variant: small-caps;
+      color: #00338D;
+      text-decoration: underline;
+    }
+
+    span.MsoIntenseReference {
+      font-variant: small-caps;
+      color: #00338D;
+      letter-spacing: .25pt;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    span.MsoBookTitle {
+      font-variant: small-caps;
+      letter-spacing: .25pt;
+      font-weight: bold;
+    }
+
+    span.Heading1Char {
+      mso-style-name: "Heading 1 Char";
+      mso-style-link: "Heading 1";
+      font-family: "Times New Roman", serif;
+      color: #00338D;
+      font-weight: bold;
+    }
+
+    span.Heading2Char {
+      mso-style-name: "Heading 2 Char";
+      mso-style-link: "Heading 2";
+      font-family: "Times New Roman", serif;
+      color: #00338D;
+      font-weight: bold;
+    }
+
+    span.TitleChar {
+      mso-style-name: "Title Char";
+      mso-style-link: Title;
+      font-family: "Times New Roman", serif;
+      color: #17365D;
+      font-weight: bold;
+    }
+
+    span.SubtitleChar {
+      mso-style-name: "Subtitle Char";
+      mso-style-link: Subtitle;
+      font-family: "Times New Roman", serif;
+      color: #00338D;
+      letter-spacing: .75pt;
+      font-style: italic;
+    }
+
+    span.HeaderChar {
+      mso-style-name: "Header Char";
+      mso-style-link: Header;
+    }
+
+    span.FooterChar {
+      mso-style-name: "Footer Char";
+      mso-style-link: Footer;
+    }
+
+    span.Heading3Char {
+      mso-style-name: "Heading 3 Char";
+      mso-style-link: "Heading 3";
+      font-family: "Times New Roman", serif;
+      color: #00338D;
+      font-weight: bold;
+    }
+
+    span.Heading4Char {
+      mso-style-name: "Heading 4 Char";
+      mso-style-link: "Heading 4";
+      font-family: "Cambria", serif;
+      color: #4F81BD;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    span.Heading5Char {
+      mso-style-name: "Heading 5 Char";
+      mso-style-link: "Heading 5";
+      font-family: "Cambria", serif;
+      color: #243F60;
+    }
+
+    span.Heading6Char {
+      mso-style-name: "Heading 6 Char";
+      mso-style-link: "Heading 6";
+      font-family: "Cambria", serif;
+      color: #243F60;
+      font-style: italic;
+    }
+
+    span.Heading7Char {
+      mso-style-name: "Heading 7 Char";
+      mso-style-link: "Heading 7";
+      font-family: "Cambria", serif;
+      color: #404040;
+      font-style: italic;
+    }
+
+    span.Heading8Char {
+      mso-style-name: "Heading 8 Char";
+      mso-style-link: "Heading 8";
+      font-family: "Cambria", serif;
+      color: #404040;
+    }
+
+    span.Heading9Char {
+      mso-style-name: "Heading 9 Char";
+      mso-style-link: "Heading 9";
+      font-family: "Cambria", serif;
+      color: #404040;
+      font-style: italic;
+    }
+
+    span.IntenseQuoteChar {
+      mso-style-name: "Intense Quote Char";
+      mso-style-link: "Intense Quote";
+      color: #00338D;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    span.QuoteChar {
+      mso-style-name: "Quote Char";
+      mso-style-link: Quote;
+      color: black;
+      font-style: italic;
+    }
+
+    span.BalloonTextChar {
+      mso-style-name: "Balloon Text Char";
+      mso-style-link: "Balloon Text";
+      font-family: "Tahoma", sans-serif;
+    }
+
+    .MsoChpDefault {
+      font-size: 12.0pt;
+      font-family: "Arial", sans-serif;
+      letter-spacing: .25pt;
+    }
+
+    .MsoPapDefault {
+      margin-bottom: 10.0pt;
+      line-height: 115%;
+    }
+
+    /* Page Definitions */
+    @page WordSection1 {
+      size: 595.3pt 841.9pt;
+      margin: 72.0pt 72.0pt 56.75pt 72.0pt;
+    }
+
+    div.WordSection1 {
+      page: WordSection1;
+    }
+
+    /* List Definitions */
+    ol {
+      margin-bottom: 0cm;
+    }
+
+    ul {
+      margin-bottom: 0cm;
+    }
+
+    -->
+  </style>
+  <% @invoice = invoice if !@invoice %>
+  <% patient = @invoice&.admission.patient %>
+
+  <div class='WordSection1'>
+    <p class='MsoNoSpacing' align=right style='text-align:right'><b>AllsWell Hospital</b></p>
+    <p class='MsoNoSpacing' align=right style='text-align:right'>&nbsp;</p>
+    <p class='MsoNoSpacing' align=right style='text-align:right'>AWH, </p>
+    <p class='MsoNoSpacing' align=right style='text-align:right'>King Charles RD,</p>
+    <p class='MsoNoSpacing' align=right style='text-align:right'>Surbiton,</p>
+    <p class='MsoNoSpacing' align=right style='text-align:right'>KT5 9BH</p>
+
+    <p class=MsoNoSpacing align=right style='text-align:right'><span
+    style='font-size:5.0pt'>&nbsp;</span></p>
+    <p class=MsoNoSpacing align=right style='text-align:right'>020 8673 5497</p>
+    <p class=MsoNoSpacing align=right style='text-align:right'>allswell.hospital@outlook.com</p>
+    <p class=MsoNoSpacing><span style='font-size:9.0pt'>&nbsp;</span></p>
+    <p class=MsoNoSpacing>&nbsp;</p>
+    <p class=MsoNoSpacing>&nbsp;</p>
+    <p class=MsoNoSpacing><b>Att:</b></p>
+    <p class=MsoNoSpacing><span style='font-size:5.0pt'>&nbsp;</span></p>
+    <p class=MsoNoSpacing><%= patient.person.address.houseNumber + ', ' %></p>
+    <p class=MsoNoSpacing><%= patient.person.address.street + ',' %></p>
+    <p class=MsoNoSpacing><%= patient.person.address.town + ', ' %></p>
+    <p class=MsoNoSpacing><%= patient.person.address.postcode %></p>
+    <p class=MsoNoSpacing>&nbsp;</p>
+    <p class=MsoNoSpacing><b>Invoice Number: <%= @invoice.id %></b></p>
+    <p class=MsoNoSpacing><b>Invoice Date: <%= localize(@invoice.dateDue) %></b></p>
+    <p class=MsoNoSpacing>&nbsp;</p>
+    <p class=MsoNoSpacing align=center style='text-align:center'><b><span
+    style='font-size:20.0pt'>INVOICE</span></b></p>
+    <p class=MsoNoSpacing></p>
+    <p class=MsoNoSpacing><span style='font-size:5.0pt'>&nbsp;</span></p>
+    <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=621
+           style='width:100%; border-collapse:collapse;border: 1px solid black;' align="center">
+      <tr>
+        <td width=308 valign=top style='width:231.05pt;padding:0cm 5.4pt 0cm 5.4pt'>
+          <p class=MsoNoSpacing><b>&nbsp;</b></p>
+          <!--TODO add title attribute to the person model/table-->
+          <p class=MsoNoSpacing><b>Patient Title:
+            <%= patient.person.gender.eql?('Female') ? 'Mrs' : 'Mr' %> </b></p>
+          <p class=MsoNoSpacing><b>&nbsp;</b></p>
+        </td>
+        <td width=313 valign=top style='width:235.05pt;padding:0cm 5.4pt 0cm 5.4pt'>
+          <p class=MsoNoSpacing><b>&nbsp;</b></p>
+          <p class=MsoNoSpacing><b>Patient Surname:
+            <%= patient.person.lastName %></b></p>
+        </td>
+      </tr>
+      <tr>
+        <td width=308 valign=top style='width:231.05pt; padding:0cm 5.4pt 0cm 5.4pt'>
+          <p class=MsoNoSpacing><b>&nbsp;</b></p>
+          <p class=MsoNoSpacing><b>Patient First Name(s): <%= patient.person.firstName %></b></p>
+          <p class=MsoNoSpacing><b>&nbsp;</b></p>
+        </td>
+        <td width=313 valign=top style='width:235.05pt;
+            padding:0cm 5.4pt 0cm 5.4pt'>
+          <p class=MsoNoSpacing><b>&nbsp;</b></p>
+          <p class=MsoNoSpacing><b>D.O.B:
+            <%= localize(patient.person.dateOfBirth) %> </b></p>
+        </td>
+      </tr>
+    </table>
+    <p class=MsoNoSpacing>&nbsp;</p>
+    <table class=MsoTableGrid cellspacing=0 cellpadding=0 width=621 border="1"
+           style='width:100%; border-collapse: collapse; border: 1px solid black;' align="center">
+      <thead>
+      <tr>
+        <td width=621 colspan=5 style='width:100%;padding:0cm 5.4pt 0cm 5.4pt;height:25.85pt'>
+          <p class=MsoNoSpacing align='center' style='margin-right:-5.4pt;text-align:
+              center'><b><span style='font-size:12.0pt'>Treatment Details</span></b></p>
+        </td>
+      </tr>
+      <tr>
+        <th class="apply_padding_table">Treatment</th>
+        <th class="apply_padding_table">Quantity</th>
+        <th class="apply_padding_table">Unit Price £</th>
+        <th class="apply_padding_table">Tax %</th>
+        <th class="apply_padding_table">Line Total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @invoice.invoice_details.each do |invoice_detail| %>
+        <tr>
+          <td class="apply_padding_table"><%= invoice_detail.treatment %></td>
+          <td class="apply_padding_table" style='text-align:right;'><%= invoice_detail.quantity %></td>
+          <td class="apply_padding_table" style='text-align:right;'><%= invoice_detail.unitPrice %></td>
+          <td class="apply_padding_table" style='text-align:right;'><%= invoice_detail.tax %></td>
+          <td class="apply_padding_table" style='text-align:right;'><%= invoice_detail.lineTotal %></td>
+        </tr>
+      <% end %>
+      <tr style="height:19.95pt">
+        <td colspan="4" style="padding:0cm 5.4pt 0cm 5.4pt;height:19.95pt">
+          <p class="MsoNoSpacing" align="right" style="text-align:right"><b>Amount due:</b></p>
+        </td>
+        <td style="padding:0cm 5.4pt 0cm 5.4pt;
+            height:19.95pt">
+          <p class="MsoNoSpacing" align="right" style="text-align:right">
+            <b><%= number_to_currency(@invoice.amount, unit: '£') %></b></p>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div style='border:solid white 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+      <p class=MsoNoSpacing style='border:none;padding:0cm'><span style='font-size:
+          5.0pt'>&nbsp;</span></p>
+    </div>
+    <p class=MsoNoSpacing align=center style='text-align:center'><b><span
+    style='font-size:4.0pt'>&nbsp;</span></b></p>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='font-size:9.0pt'>Payment details: Payment must be made within <%= localize(@invoice.dateDue) %>
+      by cheque or BACS transfer. Cheques must be payable to Benjamin Dean and posted to the above address.
+    BACS payments must be transferred to Benjamin Dean account at Lloyds Bank Account number 70872490, sort code 40-47-84,
+    account name: Benjamin Dean.</span>
+    </p>
+    <p class=MsoNormal align="center">------------------------------------------------------------------------------------------------------------------------------</p>
+    <p class=MsoNormal><b>REMITTANCE: Please return with cheque or to notify of BACS payments to Benjamin Dean</b></p>
+    <p class=MsoNormal>&nbsp;</p>
+    <p class="MsoNormal">Date
+      <span style="background-image: linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%);
+          background-position: bottom;          background-size: 3px 2px;          background-repeat: repeat-x;">
+        <%= localize(@invoice.dateReceived) %></span>
+    </p>
+  </div>
+</div>

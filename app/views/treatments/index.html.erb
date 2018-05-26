@@ -1,9 +1,9 @@
-<h1 class="title-container">Treatments</h1>
-<table class="table table-bordered table-striped">
+<h1 class="title-container">Notes</h1>
+<table class="table table-bordered table-striped" id="notes_holder_index">
   <thead class="thead-light">
   <tr>
-    <th>Treatment Date</th>
-    <th>Treatment No</th>
+    <th>Note Date</th>
+    <th>Note No</th>
     <th>Patient Name</th>
     <th>Issued By</th>
     <th>Action</th>
@@ -11,17 +11,23 @@
   </thead>
   <tbody>
   <% @treatments&.each do |treatment| %>
-    <% patient = Patient.find(treatment.patient_id) %>
+    <% patient = treatment.patient %>
     <% staff = Staff.find_by(userId: treatment.issuedBy) %>
     <tr>
       <td><%= localize(treatment.date) %> </td>
       <td><%= treatment.id %></td>
-      <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
-      <td><%= staff.person.firstName + ' ' + staff.person.lastName %></td>
+      <td><%= person_full_name_helper(patient) if patient %></td>
+      <td><%= person_full_name_helper(staff) if staff %></td>
       <td>
-        <%= link_to('View', treatment_path(treatment.id), role: 'button', class: 'btn btn-primary') %>
+        <%= link_to('View', treatment_path(treatment.id), role: 'button', class: 'btn btn-secondary') %>
       </td>
     </tr>
   <% end %>
   </tbody>
 </table>
+
+
+<% content_for(:navigationButtons) do %>
+  <%= link_to 'Make Note', new_treatment_path, class: 'btn btn-primary' %>
+  <%= button_tag('Print', onClick: "printJS({printable: 'notes_holder_index', type: 'html', header: 'Notes - #{localize(Date.today).to_s}'})", class:'btn btn-secondary') %>
+<% end %>

@@ -1,5 +1,5 @@
 <h1 class="title-container">Prescriptions</h1>
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped" id="prescriptions_holder_index">
   <thead class="thead-light">
   <tr>
     <th>Prescription Date</th>
@@ -16,8 +16,8 @@
     <tr>
       <td><%= localize(prescription.date) %></td>
       <td><%= prescription.id %></td>
-      <td><%= patient.person.firstName + ' ' + patient.person.lastName if patient %></td>
-      <td><%= staff.person.firstName + ' ' + staff.person.lastName %></td>
+      <td><%= person_full_name_helper(patient) if patient %></td>
+      <td><%= person_full_name_helper(staff) %></td>
       <td>
         <%= link_to('View', prescription_path(prescription.id), role: 'button', class: 'btn btn-primary') %>
       </td>
@@ -25,3 +25,8 @@
   <% end %>
   </tbody>
 </table>
+
+<% content_for(:navigationButtons) do %>
+  <%= link_to('Prescribe Drug', new_diagnosis_path, class: 'btn btn-primary') if policy(:diagnoses).new? %>
+  <%= button_tag('Print', onClick: "printJS({printable: 'prescriptions_holder_index', type: 'html', header: 'Diagnoses - #{localize(Date.today).to_s}'})", class: 'btn btn-secondary') %>
+<% end %>

@@ -57,8 +57,7 @@ Rails.application.routes.draw do
 
   # Change devise routes from staffs/login to /login
   devise_for :staffs, path: '',
-             path_names: { sign_in: 'login', sign_up: 'register', account_update: 'update' },
-             controllers: { sessions: 'sessions', passwords: 'passwords' }
+             path_names: { sign_in: 'login', account_update: 'update' }
 
   # On the scope of devise, manage authenticated and unauthenticated users
   devise_scope :staff do
@@ -66,13 +65,13 @@ Rails.application.routes.draw do
       root to: 'home#index'
     end
     unauthenticated :staff do
-      root to: 'sessions#new'
+      root to: 'devise/sessions#new'
     end
   end
 
   get :home, to: 'home#index'
 
-  root to: 'sessions#login'
+  root to: 'devise/sessions#new'
 
   # Handle errors, must be at end
   match '/404', to: 'error#not_found', via: :all

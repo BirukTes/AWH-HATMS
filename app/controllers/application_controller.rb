@@ -3,6 +3,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  # layout('login') if controller_name.eql?('sessions')
+
   # Import modules
   include DeviseWhitelist
   include DefaultPageContent

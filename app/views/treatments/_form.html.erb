@@ -1,15 +1,21 @@
-<%= render 'shared/errors', model: treatment %>
+<div class="col-10" id="error_holder_note">
+  <%= render('shared/errors', model: treatment) %>
+</div>
+
+<% staff = Staff.find_by(userId: treatment.issuedBy) if treatment.issuedBy %>
+
 <%= form_with(model: treatment, validate: true) do |treatment_form| %>
-  <%= treatment_form.hidden_field(:patient_id, value: patient.id) %>
+  <%= treatment_form.hidden_field(:admission_id, value: treatment.admission.id||(admission.id if admission)  ) %>
   <%= treatment_form.hidden_field(:date, value: Date.today) %>
-  <%= treatment_form.hidden_field(:issuedBy, value: current_staff.userId) %>
-  <table class="table">
+  <%#	 Helper method %>
+  <%= treatment_form.hidden_field(:issuedBy, value: (treatment.issuedBy) || current_staff.userId) %>
+  <table class="table borderless">
     <tbody>
     <tr>
       <td>
         <div class="form-group">
           <%= treatment_form.label(:note) %><br/>
-          <%= treatment_form.text_area(:note, autocomplete: 'note') %>
+          <%= treatment_form.text_area(:note, autocomplete: 'note', class: 'form-control', required: true) %>
         </div>
       </td>
       <td>
@@ -21,8 +27,8 @@
       <td>
         <div class="form-group">
           <%= treatment_form.label(:issuedBy, 'Issued By') %><br/>
-          <%#	  TODO current will be changed during edit also, is this the preferred behavior? %>
-          <%= treatment_form.label(:issuedBy, current_staff.person.firstName + ' ' + current_staff.person.lastName) %>
+          <%#	Use the saved staff or go for new if it is null/initialised state %>
+          <%= treatment_form.label(:issuedBy, (person_full_name_helper(staff) if staff) || person_full_name_helper(current_staff)) %>
         </div>
       </td>
     </tr>

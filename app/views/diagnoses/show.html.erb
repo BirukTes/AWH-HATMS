@@ -1,25 +1,23 @@
-<h3>Diagnosis for <%= @diagnosis.admission.patient.person.firstName + ' ' + @diagnosis.admission.patient.person.lastName %></h3>
+<h3>Diagnosis for <%= person_full_name_helper(@diagnosis.admission.patient)%></h3>
 <br/>
-<br/>
-<div class="row">
-  <div class="col-2 offset-1">
-    <%= label_tag(:title) %>
-    <%= content_tag(:h6, @diagnosis.title) %>
-  </div>
-  <div class="col-3 offset-1">
-    <%= label_tag(:description) %>
-    <%= content_tag(:p, @diagnosis.description)%>
-  </div>
-</div>
-<br/>
-<div class="row">
-  <div class="col-1 offset-6">
-    <div class="actions">
-      <%= link_to('Edit', edit_diagnosis_path(@diagnosis), class: 'form-control btn btn-primary') %>
-    </div>
-  </div>
-</div>
+<table class=" table table-bordered table-hover" id="diagnosis_holder">
+  <thead class="thead-light">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= content_tag(:p, @diagnosis.title) %></td>
+    <td><%= content_tag(:p, @diagnosis.description) %></td>
+    <td><%= link_to('Edit', edit_diagnosis_path(@diagnosis), class: 'form-control btn btn-secondary') %></td>
+  </tr>
+  </tbody>
+</table>
 
 <% content_for(:navigationButtons) do %>
   <%= link_to('Back', diagnoses_path, role: 'button', class: 'btn btn-secondary') %>
+  <%= button_tag('Print', onClick: "printJS({printable: 'diagnosis_holder', type: 'html', header: 'Diagnosis for #{(person_full_name_helper(patient) if patient) + ', ' + localize(Date.today).to_s}'})", class: 'btn btn-secondary') %>
 <% end %>

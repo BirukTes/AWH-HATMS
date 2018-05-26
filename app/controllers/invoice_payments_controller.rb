@@ -22,56 +22,79 @@ class InvoicePaymentsController < ApplicationController
 
   def create
 
+    # Initialise Braintree
     gateway = Braintree::Gateway.new(environment: Rails.application.secrets.braintree_environment.to_s.to_sym,
                                      merchant_id: Rails.application.secrets.braintree_merchant_id,
                                      public_key: Rails.application.secrets.braintree_public_key,
                                      private_key: Rails.application.secrets.braintree_private_key)
+
+    # Get the submitted nonce from params, for testing 'fake-valid-nonce'
     nonce_from_the_client = params[:payment_method_nonce]
 
-    binding.pry
-    result = gateway.customer.create(
-        first_name: @admission.patient.person.firstName,
-        last_name: @admission.patient.person.lastName,
-        email: @admission.patient.email,
-        payment_method_nonce: nonce_from_the_client)
+    # Find the patient in case they already created, a lot can be done
+    #     Goal for Refactoring:
+    #     + Uniquely identify customer/patient if they exist
+    #     + Create new payment method or use their existing
+    #
+    # collection = gateway.customer.search do |search|
+    #   # Email is best way to identify them, there is no date of birth
+    #   search.email.is(@admission.patient.email)
+    #   # Extra conditions
+    #   search.first_name.is(@admission.patient.person.firstName)
+    #   search.last_name.is(@admission.patient.person.lastName)
+    # end
 
+    # # If there nothing in the collection create the patient/customer
+    # unless collection
+    #   result = gateway.customer.create(
+    #       first_name: @admission.patient.person.firstName,
+    #       last_name: @admission.patient.person.lastName,
+    #       email: @admission.patient.email,
+    #       payment_method_nonce: nonce_from_the_client)
+    #
+    #   if result.success?
+    #     puts result.customer.id
+    #     puts result.customer.payment_methods[0].token
+    #   else
+    #     puts result.errors
+    #   end
+    # end
 
-    collection = gateway.customer.search do |search|
-      search.email.is(@admission.patient.email)
-    end
-    unless collection
-      puts true
-    end
-
-    if result.success?
-      puts result.customer.id
-      puts result.customer.payment_methods[0].token
-    else
-      puts result.errors
-    end
-
-    # Use payment method nonce here...
-
-    result = gateway.transaction.sale(
+    # Make transaction to braintree
+    @payment_result = gateway.transaction.sale(
         amount: @admission.invoice.amount,
         payment_method_nonce: nonce_from_the_client,
         options: {
             submit_for_settlement: true
         })
 
-    response = { success: result.success? }
-    if result.success?
-      puts "success trans: #{result.transaction.id}"
-      response[:transaction_id] = result.transaction.id
-    elsif result.transaction
-      put('Error processing trans: ')
-      put("code: #{result.transaction.processor_response_code}")
-      put("text: #{result.transaction.processor_response_text}")
-    else
-      p result.errors
-      response[:error] = result.errors.inspect
+    response = { success: @payment_result.success? }
+
+    respond_to do |format|
+      # Handle the response
+      if @payment_result.success?
+        puts "success trans: #{@payment_result.transaction.id}"
+
+        response[:transaction_id] = @payment_result.transaction.id
+
+        # Mark receiving of payment
+        @admission.invoice.update(paymentReceived: true)
+
+        # Deliver confirmation handled by delayed job (in the background)
+        InvoiceMailer.delay.paid_invoice_confirmation(@admission.invoice)
+
+        format.html { redirect_to(invoice_path(@admission.invoice), notice: 'Payment successful. Confirmation email will be sent to the patient.') }
+      elsif @payment_result.transaction
+        puts('Error processing trans: ')
+        puts("code: #{@payment_result.transaction.processor_response_code}")
+        puts("text: #{@payment_result.transaction.processor_response_text}")
+        format.js { render(:create, result: @payment_result)}
+      else
+        puts(@payment_result.errors)
+        response[:error] = @payment_result.errors.inspect
+        format.js { render(:create, result: @payment_result)}
+      end
     end
-    render json: response
   end
 
   private
@@ -82,7 +105,6 @@ class InvoicePaymentsController < ApplicationController
 
   def set_admission
     # Retrieve the admission
-    binding.pry
     @admission = Admission.find(params[:admission_id]) if params[:admission_id]
   end
 end

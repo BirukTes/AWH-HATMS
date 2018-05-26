@@ -22,7 +22,7 @@
   <tbody>
   <% @team.staffs.each do |staff| %>
     <tr>
-      <td><%= staff.person.firstName + ' ' + staff.person.lastName %></td>
+      <td><%= person_full_name_helper(staff) %></td>
       <td><%= link_to 'View Details', staff_path(staff), class: 'btn btn-secondary' %></td>
     </tr>
   <% end %>

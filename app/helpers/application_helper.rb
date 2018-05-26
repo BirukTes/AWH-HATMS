@@ -64,7 +64,7 @@ module ApplicationHelper
   end
 
   def all_staffs
-    Staff.all.limit(4)
+    Staff.all.limit(8)
   end
 
   def staffs_option (filter_by = nil)
@@ -78,6 +78,16 @@ module ApplicationHelper
         []
       else
         []
+    end
+  end
+
+  # General method to get full name for the passed common class of Person
+  #
+  # @params [personal_detail_type] - any class that implements/has Person, current state either Patient/Staff
+  # @return [string] - full name
+  def person_full_name_helper(personal_detail_type)
+    if personal_detail_type
+      personal_detail_type.person.firstName + ' ' + personal_detail_type.person.lastName
     end
   end
 

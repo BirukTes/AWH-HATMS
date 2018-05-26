@@ -11,12 +11,11 @@
   <tbody>
   <%# dischargeAdmissions = admissions.where(dischargeDate: Date.today).all %>
   <% @admissions.each_with_index do |admission| %>
-    <% patient = admission.patient %>
     <% ward = admission.ward %>
     <tr>
       <td><%= ward.wardNumber %></td>
       <td><%= ward.name %></td>
-      <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+      <td><%= person_full_name_helper(admission.patient) %></td>
       <td><%= admission.admissionDate ? localize(admission.admissionDate) : '--' %></td>
       <td><%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %></td>
     </tr>

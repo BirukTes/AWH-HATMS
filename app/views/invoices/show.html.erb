@@ -1,39 +1,37 @@
 <% @invoice = invoice unless @invoice %>
+
+<!--Pre-load Braintree Drop in UI - This will allow to display immediately when initialised by the modal-->
+<script src="https://js.braintreegateway.com/web/dropin/1.11.0/js/dropin.min.js"></script>
+
 <div class="container align-content-center">
   <div class="row mx-5 p-5">
     <div class="col">
-      <%= render('invoice_template', invoice: @invoice) %>
-      <div class="row">
-        <div class="col offset-3">
-          <div class="actions">
-            <%#	 todo apply the request  %>
-            <% content_for(:navigationButtons) do %>
-              <% session[:invoices_show_back_url] = request.referrer || request.original_url if session[:invoices_show_back_url].nil? %>
-              <%= link_to('Back', session[:back_for_invoices_show] || invoices_path, class: 'btn btn-secondary') %>
-            <% end %>
-            <% if @invoice.paymentReceived %>
-              <div class="row">
-                <div class="col">
-                  <p>Date Received</p>
-                </div>
-                <div class="col">
-                  <p><%= @invoice.dateReceived %></p>
-                </div>
-              </div>
-            <% else %>
-              <div class="col">
-                <%= link_to('Receive Payment', receive_payment_invoice_path, data: { modal: true }, class: 'btn btn-primary', role: 'button') %>
-              </div>
-              <div class="col offset-1">
-                <%= link_to('Pay now', new_invoice_payments_path + '?admission_id=' + @invoice.admission_id.to_s, data: { modal: true }, class: 'btn btn-primary', role: 'button') %>
-              </div>
-              <div class="col offset-1">
-                <%= button_tag('Print', onClick: "printJS({ printable: 'invoice_holder', type: 'html'})", class: 'btn btn-primary') %>
-              </div>
-            <% end %>
+      <%# Display the invoice on a condition whether received or not %>
+      <% if @invoice.paymentReceived %>
+        <%= render('paid_invoice_template', invoice: @invoice) %>
+      <% elsif !@invoice.paymentReceived %>
+        <%= render('unpaid_invoice_template', invoice: @invoice) %>
+        <br>
+        <br>
+        <div class="row">
+          <div class="col">
+            <%= link_to('Mark Payment Received', receive_payment_invoice_path, data: { modal: true }, class: 'btn btn-primary', role: 'button') %>
+          </div>
+          <br>
+          <div class="col">
+            <%= link_to('Make Payment now', new_invoice_payments_path + '?admission_id=' + @invoice.admission_id.to_s, data: { modal: true }, class: 'btn btn-primary', role: 'button') %>
+          </div>
+          <br>
+          <div class="col">
+            <%= button_tag('Print Invoice', onClick: "printJS({ printable: 'invoice_holder', type: 'html'})", class: 'btn btn-primary') %>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
+
+<% content_for(:navigationButtons) do %>
+  <% session[:invoices_show_back_url] = request.referrer if session[:invoices_show_back_url].nil? %>
+  <%= link_to('Back', session[:back_for_invoices_show] || invoices_path, class: 'btn btn-secondary') %>
+<% end %>

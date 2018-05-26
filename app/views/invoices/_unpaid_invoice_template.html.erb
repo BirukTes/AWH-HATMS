@@ -30,100 +30,6 @@
       letter-spacing: .25pt;
     }
 
-    /*h1 {*/
-      /*mso-style-link: "Heading 1 Char";*/
-      /*margin-top: 24.0pt;*/
-      /*margin-right: 0cm;*/
-      /*margin-bottom: 0cm;*/
-      /*margin-left: 21.6pt;*/
-      /*margin-bottom: .0001pt;*/
-      /*text-indent: -21.6pt;*/
-      /*page-break-after: avoid;*/
-      /*font-size: 12.0pt;*/
-      /*font-family: "Arial", sans-serif;*/
-      /*color: #00338D;*/
-      /*letter-spacing: .25pt;*/
-    /*}*/
-
-    /*h2 {*/
-      /*mso-style-link: "Heading 2 Char";*/
-      /*margin-top: 10.0pt;*/
-      /*margin-right: 0cm;*/
-      /*margin-bottom: 0cm;*/
-      /*margin-left: 28.8pt;*/
-      /*margin-bottom: .0001pt;*/
-      /*text-indent: -28.8pt;*/
-      /*page-break-after: avoid;*/
-      /*font-size: 11.0pt;*/
-      /*font-family: "Arial", sans-serif;*/
-      /*color: #00338D;*/
-      /*letter-spacing: .25pt;*/
-    /*}*/
-
-    /*h3 {*/
-      /*mso-style-link: "Heading 3 Char";*/
-      /*margin-top: 10.0pt;*/
-      /*margin-right: 0cm;*/
-      /*margin-bottom: 0cm;*/
-      /*margin-left: 36.0pt;*/
-      /*margin-bottom: .0001pt;*/
-      /*text-indent: -36.0pt;*/
-      /*page-break-after: avoid;*/
-      /*font-size: 11.0pt;*/
-      /*font-family: "Arial", sans-serif;*/
-      /*color: #00338D;*/
-      /*letter-spacing: .25pt;*/
-    /*}*/
-
-    /*h4 {*/
-      /*mso-style-link: "Heading 4 Char";*/
-      /*margin-top: 10.0pt;*/
-      /*margin-right: 0cm;*/
-      /*margin-bottom: 0cm;*/
-      /*margin-left: 43.2pt;*/
-      /*margin-bottom: .0001pt;*/
-      /*text-indent: -43.2pt;*/
-      /*page-break-after: avoid;*/
-      /*font-size: 10.0pt;*/
-      /*font-family: "Cambria", serif;*/
-      /*color: #4F81BD;*/
-      /*letter-spacing: .25pt;*/
-      /*font-style: italic;*/
-    /*}*/
-
-    /*h5 {*/
-      /*mso-style-link: "Heading 5 Char";*/
-      /*margin-top: 10.0pt;*/
-      /*margin-right: 0cm;*/
-      /*margin-bottom: 0cm;*/
-      /*margin-left: 50.4pt;*/
-      /*margin-bottom: .0001pt;*/
-      /*text-indent: -50.4pt;*/
-      /*page-break-after: avoid;*/
-      /*font-size: 10.0pt;*/
-      /*font-family: "Cambria", serif;*/
-      /*color: #243F60;*/
-      /*letter-spacing: .25pt;*/
-      /*font-weight: normal;*/
-    /*}*/
-
-    /*h6 {*/
-      /*mso-style-link: "Heading 6 Char";*/
-      /*margin-top: 10.0pt;*/
-      /*margin-right: 0cm;*/
-      /*margin-bottom: 0cm;*/
-      /*margin-left: 57.6pt;*/
-      /*margin-bottom: .0001pt;*/
-      /*text-indent: -57.6pt;*/
-      /*page-break-after: avoid;*/
-      /*font-size: 10.0pt;*/
-      /*font-family: "Cambria", serif;*/
-      /*color: #243F60;*/
-      /*letter-spacing: .25pt;*/
-      /*font-weight: normal;*/
-      /*font-style: italic;*/
-    /*}*/
-
     p.MsoHeading7, li.MsoHeading7, div.MsoHeading7 {
       mso-style-link: "Heading 7 Char";
       margin-top: 10.0pt;
@@ -672,17 +578,16 @@
     <p class=MsoNoSpacing align=center style='text-align:center'><b><span
     style='font-size:4.0pt'>&nbsp;</span></b></p>
     <p class=MsoNormal align=center style='text-align:center'><span
-    style='font-size:9.0pt'>Payment details: Payment must be made within <%= @invoice.dateDue %>
-      by cheque or BACS transfer. Cheques must be payable to BENJAMIN DEAN and posted to the above address.
-    BACS payments must be transferred to BENJAMIN DEAN account at Lloyds Bank Account number 70872490, sort code 40-47-84,
-    account name: BENJAMIN DEAN.</span>
+    style='font-size:9.0pt'>Payment details: Payment must be made within <%= localize(@invoice.dateDue) %>
+      by cheque or BACS transfer. Cheques must be payable to Benjamin Dean and posted to the above address.
+    BACS payments must be transferred to Benjamin Dean account at Lloyds Bank Account number 70872490, sort code 40-47-84,
+    account name: Benjamin Dean.</span>
     </p>
     <p class=MsoNormal align="center">------------------------------------------------------------------------------------------------------------------------------</p>
-    <p class=MsoNormal><b>REMITTANCE: Please return with cheque or to notify of
-      BACS payments to BENJAMIN DEAN</b></p>
+    <p class=MsoNormal><b>REMITTANCE: Please return with cheque or to notify of BACS payments to Benjamin Dean</b></p>
     <p class=MsoNormal>&nbsp;</p>
-    <p class=MsoNormal>Invoice Number.......................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name.......................</p>
-    <p class=MsoNormal>Cheque enclosed £.......................</p>
-    <p class=MsoNormal>BACS payment £.......................</p>
+    <p class="MsoNormal dotted">Invoice Number.......................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name.......................</p>
+    <p class="MsoNormal dotted">Cheque enclosed £.......................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date.......................</p>
+    <p class="MsoNormal dotted">BACS Payment £.......................</p>
   </div>
 </div>

@@ -1,17 +1,15 @@
-<% patient = Patient.find(@treatment.patient_id) %>
-<% staff = Staff.find_by(userId: @treatment.issuedBy) %>
-<h1 class="title-container">Treatment For <%= patient.person.firstName + ' ' + patient.person.lastName %></h1>
-<table class="table table-bordered table-striped">
+<% patient = @treatment.patient %>
+<h1 class="title-container">Note for <%= (person_full_name_helper(patient) if patient) %></h1>
+<table class="table table-bordered table-striped " id="note_holder">
   <thead class="thead-light">
   <tr>
-    <th>Treatment Date</th>
-    <th>Treatment No</th>
+    <th>Note Date</th>
+    <th>Note No</th>
     <th>Issued By</th>
-    <th>Action</th>
+    <th colspan="2">Action</th>
   </tr>
   </thead>
   <tbody>
-
   <tr>
     <td>
       <%= localize(@treatment.date) %>
@@ -20,11 +18,13 @@
       <%= @treatment.id %>
     </td>
     <td>
-      <%= staff.person.firstName + ' ' + staff.person.lastName %>
+      <%= person_full_name_helper(Staff.find_by(userId: @treatment.issuedBy)) %>
     </td>
     <td>
       <%= link_to('Edit', edit_treatment_path(@treatment.id), role: 'button', class: 'btn btn-secondary') %>
-      <%= link_to('Delete', treatment_path(@treatment.id), method: :delete, data: { confirm: "Should this treatment no. #{@treatment.id} be deleted?"}, role: 'button', class: 'btn btn-secondary') %>
+    </td>
+    <td>
+      <%= link_to('Delete', treatment_path(@treatment.id), method: :delete, data: { confirm: "Should this treatment no. #{@treatment.id} be deleted?" }, role: 'button', class: 'btn btn-secondary') %>
     </td>
   </tr>
   <tr>
@@ -38,4 +38,5 @@
 
 <%= content_for(:navigationButtons) do %>
   <%= link_to('Back', treatments_path, role: 'button', class: 'btn btn-primary') %>
+  <%= button_tag('Print', onClick: "printJS({printable: 'note_holder', type: 'html', header: 'Note for #{(person_full_name_helper(patient) if patient) + ', ' + localize(Date.today).to_s}'})", class: 'btn btn-secondary') %>
 <% end %>

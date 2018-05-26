@@ -20,7 +20,8 @@ class TreatmentsController < ApplicationController
     @treatment = Treatment.new
 
     if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
-      @patient = Patient.find(params[:patient_id])
+      admission_id_extract = params[:patient_id].split('|')[1]
+      @admission = Admission.find(admission_id_extract)
 
     elsif params.include?(:rest_patient)
       @patient = nil
@@ -31,14 +32,10 @@ class TreatmentsController < ApplicationController
     authorize(:treatment)
     @treatment = Treatment.new(treatment_params)
 
-
     if @treatment.save
-      redirect_to(treatments_path, notice: 'Treatment saved')
+      redirect_to(treatments_path, notice: 'Note saved')
     else
-      # puts(@admission.inspect)
-      # Pass the errors, to the instance variable, TODO errors
-      @errors = @treatment.errors.full_messages
-      render :new
+      respond_with(@treatment)
     end
   end
 
@@ -47,21 +44,21 @@ class TreatmentsController < ApplicationController
 
   def update
     if @treatment.update(treatment_params)
-      redirect_to(treatments_path, notice: 'Update successful')
+      redirect_to(treatments_path, notice: 'Note update successful')
     else
-      respond_with(:edit)
+      respond_with(:create)
     end
   end
 
   def destroy
     @treatment.destroy
-    respond_to(:index, notice: 'Treatment Deleted')
+    redirect_to(:index, notice: 'Note deleted successfully')
   end
 
   private
 
   def treatment_params
-    params.require(:treatment).permit(:id, :note, :date, :issuedBy, :ward_id, :patient_id, :rest_patient)
+    params.require(:treatment).permit(:id, :note, :date, :issuedBy, :ward_id, :admission_id, :rest_patient)
   end
 
   def set_treatment

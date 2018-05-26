@@ -1,65 +1,67 @@
-<% patient = Patient.get_patient(@prescription.diagnosis.patient.id)  if @prescription.diagnosis %>
-<% staff = Staff.find_by(userId: @prescription.issuedBy)  %>
-<h1 class="title-container">Prescription for <%= patient.person.firstName + ' ' + patient.person.lastName if patient %></h1>
-<table class="table table-bordered table-striped">
-  <thead class="thead-light">
-  <tr>
-    <th>Prescription Date</th>
-    <th>Prescription No</th>
-    <th>Length of Treatment</th>
-    <th>Issued By</th>
-    <th>Action</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td><%= localize(@prescription.date) %></td>
-    <td><%= @prescription.id %></td>
-    <td><p><%= @prescription.treatmentLength %></p></td>
-    <td><%= staff.person.firstName + ' ' + staff.person.lastName if patient %></td>
-    <td>
-      <%= link_to('Edit', edit_prescription_path(@prescription.id), role: 'button', class: 'btn btn-secondary') %>
-      <%= link_to('Delete', prescription_path(@prescription.id), method: :delete, data: { confirm: "Should this prescription no. #{@prescription.id} be deleted?" }, role: 'button', class: 'btn btn-secondary') %>
-    </td>
-  </tr>
-  </tbody>
-</table>
-<br/>
-<br/>
-<h6>Drugs</h6>
-<table class="table table-bordered table-striped">
-  <thead class="thead-light">
-  <tr>
-    <th>Drug Code</th>
-    <th>Drug Name</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @prescription.drugs.each do |drug| %>
+<% patient = Patient.get_patient(@prescription.diagnosis.patient.id) if @prescription.diagnosis %>
+<% staff = Staff.find_by(userId: @prescription.issuedBy) %>
+<h1 class="title-container">Prescription for <%= person_full_name_helper(patient) if patient %></h1>
+<div id="prescription_holder">
+  <table class="table table-bordered table-striped">
+    <thead class="thead-light">
     <tr>
-      <td> <%= drug.code %> </td>
-      <td> <%= drug.name %> </td>
+      <th>Prescription Date</th>
+      <th>Prescription No</th>
+      <th>Length of Treatment</th>
+      <th>Issued By</th>
+      <th>Action</th>
     </tr>
-  <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+    <tr>
+      <td><%= localize(@prescription.date) %></td>
+      <td><%= @prescription.id %></td>
+      <td><p><%= @prescription.treatmentLength %></p></td>
+      <td><%= person_full_name_helper(staff) if staff %></td>
+      <td>
+        <%= link_to('Edit', edit_prescription_path(@prescription.id), role: 'button', class: 'btn btn-secondary') %>
+        <%= link_to('Delete', prescription_path(@prescription.id), method: :delete, data: { confirm: "Should this prescription no. #{@prescription.id} be deleted?" }, role: 'button', class: 'btn btn-secondary') %>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <br/>
+  <br/>
+  <h6>Drugs</h6>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-light">
+    <tr>
+      <th>Drug Code</th>
+      <th>Drug Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @prescription.drugs.each do |drug| %>
+      <tr>
+        <td> <%= drug.code %> </td>
+        <td> <%= drug.name %> </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 
-<br/>
-<br/>
-<h6>Dosage</h6>
-<table class="table table-bordered table-striped">
-  <thead class="thead-light">
-  <tr>
-    <th>Dosage</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td><p><%= @prescription.dosage %></p></td>
-  </tr>
-  </tbody>
-</table>
-
+  <br/>
+  <br/>
+  <h6>Dosage</h6>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-light">
+    <tr>
+      <th>Dosage</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><p><%= @prescription.dosage %></p></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 <%= content_for(:navigationButtons) do %>
-  <%= link_to('Back',  prescriptions_path, role: 'button', class: 'btn btn-primary') %>
+  <%= link_to('Back', prescriptions_path, role: 'button', class: 'btn btn-primary') %>
+  <%= button_tag('Print', onClick: "printJS({printable: 'prescription_holder', type: 'html', header: 'Note for #{(person_full_name_helper(patient) if patient) + ', ' + localize(Date.today).to_s}'})", class: 'btn btn-secondary') %>
 <% end %>

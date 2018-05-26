@@ -1,0 +1,5 @@
+// Remove old validation messages
+$(".alert").remove();
+
+// Display new validation messages
+$('#error_holder_diagnosis').append('<%= escape_javascript(render('shared/errors', model: @diagnosis))%>');

@@ -72,7 +72,7 @@
         <i class="fas fa-user-circle fa-2x"></i>
         <label class='lbl-nav col-sm-auto'>
           <% if staff_signed_in? %>
-            <%= current_staff.person.firstName + ' ' + current_staff.person.lastName + ', ' + current_staff.role_name %>
+            <%= person_full_name_helper(current_staff) + ', ' + current_staff.role_name %>
           <% else %>
             <%= link_to('Sign in', new_staff_session_path) %>
           <% end %>&nbsp; &nbsp; </label>

@@ -29,7 +29,7 @@ $(document).on 'turbolinks:load', ->
           $('<option value="loading">Loading patients...</option>').appendTo('#patient_id_select, #patient_id_select_find_diagnosed').attr("selected", true)
 
           # Remove the existing items which have values and not the blank
-          $('#patient_id_select, #patient_id_select_find_diagnosed option').each(->
+          $('#patient_id_select option, #patient_id_select_find_diagnosed option').each(->
             if $(this).val() != ''
               $(this).remove()
           )

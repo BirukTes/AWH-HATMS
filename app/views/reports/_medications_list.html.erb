@@ -17,7 +17,7 @@
     <tr>
       <td><%= ward.wardNumber %></td>
       <td><%= ward.name %></td>
-      <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+      <td><%= person_full_name_helper(patient) %></td>
       <% if prescriptions.empty? %>
         <td colspan="3"><p>No prescriptions found.</p></td>
       <% else %>

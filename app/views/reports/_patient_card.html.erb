@@ -20,7 +20,7 @@
   <% prescriptions = patient&.prescriptions %>
   <tr>
     <td><%= patient.id %></td>
-    <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
+    <td><%= person_full_name_helper(patient) %></td>
     <td><%= ward.wardNumber %></td>
     <td><%= ward.name %></td>
   </tr>

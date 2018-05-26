@@ -60,8 +60,8 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       if @invoice.save!
 
-        # TODO move the method to delayed job
-        generate_pdf_and_invoke_send
+        # Send invoice in with delayed job on a separate process
+        InvoiceMailer.delay.unpaid_invoice_request(@invoice)
 
         format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
         format.json { render :show, status: :created, location: @invoice }
@@ -172,33 +172,5 @@ class InvoicesController < ApplicationController
         tax: '4.0',
         lineTotal: (20 * number_drugs * ((4 / 100) + 1))
     )
-  end
-
-  def generate_pdf_and_invoke_send()
-    # enqueue our custom job object that uses delayed_job methods
-    ActionView::Base.send(:define_method, :protect_against_forgery?) { false }
-    # create an instance of ActionView, so we can use the render method outside of a controller
-    av = ActionView::Base.new
-
-    av.view_paths = ActionController::Base.view_paths
-
-    # need these in case your view constructs any links or references any helper methods.
-    av.class_eval do
-      include Rails.application.routes.url_helpers
-      include ApplicationHelper
-    end
-
-    pdf_html = av.render(template: 'invoices/show.pdf.erb', layout: 'layouts/pdf.html.erb', locals: { invoice: @invoice })
-
-    # use wicked_pdf gem to create PDF from the doc HTML
-    invoice_pdf = WickedPdf.new.pdf_from_string(pdf_html, page_size: 'Letter')
-
-    # save PDF to disk
-    pdf_path = Rails.root.join('tmp', "invoice_no#{@invoice.id}.pdf")
-    File.open(pdf_path, 'wb') do |file|
-      file << invoice_pdf
-    end
-
-    InvoiceMailer.send_invoice(@invoice)
   end
 end

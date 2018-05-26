@@ -14,6 +14,14 @@ module AWHHatms
     # Set the queue_adapter
     config.active_job.queue_adapter = :delayed_job
 
+    # This needs to be done in a to_prepare callback because it's executed
+    # once in production and before each request in development.
+    config.to_prepare do
+      # Configure single controller layout
+      Devise::SessionsController.layout('login')
+      Devise::PasswordsController.layout('login')
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

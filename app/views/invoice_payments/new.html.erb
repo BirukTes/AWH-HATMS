@@ -1,19 +1,20 @@
-<script src="https://js.braintreegateway.com/web/dropin/1.11.0/js/dropin.min.js"></script>
-
+<%	 content_for(:modal_title, 'Make Payment') %>
 
 <%= form_with(url: invoice_payments_path, method: :post, remote: request.xhr?, html: { id: 'payment-form', data: { modal: true } }) do %>
   <%= hidden_field_tag(:payment_method_nonce, nil, id: 'nonce') %>
   <%= hidden_field_tag(:admission_id, @admission.id, id: 'admission_id') %>
+  <div class="error_holder col-10">
+  </div>
   <div class="form-group">
     <div class="row">
-      <div class="col">
+            <div class="col">
         <label>Invoice Number: <%= @admission.invoice.id %></label>
       </div>
       <div class="col">
         <label>Invoice Date: <%= localize(@admission.invoice.dateDue) %></label>
       </div>
       <div class="col">
-        <label>Patient: <%= @admission.patient.person.firstName + ' ' + @admission.patient.person.lastName %></label>
+        <label>Patient: <%= person_full_name_helper(@admission.patient) %></label>
       </div>
     </div>
 
@@ -37,10 +38,9 @@
         authorization: '<%= @client_token %>',
         container: '#dropin-container',
         paypal: {
-            flow: 'checkout'
-
-            // amount: '10.00',
-            // currency: 'USD'
+            flow: 'checkout',
+            amount: '10.00',
+            currency: 'GBP'
         }
     }, function (createErr, instance) {
         form.addEventListener('submit', function (event) {

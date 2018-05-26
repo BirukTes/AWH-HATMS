@@ -1,5 +1,5 @@
 <%= modal(id: 'mainModal') do %>
-  <%= modal_header((yield :title if content_for? :title)) %>
+  <%= modal_header((yield :modal_title if content_for? :modal_title)) %>
   <%= modal_body do %>
     <%= yield %>
   <% end %>

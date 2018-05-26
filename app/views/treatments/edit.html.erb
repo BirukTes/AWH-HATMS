@@ -1,3 +1,5 @@
-<% patient = Patient.find(@treatment.patient_id) %>
-<h1>Treatment Update for <%= patient.person.firstName + ' ' + patient.person.lastName %></h1>
+<% @page_title = 'Notes | Update Note' %>
+
+<% patient = @treatment.patient %>
+<h1>Note update for <%= person_full_name_helper(patient) %></h1>
 <%= render 'form', treatment: @treatment, patient: patient%>

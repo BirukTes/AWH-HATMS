@@ -1,3 +1,3 @@
-<% patient = Patient.find(@prescription.patient_id) %>
-<h1 class="title-container">Prescription Update for <%= patient.person.firstName + ' ' + patient.person.lastName %></h1>
+<% patient = @prescription.patient %>
+<h1 class="title-container">Prescription Update for <%= person_full_name_helper(patient) %></h1>
 <%= render('form', prescription: @prescription, patient: patient) %>

@@ -49,7 +49,7 @@ class DiagnosesController < ApplicationController
         format.json { render :show, status: :created, location: @diagnosis }
       else
         format.html { render :new }
-        format.json { render json: @diagnosis.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -63,7 +63,8 @@ class DiagnosesController < ApplicationController
         format.json { render :show, status: :ok, location: @diagnosis }
       else
         format.html { render :edit }
-        format.json { render json: @diagnosis.errors, status: :unprocessable_entity }
+        # Use the same js view, only need to print errors
+        format.js { render :create }
       end
     end
   end

@@ -1,17 +1,9 @@
-<%= form_with(model: diagnose, local: true) do |form| %>
-  <% if diagnose.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(diagnose.errors.count, "error") %> prohibited this diagnose from being saved:</h2>
+<%= form_with(model: diagnosis, local: true) do |form| %>
+  <div class="col-10" id="error_holder_diagnosis">
+    <%= render('shared/errors', model: diagnosis) %>
+  </div>
 
-      <ul>
-        <% diagnose.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= form.hidden_field(:admission_id, value: diagnose.admission_id || admission.id) %>
+  <%= form.hidden_field(:admission_id, value: diagnosis.admission_id || admission.id) %>
 
   <div class="row">
     <div class="col-2 offset-1">
@@ -28,8 +20,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-1 offset-6">
-      <div class="actions">
+    <div class="col-2 offset-6">
+      <div class="actions form-group">
         <%= form.submit(class: 'form-control btn btn-primary') %>
       </div>
     </div>

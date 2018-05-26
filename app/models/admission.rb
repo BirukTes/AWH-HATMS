@@ -46,7 +46,6 @@ Surbiton,
 KT5 9BH
 +441424400647
 allswell.hospital@outlook.com"
-    binding.pry
     message = @client.messages.create(
         from: Rails.application.secrets.twilio_phone_from,
         to: Rails.application.secrets.twilio_phone_to,

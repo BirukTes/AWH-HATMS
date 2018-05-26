@@ -1,8 +1,15 @@
-<h1>Treat Patient</h1>
+<h1>Make Note</h1>
+<% @page_title = 'Notes | Make Note' %>
 
-<% if !@patient.nil? %>
-  <%= render 'shared/find_admitted_patient', action_controller_url: new_treatment_path %>
+<% if @admission %>
+  <fieldset class="none-bs-fieldset">
+    <legend class="none-bs-legend">Patient Details</legend>
+    <%= render 'patients/form', patient: @admission.patient %>
+  </fieldset>
+  <fieldset class="none-bs-fieldset">
+    <legend class="none-bs-legend">Note</legend>
+    <%= render 'form', treatment: @treatment, admission: @admission %>
+  </fieldset>
 <% else %>
-  <%= render 'patients/form', patient: @patient %>
-  <%= render 'form', treatment: @treatment, patient: @patient %>
+  <%= render 'shared/find_admitted_patient', action_controller_url: new_treatment_path %>
 <% end %>

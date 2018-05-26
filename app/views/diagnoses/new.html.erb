@@ -1,4 +1,5 @@
 <h1>New Diagnosis</h1>
+<% @page_title = 'Diagnosis | Diagnose Patient' %>
 
 <% if @admission %>
   <fieldset class="none-bs-fieldset">
@@ -10,7 +11,7 @@
   <fieldset class="none-bs-fieldset">
     <legend class="none-bs-legend">Diagnosis</legend>
     <div class="diagnosis_form_holder">
-      <%= render 'form', diagnose: @diagnosis, admission: @admission %>
+      <%= render 'form', diagnosis: @diagnosis, admission: @admission %>
     </div>
   </fieldset>
 <% else %>
