@@ -2,4 +2,6 @@
 
 <%= render 'form', ward: @ward %>
 
-<%= link_to 'Back', wards_path %>
+<% content_for(:navigationButtons) do %>
+  <%= link_to 'Cancel', wards_path, class: 'btn btn-secondary' %>
+<% end %>

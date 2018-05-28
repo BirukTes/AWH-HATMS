@@ -37,7 +37,10 @@ module ApplicationHelper
   # Gets the option for wards
   #
   # @return [[team name, team id]]
-  def teams_option;
+  def teams_option
+    Team.all.map do |team|
+      [team.name, team.id]
+    end
   end
 
   # Gets the option for wards

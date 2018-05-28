@@ -50,12 +50,12 @@ en:
           issuedBy: 'Issued By'
 
         ward:
-          wardnumber: 'Ward Number'
-          numberofbeds: 'Number of Beds'
-          bedstatus: 'Bed Status'
-          patientgender: 'Gender'
+          wardNumber: 'Ward Number'
+          numberOfBeds: 'Number of Beds'
+          bedStatus: 'Bed Status'
+          patientGender: 'Ward Gender'
           deptName: 'Department'
-          isPrivate: 'Private'
+          isPrivate: 'Is Private'
 
         invoice:
           dateDue: 'Date Due'

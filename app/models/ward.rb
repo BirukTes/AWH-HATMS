@@ -10,6 +10,12 @@ class Ward < ApplicationRecord
   validates(:patientGender, presence: true)
   validates(:deptName, presence: true)
 
+  human_attribute_name(:wardNumber)
+  human_attribute_name(:numberOfBeds)
+  human_attribute_name(:patientGender)
+  human_attribute_name(:deptName)
+
+
 # TODO future refactor should get even wards are full and indicate this in the list
 #
 # Gets the private or non private wards with given patient, gender

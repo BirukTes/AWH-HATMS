@@ -77,22 +77,24 @@ class InvoicePaymentsController < ApplicationController
 
         response[:transaction_id] = @payment_result.transaction.id
 
-        # Mark receiving of payment
-        @admission.invoice.update(paymentReceived: true)
 
-        # Deliver confirmation handled by delayed job (in the background)
-        InvoiceMailer.delay.paid_invoice_confirmation(@admission.invoice)
+        # Update attributes
+        update_invoice_received_attributes
 
+        # Send confirmation
+        deliver_confirmation
+
+        # Redirect
         format.html { redirect_to(invoice_path(@admission.invoice), notice: 'Payment successful. Confirmation email will be sent to the patient.') }
       elsif @payment_result.transaction
         puts('Error processing trans: ')
         puts("code: #{@payment_result.transaction.processor_response_code}")
         puts("text: #{@payment_result.transaction.processor_response_text}")
-        format.js { render(:create, result: @payment_result)}
+        format.js { render(:create, result: @payment_result) }
       else
         puts(@payment_result.errors)
         response[:error] = @payment_result.errors.inspect
-        format.js { render(:create, result: @payment_result)}
+        format.js { render(:create, result: @payment_result) }
       end
     end
   end
@@ -106,5 +108,15 @@ class InvoicePaymentsController < ApplicationController
   def set_admission
     # Retrieve the admission
     @admission = Admission.find(params[:admission_id]) if params[:admission_id]
+  end
+
+  def update_invoice_received_attributes
+    # Mark receiving of payment
+    @admission.invoice.update(paymentReceived: true, dateReceived: Date.today)
+  end
+
+  def deliver_confirmation
+    # Handled by delayed job (in the background)
+    InvoiceMailer.delay.paid_invoice_confirmation(@admission.invoice)
   end
 end

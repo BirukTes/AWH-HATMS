@@ -1,0 +1,8 @@
+<div class="error_holder col-10" id="error_holder_authorise_discharge">
+  <%= render('shared/errors', model: @admission) %>
+</div>
+//remove old validation messages
+$(".alert").remove();
+
+//display new validation messages, TODO
+$('#error_holder_authorise_discharge').append('<%= escape_javascript(render('shared/errors', model: @admission))%>');

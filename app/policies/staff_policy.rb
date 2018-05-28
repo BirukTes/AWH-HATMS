@@ -28,7 +28,8 @@ class StaffPolicy < ApplicationPolicy
 
   private
 
-  # @return [true/false] if the record of their own
+  # Checks the record (staff) to be viewed is their o
+  # @return [true/false] if the record is of their own
   def staff_profile
     staff.id == record.id
   end

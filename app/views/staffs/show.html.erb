@@ -1,0 +1,72 @@
+<h1>Hi <%= person_full_name_helper(@staff) %> </h1>
+<% @page_title = 'Staff | Profile' %>
+
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>ID No</th>
+    <th>Date Of Birth</th>
+    <th>Gender</th>
+    <th>Address</th>
+    <th>Home Telephone No</th>
+    <th>Mobile Telephone No</th>
+    <th>Register Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= @staff.id %></td>
+    <td><%= localize(@staff.person.dateOfBirth) %></td>
+    <td><%= @staff.person.gender %></td>
+    <%#	 binding.pry %>
+    <td><%= @staff.person.full_address %></td>
+    <td><%= @staff.person.telHomeNo %></td>
+    <td><%= @staff.person.telMobileNo %></td>
+    <td><%= localize(@staff.created_at.to_date) %></td>
+  </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<h4>Specialism</h4>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Speciality</th>
+    <th>Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @staff.specialisms.each do |specialism| %>
+    <tr>
+      <td><%= specialism.speciality.speciality %></td>
+      <td><%= localize(specialism.created_at.to_date) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<br>
+<br>
+<h4>Job Title</h4>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Title</th>
+    <th>Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @staff.jobs.each do |job| %>
+    <tr>
+      <td><%= job.job_title.title %></td>
+      <td><%= localize(job.created_at.to_date) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<% content_for(:navigationButtons) do %>
+  <% session[:staffs_show_back_url] = request.referrer if session[:invoices_show_back_url].nil? %>
+  <%= link_to('Back', session[:back_for_invoices_show] || invoices_path, class: 'btn btn-secondary') %>
+<% end %>
+

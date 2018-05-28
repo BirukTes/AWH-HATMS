@@ -35,25 +35,34 @@ $(document).on 'turbolinks:load', ->
             $option = $('<option value="' + patient[1] + '">' + patient[0] + '</option>').appendTo('#patient_id_select')
           )
 
-          # Enable the select
-          $('#patient_id_select').removeAttr('disabled')
+          # Enable the select, and submit
+          $('#patient_id_select, #btn_submit_find_discharged').removeAttr('disabled')
 
           # Make selection if there is one
           if patient_data.length == 1
             $('#patient_id_select option:eq(1)').attr("selected", true)
+            $('#btn_submit_find_discharged').removeAttr('disabled')
             if ($('.lblMsg').length)
               $('.lblMsg').remove()
+          else
+            $(document).on('change', '#patient_id_select', ->
+              if $('#patient_id_select :selected').val() != ''
+                $('#btn_submit_find_discharged').removeAttr('disabled')
+            )
 
-          # Append first value if the only one
+
+          # Disable and display msg if there is nothing in the data
           if patient_data.length == 0
-            $('#patient_id_select').attr('disabled', 'disabled')
+            $('#patient_id_select, #btn_submit_find_dicharged').attr('disabled', 'disabled')
             if !($('.lblMsg').length)
               $('<br/><label class="lblMsg" style="font-weight: bold;">No patients in this ward.</label>').insertAfter('#patient_id_select')
 
+          # Disable Patient select if selected value is empty
           if $('#ward_id_select_find_admitted :selected').val() == ''
-            $('#patient_id_select').attr('disabled', 'disabled')
+            $('#patient_id_select, #btn_submit_find_discharged').attr('disabled', 'disabled')
             $('#patient_id_select option:eq(0)').attr("selected", true)
             if ($('.lblMsg').length)
               $('.lblMsg').remove()
 
-      }))
+      })
+  )

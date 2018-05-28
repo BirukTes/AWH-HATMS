@@ -10,7 +10,7 @@
   </tr>
   </thead>
   <tbody>
-  <% if !(admissions.nil? || admissions.empty?) %>
+  <% if admissions %>
     <% admissions.order(admissionDate: :desc).each do |admission| %>
       <% patient = admission.patient %>
       <% ward = admission.ward %>

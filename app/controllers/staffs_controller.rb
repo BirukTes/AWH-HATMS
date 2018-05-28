@@ -1,11 +1,18 @@
 class StaffsController < ApplicationController
-  # Verify authorisation for all admissions (multiple records), which index only does
+  # Define the formats
+  respond_to(:html, :js)
+
+  before_action(:set_staff, only: [:show])
+
+  # Verify authorisation
   after_action(:verify_authorized)
-  # after_action(:verify_policy_scoped, only: :index)
 
   def index
     authorize(:staff)
     @staffs = Staff.all
+  end
+
+  def show
   end
 
   def new
@@ -24,17 +31,26 @@ class StaffsController < ApplicationController
     if @staff.save!
       redirect_to(staffs_path, notice: 'Staff registration successful')
     else
-      render :new
+      # Will take care of the format
+      respond_with(@staff)
     end
   end
 
   private
 
   def user_params
-    params.require(:staff).permit(:id, :userId, :team_id, :email,:password, :password_confirmation,
+    params.require(:staff).permit(:id, :userId, :team_id, :email, :password, :password_confirmation,
                                   person_attributes: [:id, :firstName, :lastName, :gender, :dateOfBirth, :telHomeNo, :telMobileNo,
                                                       address_attributes: [:id, :houseNumber, :street, :town, :postcode]],
-                                  specialism_attributes: [:speciality_id],
-                                  job_attributes: [:job_title_id])
+                                  specialisms_attributes: [:speciality_id],
+                                  jobs_attributes: [:job_title_id])
+  end
+
+  def set_staff
+    @staff = Staff.find(params[:id])
+
+    # In this situation where staff can only access their profile unless admin
+    # The record must be given, that is: @staff
+    authorize(@staff)
   end
 end

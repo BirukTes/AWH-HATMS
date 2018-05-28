@@ -12,12 +12,12 @@ class Staff < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable,
   # not using :registerable, instead custom staffs
   #
-  # Registerable is disabled, there is custom controller for this
+  # Registerable is disabled, there is custom controller for registering Staff
   #
   # Authentication keys changes the login identifier, userId, original email
   devise(:database_authenticatable, #:registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         authentication_keys: [:userId])
+         :timeoutable, authentication_keys: [:userId])
 
   # Association to team is nullable/optional
   belongs_to(:team, optional: true)
@@ -33,13 +33,11 @@ class Staff < ApplicationRecord
   has_many(:job_titles, through: :jobs)
 
 
-
   # For nested forms
   # Use for additional validations, reject_if: proc { |attributes| attributes[:attribute].blank? }
   accepts_nested_attributes_for(:specialisms, allow_destroy: true)
   accepts_nested_attributes_for(:jobs, allow_destroy: true)
   accepts_nested_attributes_for(:person, update_only: true, allow_destroy: true)
-
 
 
   validates_associated :person, presence: true
@@ -49,7 +47,6 @@ class Staff < ApplicationRecord
 
   # Provides access to the parent methods, or the class person, not working
   # delegate(:firstName, :lastName, to: :person, prefix: :pd)
-
 
 
   # Gets the first job title of the staff
@@ -101,6 +98,13 @@ class Staff < ApplicationRecord
 
     # Add active condition to existing base
     super && active?
+  end
+
+  # Sets the timeout length for Devise TimeOutable
+  #
+  # @return [Time] In minutes (30)
+  def timeout_in
+    30.minutes
   end
 
   private

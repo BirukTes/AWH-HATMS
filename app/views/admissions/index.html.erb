@@ -14,7 +14,7 @@
             <label>Status</label><br/>
             <%= filter_form.select(:status_eq, options_for_select(['Scheduled', 'Admitted', 'Discharged'], params.dig(:q, :status_eq)), { id: 'filter_admission_by_status', include_blank: 'All' }, class: 'form-control') %>
           </td>
-          <td>
+          <td style="padding-top: 1.2em;">
             <br/>
             <%= filter_form.submit('Filter', class: 'btn btn-secondary', id: 'enable_form_submit', data: { disable_with: false }) %>
           </td>

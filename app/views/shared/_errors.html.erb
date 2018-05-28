@@ -3,7 +3,7 @@
     <h4><%= pluralize(model.errors.count, 'error') %> prohibited this <%= (model.class).to_s.downcase %> from being saved:</h4>
     <ul>
       <% model.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li><%= message.humanize %></li>
       <% end %>
     </ul>
   </div>

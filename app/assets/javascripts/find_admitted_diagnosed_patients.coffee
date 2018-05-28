@@ -18,7 +18,10 @@ $(document).on 'turbolinks:load', ->
         async: true,
         dataType: 'json',
         url: url,
-        data: {ward_id_selected: $('#ward_id_select_find_admitted').val(), patient_id_selected: $('#patient_id_select_find_diagnosed').val()},
+        data: {
+          ward_id_selected: $('#ward_id_select_find_admitted').val(),
+          patient_id_selected: $('#patient_id_select_find_diagnosed').val()
+        },
         success: (diagnoses_data) ->
           console.log(diagnoses_data)
           # In rare cases, need to show this
@@ -41,20 +44,29 @@ $(document).on 'turbolinks:load', ->
           # Make selection if there is one
           if diagnoses_data.length == 1
             $('#diagnosis_id_select option:eq(1)').attr("selected", true)
+            $('#btn_submit_find_diagnosed').removeAttr('disabled')
             if ($('.lblMsg').length)
               $('.lblMsg').remove()
+          else
+            $(document).on('change', '#patient_id_select', ->
+              if $('#patient_id_select :selected').val() != ''
+                $('#btn_submit_find_diagnosed').removeAttr('disabled')
+            )
 
-          # Append first value if the only one
+          # Disable and display msg if there is nothing in the data
           if diagnoses_data.length == 0
             $('#diagnosis_id_select').attr('disabled', 'disabled')
+            $('#btn_submit_find_diagnosed').attr('disabled', 'disabled')
             if !($('.lblMsg').length)
+# Display msg also button link
               $("""<br/><label class="lblMsg" style="font-weight: bold;">No diagnoses found.
                 <a href="/diagnoses/new?ward_id=#{$('#ward_id_select_find_admitted').val() +
                  '&patient_id=' + $('#patient_id_select_find_diagnosed').val()}"
                 role="button" class="btn btn-primary">Diagnose Patient</a></label>""").insertAfter('#diagnosis_id_select')
 
+          # Disable Diagnosis select if selected value is empty
           if $('#ward_id_select_find_admitted :selected, #patient_id_select_find_diagnosed  :selected').val() == ''
-            $('#diagnosis_id_select').attr('disabled', 'disabled')
+            $('#diagnosis_id_select, #btn_submit_find_diagnosed').attr('disabled', 'disabled')
             $('#diagnosis_id_select option:eq(0)').attr("selected", true)
             if ($('.lblMsg').length)
               $('.lblMsg').remove()

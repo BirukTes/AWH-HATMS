@@ -8,7 +8,7 @@ class AdmissionsController < ApplicationController
   # index retrieves multiple records so exclude
   after_action(:verify_authorized)
 
-  # Verify authorisation for all admissions (multiple records), which index only does
+  # Verify authorisation for all admissions (multiple records), which case index only has multiple
   # after_action(:verify_policy_scoped, only: :index)
 
   def index
@@ -33,11 +33,17 @@ class AdmissionsController < ApplicationController
       @patient = Patient.find_patient(params[:dateOfBirth], params[:lastName])
 
       if @patient.nil?
-        flash[:alert] = 'Patient not found'
+        # Display message for the current page
+        flash.now[:alert] = 'Patient not found'
       else
-        if Admission.admitted?(@patient.id)
+        # Check if patient is has any admitted or scheduled
+        # Returns a collection, evaluates the code inside if it is not nil/empty
+        if @patient.admissions.admitted.size > 0
           @patient = nil
-          flash[:alert] = 'Patient is already admitted.'
+          flash.now[:alert] = 'Patient is already admitted'
+        elsif @patient.admissions.scheduled.size > 0
+          @patient = nil
+          flash.now[:alert] = 'Patient is already scheduled'
         end
       end
     elsif params.include?(:rest_patient)
@@ -45,13 +51,13 @@ class AdmissionsController < ApplicationController
     else
       # Extra validation in case otherwise normal should not get past html required attribute
       if params.key?(:dateOfBirth) && params.key?(:lastName)
-        flash[:alert] = case params[:dateOfBirth].blank? || params[:lastName].blank?
+        flash.now[:alert] = case params[:dateOfBirth].blank? || params[:lastName].blank?
                           when params[:dateOfBirth].blank?
-                            'Please fill in the date of birth.'
+                            'Please fill in the date of birth'
                           when params[:lastName].blank?
-                            'Please fill in the last name.'
+                            'Please fill in the last name'
                           else
-                            'Please fill in the all fields.'
+                            'Please fill in the all fields'
                         end
       end
     end
@@ -69,21 +75,12 @@ class AdmissionsController < ApplicationController
         # Admitted, Discharged, Scheduled
         @admission.scheduled!
 
-        # Update the bed status with new value if it nil or 0, otherwise continue to decrement it current value
-        # At this point it is reserved
-        @admission.ward.update(bedStatus: if @admission.ward.bedStatus.nil? || @admission.ward.bedStatus == 0
-                                            @admission.ward.numberOfBeds - 1
-                                          else
-                                            @admission.ward.bedStatus - 1
-                                          end)
-
-
         format.html { redirect_to(admissions_path, notice: 'Admission successful') }
       else
         # puts(@admission.inspect)
         # Pass the errors, to the instance variable
         format.html { render :new }
-        format.js { render :new, status: :unprocessable_entity }
+        format.js { render(:error_appender, locals: { model_with_errors: @admission, id_of_error_holder_div: 'error_holder_admissions' }) }
       end
     end
   end
@@ -94,26 +91,21 @@ class AdmissionsController < ApplicationController
 
   def update
     respond_to do |format|
-      # Detect changed ward
-      ward_id_for_later = @admission.ward_id
+      # TODO other things need consideration such as team, when moved, track history, so disable updating ward instead
+      #
+      # Detect changed ward, after update ward may change
+      # ward_id_for_later = @admission.ward_id
 
       if @admission.update(admission_params)
-        if @admission.ward_id_changed?
-          # Update the old ward
-          Ward.find(ward_id_for_later).update(bedStatus: if @admission.ward.bedStatus >= @admission.ward.numberOfBeds
-                                                           # Don't add anything, already max?
-                                                           0
-                                                         else
-                                                           @admission.ward.bedStatus + 1
-                                                         end)
-
-          # Update the new ward
-          @admission.ward.update(bedStatus: if @admission.ward.bedStatus.nil? || @admission.ward.bedStatus == 0
-                                              @admission.ward.numberOfBeds - 1
-                                            else
-                                              @admission.ward.bedStatus - 1
-                                            end)
-        end
+        # Disabled
+        #
+        # if @admission.ward_id_changed?
+        #   # Update the old ward
+        #   Ward.find(ward_id_for_later).update_bed_status_add
+        #
+        #   # Update the new ward
+        #   @admission.update_bed_status_minus
+        # end
         format.html { redirect_to(@admission, notice: 'Admission update successful.') }
       else
         format.html { render(:edit) }
@@ -126,17 +118,12 @@ class AdmissionsController < ApplicationController
   def destroy
     # Admitted / Discharged
     @admission.dischargeDate = Time.now
-    @admission.status = 'Discharged'
+    @admission.discharged!
 
     if @admission.save!
-      # Return the one bed, and update the ward bedStatus
-      # Check for max, in case goes above actual number, refactor once stable
-      @admission.ward.update(bedStatus: if @admission.ward.bedStatus >= @admission.ward.numberOfBeds
-                                          # Don't add anything, already max?
-                                          0
-                                        else
-                                          @admission.ward.bedStatus + 1
-                                        end)
+      # Update Ward Status, Increment
+      @admission.update_bed_status_add
+
       redirect_to(admissions_path, notice: 'Patient discharged')
     end
   end
@@ -146,23 +133,16 @@ class AdmissionsController < ApplicationController
     # Admitted, Discharged, Scheduled
     if @admission.admitted!
       redirect_to(@admission, notice: 'Patient admitted')
+
+      # Update Ward Status, Decrement
+      @admission.update_bed_status_minus
     end
   end
 
   def cancel_scheduled
-    # Update first of all
-    # Check for max, in case goes above actual number
-    @admission.ward.update(bedStatus: if @admission.ward.bedStatus >= @admission.ward.numberOfBeds
-                                        # Don't add anything, already max?
-                                        0
-                                      else
-                                        @admission.ward.bedStatus + 1
-                                      end)
-
-
-    # Then delete
+    # Delete the record
     if @admission.destroy
-      redirect_to(@admission, notice: 'Admission cancelled.')
+      redirect_to(@admission, notice: 'Admission cancelled')
     end
   end
 
@@ -170,41 +150,56 @@ class AdmissionsController < ApplicationController
   def find_and_discharge
     authorize(:admission)
     if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
-      @admission = Admission.where(patient_id: params[:patient_id], ward_id: params[:ward_id]).first
+      @admission = Admission.where(patient_id: params[:patient_id], ward_id: params[:ward_id], status: 'Discharged').first
       if @admission
-        # respond_modal_with(@admission, location: discharge_admission_path(@admission.id))
+        # Redirect to display discharge modal
         redirect_to(discharge_admission_path(@admission.id))
+      else
+        flash.now[:alert] = 'No patient found'
       end
     elsif params.include?(:rest_patient)
       @patient = nil
+    else
+      # Extra validation in case otherwise normal should not get past html required attribute
+      if params.key?(:ward_id) && params.key?(:patient_id)
+        flash.now[:alert] = case params[:ward_id].blank? || params[:patient_id].blank?
+                          when params[:ward_id].blank?
+                            'Please select Ward'
+                          when params[:patient_id].blank?
+                            'Please select patient'
+                          else
+                            'Please select available fields'
+                        end
+      end
     end
   end
 
   # Displays discharge modal/dialog
+  #
+  # GET method
   def discharge
     respond_modal_with(@admission)
   end
 
-  # Authorises discharge
+  # Authorises discharge, to set date once and only once cannot be changed directly
+  #
+  # POST Method
   def authorise_discharge
     if !params[:admission][:dischargeDate].blank?
       if @admission.update(dischargeDate: params[:admission][:dischargeDate])
+
+        # Schedule the discharge
         Admission.delay(run_at: @admission.dischargeDate).set_status_discharge(@admission.id)
-        redirect_to(admissions_path, notice: 'Successful discharge authorisation.')
+
+        redirect_to(admissions_path, notice: 'Successful discharge authorisation')
       else
-        # In case of error
-        render(:discharge)
+        # In case of error, they will handled by the authorise discharge js error appender
+        respond_with(@admission)
       end
     else
-      # TODO modal not working
-      # respond_modal_with(@admission, location: discharge_admission_path(@admission.id))
-      render(:discharge)
+      # Call authorise discharge js error appender
+      respond_with(@admission)
     end
-  end
-
-  def search
-    authorize(:admission)
-    redirect_to(reports_ward_list_path)
   end
 
   # Private methods
@@ -223,5 +218,4 @@ class AdmissionsController < ApplicationController
     authorize(:admission)
     @admission = Admission.find(params[:id])
   end
-
 end

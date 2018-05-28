@@ -1,52 +1,56 @@
-<%= form_with(model: ward, local: true) do |form| %>
-  <% if ward.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(ward.errors.count, "error") %> prohibited this ward from being saved:</h2>
+<div class="row">
+  <div class="col-3">
+    <%= form_with(model: ward, local: true) do |form| %>
+      <% if ward.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(ward.errors.count, "error") %> prohibited this ward from being saved:</h2>
 
-      <ul>
-      <% ward.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+            <% ward.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :ward_name %>
-  </div>
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, id: :ward_name, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :wardNumber %>
-    <%= form.number_field :wardNumber, id: :ward_wardNumber %>
-  </div>
+      <div class="form-group">
+        <%= form.label :wardNumber %>
+        <%= form.number_field :wardNumber, id: :ward_wardNumber, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :numberOfBeds %>
-    <%= form.number_field :numberOfBeds, id: :ward_numberOfBeds %>
-  </div>
+      <div class="form-group">
+        <%= form.label :numberOfBeds %>
+        <%= form.number_field :numberOfBeds, id: :ward_numberOfBeds, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :bedStatus %>
-    <%= form.number_field :bedStatus, id: :ward_bedStatus %>
-  </div>
+      <div class="form-group">
+        <%= form.label :bedStatus %>
+        <%= form.number_field :bedStatus, id: :ward_bedStatus, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :patientGender %>
-    <%= form.text_field :patientGender, id: :ward_patientGender %>
-  </div>
+      <div class="form-group">
+        <%= form.label :patientGender %>
+        <%= form.text_field :patientGender, id: :ward_patientGender, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :deptName %>
-    <%= form.text_field :deptName, id: :ward_deptName %>
-  </div>
+      <div class="form-group">
+        <%= form.label :deptName %>
+        <%= form.text_field :deptName, id: :ward_deptName, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :isPrivate %>
-    <%= form.check_box :isPrivate, id: :ward_isPrivate %>
-  </div>
+      <div class="form-group">
+        <%= form.label :isPrivate %>
+        <%= form.check_box :isPrivate, id: :ward_isPrivate %>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
+      <div class="actions form-group">
+        <%= form.submit(class: 'btn btn-primary') %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

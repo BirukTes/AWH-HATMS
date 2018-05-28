@@ -41,11 +41,12 @@ class ReportsController < ApplicationController
   end
 
   def patient_card
-    @search = Admission.ransack(params[:q])
+    @search = Admission.admitted.ransack(params[:q])
     if params[:q]
-      @admission = @search.result.includes(:ward, :patient).first
+      @admission= @search.result.first
     end
   end
+
 
   def produce_export
 

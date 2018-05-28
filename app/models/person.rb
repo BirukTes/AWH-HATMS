@@ -15,6 +15,19 @@ class Person < ApplicationRecord
   validates_associated(:address, presence: true)
 
 
+  # Concatenates the address
+  #
+  # @return [String] the full address
+  def full_address
+    # Check in case of null, otherwise this should not be the case address must be provided
+    if address
+      (address.houseNumber + ', ' + address.street + ', ' + address.town + ', ' + address.postcode)
+    else
+      # Otherwise replace nil with:
+      '--'
+    end
+  end
+
   # Class method, can be accessed without instantiation
   # Gets the a patient with the details
   #

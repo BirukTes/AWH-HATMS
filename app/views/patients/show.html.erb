@@ -1,4 +1,6 @@
-<h1>Patient: <%= @patient.person.firstName + ' ' + @patient.person.lastName %> </h1>
+<h1>Patient: <%= person_full_name_helper(@patient) %> </h1>
+<% @page_title = 'Patient | Profile' %>
+
 <table class="table table-bordered table-striped">
   <thead class="thead-light">
   <tr>
@@ -16,12 +18,10 @@
     <td><%= @patient.id %></td>
     <td><%= localize(@patient.person.dateOfBirth) %></td>
     <td><%= @patient.person.gender %></td>
-    <td><%= @patient.person.address.houseNumber + ', ' + @patient.person.address.street + ', ' +
-                @patient.person.address.town + ', ' + @patient.person.address.postcode %>
-    </td>
+    <td><%= @patient.person.full_address %> </td>
     <td><%= @patient.person.telHomeNo %></td>
     <td><%= @patient.person.telMobileNo %></td>
-    <td><%= localize(@patient.created_at) %></td>
+    <td><%= localize(@patient.created_at.to_date) %></td>
   </tr>
   </tbody>
 </table>
@@ -137,8 +137,8 @@
     </tbody>
   </table>
 </fieldset>
-  <%= content_for(:navigationButtons) do %>
-    <%# FIXME find  back method  %>
-    <% session[:return_url] = request.referrer if request.referrer != patient_path(@patient.id) %>
-    <%= link_to('Back', session[:return_url], role: 'button', class: 'btn btn-primary') %>
-  <% end %>
+<%= content_for(:navigationButtons) do %>
+  <%# FIXME find  back method  %>
+  <% session[:return_url] = request.referrer if request.referrer != patient_path(@patient.id) %>
+  <%= link_to('Back', session[:return_url], role: 'button', class: 'btn btn-primary') %>
+<% end %>

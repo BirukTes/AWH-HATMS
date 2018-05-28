@@ -2,4 +2,4 @@
 $(".alert").remove();
 
 // Display new validation messages
-$('.error_holder').append('<%= escape_javascript(render('shared/errors', model: @admission))%>');
+$('#error_holder_admissions').append('<%= escape_javascript(render('shared/errors', model: @admission))%>');

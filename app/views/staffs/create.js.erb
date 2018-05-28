@@ -1,0 +1,5 @@
+//remove old validation messages
+$(".alert").remove();
+
+//display new validation messages
+$('#error_holder_staffs_new').append('<%= escape_javascript(render('shared/errors', model: @staff))%>');

@@ -37,26 +37,22 @@
 <div class="row">
   <div class="col-1">
     <div class="btn-group mr-auto">
-      <% disable_btn_export = @admissions.nil? || @admissions&.empty? ? 'disabled' : '' %>
-      <%= button_tag('Print', class: "btn btn-outline-secondary #{disable_btn_export}", onClick: "printJS({ printable: 'patient_card_holder', type: 'html', header: 'Patient Card - #{
-      (
-      if !(@admission&.empty? || @admission.nil?)
-        (concat(@admission&.patient&.person&.firstName + ' ' + @admission&.patient&.person&.lastName))
-      else
-        ''
-      end) + ', ' + localize(Date.today).to_s}'})   ") %>
-
+      <% disable_btn_export = @admission.present? ? '' : 'disabled' %>
+      <%#	 binding.pry %>
+      <%= link_to('Print', '#', onClick: "printJS({ printable: 'patient_card_holder', type: 'html', header: 'Patient Card for #{person_full_name_helper(@admission&.patient).to_s
+      +' - ' + localize(Date.today).to_s}'})   ", class: "btn btn-outline-secondary #{disable_btn_export}") %>
       <%= link_to('Export as Excel', reports_ward_list_path(format: :xls), { class: "btn btn-outline-secondary form-control disabled",
                                                                              role: 'button' }) %> </div>
   </div>
 </div>
 <br/>
 <div id="patient_card_holder">
-  <% if !@admission.nil? && !@admission&.blank? %>
-    <%= render('patient_card', admission: @admission) %>
+  <% if @admission %>
+    <%= render('patient_card_details', admission: @admission) %>
+
   <% elsif @admission&.blank? %>
     <tr>
-      <td colspan="8"><p>No admissions found from this filter.</p></td>
+      <td colspan="8"><p>No admitted patient found.</p></td>
     </tr>
   <% end %>
 </div>

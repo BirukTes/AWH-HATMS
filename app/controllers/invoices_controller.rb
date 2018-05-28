@@ -150,27 +150,38 @@ class InvoicesController < ApplicationController
         quantity: days_as_quantity,
         unitPrice: '250.00',
         tax: '5.0',
-        lineTotal: (250 * days_as_quantity * ((5 / 100) + 1))
+        lineTotal: (250 * days_as_quantity * ((5.0 / 100) + 1))
     )
 
-    # For Diagnoses, TODO 1 is only for the older admissions
-    number_diagnoses = @admission.diagnoses.count
-    @invoice.invoice_details.build(
-        treatment: 'Diagnosis-Fee',
-        quantity: number_diagnoses,
-        unitPrice: '50.00',
-        tax: '2.0',
-        lineTotal: (50 * number_diagnoses * ((2 / 100) + 1))
-    )
+    # The following are conditional
+    #
+    if @admission.diagnoses.length > 0
+      # For Diagnoses, TODO 1 is only for the older admissions
+      number_diagnoses = @admission.diagnoses.count || 1
+      @invoice.invoice_details.build(
+          treatment: 'Diagnosis-Fee',
+          quantity: number_diagnoses,
+          unitPrice: '50.00',
+          tax: '2.0',
+          lineTotal: (50 * number_diagnoses * ((2 / 100) + 1))
+      )
 
-    # For prescriptions
-    number_drugs = @admission.diagnoses.map { |diagnoses| diagnoses.prescriptions.map { |prescription| prescription.drugs.count }.sum }.sum
-    @invoice.invoice_details.build(
-        treatment: 'Drugs-Fee',
-        quantity: number_drugs,
-        unitPrice: '20.00',
-        tax: '4.0',
-        lineTotal: (20 * number_drugs * ((4 / 100) + 1))
-    )
+      # For prescriptions, check first if they any prescriptions
+      if @admission.diagnoses.map { |diagnoses| diagnoses.prescriptions }.length > 0
+        # Calculate for each prescription and drugs in it, add the counts
+        number_drugs = @admission.diagnoses.map { |diagnoses| diagnoses.prescriptions.map { |prescription| prescription.drugs.count }.sum }.sum
+        @invoice.invoice_details.build(
+            treatment: 'Drugs-Fee',
+            quantity: number_drugs,
+            unitPrice: '20.00',
+            tax: '4.0',
+            lineTotal: (20 * number_drugs * ((4 / 100) + 1))
+        )
+      end
+    end
+
+    # Calculate the total
+    total = @invoice.invoice_details.map { |invoice_detail| invoice_detail.lineTotal }.sum
+    @invoice.amount = total
   end
 end

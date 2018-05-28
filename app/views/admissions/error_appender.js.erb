@@ -1,0 +1,7 @@
+<%#	 This file saves the creation many partials with the same purpose, and arguments %>
+
+// Remove old validation messages
+$("#<%= id_of_error_holder_div %>").remove();
+
+// Display new validation messages
+$("#<%= id_of_error_holder_div %>").append('<%= escape_javascript(render('shared/errors', model: model_with_errors))%>');

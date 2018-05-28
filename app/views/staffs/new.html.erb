@@ -1,23 +1,24 @@
 <h1 class="title-container">Register New Staff</h1>
 <% @page_title = 'Staff | Register' %>
+<div class="col-10" id="error_holder_staffs_new">
+  <%= render('shared/errors', model: @staff) %>
+</div>
 
-<%= render('shared/errors', model: @staff) %>
-
-<%= form_with(model: @staff, html: { autoComplete: :on }, local: true) do |staff_form| %>
+<%= form_with(model: @staff, html: { autoComplete: :on }) do |staff_form| %>
   <table class="table borderless">
     <tbody>
     <tr>
-      <td>
+      <td colspan="2">
         <%# Get the attributes that belong to the person class %>
         <%= staff_form.fields_for(:person) do |person_fields| %>
-          <%= render('shared/personal_detail_fields', person_fields: person_fields, disabled: disabled) %>
+          <%= render('shared/personal_detail_fields', person_fields: person_fields, disabled: false) %>
         <% end %>
       </td>
     </tr>
     <tr>
       <td style="width: 50%; !important;">
-        <fieldset>
-          <legend>Account Details</legend>
+        <fieldset class="none-bs-fieldset">
+          <legend class="none-bs-legend">Account Details</legend>
           <table class="table borderless">
             <tbody>
             <tr>
@@ -52,25 +53,25 @@
         </fieldset>
       </td>
       <td>
-        <fieldset>
-          <legend>Allocations</legend>
+        <fieldset class="none-bs-fieldset">
+          <legend class="none-bs-legend">Allocations</legend>
           <!--TODO finish this-->
           <table class="table borderless">
             <tbody>
             <tr>
-              <%= staff_form.fields_for(:specialism) do |specialism_fields| %>
+              <%= staff_form.fields_for(:specialisms) do |specialism_fields| %>
                 <td>
                   <div class="form-group">
                     <%= specialism_fields.label(:speciality_id, 'Speciality') %><br/>
-                    <%= specialism_fields.select(:speciality_id, speciality_options, autocomplete: 'speciality', class: 'form-control') %>
+                    <%= specialism_fields.select(:speciality_id, specialities_option, {include_blank: 'Select Speciality'}, required: true, class: 'form-control') %>
                   </div>
                 </td>
               <% end %>
-              <%= staff_form.fields_for(:job) do |job_fields| %>
+              <%= staff_form.fields_for(:jobs) do |job_fields| %>
                 <td>
                   <div class="form-group">
                     <%= job_fields.label(:job_title_id, 'Job title') %><br/>
-                    <%= job_fields.select(:job_title_id, job_title_options, autocomplete: 'jobTitle', class: 'form-control') %>
+                    <%= job_fields.select(:job_title_id, job_titles_option, {include_blank: 'Select Job Title'}, required: true, class: 'form-control') %>
                   </div>
                 </td>
               <% end %>
@@ -79,7 +80,7 @@
               <td>
                 <div class="form-group">
                   <%= staff_form.label(:team_id) %><br/>
-                  <%= staff_form.select(:team_id, team_options, autocomplete: 'team', required: true, class: 'form-control') %>
+                  <%= staff_form.select(:team_id, options_for_select(teams_option), {include_blank: 'Select Team'}, required: true, class: 'form-control') %>
                 </div>
               </td>
             </tr>

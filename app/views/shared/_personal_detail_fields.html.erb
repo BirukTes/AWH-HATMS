@@ -61,13 +61,14 @@
       <td>
         <div class="form-group">
           <%= person_fields.label(:telHomeNo, 'Telephone number') %><br/>
-          <%= person_fields.text_field(:telHomeNo, type: 'number', class: 'form-control', autocomplete: 'telephoneNumber', required: true, disabled: (disabled if disabled)) %>
+          <%# min/max length not working %>
+          <%= person_fields.text_field(:telHomeNo, type: 'number', class: 'form-control', autocomplete: 'telephoneNumber', minLength:'11', maxLength:'14', required: true, disabled: (disabled if disabled)) %>
         </div>
       </td>
       <td>
         <div class="form-group">
           <%= person_fields.label(:telMobileNo, 'Mobile number') %><br/>
-          <%= person_fields.text_field(:telMobileNo, type: 'number', class: 'form-control', autocomplete: 'mobileNumber', disabled: (disabled if disabled)) %>
+          <%= person_fields.text_field(:telMobileNo, type: 'number', minLength:'11', maxLength:'14', class: 'form-control', autocomplete: 'mobileNumber', disabled: (disabled if disabled)) %>
         </div>
       </td>
     </tr>

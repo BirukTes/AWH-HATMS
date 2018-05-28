@@ -45,18 +45,26 @@ $(document).on 'turbolinks:load', ->
           # Make selection if there is one
           if patient_data.length == 1
             $('#patient_id_select option:eq(1), #patient_id_select_find_diagnosed option:eq(1)').attr("selected", true)
-            $( "#patient_id_select_find_diagnosed" ).trigger( "change" );
+            $('#btn_submit_find_admitted').removeAttr('disabled')
+            # Call trigger event of diagnosed so that it check itself
+            $("#patient_id_select_find_admitted").trigger("change");
             if ($('.lblMsg').length)
               $('.lblMsg').remove()
+          else
+            $(document).on('change', '#patient_id_select', ->
+              if $('#patient_id_select :selected').val() != ''
+                $('#btn_submit_find_admitted').removeAttr('disabled')
+            )
 
-          # Append first value if the only one
+          # Disable and display msg if there is nothing in the data
           if patient_data.length == 0
             $('#patient_id_select, #patient_id_select_find_diagnosed').attr('disabled', 'disabled')
             if !($('.lblMsg').length)
               $('<br/><label class="lblMsg" style="font-weight: bold;">No patients in this ward.</label>').insertAfter('#patient_id_select, #patient_id_select_find_diagnosed')
 
+          # Disable Patient and Diagnosis select if selected value is empty
           if $('#ward_id_select_find_admitted :selected').val() == ''
-            $('#patient_id_select, #patient_id_select_find_diagnosed').attr('disabled', 'disabled')
+            $('#patient_id_select, #patient_id_select_find_diagnosed, #btn_submit_find_admitted').attr('disabled', 'disabled')
             $('#patient_id_select option:eq(0), #patient_id_select_find_diagnosed option:eq(0)').attr("selected", true)
             if ($('.lblMsg').length)
               $('.lblMsg').remove()

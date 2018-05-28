@@ -23,6 +23,8 @@
 .dropright .dropdown-toggle::after {
     vertical-align: 0.5em;
     float: right;
+    border-width: 0.35em;
+    border-radius: 0.15em;
 }
 
 div.dropdown-menu.show label a {
@@ -167,7 +169,11 @@ table.borderless {
 
 .main-side-list {
     overflow: auto;
-    height: 70%;
+    height: 65%;
+}
+
+.custom_width_1_6em {
+    width: 1.5em;
 }
 
 /* Remove the last column on a table when printing, TODO make this specific, so does not remove in invoices/show

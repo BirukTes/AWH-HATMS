@@ -67,7 +67,7 @@ Did you mean?  admission_url> %>
                           <tr>
                             <th>Total:</th>
                             <td class="balance">
-                              <span>£</span><span class="due" id="invoice_total">0.00</span>
+                              <span>£</span><span class="due" id="invoice_total"><%= invoice.amount || 0.00 %></span>
                             </td>
                             <%= invoice_form.hidden_field(:amount, id: 'amount') %>
                           </tr>
@@ -81,8 +81,9 @@ Did you mean?  admission_url> %>
             </div>
           </fieldset>
         </div>
+        <br>
         <div class="row">
-          <div class="col-2 offset-4">
+          <div class="col-2 offset-9">
             <div class="actions">
               <%= invoice_form.submit(class: 'btn btn-primary') %>
             </div>
