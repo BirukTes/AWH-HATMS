@@ -13,8 +13,8 @@
 
 puts 'Create default job titles'
 # Creates each in the order as in the array (0 = first...)
-created_jobs = JobTitle.create!([{ name: 'Medical Records Staff' }, { name: 'Consultant' }, { name: 'Doctor' },
-                                 { name: 'Nurse Staff' }, { name: 'Nurse' }, { name: 'Ward Sister' }])
+created_jobs = JobTitle.create!([{ title: 'Medical Records Staff' }, { title: 'Consultant' }, { title: 'Doctor' },
+                                 { title: 'Nurse Staff' }, { title: 'Nurse' }, { title: 'Ward Sister' }])
 
 puts 'Create default specialities'
 created_specialities = Speciality.create!([{ speciality: 'Administration' }, { speciality: 'Paediatrics' }, { speciality: 'Obstetrics' },
