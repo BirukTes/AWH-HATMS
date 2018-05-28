@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: prescriptions
+#
+#  id              :bigint(8)        not null, primary key
+#  date            :date
+#  dosage          :string
+#  treatmentLength :integer
+#  issuedBy        :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  diagnosis_id    :bigint(8)
+#
+
 class Prescription < ApplicationRecord
   belongs_to :diagnosis
   has_many(:medications, dependent: :destroy)

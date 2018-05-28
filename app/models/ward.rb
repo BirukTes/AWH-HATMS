@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: wards
+#
+#  id            :bigint(8)        not null, primary key
+#  name          :string
+#  wardNumber    :integer
+#  numberOfBeds  :integer
+#  bedStatus     :integer
+#  patientGender :string
+#  deptName      :string
+#  isPrivate     :boolean          default(FALSE)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 class Ward < ApplicationRecord
   has_many :allocations
   has_many :teams, through: :allocations

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: diagnoses
+#
+#  id           :bigint(8)        not null, primary key
+#  title        :string
+#  description  :string
+#  admission_id :bigint(8)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class Diagnosis < ApplicationRecord
   belongs_to :admission
   has_many :prescriptions
