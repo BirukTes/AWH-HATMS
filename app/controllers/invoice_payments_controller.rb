@@ -34,6 +34,7 @@ class InvoicePaymentsController < ApplicationController
     # Find the patient in case they already created, a lot can be done
     #     Goal for Refactoring:
     #     + Uniquely identify customer/patient if they exist
+    #         - This including adding braintree id attribute to Patient Model
     #     + Create new payment method or use their existing
     #
     # collection = gateway.customer.search do |search|
