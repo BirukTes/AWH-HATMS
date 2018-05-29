@@ -10,7 +10,7 @@
   </tr>
   </thead>
   <tbody>
-  <% if admissions %>
+  <% if admissions && !admissions.empty? %>
     <% admissions.order(admissionDate: :desc).each do |admission| %>
       <% patient = admission.patient %>
       <% ward = admission.ward %>
@@ -19,7 +19,7 @@
         <td><%= ward.wardNumber %></td>
         <td><%= ward.name %></td>
         <td><%= patient.person.firstName + ' ' + patient.person.lastName %></td>
-        <% if !(prescriptions.empty? || prescriptions.nil?) %>
+        <% if !(prescriptions.empty? && prescriptions) %>
           <% prescriptions&.each_with_index do |prescription, index| %>
             <% if index >= 1 %>
             <tr>

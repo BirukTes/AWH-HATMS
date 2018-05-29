@@ -13,11 +13,7 @@
   <% # Gets the first patient admitted at the beginning of the week
      patient_card_admission = admissions.where(admissionDate: Date.today.beginning_of_week).order(admissionDate: :asc).first %>
 
-  <% if patient_card_admission.blank? %>
-    <tr>
-      <td colspan="5"><p>No patient found from this date.</p></td>
-    </tr>
-  <% else %>
+  <% if !patient_card_admission.blank? %>
     <% patient = admission.patient %>
     <% ward = admission.ward %>
     <% prescriptions = patient&.prescriptions %>
@@ -68,6 +64,10 @@
         </table>
       </td>
     </tr>
+  <% else %>
+    <tr>
+    <td colspan="5"><p>No patient found.</p></td>
+  </tr>
   <% end %>
   </tbody>
 </table>

@@ -9,9 +9,9 @@
   </tr>
   </thead>
   <tbody>
-  <% dischargeAdmissions = admissions.where(dischargeDate: Date.today).all %>
-  <% if !(dischargeAdmissions.nil? || dischargeAdmissions.empty?) %>
-    <% dischargeAdmissions.limit(5).each do |admission| %>
+  <% discharge_admissions = admissions.where(dischargeDate: Date.today).all %>
+  <% if discharge_admissions && !discharge_admissions.empty? %>
+    <% discharge_admissions.limit(5).each do |admission| %>
       <% patient = admission.patient %>
       <% ward = admission.ward %>
       <tr>
@@ -24,7 +24,7 @@
     <% end %>
   <% else %>
     <tr>
-      <td colspan="5"><p>No discharges due today.</p></td>
+      <td colspan="5"><p>No discharges found.</p></td>
     </tr>
   <% end %>
   </tbody>

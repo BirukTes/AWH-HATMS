@@ -58,11 +58,5 @@
 <br/>
 
 <div id="ward_list_holder">
-  <% if !@admissions.nil? && !@admissions&.empty? %>
     <%= render('ward_list', admissions: @admissions) %>
-  <% elsif @admissions&.empty? %>
-    <tr>
-      <td colspan="8"><p>No admissions found from this filter.</p></td>
-    </tr>
-  <% end %>
 </div>

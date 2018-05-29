@@ -169,11 +169,11 @@ table.borderless {
 
 .main-side-list {
     overflow: auto;
-    height: 65%;
+    height: 68%;
 }
 
-.custom_width_1_6em {
-    width: 1.5em;
+.custom_width_1_3em {
+    width: 1.3em;
 }
 
 /* Remove the last column on a table when printing, TODO make this specific, so does not remove in invoices/show

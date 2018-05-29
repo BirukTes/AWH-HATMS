@@ -16,6 +16,7 @@
   </tr>
   </thead>
   <tbody>
+  <% if admissions && !admissions&.empty? %>
   <% admissions.each do |admission| %>
     <% patient = admission.patient %>
     <% ward = admission.ward %>
@@ -32,6 +33,11 @@
       <td><%= patient.person.telMobileNo %></td>
       <td><%= admission.admissionDate ? localize(admission.admissionDate) : '--' %></td>
     </tr>
+  <% end %>
+  <% else %>
+  <tr>
+    <td colspan="8"><p>No patients found from this filter.</p></td>
+  </tr>
   <% end %>
   </tbody>
 </table>

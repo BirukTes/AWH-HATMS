@@ -36,11 +36,6 @@
 <br/>
 
 <div id="admission_list_holder">
-  <% if @admissions %>
     <%= render('admissions/admissions_list', admissions: @admissions) %>
-  <% else %>
-    <p>Nothing found.</p>
-    <%= link_to('Show all', admissions_path, method: :get, remote: true) %>
-  <% end %>
 </div>
 

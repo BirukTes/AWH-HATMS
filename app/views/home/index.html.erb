@@ -27,10 +27,11 @@
   <br>
   <div class="row">
     <div class="col-6">
-      <%= pie_chart([['Available Beds', @home_presenter.ward_available_beds], ['All Beds', @home_presenter.ward_all_beds]], colors: ["#FC3C3C", "#083358"]) %>
+      <%= pie_chart([['Available Beds', @home_presenter.ward_available_beds || 0], ['All Beds', @home_presenter.ward_all_beds || 0]], colors: ['#FC3C3C', '#083358']) %>
     </div>
     <div class="col-6">
-      <%= pie_chart([['Admissions', @home_presenter.admissions_admitted.count], ['Discharged', @home_presenter.admissions_discharged.count]]) %>
+      <%= pie_chart([['Admitted', @home_presenter.admissions_admitted.count || 0], ['Scheduled', @home_presenter.admissions_scheduled.count || 0],
+                     ['Discharged', @home_presenter.admissions_discharged.count || 0]]) %>
     </div>
   </div>
   <br>

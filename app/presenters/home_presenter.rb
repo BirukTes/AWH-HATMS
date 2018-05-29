@@ -13,6 +13,10 @@ module HomePresenter
       Admission.admitted.ransack.result.limit(5)
     end
 
+    def admissions_scheduled
+      Admission.scheduled.ransack.result.limit(5)
+    end
+
     def admissions_discharged
       Admission.discharged.ransack.result.limit(5)
     end

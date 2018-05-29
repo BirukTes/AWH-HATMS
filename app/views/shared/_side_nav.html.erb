@@ -10,12 +10,12 @@
   <!--TODO do dropright when toggled with jquery-->
   <ul class="list-unstyled main-side-list">
     <li>
-      <a href="/"><i class="fas fa-home fa-2x custom_width_1_6em"></i><label class='lbl-nav col-sm-auto'>Home</label></a>
+      <a href="/"><i class="fas fa-home fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>Home</label></a>
     </li>
 
     <li>
-      <a href="#submenu1" data-toggle="collapse"><i class="fas fa-address-card fa-2x custom_width_1_6em"></i><label class='lbl-nav col-sm-auto'>
-        Admission  </label></a>
+      <a href="#submenu1" data-toggle="collapse"><i class="fas fa-address-card fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>
+        Admission </label></a>
       <ul id="submenu1" class="list-unstyled collapse">
         <li><%= link_to('View All', admissions_path) %></li>
         <li><%= link_to('Admit Patient', new_admission_path) %></li>
@@ -23,8 +23,8 @@
       </ul>
     </li>
     <li>
-      <a href="#submenu2" data-toggle="collapse"><i class="fas fa-file-medical fa-2x custom_width_1_6em"></i><label class='lbl-nav col-sm-auto'>
-        Treatment  </label></a>
+      <a href="#submenu2" data-toggle="collapse"><i class="fas fa-file-medical fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>
+        Treatment </label></a>
       <ul id="submenu2" class="list-unstyled collapse">
         <li class="text-light">&nbsp;&nbsp;Diagnosis</li>
         <li><a href="/diagnoses">View All</a></li>
@@ -39,24 +39,24 @@
 
     </li>
     <li>
-      <a href="#submenu3" data-toggle="collapse"><i class="fas fa-wheelchair fa-2x custom_width_1_6em"></i><label class='lbl-nav col-sm-auto'>
-        Patient  </label></a>
+      <a href="#submenu3" data-toggle="collapse"><i class="fas fa-wheelchair fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>
+        Patient </label></a>
       <ul id="submenu3" class="list-unstyled collapse">
         <li><%= link_to('View All', patients_path) %></li>
         <li><%= link_to('Register Patient', new_patient_path) %></li>
       </ul>
     </li>
     <li>
-      <a href="#submenu4" data-toggle="collapse"><i class="fas fa-bed fa-2x custom_width_1_6em"></i><label class='lbl-nav col-sm-auto'>
-        Ward  </label></a>
+      <a href="#submenu4" data-toggle="collapse"><i class="fas fa-bed fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>
+        Ward </label></a>
       <ul id="submenu4" class="list-unstyled collapse">
         <li><%= link_to('View All', wards_path) %></li>
         <li><%= link_to('Register Ward', new_ward_path) %></li>
       </ul>
     </li>
     <li>
-      <a href="#submenu5" data-toggle="collapse"><i class="fas fa-file-alt fa-2x custom_width_1_6em"></i><label class='lbl-nav col-sm-auto'>
-        Report  </label></a>
+      <a href="#submenu5" data-toggle="collapse"><i class="fas fa-file-alt fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>
+        Report </label></a>
       <ul id="submenu5" class="list-unstyled collapse">
         <li><%= link_to('Ward List', reports_ward_list_path) %></li>
         <li><%= link_to('Medications List', reports_medications_list_path) %></li>
@@ -69,8 +69,8 @@
 
     <!--</li>-->
     <li>
-      <a href="#submenu6" data-toggle="collapse"><i class="fas fa-hospital fa-2x custom_width_1_6em"></i><label class='lbl-nav col-sm-auto'>
-        Hospital Admin  </label></a>
+      <a href="#submenu6" data-toggle="collapse"><i class="fas fa-hospital fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>
+        Hospital Admin </label></a>
       <ul id="submenu6" class="list-unstyled collapse">
         <li><a href="/invoices">Invoice</a></li>
         <li><a href="/teams">Teams</a></li>
@@ -83,12 +83,12 @@
 
   </ul>
   <% if staff_signed_in? %>
-    <ul class="list-unstyled align-content-end float-end">
+    <ul class="list-unstyled float-end" style="  margin-bottom: 0px;  ">
       <li class="nav-item dropright">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
-          <i class="fas fa-sign-out-alt fa-2x custom_width_1_6em"></i>
+        <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
+          <i class="fas fa-sign-out-alt fa-2x custom_width_1_3em"></i>
         </a>
-        <div class="dropdown-menu col justify-content-center p-3 bg-dark text-light " aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown-menu col p-3" aria-haspopup="true" aria-expanded="false">
           <label class='font-weight-bold'> Logout now?</label>
           <div class="row">
             <div class="col-6">
@@ -102,10 +102,10 @@
       </li>
     </ul>
   <% end %>
-  <ul class="list-unstyled align-content-end float-end">
+  <ul class="list-unstyled float-end" style="  margin-bottom: 0px;  ">
     <li class="nav-item dropright">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
-        <i class="fas fa-user-circle fa-2x custom_width_1_6em"></i>
+      <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
+        <i class="fas fa-user-circle fa-2x custom_width_1_3em"></i>
         <label class='lbl-nav col-sm-auto'>
           <% if staff_signed_in? %>
             <%= person_full_name_helper(current_staff) %>
@@ -119,10 +119,10 @@
         <% end %>
       </a>
       <% if staff_signed_in? %>
-        <div class="dropdown-menu col-4  p-3 bg-dark text-light " aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown-menu col-4  p-3" aria-haspopup="true" aria-expanded="false">
           <div class="row">
             <div class="col-6">
-              <label class=' text-light'>
+              <label class='text-light'>
                 <%= link_to('Profile', staff_path(current_staff), class: 'btn btn-primary  btn-sm', role: 'button') %>
               </label>
             </div>

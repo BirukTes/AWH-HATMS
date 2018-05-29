@@ -13,26 +13,24 @@
 
 puts 'Create default job titles'
 # Creates each in the order as in the array (0 = first...)
-created_jobs = JobTitle.create!([{ title: 'Medical Records Staff' }, { title: 'Consultant' }, { title: 'Doctor' },
-                                 { title: 'Nurse Staff' }, { title: 'Nurse' }, { title: 'Ward Sister' }])
+
+JobTitle.create!([{ title: 'Medical Records Staff' }, { title: 'Consultant' }, { title: 'Doctor' },
+                  { title: 'Nurse Staff' }, { title: 'Nurse' }, { title: 'Ward Sister' }])
 
 puts 'Create default specialities'
-created_specialities = Speciality.create!([{ speciality: 'Administration' }, { speciality: 'Paediatrics' }, { speciality: 'Obstetrics' },
-                                           { speciality: 'Cardiology' }, { speciality: 'Orthopaedics' }, { speciality: 'Coronary' }])
+Speciality.create!([{ speciality: 'Administration' }, { speciality: 'Paediatrics' }, { speciality: 'Obstetrics' },
+                    { speciality: 'Cardiology' }, { speciality: 'Orthopaedics' }, { speciality: 'Coronary' }])
 
 puts 'Create default teams'
-# Paediatrics already exists, and coronary, so assigning id numbers
-# teamPaediatricsId = 1
-# teamCoronaryId = 2
-created_team = Team.create!([{ name: 'Administration', head: 'erice' }, { name: 'Paediatrics', head: 'anini' }, { name: 'Obstetrics', head: '' },
-                             { name: 'Cardiology', head: '' }, { name: 'Orthopaedics', head: '' }, { name: 'Coronary', head: '' }])
+Team.create!([{ name: 'Administration', head: 'erice' }, { name: 'Paediatrics', head: 'anini' }, { name: 'Obstetrics', head: '' },
+              { name: 'Cardiology', head: '' }, { name: 'Orthopaedics', head: '' }, { name: 'Coronary', head: '' }])
 
 puts 'Create default staffs'
 #--------------------------------------------------1
-staff_E_Rice = Staff.new(email: 'erice@outlook.com', password: 'password', userId: 'erice', team_id: created_team.first)
+staff_E_Rice = Staff.new(email: 'erice@outlook.com', password: 'password', userId: 'erice', team_id: '1')
 
-staff_E_Rice.specialisms.build(speciality_id: created_specialities.first)
-staff_E_Rice.jobs.build(job_title_id: created_jobs.first)
+staff_E_Rice.specialisms.build(speciality_id: '1')
+staff_E_Rice.jobs.build(job_title_id: '1')
 
 staff_E_Rice.build_person(firstName: 'Erica', lastName: 'Rice', dateOfBirth: '1978-01-29', gender: 'Female',
                           telHomeNo: '080720735581', telMobileNo: '07720735581')
@@ -73,7 +71,7 @@ staff_A_John.save!
 puts 'Create default patients'
 #--------------------------------------------------1
 patientCaitlin = Patient.new(allergies: nil, diabetes: true, asthma: true, smokes: nil, alcoholic: nil, medicalTestsResults: nil,
-                                 nextOfKin: 'Albert Ellis, Grand Father, 020233343, UK', isPrivate: true)
+                             nextOfKin: 'Albert Ellis, Grand Father, 020233343, UK', isPrivate: true)
 
 patientCaitlin.build_person(firstName: 'Caitlin ', lastName: 'Bowler', dateOfBirth: '1995/03/09', gender: 'Female',
                             telHomeNo: '0141656424', telMobileNo: '0734084054')
@@ -83,7 +81,7 @@ patientCain.person.build_address(houseNumber: '36', street: 'King Charles RD', t
 
 #-------------------------------2
 patientCain = Patient.new(allergies: 'Dimetapp, Claritin', diabetes: true, asthma: true, smokes: nil, alcoholic: nil, medicalTestsResults: nil,
-                              nextOfKin: 'John Phelps, Father, 020233343, UK', isPrivate: nil)
+                          nextOfKin: 'John Phelps, Father, 020233343, UK', isPrivate: nil)
 
 patientCain.build_person(firstName: 'Cain', lastName: 'Phelps', dateOfBirth: '2000/03/09', gender: 'Male',
                          telHomeNo: '0141656424', telMobileNo: '0734084054')
@@ -92,7 +90,7 @@ patientCain.person.build_address(houseNumber: '33', street: 'Pine Gardens', town
 #-------------------------------------------------2
 
 
-# puts('Create default wards')
+puts('Create default wards')
 Ward.create!(name: 'Paediatrics Medical Block', wardNumber: '1', numberOfBeds: '20', bedStatus: '20', patientGender: 'Male', deptName: 'Paediatrics', isPrivate: false)
 Ward.create!(name: 'Paediatrics Medical Block', wardNumber: '10', numberOfBeds: '20', bedStatus: '20', patientGender: 'Female', deptName: 'Paediatrics', isPrivate: false)
 Ward.create!(name: 'Paediatrics Medical Block', wardNumber: '12', numberOfBeds: '20', bedStatus: '20', patientGender: 'Female', deptName: 'Paediatrics', isPrivate: true)
