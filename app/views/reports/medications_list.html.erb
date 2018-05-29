@@ -60,7 +60,7 @@
 
 <div id="medications_list_holder">
   <% if !@admissions.nil? && !@admissions&.empty? %>
-    <%= render('medications_list', admissions: @admissions, noLimitOrOrder: true) %>
+    <%= render('medications_list', admissions: @admissions) %>
   <% elsif @admissions&.empty? %>
     <tr>
       <td colspan="8"><p>No admissions found from this filter.</p></td>

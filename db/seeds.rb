@@ -71,17 +71,17 @@ staff_A_John.save!
 puts 'Create default patients'
 #--------------------------------------------------1
 patientCaitlin = Patient.new(allergies: nil, diabetes: true, asthma: true, smokes: nil, alcoholic: nil, medicalTestsResults: nil,
-                             nextOfKin: 'Albert Ellis, Grand Father, 020233343, UK', isPrivate: true)
+                             nextOfKin: 'Albert Ellis, Grand Father, 020233343, UK', isPrivate: true, occupation: 'Head')
 
 patientCaitlin.build_person(firstName: 'Caitlin ', lastName: 'Bowler', dateOfBirth: '1995/03/09', gender: 'Female',
                             telHomeNo: '0141656424', telMobileNo: '0734084054')
 
-patientCain.person.build_address(houseNumber: '36', street: 'King Charles RD', town: 'Surbiton', postcode: 'KT5 9BH')
+patientCaitlin.person.build_address(houseNumber: '36', street: 'King Charles RD', town: 'Surbiton', postcode: 'KT5 9BH')
 #-------------------------------1
 
 #-------------------------------2
 patientCain = Patient.new(allergies: 'Dimetapp, Claritin', diabetes: true, asthma: true, smokes: nil, alcoholic: nil, medicalTestsResults: nil,
-                          nextOfKin: 'John Phelps, Father, 020233343, UK', isPrivate: nil)
+                          nextOfKin: 'John Phelps, Father, 020233343, UK', isPrivate: nil, occupation: 'N/A')
 
 patientCain.build_person(firstName: 'Cain', lastName: 'Phelps', dateOfBirth: '2000/03/09', gender: 'Male',
                          telHomeNo: '0141656424', telMobileNo: '0734084054')
