@@ -74,6 +74,7 @@ class AdmissionsController < ApplicationController
       if @admission.save
 
         # if @admission.admissionDate.to_date == Date.today
+        # TODO add some way of accepting admission now/today
         # Admitted, Discharged, Scheduled
         @admission.scheduled!
 

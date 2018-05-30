@@ -30,7 +30,7 @@ class PatientsController < ApplicationController
     # Pass the param for redirection, after saving or error
     if params.include?(:admission_register)
       session[:admission_register] = true
-      puts('sessioned')
+      puts('sessioned admission_register')
     end
   end
 
@@ -42,7 +42,7 @@ class PatientsController < ApplicationController
     respond_to do |format|
       if @patient.save
         if session[:admission_register]
-          puts('scs')
+          puts('Session admission_register use')
           format.html { redirect_to(new_admission_path(dateOfBirth: @patient.person.dateOfBirth, lastName: @patient.person.lastName),
                                     notice: 'Patient registration successful') }
         else
@@ -83,8 +83,9 @@ class PatientsController < ApplicationController
 
   # Handles PUT/PATCH method for show/view page
   def destroy
-    @patient.destroy
-    redirect_to(patients_path, notice: 'Patient deleted')
+    # TODO instead suspend, patients are not be deleted
+    # @patient.destroy
+    # redirect_to(patients_path, notice: 'Patient deleted')
   end
 
   private

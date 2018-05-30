@@ -38,44 +38,35 @@
     </table>
   <% end %>
 </div>
-<br/>
-<br/><br/>
-<br/><br/>
-<br/><br/>
-<br/><br/>
-<br/><br/>
-<br/>
-<div class="row">
-  <div class="col-3">
-    <fieldset>
-      <legend class="text-light">Registered Test Staffs</legend>
-      <table class="table table-bordered table-striped table-hover" style="font-size: 0.9em;">
-        <thead class="thead-light">
+<div class="row" style="display: block;    position: absolute;    top: 40%;">
+  <div class="col">
+    <h3 class="text-light">Registered Test Staffs</h3>
+    <table class="table table-bordered table-striped table-hover" style="font-size: 0.8em;">
+      <thead class="thead-light">
+      <tr>
+        <th>UserId</th>
+        <th>Password</th>
+        <th>Active</th>
+        <th>Speciality</th>
+        <th>Job Title</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%# & symbol used as safe navigation or exits if object is null %>
+      <% all_staffs&.each do |staff| %>
         <tr>
-          <th>UserId</th>
-          <th>Password</th>
-          <th>Active</th>
-          <th>Speciality</th>
-          <th>Job Title</th>
+          <td><%= staff.userId %></td>
+          <td>password</td>
+          <td><%= staff.active %></td>
+          <% staff&.specialities.each do |speciality| %>
+            <td><%= speciality.speciality %></td>
+          <% end %>
+          <% staff&.job_titles.each do |job_title| %>
+            <td><%= job_title.title %></td>
+          <% end %>
         </tr>
-        </thead>
-        <tbody>
-        <%# & symbol used as safe navigation or exits if object is null %>
-        <% all_staffs&.each do |staff| %>
-          <tr>
-            <td><%= staff.userId %></td>
-            <td>password</td>
-            <td><%= staff.active %></td>
-            <% staff&.specialities.each do |speciality| %>
-              <td><%= speciality.speciality %></td>
-            <% end %>
-            <% staff&.job_titles.each do |job_title| %>
-              <td><%= job_title.title %></td>
-            <% end %>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </fieldset>
+      <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

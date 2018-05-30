@@ -33,5 +33,5 @@
 
 <% content_for(:navigationButtons) do %>
   <% session[:invoices_show_back_url] = request.referrer if session[:invoices_show_back_url].nil? %>
-  <%= link_to('Back', session[:back_for_invoices_show] || invoices_path, class: 'btn btn-secondary') %>
+  <%= link_to('Back', session[:invoices_show_back_url] || invoices_path, class: 'btn btn-secondary') %>
 <% end %>

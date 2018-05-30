@@ -47,7 +47,7 @@ $(document).on 'turbolinks:load', ->
             $('#patient_id_select option:eq(1), #patient_id_select_find_diagnosed option:eq(1)').attr("selected", true)
             $('#btn_submit_find_admitted').removeAttr('disabled')
             # Call trigger event of diagnosed so that it check itself
-            $("#patient_id_select_find_admitted").trigger("change");
+            $("#patient_id_select_find_diagnosed").trigger("change");
             if ($('.lblMsg').length)
               $('.lblMsg').remove()
           else

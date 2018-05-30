@@ -76,7 +76,7 @@
                   <td><%= diagnosis.title %></td>
                   <td><%= diagnosis.description %></td>
                   <td>
-                    <%= link_to('View', diagnosis_path(diagnosis), role: 'button', class: 'btn btn-secondary') %>
+                    <%= link_to('View', diagnosis_path(diagnosis), role: 'button', class: 'btn btn-secondary') if policy(:diagnoses).show? %>
                   </td>
                 </tr>
                 <tr>
@@ -101,7 +101,7 @@
                             <td><%= prescription.id %></td>
                             <td><%= person_full_name_helper(staff) %></td>
                             <td>
-                              <%= link_to('View', prescription_path(prescription.id), role: 'button', class: 'btn btn-secondary') %>
+                              <%= link_to('View', prescription_path(prescription.id), role: 'button', class: 'btn btn-secondary') if policy(:prescription).show? %>
                             </td>
                           </tr>
                         <% end %>
@@ -135,7 +135,6 @@
             </thead>
             <tbody>
             <% if @patient.treatments.any? %>
-
               <% @patient.treatments&.each do |treatment| %>
                 <% staff = Staff.find_by(userId: treatment.issuedBy) %>
                 <tr>
@@ -143,7 +142,7 @@
                   <td><%= treatment.id %></td>
                   <td><%= person_full_name_helper(staff) %></td>
                   <td>
-                    <%= link_to('View', treatment_path(treatment.id), role: 'button', class: 'btn btn-secondary') %>
+                    <%= link_to('View', treatment_path(treatment.id), role: 'button', class: 'btn btn-secondary') if policy(:treatment).show? %>
                   </td>
                 </tr>
               <% end %>
@@ -154,9 +153,51 @@
             <% end %>
             </tbody>
           </table>
-          <br>
-          <br>
-        </td>
+          <% if @patient.isPrivate %>
+            <% if admission.invoice %>
+              <br/>
+              <h6>Invoice</h6>
+              <table class="table table-bordered table-striped table-sm">
+                <thead class="thead-light">
+                <tr>
+                  <th>Issue Date</th>
+                  <th>Date Due</th>
+                  <th>Payment Received</th>
+                  <th>Date Received</th>
+                  <th>Patient Name</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td><%= localize(admission.invoice.created_at.to_date) %></td>
+                  <td><%= localize(admission.invoice.dateDue) %></td>
+                  <td><%= admission.invoice.paymentReceived %></td>
+                  <td>
+                    <% if admission.invoice.dateReceived %>
+                      <%= localize(admission.invoice.dateReceived) %>
+                    <% else %>
+                      <p>--</p>
+                    <% end %>
+                  </td>
+                  <td><%= person_full_name_helper(@patient) %></td>
+                  <td><%= link_to('View Details', admission.invoice, class: 'btn btn-secondary') if policy(:invoice).show? %></td>
+                </tr>
+                </tbody>
+              </table>
+            <% else %>
+          <tr>
+            <td colspan="5"><p>No invoice found.</p></td>
+            <% if  policy(:admission).new? %>
+              <%#	 TODO add crate link to new invoice %>
+              <td><%# link_to('Create Invoice', new_invoice_path()) %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      <% end %>
+      <br>
+      <br>
+      </td>
       </tr>
     <% end %>
   <% else %>
@@ -168,6 +209,6 @@
 </table>
 
 <%= content_for(:navigationButtons) do %>
-  <% session[:patients_show_back_url] = request.referrer unless session[:patients_show_back_url].nil? %>
+  <% session[:patients_show_back_url] = request.referrer if session[:patients_show_back_url].nil? %>
   <%= link_to('Back', session[:patients_show_back_url], role: 'button', class: 'btn btn-primary') %>
 <% end %>

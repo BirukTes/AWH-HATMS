@@ -23,9 +23,9 @@ table.borderless {
 
 #login-card {
     width: 32rem;
-    padding: 30px;
-    transform: translateY(25%) translateX(90%);
+    padding: 2.8rem;
     position: absolute;
+    top: 18%;
+    left: 35%;
     display: block;
-    align-items: center;
 }
