@@ -2,7 +2,7 @@
   <%= admission_form.hidden_field(:patient_id, value: patient.id) %>
   <%# admission_form.hidden_field(:admissionDate, value: Time.now.to_s) %>
   <div class="col-10" id="error_holder_admissions">
-    <%= render('shared/errors', model: @admission) %>
+    <%= render('shared/errors', model: admission) %>
   </div>
 
   <table class="table borderless">
@@ -25,16 +25,22 @@
       <td>
         <div class="form-group">
           <%= admission_form.label(:ward_id, 'Ward') %><br/>
-          <%= admission_form.select(:ward_id, options_for_select(wards_option('admission', patient), @admission.ward),
+          <%#	 Read only if admitted, scheduled %>
+          <%= admission_form.select(:ward_id, options_for_select(wards_option('admission', patient), @admission.ward_id),
                                     { include_blank: 'Select ward for allocation' }, { id: 'ward_id_select', autocomplete: 'ward_id',
-                                                                                       class: 'form-control', required: true }) %>
+                                                                                       class: 'form-control', required: true,
+                                                                                       disabled: (true if admission.admitted? || admission.scheduled?),
+                                                                                       read_only: (true if admission.admitted? || admission.scheduled?) }) %>
         </div>
       </td>
       <td>
         <div class="form-group">
           <%= admission_form.label(:admissionDate, 'Date') %><br/>
+          <%#	 Read only if admitted, scheduled %>
           <%= admission_form.text_field(:admissionDate, type: 'datetime-local', class: 'form-control', required: true,
-                                        min: Time.now.to_s, max: Date.new(Date.current.year, -1, -1).to_s) %>
+                                        min: Time.now.to_s, max: Date.new(Date.current.year, -1, -1).to_s,
+                                        disabled: (true if admission.admitted? || admission.scheduled?),
+                                        read_only: (true if admission.admitted? || admission.scheduled?)) %>
         </div>
       </td>
     </tr>

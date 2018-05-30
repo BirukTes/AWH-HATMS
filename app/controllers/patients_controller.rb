@@ -61,22 +61,22 @@ class PatientsController < ApplicationController
 
   # Handles POST method for show/view page, the individual patient's page
   def update
-    if @patient.update(patient_params)
-      if params.include?(:update_patient)
-        @update_patient = true
-        @update_patient_successful = true
-        flash[:notice] = 'Patient updated!'
-        respond_with(@patient)
+    respond_to do |format|
+      if @patient.update(patient_params)
+        if params.include?(:update_patient)
+          @update_patient_successful = true
+          format.js
+        else
+          redirect_to(patients_path, notice: 'Patient updated!')
+        end
       else
-        redirect_to(patients_path, notice: 'Patient updated!')
-      end
-    else
-      if params.include?(:update_patient)
-        @update_patient = true
-        respond_with(@patient)
-      else
-        @errors = @meal_plan.errors.full_messages
-        render :edit
+        if params.include?(:update_patient)
+          @update_patient_fail = true
+          # respond_with(@patient)
+          format.js
+        else
+          respond_with(@patient)
+        end
       end
     end
   end

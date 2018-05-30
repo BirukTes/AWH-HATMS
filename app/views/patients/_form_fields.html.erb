@@ -1,5 +1,5 @@
-<div class="error_holder col-10">
-  <%= render('shared/errors', model: @patient) %>
+<div class="col-10" id="error_holder_patient_registration">
+  <%= render('shared/errors', model: patient) %>
 </div>
 <table class="table borderless">
   <tbody>
@@ -83,7 +83,7 @@
                   </td>
                   <td>
                     <div class="form-group">
-                      <%= patient_form.label(:occupation, 'occupation') %><br/>
+                      <%= patient_form.label(:occupation) %><br/>
                       <%= patient_form.text_field(:occupation, class: 'form-control', autocomplete: 'occupation', disabled: disabled) %>
                     </div>
                   </td>

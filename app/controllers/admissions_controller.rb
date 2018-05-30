@@ -13,6 +13,7 @@ class AdmissionsController < ApplicationController
 
   def index
     authorize(:admission)
+    # Will allow to use the sorting also
     @search = Admission.ransack(params[:q])
     @admissions = @search.result.includes(:ward, :patient)
 
@@ -52,13 +53,13 @@ class AdmissionsController < ApplicationController
       # Extra validation in case otherwise normal should not get past html required attribute
       if params.key?(:dateOfBirth) && params.key?(:lastName)
         flash.now[:alert] = case params[:dateOfBirth].blank? || params[:lastName].blank?
-                          when params[:dateOfBirth].blank?
-                            'Please fill in the date of birth'
-                          when params[:lastName].blank?
-                            'Please fill in the last name'
-                          else
-                            'Please fill in the all fields'
-                        end
+                              when params[:dateOfBirth].blank?
+                                'Please fill in the date of birth'
+                              when params[:lastName].blank?
+                                'Please fill in the last name'
+                              else
+                                'Please fill in the all fields'
+                            end
       end
     end
 
@@ -72,10 +73,11 @@ class AdmissionsController < ApplicationController
       # It is important to check it save it
       if @admission.save
 
+        # if @admission.admissionDate.to_date == Date.today
         # Admitted, Discharged, Scheduled
         @admission.scheduled!
 
-        format.html { redirect_to(admissions_path, notice: 'Admission successful') }
+        format.html { redirect_to(admissions_path, notice: 'Admission schedule successful. Reminder text will be sent to patient, before due.') }
       else
         # puts(@admission.inspect)
         # Pass the errors, to the instance variable
@@ -87,6 +89,14 @@ class AdmissionsController < ApplicationController
 
   # @return [admission]
   def edit;
+    # Make sure admission cannot be edited indirectly
+    # Only: under admitted and scheduled
+    if !@admission.discharged? && (@admission.admitted? || @admission.scheduled?)
+      render(:edit)
+    else
+      flash[:alert] = 'This admission cannot be edited.'
+      redirect_to(request.referrer || root_path)
+    end
   end
 
   def update
@@ -96,7 +106,9 @@ class AdmissionsController < ApplicationController
       # Detect changed ward, after update ward may change
       # ward_id_for_later = @admission.ward_id
 
-      if @admission.update(admission_params)
+      # Do further validation by selecting only the admission note and current medication to update
+      if @admission.update(currentMedications: params[:admission][:currentMedications],
+                           admissionNote: params[:admission][:admissionNote])
         # Disabled
         #
         # if @admission.ward_id_changed?
@@ -163,13 +175,13 @@ class AdmissionsController < ApplicationController
       # Extra validation in case otherwise normal should not get past html required attribute
       if params.key?(:ward_id) && params.key?(:patient_id)
         flash.now[:alert] = case params[:ward_id].blank? || params[:patient_id].blank?
-                          when params[:ward_id].blank?
-                            'Please select Ward'
-                          when params[:patient_id].blank?
-                            'Please select patient'
-                          else
-                            'Please select available fields'
-                        end
+                              when params[:ward_id].blank?
+                                'Please select Ward'
+                              when params[:patient_id].blank?
+                                'Please select patient'
+                              else
+                                'Please select available fields'
+                            end
       end
     end
   end

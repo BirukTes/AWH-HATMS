@@ -3,6 +3,7 @@
 <head>
   <title><%= @page_title %> </title>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag asset_path('awh_favicon.ico'), :rel => 'icon', :type =>  'image/png' %>
 
   <%# Used for keeping track of current controller and action names in the client side code
    for page specific javascripts (psj) %>

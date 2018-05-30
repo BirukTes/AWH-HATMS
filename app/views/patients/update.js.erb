@@ -1,6 +1,14 @@
-<%  if @patient_update %>
-$('#admission_patient_holder').html('<%= escape_javascript(render('patients/form', patient: @patient))%>')
+// Remove old validation messages
+$("#error_holder_patient_registration").remove();
+
+<%  if @update_patient_fail %>
+// Display new validation messages
+$('#error_holder_patient_registration').append('<%= escape_javascript(render('shared/errors', model: @patient))%>');
+<% end %>
+
 <%  if @update_patient_successful %>
-$('#update_patient_message').html('<p>Patient details updated successfully.</p>')
+// Display new validation messages
+$('#error_holder_patient_registration').append("<div class='alert alert-success'><p>Patient details updated successfully.</p></div>");
 <% end %>
-<% end %>
+
+
