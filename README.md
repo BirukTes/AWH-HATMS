@@ -1,3 +1,6 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/9f16be310102409ec36f/maintainability)](https://codeclimate.com/github/BirukTes/AWH-HATMS/maintainability)
+
+
 ![awhlogo2](https://user-images.githubusercontent.com/23151263/38162425-e861df34-34d8-11e8-99fe-18c72e59d9dd.png)
 
 A Ruby on Rails project for AllsWell Hospital HND graded unit 2. Please see the project board for now.
