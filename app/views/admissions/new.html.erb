@@ -5,7 +5,7 @@
 <% if @patient %>
   <fieldset class="none-bs-fieldset">
   <legend class="none-bs-legend">Patient Details</legend>
-  <div class="admission_patient_holder">
+  <div id="admission_patient_holder">
     <%= render('patients/form', patient: @patient) %>
   </div>
 </fieldset>

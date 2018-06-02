@@ -27,6 +27,8 @@ class Admission < ApplicationRecord
   has_many(:treatments, dependent: :destroy)
 
   validates(:admissionDate, presence: true)
+  validate(:admission_date_in_future?)
+  validate(:discharge_date_in_future?)
   validates(:patient_id, presence: true)
   validates(:ward_id, presence: true)
 
@@ -188,5 +190,25 @@ allswell.hospital@outlook.com"
 
     # Call the lambda
     ward.update(bedStatus: increment_bed_status.call)
+  end
+
+  private
+
+  # Validates the discharge date so is in the future TODO test
+  #
+  # @return [boolean] true indicates past, otherwise false
+  def discharge_date_in_future?
+    if dischargeDate < Time.now
+      errors.add(:dischargeDate, 'Discharge date must be in the future or now')
+    end
+  end
+
+  # Validates the discharge date so it is not in the past TODO test
+  #
+  # @return [boolean] true indicates past, otherwise false
+  def admission_date_in_future?
+    if admissionDate < Time.now
+      errors.add(:admissionDate, 'Admission date must be in the future or now')
+    end
   end
 end

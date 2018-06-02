@@ -13,16 +13,16 @@
       <a href="/"><i class="fas fa-home fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>Home</label></a>
     </li>
 
-    <li>
+    <li class="admission-side-menu">
       <a href="#submenu1" data-toggle="collapse"><i class="fas fa-address-card fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>
         Admission </label></a>
       <ul id="submenu1" class="list-unstyled collapse">
-        <li><%= link_to('View All', admissions_path) %></li>
+        <li><%= link_to('View All', admissions_path, class: 'admission-side-menu') %></li>
         <li><%= link_to('Admit Patient', new_admission_path) %></li>
         <li><%= link_to('Find and Discharge', find_and_discharge_admissions_path) %></li>
       </ul>
     </li>
-    <li>
+    <li  class="treatment-side-menu">
       <a href="#submenu2" data-toggle="collapse"><i class="fas fa-file-medical fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>
         Treatment </label></a>
       <ul id="submenu2" class="list-unstyled collapse">
@@ -38,7 +38,7 @@
       </ul>
 
     </li>
-    <li>
+    <li  class="patient-side-menu">
       <a href="#submenu3" data-toggle="collapse"><i class="fas fa-wheelchair fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>
         Patient </label></a>
       <ul id="submenu3" class="list-unstyled collapse">
@@ -46,7 +46,7 @@
         <li><%= link_to('Register Patient', new_patient_path) %></li>
       </ul>
     </li>
-    <li>
+    <li  class="ward-side-menu">
       <a href="#submenu4" data-toggle="collapse"><i class="fas fa-bed fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>
         Ward </label></a>
       <ul id="submenu4" class="list-unstyled collapse">
@@ -54,7 +54,7 @@
         <li><%= link_to('Register Ward', new_ward_path) %></li>
       </ul>
     </li>
-    <li>
+    <li class="report-side-menu">
       <a href="#submenu5" data-toggle="collapse"><i class="fas fa-file-alt fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>
         Report </label></a>
       <ul id="submenu5" class="list-unstyled collapse">
@@ -68,7 +68,7 @@
     <!--Prescription  </label></a>-->
 
     <!--</li>-->
-    <li>
+    <li  class="h-admin-side-menu">
       <a href="#submenu6" data-toggle="collapse"><i class="fas fa-hospital fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>
         Hospital Admin </label></a>
       <ul id="submenu6" class="list-unstyled collapse">

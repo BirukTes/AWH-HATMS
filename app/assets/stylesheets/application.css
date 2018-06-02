@@ -68,6 +68,13 @@ div.dropdown-menu.show label a {
     background: rgba(0, 0, 0, .25);
 }
 
+/*.admission-side-menu a.admission-side-menu, .treatment-side-menu a.treatment-side-menu,*/
+/*.patient-side-menu a.patient-side-menu .ward-side-menu .report-side-menu*/
+/*.h-admin-side-menu a {*/
+    /*color: rgba(255, 255, 255, 1);*/
+    /*background: rgba(0, 0, 0, .25);*/
+/*}*/
+
 .sidebar ul ul a {
     padding-left: 2.5rem;
     background: rgba(0, 0, 0, .25);

@@ -5,7 +5,6 @@ module HomePresenter
 
   class IndexPresenter
     def admissions_all_count
-      #TODO Should not get all admissions, refactor to discharged or admitted
       Admission.all.count
     end
 

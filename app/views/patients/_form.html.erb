@@ -5,10 +5,10 @@
   <% end %>
 
   <%#	 Determine whether field will be disabled or not for update %>
-  <% if controller_name.eql?('treatments') || controller_name.eql?('prescription') || controller_name.eql?('diagnoses') %>
+  <% if controller_name.eql?('admissions') %>
+    <%= render('patients/form_fields', patient_form: patient_form, patient: patient, disabled: false) %>
+  <% else %>
     <%#	TODO Add read only attribute as well as disabled %>
     <%= render('patients/form_fields', patient_form: patient_form, patient: patient, disabled: true) %>
-  <% else %>
-    <%= render('patients/form_fields', patient_form: patient_form, patient: patient, disabled: false) %>
   <% end %>
 <% end %>

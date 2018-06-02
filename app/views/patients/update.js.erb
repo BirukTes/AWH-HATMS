@@ -1,6 +1,8 @@
 // Remove old validation messages
 $("#error_holder_patient_registration").remove();
 
+$('#admission_patient_holder').html('<%= escape_javascript(render('patients/form', patient: @patient))%>')
+
 <%  if @update_patient_fail %>
 // Display new validation messages
 $('#error_holder_patient_registration').append('<%= escape_javascript(render('shared/errors', model: @patient))%>');

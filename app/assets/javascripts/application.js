@@ -51,8 +51,8 @@ $(document).ready(function () {
     }
 
 
-    // Bootstrap alert clear up
-    $(".alert").fadeOut(5000, function () {
+    // Bootstrap alert clear up, 20sc before removing
+    $(".alert").fadeOut(20000, function () {
         $('#content').animate({inClass: "fade-in"}, 2000, 'linear');
         $(this).remove();
     }).call();
@@ -129,4 +129,10 @@ $(document).ready(function () {
         //return;
     };
 
+    // Could be considered, html method is also possible
+    // $("a[href*='" + location.pathname + "']").addClass("current");
+    $item = $('.li-with-a a').filter(function () {
+        return $(this).prop('href').indexOf(location.pathname) != -1;
+    });
+    $item.addClass("current");
 });

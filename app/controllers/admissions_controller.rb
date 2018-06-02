@@ -52,14 +52,7 @@ class AdmissionsController < ApplicationController
     else
       # Extra validation in case otherwise normal should not get past html required attribute
       if params.key?(:dateOfBirth) && params.key?(:lastName)
-        flash.now[:alert] = case params[:dateOfBirth].blank? || params[:lastName].blank?
-                              when params[:dateOfBirth].blank?
-                                'Please fill in the date of birth'
-                              when params[:lastName].blank?
-                                'Please fill in the last name'
-                              else
-                                'Please fill in the all fields'
-                            end
+        flash.now[:alert] = fill_in_validation_msg
       end
     end
 
@@ -218,6 +211,8 @@ class AdmissionsController < ApplicationController
   # Private methods
   private
 
+  # Sets the permitted parameters for this controller
+  #
   # @return [params]
   def admission_params
     params.require(:admission).permit(:id, :admissionDate, :dischargeDate, :currentMedications, :admissionNote,
@@ -226,9 +221,25 @@ class AdmissionsController < ApplicationController
   end
 
 
+  # Sets the admission instance variable
+  #
   # @return [admission]
   def set_admission
     authorize(:admission)
     @admission = Admission.find(params[:id])
+  end
+
+  # Selects which message to show
+  #
+  # @return [string] message
+  def fill_in_validation_msg
+    case params[:dateOfBirth].blank? || params[:lastName].blank?
+      when params[:dateOfBirth].blank?
+        'Please fill in the date of birth'
+      when params[:lastName].blank?
+        'Please fill in the last name'
+      else
+        'Please fill in the all fields'
+    end
   end
 end
