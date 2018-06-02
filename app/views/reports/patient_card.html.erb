@@ -1,11 +1,11 @@
 <h1>Patient Card</h1>
 
 <%= search_form_for(@search, url: reports_patient_card_path, method: :get) do |ward_report_form| %>
-  <div class="form-group" style="width: 50% !important;">
+  <div class="form-group" style="width: 70% !important;">
     <fieldset class="none-bs-fieldset">
       <legend class="none-bs-legend">Produce Report</legend>
       <div class="container">
-        <div class="row">
+        <div class="row p-2">
           <div class="col">
             <div class="row">
               <label>Ward</label><br/>
@@ -40,19 +40,11 @@
       <% disable_btn_export = @admission.present? ? '' : 'disabled' %>
       <%#	 binding.pry %>
       <%= link_to('Print', '#', onClick: "printJS({ printable: 'patient_card_holder', type: 'html', header: 'Patient Card for #{person_full_name_helper(@admission&.patient).to_s
-      +' - ' + localize(Date.today).to_s}'})   ", class: "btn btn-outline-secondary #{disable_btn_export}") %>
-      <%= link_to('Export as Excel', reports_ward_list_path(format: :xlsx), { class: "btn btn-outline-secondary form-control disabled",
-                                                                             role: 'button' }) %> </div>
+      +' - ' + localize(Date.today, format: :custom).to_s}'})   ", class: "btn btn-outline-secondary #{disable_btn_export}") %>
+    </div>
   </div>
 </div>
 <br/>
 <div id="patient_card_holder">
-  <% if @admission %>
-    <%= render('patient_card_details', admission: @admission) %>
-
-  <% elsif @admission&.blank? %>
-    <tr>
-      <td colspan="8"><p>No admitted patient found.</p></td>
-    </tr>
-  <% end %>
+  <%= render('patient_card_details', admission: @admission) %>
 </div>

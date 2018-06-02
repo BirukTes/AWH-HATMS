@@ -1,0 +1,15 @@
+<td><%= localize(prescription.date) %></td>
+<td>
+  <% prescription&.drugs.each do |drug| %>
+    <%= drug.code %>
+    <br>
+  <% end %>
+</td>
+<td>
+  <% prescription&.drugs.each do |drug| %>
+    <%= drug.name %>
+    <br>
+  <% end %>
+</td>
+<td><%= prescription.dosage %></td>
+<td><%= prescription.treatmentLength %></td>

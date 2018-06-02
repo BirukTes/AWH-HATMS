@@ -13,7 +13,7 @@
                                           { include_blank: 'Select ward', id: 'ward_id' }, class: 'form-control') %>
             </div>
           </div>
-          <div class="col-1"></div>
+          <div class="col"></div>
           <div class="col-3">
             <div class="row">
               <label>Discharge Date From</label><br/>
@@ -22,7 +22,7 @@
                                                                      value: params.dig(:q, :dischargeDate_gteq) }) %>
             </div>
           </div>
-          <div class="col-1"></div>
+          <div class="col"></div>
           <div class="col-3">
             <div class="row ">
               <label>Discharge Date To</label><br/>
@@ -32,7 +32,7 @@
                                                                      value: params.dig(:q, :dischargeDate_lteq) }) %>
             </div>
           </div>
-          <div class="col-1 offset-3"></div>
+          <div class="col offset-3"></div>
           <div class="col-3">
 
             <br>
@@ -43,7 +43,7 @@
                                                                      value: params.dig(:q, :admissionDate_gteq) }) %>
             </div>
           </div>
-          <div class="col-1"></div>
+          <div class="col"></div>
           <div class="col-3">
             <br>
             <div class="row ">
@@ -58,7 +58,7 @@
         <div class="col-1"></div>
         <br>
         <div class="row">
-          <div class="col-1 offset-7">
+          <div class="col-1 offset-8">
 
           </div>
           <div class="col-3">
@@ -76,7 +76,7 @@
   <div class="col-1">
     <div class="btn-group mr-auto">
       <% disable_btn_export = @admissions.nil? || @admissions&.empty? ? 'disabled' : '' %>
-      <%= link_to('Print', '#', onClick: "printJS({ printable: 'discharge_list_holder', type: 'html', header: 'Discharge - List - #{Date.today.to_s}'})",
+      <%= link_to('Print', '#', onClick: "printJS({ printable: 'discharge_list_holder', type: 'html', header: 'Discharge List - #{localize(Date.today, format: :custom).to_s}'})",
                   class: "btn btn-outline-secondary #{disable_btn_export}") %>
       <%= link_to('Export as Excel', reports_discharge_list_path(format: :xlsx), { class: "btn btn-outline-secondary form-control #{disable_btn_export}",
                                                                               role: 'button' }) %> </div>

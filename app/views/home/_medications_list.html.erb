@@ -1,7 +1,7 @@
 <table class="table table-bordered table-striped">
   <thead class="thead-light">
   <tr>
-    <th>Ward No</th>
+    <th><%= sort_link(@search, :ward_id, 'Ward No', default_order: :asc) %></th>
     <th>Ward Name</th>
     <th>Patient Name</th>
     <th>Drug Name</th>

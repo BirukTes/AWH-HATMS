@@ -62,7 +62,11 @@
   <% else %>
     <tr>
       <td colspan="8">
-        <p>Nothing found.</p><%= link_to('Show all', admissions_path, method: :get, remote: true) %>
+        <p>Nothing found.</p>
+        <%#	 Only display if it is filtered and there are admission in db  %>
+        <% if !params[:q].blank? && !Admission.all.empty? %>
+          <%= link_to('Show all', admissions_path, method: :get, remote: true, class: 'btn btn-primary') %>
+        <% end %>
       </td>
     </tr>
   <% end %>

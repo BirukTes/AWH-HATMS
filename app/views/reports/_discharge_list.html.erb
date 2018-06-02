@@ -1,15 +1,15 @@
 <table class="table table-bordered table-striped">
   <thead class="thead-light">
   <tr>
-    <th>Ward No</th>
+    <th><%= sort_link(@search, :ward_id, 'Ward No') %></th>
     <th>Ward Name</th>
     <th>Patient Name</th>
-    <th>Admission Date</th>
-    <th>Discharge Date</th>
+    <th><%= sort_link(@search, :admissionDate, 'Admission Date') %></th>
+    <th><%= sort_link(@search, :dischargeDate, 'Discharge Date', default_order: :asc) %></th>
   </tr>
   </thead>
   <tbody>
-  <% if @admissions %>
+  <% if @admissions && !@admissions&.empty?  %>
     <% @admissions.each do |admission| %>
       <% ward = admission.ward %>
       <tr>

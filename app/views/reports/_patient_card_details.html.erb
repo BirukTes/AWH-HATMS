@@ -1,23 +1,15 @@
-<fieldset class="none-bs-fieldset">
-  <br>
-  <h6>Details</h6>
-  <table class="table table-bordered table-striped">
-    <tbody>
-    <thead class="thead-light">
-    <tr>
-      <th>Patient No</th>
-      <th>Patient Name</th>
-      <th>Ward No</th>
-      <th>Ward Name</th>
-    </tr>
-    </thead>
-    <tbody>
-    <%# patient_card_admission = admissions.where(admissionDate: Date.today.beginning_of_week).first %>
-    <%# if patient_card_admission.blank? %>
-    <!--<tr>-->
-    <!--<td colspan="5"><p>No patient found from this date.</p></td>-->
-    <!--</tr>-->
-    <%# #else %>
+<table class="table table-bordered table-striped">
+  <tbody>
+  <thead class="thead-light">
+  <tr>
+    <th>Patient No</th>
+    <th>Patient Name</th>
+    <th>Ward No</th>
+    <th colspan="2">Ward Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if admission && !admission.blank? %>
     <% patient = admission.patient %>
     <% ward = admission.ward %>
     <% prescriptions = patient&.prescriptions %>
@@ -25,15 +17,10 @@
       <td><%= patient.id %></td>
       <td><%= person_full_name_helper(patient) %></td>
       <td><%= ward.wardNumber %></td>
-      <td><%= ward.name %></td>
+      <td colspan="2"><%= ward.name %></td>
     </tr>
-    <%#end%>
-    </tbody>
-  </table>
-  <br>
-  <br>
-  <h6>Drug Prescriptions</h6>
-  <table class="table table-bordered table-striped">
+    <tr>
+      <td colspan="5">
     <thead class="thead-light">
     <tr>
       <th>Date</th>
@@ -45,28 +32,27 @@
     </thead>
     <tbody>
     <% if prescriptions %>
-      <% prescriptions&.each do |prescription| %>
-        <tr>
-          <td><%= localize(prescription.date) %></td>
-          <td>
-            <% prescription&.drugs.each do |drug| %>
-              <%= drug.code %>
-              <br>
-            <% end %>
-          </td>
-          <td>
-            <% prescription&.drugs.each do |drug| %>
-              <%= drug.name %>
-              <br>
-            <% end %>
-          </td>
-          <td><%= prescription.dosage %></td>
-          <td><%= prescription.treatmentLength %></td>
-        </tr>
+      <% prescriptions&.each_with_index do |prescription, index| %>
+        <% if index >= 1 %>
+          <tr>
+            <%= render('prescription_drugs_all_fields', prescription: prescription) %>
+          </tr>
+        <% else %>
+          <tr>
+            <%= render('prescription_drugs_all_fields', prescription: prescription) %>
+          </tr>
+        <% end %>
       <% end %>
     <% else %>
       <td colspan="3"><p>No medications found.</p></td>
     <% end %>
     </tbody>
+    </td>
+    </tr>
+  <% else %>
+    <tr>
+      <td colspan="8"><p>No patient found.</p></td>
+    </tr>
+  <% end %>
+  </tbody>
   </table>
-</fieldset>
