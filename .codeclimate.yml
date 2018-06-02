@@ -1,0 +1,3 @@
+exclude_patterns:
+- "**/doc/"
+- "**/javascripts/jquery.easy-autocomplete.js"
