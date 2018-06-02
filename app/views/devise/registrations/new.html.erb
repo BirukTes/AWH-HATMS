@@ -17,25 +17,25 @@
                 <td>
                   <div class="form-group">
                     <%= person_fields.label(:firstName, 'First name') %><br/>
-                    <%= person_fields.text_field(:firstName, html_options: {autofocus: true, autocomplete: 'firstName'}) %>
+                    <%= person_fields.text_field(:firstName, html_options: {autofocus: true}) %>
                   </div>
                 </td>
                 <td>
                   <div class="form-group">
                     <%= person_fields.label(:lastName, 'Last name') %><br/>
-                    <%= person_fields.text_field(:lastName, autocomplete: 'lastName') %>
+                    <%= person_fields.text_field(:lastName) %>
                   </div>
                 </td>
                 <td>
                   <div class="form-group">
                     <%= person_fields.label(:dateOfBirth, 'Date of birth') %><br/>
-                    <%= person_fields.text_field(:dateOfBirth, type: 'date', min: '1900-01-01', max: Date.today.to_s, autocomplete: 'dateOfBirth', required: true, class: 'form-control') %>
+                    <%= person_fields.text_field(:dateOfBirth, type: 'date', min: '1900-01-01', max: Date.today.to_s, required: true, class: 'form-control') %>
                   </div>
                 </td>
                 <td>
                   <div class="form-group">
                     <%= person_fields.label(:gender) %><br/>
-                    <%= person_fields.select(:gender, options_for_select([:Male, :Female], ''), autocomplete: 'lastName') %>
+                    <%= person_fields.select(:gender, options_for_select([:Male, :Female], '')) %>
                   </div>
                 </td>
               </tr>
@@ -44,26 +44,26 @@
                   <td>
                     <div class="form-group">
                       <%= address_fields.label(:houseNumber, 'House number') %><br/>
-                      <%= address_fields.text_field(:houseNumber, type: 'number', autocomplete: 'houseNumber') %>
+                      <%= address_fields.text_field(:houseNumber, type: 'number') %>
                     </div>
                   </td>
                   <td>
                     <div class="form-group">
                       <%= address_fields.label :street %><br/>
-                      <%= address_fields.text_field :street, autocomplete: 'street' %>
+                      <%= address_fields.text_field :street %>
                     </div>
                   </td>
                   <td>
                     <div class="form-group">
                       <%= address_fields.label(:town) %><br/>
-                      <%= address_fields.text_field(:town, autocomplete: 'town') %>
+                      <%= address_fields.text_field(:town) %>
 
                     </div>
                   </td>
                   <td>
                     <div class="form-group">
                       <%= address_fields.label(:postcode) %><br/>
-                      <%= address_fields.text_field(:postcode, autocomplete: 'postcode') %>
+                      <%= address_fields.text_field(:postcode) %>
                     </div>
                   </td>
                 <% end %>
@@ -72,13 +72,13 @@
                 <td>
                   <div class="form-group">
                     <%= person_fields.label(:telHomeNo, 'Telephone number') %><br/>
-                    <%= person_fields.text_field(:telHomeNo, type: 'number', autocomplete: 'telephoneNumber') %>
+                    <%= person_fields.text_field(:telHomeNo, type: 'number') %>
                   </div>
                 </td>
                 <td>
                   <div class="form-group">
                     <%= person_fields.label(:telMobileNo, 'Mobile number') %><br/>
-                    <%= person_fields.text_field(:telMobileNo, type: 'number', autocomplete: 'mobileNumber') %>
+                    <%= person_fields.text_field(:telMobileNo, type: 'number') %>
                   </div>
                 </td>
               </tr>
@@ -98,25 +98,25 @@
               <td>
                 <div class="form-group">
                   <%= staff_form.label(:userId, 'User ID') %><br/>
-                  <%= staff_form.text_field(:userId, autocomplete: 'off') %>
+                  <%= staff_form.text_field(:userId) %>
                 </div>
                 <div class="form-group">
                   <%= staff_form.label(:email) %><br/>
-                  <%= staff_form.email_field(:email, autocomplete: 'email') %>
+                  <%= staff_form.email_field(:email) %>
                 </div>
                 <div class="form-group">
                   <%= staff_form.label(:password) %>
                   <% if @minimum_password_length %>
                     <em>(<%= @minimum_password_length %> characters minimum)</em>
                   <% end %><br/>
-                  <%= staff_form.password_field(:password, autocomplete: 'password') %>
+                  <%= staff_form.password_field(:password) %>
                 </div>
               </td>
               <!--Override bootstrap td specifically here-->
               <td style="vertical-align: bottom; !important;">
                 <div class="form-group">
                   <%= staff_form.label(:password_confirmation, 'Password confirmation') %><br/>
-                  <%= staff_form.password_field(:password_confirmation, autocomplete: 'passwordConfirmation') %>
+                  <%= staff_form.password_field(:password_confirmation) %>
                 </div>
               </td>
               <td></td>
@@ -136,19 +136,9 @@
                 <td>
                   <div class="form-group">
                     <%= specialism_fields.label(:speciality_id, 'Speciality') %><br/>
-                    <%= specialism_fields.select(:speciality_id, speciality_options, autocomplete: 'speciality') %>
+                    <%= specialism_fields.select(:speciality_id, speciality_options) %>
                     <%= specialism_fields.button('Add', {class: 'btn btn-default'}) %>
                   </div>
-                  <!--<table class="table">-->
-                    <!--<thead>-->
-                    <!--<th>Speciality</th>-->
-                    <!--</thead>-->
-                    <!--<tbody>-->
-                    <!--<tr>-->
-                      <!--<td></td>-->
-                    <!--</tr>-->
-                    <!--</tbody>-->
-                  <!--</table>-->
                 </td>
               <% end %>
               <%= staff_form.fields_for(:job) do |job_fields| %>
@@ -156,18 +146,8 @@
                   <div class="form-group">
                     <%= job_fields.label(:job_title_id, 'Job title') %><br/>
                     <%# todo refactor to cocoon %>
-                    <%= job_fields.select(:job_title_id, job_title_options, autocomplete: 'jobTitle') %>
+                    <%= job_fields.select(:job_title_id, job_title_options) %>
                   </div>
-                  <!--<table class="table">-->
-                    <!--<thead>-->
-                    <!--<th>Job Title</th>-->
-                    <!--</thead>-->
-                    <!--<tbody>-->
-                    <!--<tr>-->
-                      <!--<td></td>-->
-                    <!--</tr>-->
-                    <!--</tbody>-->
-                  <!--</table>-->
                 </td>
               <% end %>
             </tr>
@@ -175,7 +155,7 @@
                 <td>
                   <div class="form-group">
                     <%= staff_form.label(:team_id) %><br/>
-                    <%= staff_form.select(:team_id, team_options, autocomplete: 'team') %>
+                    <%= staff_form.select(:team_id, team_options) %>
                   </div>
                 </td>
               </tr>

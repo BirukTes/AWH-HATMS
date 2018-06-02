@@ -16,13 +16,13 @@
             <div class="col-6">
               <div class="form-group">
                 <%= prescription_form.label(:dosage) %><br/>
-                <%= prescription_form.text_area(:dosage, autocomplete: 'dosage', required: true, class: 'form-control') %>
+                <%= prescription_form.text_area(:dosage, required: true, class: 'form-control') %>
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <%= prescription_form.label(:treatmentLength) %><br/>
-                <%= prescription_form.text_field(:treatmentLength, type: 'number', autocomplete: 'treatmentLength', required: true, class: 'form-control') %>
+                <%= prescription_form.text_field(:treatmentLength, type: 'number', required: true, class: 'form-control') %>
               </div>
             </div>
           </div>

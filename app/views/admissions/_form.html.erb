@@ -11,13 +11,13 @@
       <td>
         <div class="form-group">
           <%= admission_form.label(:currentMedications, 'Current Medications') %><br/>
-          <%= admission_form.text_area(:currentMedications, autocomplete: 'currentMedications', class: 'form-control') %>
+          <%= admission_form.text_area(:currentMedications, class: 'form-control') %>
         </div>
       </td>
       <td colspan="2">
         <div class="form-group">
           <%= admission_form.label(:admissionNote, 'Admission Note') %><br/>
-          <%= admission_form.text_area(:admissionNote, autocomplete: 'admissionNote', class: 'form-control') %>
+          <%= admission_form.text_area(:admissionNote,  class: 'form-control') %>
         </div>
       </td>
     </tr>
@@ -27,7 +27,7 @@
           <%= admission_form.label(:ward_id, 'Ward') %><br/>
           <%#	 Read only if admitted, scheduled %>
           <%= admission_form.select(:ward_id, options_for_select(wards_option('admission', patient), @admission.ward_id),
-                                    { include_blank: 'Select ward for allocation' }, { id: 'ward_id_select', autocomplete: 'ward_id',
+                                    { include_blank: 'Select ward for allocation' }, { id: 'ward_id_select',
                                                                                        class: 'form-control', required: true,
                                                                                        disabled: (true if admission.admitted? || admission.scheduled?),
                                                                                        read_only: (true if admission.admitted? || admission.scheduled?) }) %>

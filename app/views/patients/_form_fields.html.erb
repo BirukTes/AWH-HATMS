@@ -25,13 +25,13 @@
                   <td>
                     <div class="form-group">
                       <%= patient_form.label(:diabetes, 'Diabetic') %><br/>
-                      <%= patient_form.check_box(:diabetes, { autocomplete: 'diabetes', disabled: disabled }, 'true', 'false') %>
+                      <%= patient_form.check_box(:diabetes, { disabled: disabled }, 'true', 'false') %>
                     </div>
                   </td>
                   <td>
                     <div class="form-group">
                       <%= patient_form.label(:smokes, 'Smoker') %><br/>
-                      <%= patient_form.check_box(:smokes, { autocomplete: 'smokes', disabled: disabled }, 'true', 'false') %>
+                      <%= patient_form.check_box(:smokes, { disabled: disabled }, 'true', 'false') %>
                     </div>
                   </td>
                 </tr>
@@ -39,13 +39,13 @@
                   <td>
                     <div class="form-group">
                       <%= patient_form.label(:asthma, 'Asthmatic') %><br/>
-                      <%= patient_form.check_box(:asthma, { autocomplete: 'diabetic', disabled: disabled }, 'true', 'false') %>
+                      <%= patient_form.check_box(:asthma, { disabled: disabled }, 'true', 'false') %>
                     </div>
                   </td>
                   <td>
                     <div class="form-group">
                       <%= patient_form.label(:alcoholic) %><br/>
-                      <%= patient_form.check_box(:alcoholic, { autocomplete: 'smokes', disabled: disabled }, 'true', 'false') %>
+                      <%= patient_form.check_box(:alcoholic, {  disabled: disabled }, 'true', 'false') %>
                     </div>
                   </td>
                 </tr>
@@ -53,7 +53,7 @@
                   <td colspan="2">
                     <div class="form-group">
                       <%= patient_form.label(:allergies) %><br/>
-                      <%= patient_form.text_area(:allergies, class: 'form-control', autocomplete: 'allergies', disabled: disabled) %>
+                      <%= patient_form.text_area(:allergies, class: 'form-control', disabled: disabled)%>
                     </div>
                   </td>
                 </tr>
@@ -61,7 +61,7 @@
                   <td colspan="2">
                     <div class="form-group">
                       <%= patient_form.label(:medicalTestsResults, 'Medical Results Tests') %><br/>
-                      <%= patient_form.text_area(:medicalTestsResults, class: 'form-control', autocomplete: 'medicalResultsTests', disabled: disabled) %>
+                      <%= patient_form.text_area(:medicalTestsResults, class: 'form-control', disabled: disabled) %>
                     </div>
                   </td>
                 </tr>
@@ -78,13 +78,13 @@
                   <td colspan="2">
                     <div class="form-group">
                       <%= patient_form.label(:nextOfKin, 'Next Of Kin') %><br/>
-                      <%= patient_form.text_area(:nextOfKin, autocomplete: 'smokes', class: 'form-control', disabled: disabled) %>
+                      <%= patient_form.text_area(:nextOfKin, class: 'form-control', disabled: disabled) %>
                     </div>
                   </td>
                   <td>
                     <div class="form-group">
                       <%= patient_form.label(:occupation) %><br/>
-                      <%= patient_form.text_field(:occupation, class: 'form-control', autocomplete: 'occupation', disabled: disabled) %>
+                      <%= patient_form.text_field(:occupation, class: 'form-control',  disabled: disabled) %>
                     </div>
                   </td>
                 </tr>
@@ -92,7 +92,7 @@
                   <td>
                     <div class="form-group">
                       <%= patient_form.label(:isPrivate, 'Is Private') %><br/>
-                      <%= patient_form.check_box(:isPrivate, { autocomplete: 'isPrivate', id: 'patientIsPrivateCkb', disabled: disabled }, 'true', 'false') %>
+                      <%= patient_form.check_box(:isPrivate, { id: 'patientIsPrivateCkb', disabled: disabled }, 'true', 'false') %>
                     </div>
                   </td>
                   <td>
@@ -100,7 +100,7 @@
                       <!--TODO write js/jquery for to check for -->
                       <%= patient_form.label(:email) %><br/>
                       <%= patient_form.email_field(:email, { disabled: (disabled if disabled) || !patient.isPrivate, class: 'form-control',
-                                                             autocomplete: 'medicalResultsTests', id: 'patientEmailFld', required: true }) %>
+                                                              id: 'patientEmailFld', required: true }) %>
                     </div>
                   </td>
                 <tr>

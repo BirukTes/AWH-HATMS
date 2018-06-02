@@ -3,19 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="cc0883c8-5e71-4922-b050-6ad158519ec8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admissions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/admissions_controller.rb" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" />
-      <change beforePath="$PROJECT_DIR$/app/models/admission.rb" afterPath="$PROJECT_DIR$/app/models/admission.rb" />
-      <change beforePath="$PROJECT_DIR$/app/presenters/home_presenter.rb" afterPath="$PROJECT_DIR$/app/presenters/home_presenter.rb" />
-      <change beforePath="$PROJECT_DIR$/app/views/admissions/new.html.erb" afterPath="$PROJECT_DIR$/app/views/admissions/new.html.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/home/_discharge_list.html.erb" afterPath="$PROJECT_DIR$/app/views/home/_discharge_list.html.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/home/_medications_list.html.erb" afterPath="$PROJECT_DIR$/app/views/home/_medications_list.html.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/home/_ward_list.html.erb" afterPath="$PROJECT_DIR$/app/views/home/_ward_list.html.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/patients/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/patients/_form.html.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/patients/update.js.erb" afterPath="$PROJECT_DIR$/app/views/patients/update.js.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/shared/_side_nav.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_side_nav.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/admissions/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/admissions/_form.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/confirmations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/confirmations/new.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/passwords/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/passwords/edit.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/unlocks/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/unlocks/new.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/patients/_form_fields.html.erb" afterPath="$PROJECT_DIR$/app/views/patients/_form_fields.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/prescriptions/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/prescriptions/_form.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/prescriptions/_medication_fields.html.erb" afterPath="$PROJECT_DIR$/app/views/prescriptions/_medication_fields.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/shared/_personal_detail_fields.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_personal_detail_fields.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/staffs/new.html.erb" afterPath="$PROJECT_DIR$/app/views/staffs/new.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/treatments/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/treatments/_form.html.erb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -52,21 +53,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="admissions_controller.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="admissions_controller.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/admissions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="62" column="21" lean-forward="false" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admission.rb" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/admission.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="201" column="77" lean-forward="false" selection-start-line="201" selection-start-column="77" selection-end-line="201" selection-end-column="77" />
+            <state relative-caret-position="270">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -84,8 +75,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>config.active_job.queue_adapter = :delayed_job</find>
-      <find>lbl-nav</find>
       <find>'Show'</find>
       <find>admissions_show_back_url</find>
       <find>request.referrer</find>
@@ -114,10 +103,12 @@
       <find>\n</find>
       <find>&lt;%= sort_link(@search, :name, 'Ward Name')%&gt;</find>
       <find>admission_patient_holder</find>
+      <find>autocomplete</find>
+      <find>:autocomplete</find>
     </findStrings>
     <replaceStrings>
-      <replace />
       <replace>@patient</replace>
+      <replace />
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -169,7 +160,6 @@
         <option value="$PROJECT_DIR$/app/views/admissions/_admissions_list.html.erb" />
         <option value="$PROJECT_DIR$/app/views/shared/_side_nav.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
-        <option value="$PROJECT_DIR$/app/controllers/admissions_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/views/patients/update.js.erb" />
         <option value="$PROJECT_DIR$/app/views/patients/_form.html.erb" />
@@ -180,6 +170,7 @@
         <option value="$PROJECT_DIR$/app/views/home/_medications_list.html.erb" />
         <option value="$PROJECT_DIR$/app/views/home/_discharge_list.html.erb" />
         <option value="$PROJECT_DIR$/app/models/admission.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/admissions_controller.rb" />
       </list>
     </option>
   </component>
@@ -603,12 +594,12 @@
       <workItem from="1527539578162" duration="53720000" />
       <workItem from="1527669657757" duration="5000" />
       <workItem from="1527669739298" duration="7299000" />
-      <workItem from="1527858586507" duration="42561000" />
+      <workItem from="1527858586507" duration="48407000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1497380000" />
+    <option name="totallyTimeSpent" value="1503226000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -679,13 +670,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/patients_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1512">
-          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/find_admitted_patient.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -727,6 +711,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
           <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1018,14 +1003,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/admissions_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="62" column="21" lean-forward="false" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/_discharge_list.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -1084,8 +1061,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/admission.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="201" column="77" lean-forward="false" selection-start-line="201" selection-start-column="77" selection-end-line="201" selection-end-column="77" />
+        <state relative-caret-position="1440">
+          <caret line="188" column="11" lean-forward="true" selection-start-line="188" selection-start-column="11" selection-end-line="188" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="15" column="32" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/admissions_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>

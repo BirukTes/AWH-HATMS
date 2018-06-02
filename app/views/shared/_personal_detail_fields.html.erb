@@ -6,25 +6,25 @@
       <td>
         <div class="form-group">
           <%= person_fields.label(:firstName, 'First name') %><br/>
-          <%= person_fields.text_field(:firstName, { autofocus: true, class: 'form-control', autocomplete: 'First Name', required: true, disabled: (disabled if disabled) }) %>
+          <%= person_fields.text_field(:firstName, { autofocus: true, class: 'form-control', required: true, disabled: (disabled if disabled) }) %>
         </div>
       </td>
       <td>
         <div class="form-group">
           <%= person_fields.label(:lastName, 'Last name') %><br/>
-          <%= person_fields.text_field(:lastName, class: 'form-control', autocomplete: 'lastName', required: true, disabled: disabled) %>
+          <%= person_fields.text_field(:lastName, class: 'form-control', required: true, disabled: disabled) %>
         </div>
       </td>
       <td>
         <div class="form-group">
           <%= person_fields.label(:dateOfBirth, 'Date of birth') %><br/>
-          <%= person_fields.text_field(:dateOfBirth, { autocomplete: 'dateOfBirth', type: 'date', min: '1900-01-01', max: Date.today.to_s, required: true, class: 'form-control', disabled: (disabled if disabled) }) %>
+          <%= person_fields.text_field(:dateOfBirth, { type: 'date', min: '1900-01-01', max: Date.today.to_s, required: true, class: 'form-control', disabled: (disabled if disabled) }) %>
         </div>
       </td>
       <td>
         <div class="form-group">
           <%= person_fields.label(:gender) %><br/>
-          <%= person_fields.select(:gender, options_for_select([:Male, :Female], selected: person_fields.object.gender), { include_blank: 'Select gender' }, { class: 'form-control', autocomplete: 'lastName', required: true, disabled: (disabled if disabled) }) %>
+          <%= person_fields.select(:gender, options_for_select([:Male, :Female], selected: person_fields.object.gender), { include_blank: 'Select gender' }, { class: 'form-control', required: true, disabled: (disabled if disabled) }) %>
         </div>
       </td>
     </tr>
@@ -33,26 +33,26 @@
         <td>
           <div class="form-group">
             <%= address_fields.label(:houseNumber, 'House number') %><br/>
-            <%= address_fields.text_field(:houseNumber, { class: 'form-control', autocomplete: 'houseNumber', required: true, disabled: (disabled if disabled) }) %>
+            <%= address_fields.text_field(:houseNumber, { class: 'form-control', required: true, disabled: (disabled if disabled) }) %>
           </div>
         </td>
         <td>
           <div class="form-group">
             <%= address_fields.label :street %><br/>
-            <%= address_fields.text_field(:street, class: 'form-control', autocomplete: 'street', required: true, disabled: (disabled if disabled)) %>
+            <%= address_fields.text_field(:street, class: 'form-control', required: true, disabled: (disabled if disabled)) %>
           </div>
         </td>
         <td>
           <div class="form-group">
             <%= address_fields.label(:town) %><br/>
-            <%= address_fields.text_field(:town, class: 'form-control', autocomplete: 'town', required: true, disabled: (disabled if disabled)) %>
+            <%= address_fields.text_field(:town, class: 'form-control', required: true, disabled: (disabled if disabled)) %>
 
           </div>
         </td>
         <td>
           <div class="form-group">
             <%= address_fields.label(:postcode) %><br/>
-            <%= address_fields.text_field(:postcode, { class: 'form-control', autocomplete: 'postcode', required: true, disabled: (disabled if disabled) }) %>
+            <%= address_fields.text_field(:postcode, { class: 'form-control', required: true, disabled: (disabled if disabled) }) %>
           </div>
         </td>
       <% end %>
@@ -62,13 +62,13 @@
         <div class="form-group">
           <%= person_fields.label(:telHomeNo, 'Telephone number') %><br/>
           <%# min/max length not working %>
-          <%= person_fields.text_field(:telHomeNo, type: 'number', class: 'form-control', autocomplete: 'telephoneNumber', minLength:'11', maxLength:'14', required: true, disabled: (disabled if disabled)) %>
+          <%= person_fields.text_field(:telHomeNo, type: 'number', class: 'form-control', minLength:'11', maxLength:'14', required: true, disabled: (disabled if disabled)) %>
         </div>
       </td>
       <td>
         <div class="form-group">
           <%= person_fields.label(:telMobileNo, 'Mobile number') %><br/>
-          <%= person_fields.text_field(:telMobileNo, type: 'number', minLength:'11', maxLength:'14', class: 'form-control', autocomplete: 'mobileNumber', disabled: (disabled if disabled)) %>
+          <%= person_fields.text_field(:telMobileNo, type: 'number', minLength:'11', maxLength:'14', class: 'form-control', disabled: (disabled if disabled)) %>
         </div>
       </td>
     </tr>
