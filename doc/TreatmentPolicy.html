@@ -368,7 +368,7 @@
       <pre class="code"><span class="info file"># File 'app/policies/treatment_policy.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy?'>destroy?</span>
-  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span>
+  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_doctor?'>doctor?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -536,7 +536,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri May 25 19:44:40 2018 by
+  Generated on Fri Jun  1 15:12:32 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.12 (ruby-2.4.1).
 </div>

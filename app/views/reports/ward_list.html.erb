@@ -52,7 +52,7 @@
     <div class="btn-group mr-auto">
       <% disable_btn_export = @admissions.nil? || @admissions&.empty? ? 'disabled' : '' # TODO fix this link %>
       <%= link_to('Print',"javascript:printJS({ printable: 'ward_list_holder', type: 'html', header: 'Ward Report - #{localize(Date.today).to_s}'})", class: "btn btn-outline-secondary #{disable_btn_export}") %>
-      <%= link_to('Export as Excel', reports_ward_list_path(format: :xls), { class: "btn btn-outline-secondary form-control #{disable_btn_export}", role: 'button' }) %> </div>
+      <%= link_to('Export as Excel', reports_ward_list_path(format: :xlsx), { class: "btn btn-outline-secondary form-control #{disable_btn_export}", role: 'button' }) %> </div>
   </div>
 </div>
 <br/>

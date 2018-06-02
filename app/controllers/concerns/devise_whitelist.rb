@@ -1,6 +1,7 @@
 module DeviseWhitelist
   extend ActiveSupport::Concern
 
+  # Called before any class or method in this module
   included do
     # Run the configuration before devise controllers
     before_action :configure_permitted_parameters, if: :devise_controller?

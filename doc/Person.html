@@ -103,7 +103,32 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<h2 id="label-Schema+Information">Schema Information</h2>
 
+<p>Table name: people</p>
+
+<pre class="code ruby"><code class="ruby">id                  :bigint(8)        not null, primary key
+firstName           :string           not null
+lastName            :string           not null
+dateOfBirth         :date             not null
+gender              :string
+telHomeNo           :string
+telMobileNo         :string
+personalDetail_type :string
+personalDetail_id   :bigint(8)
+created_at          :datetime         not null
+updated_at          :datetime         not null</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -138,6 +163,39 @@
     <span class="summary_desc"><div class='inline'>
 <p>Class method, can be accessed without instantiation Gets the a patient with
 the details.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#full_address-instance_method" title="#full_address (instance method)">#<strong>full_address</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Concatenates the address.</p>
 </div></span>
   
 </li>
@@ -230,13 +288,13 @@ the details</p>
       <pre class="lines">
 
 
-24
-25
-26
-27</pre>
+54
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/person.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'app/models/person.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_person_patient'>find_person_patient</span><span class='lparen'>(</span><span class='id identifier rubyid_dateOfBirth'>dateOfBirth</span><span class='comma'>,</span> <span class='id identifier rubyid_lastName'>lastName</span><span class='rparen'>)</span>
   <span class='comment'># Make sure they  are not null
@@ -249,10 +307,87 @@ the details</p>
     
   </div>
 
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="full_address-instance_method">
+  
+    #<strong>full_address</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Concatenates the address</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the full address</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/person.rb', line 38</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_full_address'>full_address</span>
+  <span class='comment'># Check in case of null, otherwise this should not be the case address must be provided
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_address'>address</span>
+    <span class='lparen'>(</span><span class='id identifier rubyid_address'>address</span><span class='period'>.</span><span class='id identifier rubyid_houseNumber'>houseNumber</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_address'>address</span><span class='period'>.</span><span class='id identifier rubyid_street'>street</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_address'>address</span><span class='period'>.</span><span class='id identifier rubyid_town'>town</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_address'>address</span><span class='period'>.</span><span class='id identifier rubyid_postcode'>postcode</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='comment'># Otherwise replace nil with:
+</span>    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
 </div>
 
       <div id="footer">
-  Generated on Fri May 25 19:44:39 2018 by
+  Generated on Fri Jun  1 15:12:31 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.12 (ruby-2.4.1).
 </div>

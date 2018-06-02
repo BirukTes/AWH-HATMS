@@ -245,7 +245,7 @@ href="https://www.driftingruby.com/episodes/custom-error-pages-with-slack-notifi
 <span class='kw'>def</span> <span class='id identifier rubyid_internal_server_error'>internal_server_error</span>
   <span class='kw'>begin</span>
     <span class='id identifier rubyid_exception'>exception</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_env'>env</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>action_dispatch.exception</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='id identifier rubyid_exception'>exception</span><span class='period'>.</span><span class='id identifier rubyid_unpaid_invoice_message'>unpaid_invoice_message</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+    <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='id identifier rubyid_exception'>exception</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
     <span class='id identifier rubyid_source_extract'>source_extract</span> <span class='op'>=</span> <span class='id identifier rubyid_exception'>exception</span><span class='period'>.</span><span class='id identifier rubyid_source_extract'>source_extract</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='id identifier rubyid_backtrace'>backtrace</span> <span class='op'>=</span> <span class='id identifier rubyid_exception'>exception</span><span class='period'>.</span><span class='id identifier rubyid_backtrace'>backtrace</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>..</span><span class='int'>9</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
       <span class='comment'># SlackNotifyJob.perform_later(message, source_extract, backtrace)
@@ -304,7 +304,7 @@ href="https://www.driftingruby.com/episodes/custom-error-pages-with-slack-notifi
 </div>
 
       <div id="footer">
-  Generated on Fri May 25 19:44:41 2018 by
+  Generated on Fri Jun  1 15:12:33 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.12 (ruby-2.4.1).
 </div>

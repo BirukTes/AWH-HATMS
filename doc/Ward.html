@@ -103,7 +103,31 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<h2 id="label-Schema+Information">Schema Information</h2>
 
+<p>Table name: wards</p>
+
+<pre class="code ruby"><code class="ruby">id            :bigint(8)        not null, primary key
+name          :string
+wardNumber    :integer
+numberOfBeds  :integer
+bedStatus     :integer
+patientGender :string
+deptName      :string
+isPrivate     :boolean          default(FALSE)
+created_at    :datetime         not null
+updated_at    :datetime         not null</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -203,18 +227,18 @@ the list</p>
       <pre class="lines">
 
 
-19
-20
-21
-22
-23
-24
-25
-26
-27</pre>
+41
+42
+43
+44
+45
+46
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/ward.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'app/models/ward.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ward_options'>ward_options</span><span class='lparen'>(</span><span class='id identifier rubyid_patient'>patient</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_patient'>patient</span><span class='period'>.</span><span class='id identifier rubyid_isPrivate'>isPrivate</span>
@@ -235,7 +259,7 @@ the list</p>
 </div>
 
       <div id="footer">
-  Generated on Fri May 25 19:44:39 2018 by
+  Generated on Fri Jun  1 15:12:30 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.12 (ruby-2.4.1).
 </div>

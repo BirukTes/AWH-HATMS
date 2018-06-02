@@ -386,7 +386,7 @@
       <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_json'>json</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span> <span class='symbol'>:show</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:created</span><span class='comma'>,</span> <span class='label'>location:</span> <span class='ivar'>@diagnosis</span> <span class='rbrace'>}</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_html'>html</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span> <span class='symbol'>:new</span> <span class='rbrace'>}</span>
-      <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_json'>json</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='ivar'>@diagnosis</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:unprocessable_entity</span> <span class='rbrace'>}</span>
+      <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_js'>js</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -421,16 +421,16 @@
       <pre class="lines">
 
 
-73
 74
 75
 76
 77
 78
-79</pre>
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/diagnoses_controller.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/diagnoses_controller.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='ivar'>@diagnosis</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span>
@@ -666,7 +666,8 @@
 66
 67
 68
-69</pre>
+69
+70</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/diagnoses_controller.rb', line 59</span>
@@ -678,7 +679,8 @@
       <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_json'>json</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span> <span class='symbol'>:show</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:ok</span><span class='comma'>,</span> <span class='label'>location:</span> <span class='ivar'>@diagnosis</span> <span class='rbrace'>}</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_html'>html</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span> <span class='symbol'>:edit</span> <span class='rbrace'>}</span>
-      <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_json'>json</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='ivar'>@diagnosis</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:unprocessable_entity</span> <span class='rbrace'>}</span>
+      <span class='comment'># Use the same js view, only need to print errors
+</span>      <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_js'>js</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span> <span class='symbol'>:create</span> <span class='rbrace'>}</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -692,7 +694,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri May 25 19:44:41 2018 by
+  Generated on Fri Jun  1 15:12:34 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.12 (ruby-2.4.1).
 </div>

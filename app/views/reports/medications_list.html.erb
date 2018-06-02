@@ -52,7 +52,7 @@
       <% disable_btn_export = @admissions.nil? || @admissions&.empty? ? 'disabled' : ''%>
       <%= link_to('Print','#', onClick: "printJS({ printable: 'medications_list_holder', type: 'html', header: 'Medications Report - #{localize(Date.today).to_s}'})",
                   class: "btn btn-outline-secondary #{disable_btn_export}") %>
-      <%= link_to('Export as Excel', reports_ward_list_path(format: :xls), { class: "btn btn-outline-secondary form-control disabled",
+      <%= link_to('Export as Excel', reports_ward_list_path(format: :xlsx), { class: "btn btn-outline-secondary form-control disabled",
                                                                              role: 'button' }) %> </div>
   </div>
 </div>

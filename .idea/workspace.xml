@@ -2,9 +2,131 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc0883c8-5e71-4922-b050-6ad158519ec8" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/reports/discharge_list.xlsx.axlsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/reports/ward_list.xlsx.axlsx" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/rails.validations.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.yardoc/checksums" afterPath="$PROJECT_DIR$/.yardoc/checksums" />
+      <change beforePath="$PROJECT_DIR$/.yardoc/object_types" afterPath="$PROJECT_DIR$/.yardoc/object_types" />
+      <change beforePath="$PROJECT_DIR$/.yardoc/objects/root.dat" afterPath="$PROJECT_DIR$/.yardoc/objects/root.dat" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/concerns/default_page_content.rb" afterPath="$PROJECT_DIR$/app/controllers/concerns/default_page_content.rb" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/concerns/devise_whitelist.rb" afterPath="$PROJECT_DIR$/app/controllers/concerns/devise_whitelist.rb" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/concerns/find_admit_patient.rb" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/reports_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/reports_controller.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/admission.rb" afterPath="$PROJECT_DIR$/app/models/admission.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/person.rb" afterPath="$PROJECT_DIR$/app/models/person.rb" />
+      <change beforePath="$PROJECT_DIR$/app/views/reports/_discharge_list.html.erb" afterPath="$PROJECT_DIR$/app/views/reports/_discharge_list.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/reports/discharge_list.html.erb" afterPath="$PROJECT_DIR$/app/views/reports/discharge_list.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/reports/medications_list.html.erb" afterPath="$PROJECT_DIR$/app/views/reports/medications_list.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/reports/patient_card.html.erb" afterPath="$PROJECT_DIR$/app/views/reports/patient_card.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/reports/ward_list.html.erb" afterPath="$PROJECT_DIR$/app/views/reports/ward_list.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/reports/ward_list.xls.erb" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/mime_types.rb" afterPath="$PROJECT_DIR$/config/initializers/mime_types.rb" />
+      <change beforePath="$PROJECT_DIR$/doc/Address.html" afterPath="$PROJECT_DIR$/doc/Address.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Admission.html" afterPath="$PROJECT_DIR$/doc/Admission.html" />
+      <change beforePath="$PROJECT_DIR$/doc/AdmissionPolicy.html" afterPath="$PROJECT_DIR$/doc/AdmissionPolicy.html" />
+      <change beforePath="$PROJECT_DIR$/doc/AdmissionPolicy/Scope.html" afterPath="$PROJECT_DIR$/doc/AdmissionPolicy/Scope.html" />
+      <change beforePath="$PROJECT_DIR$/doc/AdmissionsController.html" afterPath="$PROJECT_DIR$/doc/AdmissionsController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/AdmissionsHelper.html" afterPath="$PROJECT_DIR$/doc/AdmissionsHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Allocation.html" afterPath="$PROJECT_DIR$/doc/Allocation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/ApplicationCable.html" afterPath="$PROJECT_DIR$/doc/ApplicationCable.html" />
+      <change beforePath="$PROJECT_DIR$/doc/ApplicationCable/Channel.html" afterPath="$PROJECT_DIR$/doc/ApplicationCable/Channel.html" />
+      <change beforePath="$PROJECT_DIR$/doc/ApplicationCable/Connection.html" afterPath="$PROJECT_DIR$/doc/ApplicationCable/Connection.html" />
+      <change beforePath="$PROJECT_DIR$/doc/ApplicationController.html" afterPath="$PROJECT_DIR$/doc/ApplicationController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/ApplicationHelper.html" afterPath="$PROJECT_DIR$/doc/ApplicationHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/ApplicationJob.html" afterPath="$PROJECT_DIR$/doc/ApplicationJob.html" />
+      <change beforePath="$PROJECT_DIR$/doc/ApplicationMailer.html" afterPath="$PROJECT_DIR$/doc/ApplicationMailer.html" />
+      <change beforePath="$PROJECT_DIR$/doc/ApplicationPolicy.html" afterPath="$PROJECT_DIR$/doc/ApplicationPolicy.html" />
+      <change beforePath="$PROJECT_DIR$/doc/ApplicationPolicy/Scope.html" afterPath="$PROJECT_DIR$/doc/ApplicationPolicy/Scope.html" />
+      <change beforePath="$PROJECT_DIR$/doc/ApplicationRecord.html" afterPath="$PROJECT_DIR$/doc/ApplicationRecord.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Bootstrap/CardHelper.html" afterPath="$PROJECT_DIR$/doc/Bootstrap/CardHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Bootstrap/CommonHelper.html" afterPath="$PROJECT_DIR$/doc/Bootstrap/CommonHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Bootstrap/ModalHelper.html" afterPath="$PROJECT_DIR$/doc/Bootstrap/ModalHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/DefaultPageContent.html" afterPath="$PROJECT_DIR$/doc/DefaultPageContent.html" />
+      <change beforePath="$PROJECT_DIR$/doc/DeviseWhitelist.html" afterPath="$PROJECT_DIR$/doc/DeviseWhitelist.html" />
+      <change beforePath="$PROJECT_DIR$/doc/DiagnosesController.html" afterPath="$PROJECT_DIR$/doc/DiagnosesController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/DiagnosesHelper.html" afterPath="$PROJECT_DIR$/doc/DiagnosesHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/DiagnosesPolicy.html" afterPath="$PROJECT_DIR$/doc/DiagnosesPolicy.html" />
+      <change beforePath="$PROJECT_DIR$/doc/DiagnosesPolicy/Scope.html" afterPath="$PROJECT_DIR$/doc/DiagnosesPolicy/Scope.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Diagnosis.html" afterPath="$PROJECT_DIR$/doc/Diagnosis.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Drug.html" afterPath="$PROJECT_DIR$/doc/Drug.html" />
+      <change beforePath="$PROJECT_DIR$/doc/DrugPolicy.html" afterPath="$PROJECT_DIR$/doc/DrugPolicy.html" />
+      <change beforePath="$PROJECT_DIR$/doc/DrugPolicy/Scope.html" afterPath="$PROJECT_DIR$/doc/DrugPolicy/Scope.html" />
+      <change beforePath="$PROJECT_DIR$/doc/DrugsController.html" afterPath="$PROJECT_DIR$/doc/DrugsController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/DrugsHelper.html" afterPath="$PROJECT_DIR$/doc/DrugsHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/ErrorsController.html" afterPath="$PROJECT_DIR$/doc/ErrorsController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Find/FindAdmittedPatient.html" afterPath="$PROJECT_DIR$/doc/Find/FindAdmittedPatient.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Find/FindRegisteredPatient.html" afterPath="$PROJECT_DIR$/doc/Find/FindRegisteredPatient.html" />
+      <change beforePath="$PROJECT_DIR$/doc/HomeController.html" afterPath="$PROJECT_DIR$/doc/HomeController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/HomeHelper.html" afterPath="$PROJECT_DIR$/doc/HomeHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/HomePresenter.html" afterPath="$PROJECT_DIR$/doc/HomePresenter.html" />
+      <change beforePath="$PROJECT_DIR$/doc/HomePresenter/IndexPresenter.html" afterPath="$PROJECT_DIR$/doc/HomePresenter/IndexPresenter.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Invoice.html" afterPath="$PROJECT_DIR$/doc/Invoice.html" />
+      <change beforePath="$PROJECT_DIR$/doc/InvoiceDetail.html" afterPath="$PROJECT_DIR$/doc/InvoiceDetail.html" />
+      <change beforePath="$PROJECT_DIR$/doc/InvoiceMailer.html" afterPath="$PROJECT_DIR$/doc/InvoiceMailer.html" />
+      <change beforePath="$PROJECT_DIR$/doc/InvoicePaymentsController.html" afterPath="$PROJECT_DIR$/doc/InvoicePaymentsController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/InvoicePaymentsHelper.html" afterPath="$PROJECT_DIR$/doc/InvoicePaymentsHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/InvoicePolicy.html" afterPath="$PROJECT_DIR$/doc/InvoicePolicy.html" />
+      <change beforePath="$PROJECT_DIR$/doc/InvoicePolicy/Scope.html" afterPath="$PROJECT_DIR$/doc/InvoicePolicy/Scope.html" />
+      <change beforePath="$PROJECT_DIR$/doc/InvoicesController.html" afterPath="$PROJECT_DIR$/doc/InvoicesController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/InvoicesHelper.html" afterPath="$PROJECT_DIR$/doc/InvoicesHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Job.html" afterPath="$PROJECT_DIR$/doc/Job.html" />
+      <change beforePath="$PROJECT_DIR$/doc/JobTitle.html" afterPath="$PROJECT_DIR$/doc/JobTitle.html" />
+      <change beforePath="$PROJECT_DIR$/doc/JobTitlePolicy.html" afterPath="$PROJECT_DIR$/doc/JobTitlePolicy.html" />
+      <change beforePath="$PROJECT_DIR$/doc/JobTitlePolicy/Scope.html" afterPath="$PROJECT_DIR$/doc/JobTitlePolicy/Scope.html" />
+      <change beforePath="$PROJECT_DIR$/doc/JobTitlesController.html" afterPath="$PROJECT_DIR$/doc/JobTitlesController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/JobTitlesHelper.html" afterPath="$PROJECT_DIR$/doc/JobTitlesHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Medication.html" afterPath="$PROJECT_DIR$/doc/Medication.html" />
+      <change beforePath="$PROJECT_DIR$/doc/ModalResponder.html" afterPath="$PROJECT_DIR$/doc/ModalResponder.html" />
+      <change beforePath="$PROJECT_DIR$/doc/PasswordsController.html" afterPath="$PROJECT_DIR$/doc/PasswordsController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Patient.html" afterPath="$PROJECT_DIR$/doc/Patient.html" />
+      <change beforePath="$PROJECT_DIR$/doc/PatientDecorator.html" afterPath="$PROJECT_DIR$/doc/PatientDecorator.html" />
+      <change beforePath="$PROJECT_DIR$/doc/PatientPolicy.html" afterPath="$PROJECT_DIR$/doc/PatientPolicy.html" />
+      <change beforePath="$PROJECT_DIR$/doc/PatientPolicy/Scope.html" afterPath="$PROJECT_DIR$/doc/PatientPolicy/Scope.html" />
+      <change beforePath="$PROJECT_DIR$/doc/PatientsController.html" afterPath="$PROJECT_DIR$/doc/PatientsController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/PatientsHelper.html" afterPath="$PROJECT_DIR$/doc/PatientsHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Person.html" afterPath="$PROJECT_DIR$/doc/Person.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Prescription.html" afterPath="$PROJECT_DIR$/doc/Prescription.html" />
+      <change beforePath="$PROJECT_DIR$/doc/PrescriptionPolicy.html" afterPath="$PROJECT_DIR$/doc/PrescriptionPolicy.html" />
+      <change beforePath="$PROJECT_DIR$/doc/PrescriptionPolicy/Scope.html" afterPath="$PROJECT_DIR$/doc/PrescriptionPolicy/Scope.html" />
+      <change beforePath="$PROJECT_DIR$/doc/PrescriptionsController.html" afterPath="$PROJECT_DIR$/doc/PrescriptionsController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/PrescriptionsHelper.html" afterPath="$PROJECT_DIR$/doc/PrescriptionsHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/ReportsController.html" afterPath="$PROJECT_DIR$/doc/ReportsController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/ReportsHelper.html" afterPath="$PROJECT_DIR$/doc/ReportsHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Search/FindController.html" afterPath="$PROJECT_DIR$/doc/Search/FindController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Search/SearchController.html" afterPath="$PROJECT_DIR$/doc/Search/SearchController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Specialism.html" afterPath="$PROJECT_DIR$/doc/Specialism.html" />
+      <change beforePath="$PROJECT_DIR$/doc/SpecialitiesController.html" afterPath="$PROJECT_DIR$/doc/SpecialitiesController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/SpecialitiesHelper.html" afterPath="$PROJECT_DIR$/doc/SpecialitiesHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Speciality.html" afterPath="$PROJECT_DIR$/doc/Speciality.html" />
+      <change beforePath="$PROJECT_DIR$/doc/SpecialityPolicy.html" afterPath="$PROJECT_DIR$/doc/SpecialityPolicy.html" />
+      <change beforePath="$PROJECT_DIR$/doc/SpecialityPolicy/Scope.html" afterPath="$PROJECT_DIR$/doc/SpecialityPolicy/Scope.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Staff.html" afterPath="$PROJECT_DIR$/doc/Staff.html" />
+      <change beforePath="$PROJECT_DIR$/doc/StaffPolicy.html" afterPath="$PROJECT_DIR$/doc/StaffPolicy.html" />
+      <change beforePath="$PROJECT_DIR$/doc/StaffPolicy/Scope.html" afterPath="$PROJECT_DIR$/doc/StaffPolicy/Scope.html" />
+      <change beforePath="$PROJECT_DIR$/doc/StaffsController.html" afterPath="$PROJECT_DIR$/doc/StaffsController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Team.html" afterPath="$PROJECT_DIR$/doc/Team.html" />
+      <change beforePath="$PROJECT_DIR$/doc/TeamPolicy.html" afterPath="$PROJECT_DIR$/doc/TeamPolicy.html" />
+      <change beforePath="$PROJECT_DIR$/doc/TeamPolicy/Scope.html" afterPath="$PROJECT_DIR$/doc/TeamPolicy/Scope.html" />
+      <change beforePath="$PROJECT_DIR$/doc/TeamsController.html" afterPath="$PROJECT_DIR$/doc/TeamsController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/TeamsHelper.html" afterPath="$PROJECT_DIR$/doc/TeamsHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Treatment.html" afterPath="$PROJECT_DIR$/doc/Treatment.html" />
+      <change beforePath="$PROJECT_DIR$/doc/TreatmentPolicy.html" afterPath="$PROJECT_DIR$/doc/TreatmentPolicy.html" />
+      <change beforePath="$PROJECT_DIR$/doc/TreatmentPolicy/Scope.html" afterPath="$PROJECT_DIR$/doc/TreatmentPolicy/Scope.html" />
+      <change beforePath="$PROJECT_DIR$/doc/TreatmentsController.html" afterPath="$PROJECT_DIR$/doc/TreatmentsController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/TreatmentsHelper.html" afterPath="$PROJECT_DIR$/doc/TreatmentsHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/Ward.html" afterPath="$PROJECT_DIR$/doc/Ward.html" />
+      <change beforePath="$PROJECT_DIR$/doc/WardPolicy.html" afterPath="$PROJECT_DIR$/doc/WardPolicy.html" />
+      <change beforePath="$PROJECT_DIR$/doc/WardPolicy/Scope.html" afterPath="$PROJECT_DIR$/doc/WardPolicy/Scope.html" />
+      <change beforePath="$PROJECT_DIR$/doc/WardsController.html" afterPath="$PROJECT_DIR$/doc/WardsController.html" />
+      <change beforePath="$PROJECT_DIR$/doc/WardsHelper.html" afterPath="$PROJECT_DIR$/doc/WardsHelper.html" />
+      <change beforePath="$PROJECT_DIR$/doc/_index.html" afterPath="$PROJECT_DIR$/doc/_index.html" />
+      <change beforePath="$PROJECT_DIR$/doc/class_list.html" afterPath="$PROJECT_DIR$/doc/class_list.html" />
+      <change beforePath="$PROJECT_DIR$/doc/file.README.html" afterPath="$PROJECT_DIR$/doc/file.README.html" />
+      <change beforePath="$PROJECT_DIR$/doc/index.html" afterPath="$PROJECT_DIR$/doc/index.html" />
+      <change beforePath="$PROJECT_DIR$/doc/method_list.html" afterPath="$PROJECT_DIR$/doc/method_list.html" />
+      <change beforePath="$PROJECT_DIR$/doc/top-level-namespace.html" afterPath="$PROJECT_DIR$/doc/top-level-namespace.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -41,25 +163,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="application.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+      <file leaf-file-name="reports_controller.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/reports_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1161">
-              <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+            <state relative-caret-position="324">
+              <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="81">
-                <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-                <folding />
-              </first_editor>
-              <second_editor />
             </state>
           </provider>
         </entry>
@@ -76,7 +185,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>`</find>
       <find>#{Date.today</find>
       <find>get_ward</find>
       <find>team</find>
@@ -106,6 +214,7 @@
       <find>&amp;nbsp; &amp;nbsp;</find>
       <find>align-content-end</find>
       <find>justify-content-center</find>
+      <find>xls</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -121,20 +230,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-        <option value="$PROJECT_DIR$/app/models/ward.rb" />
-        <option value="$PROJECT_DIR$/app/views/wards/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/wards/new.html.erb" />
-        <option value="$PROJECT_DIR$/config/locales/en.yml" />
-        <option value="$PROJECT_DIR$/app/views/staffs/Show.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/person.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/staffs_controller.rb" />
-        <option value="$PROJECT_DIR$/app/policies/staff_policy.rb" />
-        <option value="$PROJECT_DIR$/config/application.yml" />
-        <option value="$PROJECT_DIR$/app/controllers/invoice_payments_controller.rb" />
-        <option value="$PROJECT_DIR$/config/initializers/braintree.rb" />
         <option value="$PROJECT_DIR$/app/models/invoice_detail.rb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/models/team.rb" />
         <option value="$PROJECT_DIR$/app/views/staffs/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/admissions/index.html.erb" />
@@ -142,7 +238,6 @@
         <option value="$PROJECT_DIR$/app/views/home/_patient_card.html.erb" />
         <option value="$PROJECT_DIR$/app/presenters/home_presenter.rb" />
         <option value="$PROJECT_DIR$/app/views/home/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/reports/ward_list.html.erb" />
         <option value="$PROJECT_DIR$/app/views/home/_medications_list.html.erb" />
         <option value="$PROJECT_DIR$/app/views/reports/_ward_list.html.erb" />
         <option value="$PROJECT_DIR$/app/views/home/_discharge_list.html.erb" />
@@ -172,6 +267,20 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/login.css" />
         <option value="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/app/controllers/concerns/default_page_content.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/concerns/devise_whitelist.rb" />
+        <option value="$PROJECT_DIR$/config/initializers/mime_types.rb" />
+        <option value="$PROJECT_DIR$/app/views/reports/ward_list.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/reports/ward_list.xlsx.axlsx.erb" />
+        <option value="$PROJECT_DIR$/app/models/person.rb" />
+        <option value="$PROJECT_DIR$/app/models/admission.rb" />
+        <option value="$PROJECT_DIR$/app/views/reports/discharge_list.xslx.axlsx" />
+        <option value="$PROJECT_DIR$/app/views/reports/_discharge_list.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/reports/discharge_list.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/reports_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/reports/ward_list.xlsx.axlsx" />
+        <option value="$PROJECT_DIR$/app/views/reports/discharge_list.xlsx.axlsx" />
       </list>
     </option>
   </component>
@@ -243,26 +352,18 @@
               <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="javascripts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="stylesheets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -270,15 +371,24 @@
               <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="devise" type="462c0819:PsiDirectoryNode" />
+              <item name="reports" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="devise" type="462c0819:PsiDirectoryNode" />
-              <item name="sessions" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="initializers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="locales" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
@@ -312,6 +422,28 @@
               <item name="AWH-HATMS" type="462c0819:PsiDirectoryNode" />
               <item name="vendor" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="activesupport (v5.1.6, ruby-2.4.4-p296) [gem]" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="activesupport (v5.1.6, ruby-2.4.4-p296) [gem]" type="70bed36:NamedLibraryElementNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AWH-HATMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="activesupport (v5.1.6, ruby-2.4.4-p296) [gem]" type="70bed36:NamedLibraryElementNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="active_support" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -365,7 +497,7 @@
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="C:/Program Files/nodejs/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="readme&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/README.md&#10;rails.validations.js&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/javascripts/rails.validations.js&#10;applic&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/stylesheets/application.css&#10;unp&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/invoices/_unpaid_invoice_template.html.erb&#10;invoice/show&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/invoices/show.html.erb&#10;login&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/layouts/login.html.erb&#10;applic.ht&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/layouts/application.html.erb&#10;seed&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/seeds.rb&#10;invoice_mail&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/mailers/invoice_mailer.rb&#10;sid&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/shared/_side_nav.html.erb&#10;a;p;&#9;null&#9;null&#10;patient/sho&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/patients/show.html.erb&#10;admiss&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/admissions/_admissions_list.html.erb&#10;side&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/shared/_side_nav.html.erb&#10;gem&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/Gemfile&#10;treatment&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/treatment.rb&#10;payment&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/invoice_payments_controller.rb&#10;sta&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/staffs_controller.rb&#10;staff_po&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/policies/staff_policy.rb&#10;appl&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/stylesheets/application.css&#10;en.&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/locales/en.yml&#10;application&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/stylesheets/application.css&#10;application.c&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/stylesheets/application.css&#10;find_&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/admissions/find_and_discharge.html.erb&#10;admis&#9;null&#9;null&#10;invoic&#9;null&#9;null&#10;staff&#9;null&#9;null&#10;patient&#9;null&#9;null&#10;ward/in&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/wards/index.html.erb&#10;patient/show&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/patients/show.html.erb&#10;ward/show&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/wards/show.html.erb&#10;diagnoses/new&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/diagnoses/new.html.erb&#10;treatment_p&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/policies/treatment_policy.rb&#10;routes&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/routes.rb&#10;schem&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/schema.rb&#10;a&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/admission.rb&#10;invoice&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/invoices_controller.rb&#10;templ&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/invoices/_invoice_template.html.erb&#10;modal&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/layouts/modal.html.erb&#10;devel&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/environments/development.rb&#10;appli&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/stylesheets/application.css&#10;invoices/sho&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/invoices/show.html.erb&#10;pati&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/patients_controller.rb&#10;adm&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/admissions_controller.rb&#10;paymen&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/javascripts/invoice_payments.coffee&#10;app&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/application.yml&#10;application.h&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/layouts/application.html.erb&#10;ap&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/application.yml&#10;sec&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/secrets.yml&#10;s&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/shared/_side_nav.html.erb" />
+    <property name="SearchEverywhereHistoryKey" value="en.&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/locales/en.yml&#10;person&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/person.rb&#10;admissio&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/admissions_controller.rb&#10;gem&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/Gemfile&#10;readme&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/README.md&#10;rails.validations.js&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/javascripts/rails.validations.js&#10;applic&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/stylesheets/application.css&#10;unp&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/invoices/_unpaid_invoice_template.html.erb&#10;invoice/show&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/invoices/show.html.erb&#10;login&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/layouts/login.html.erb&#10;applic.ht&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/layouts/application.html.erb&#10;seed&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/seeds.rb&#10;invoice_mail&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/mailers/invoice_mailer.rb&#10;sid&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/shared/_side_nav.html.erb&#10;a;p;&#9;null&#9;null&#10;patient/sho&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/patients/show.html.erb&#10;admiss&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/admissions/_admissions_list.html.erb&#10;side&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/shared/_side_nav.html.erb&#10;treatment&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/treatment.rb&#10;payment&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/invoice_payments_controller.rb&#10;sta&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/staffs_controller.rb&#10;staff_po&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/policies/staff_policy.rb&#10;appl&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/stylesheets/application.css&#10;application&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/stylesheets/application.css&#10;application.c&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/stylesheets/application.css&#10;find_&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/admissions/find_and_discharge.html.erb&#10;admis&#9;null&#9;null&#10;invoic&#9;null&#9;null&#10;staff&#9;null&#9;null&#10;patient&#9;null&#9;null&#10;ward/in&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/wards/index.html.erb&#10;patient/show&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/patients/show.html.erb&#10;ward/show&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/wards/show.html.erb&#10;diagnoses/new&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/diagnoses/new.html.erb&#10;treatment_p&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/policies/treatment_policy.rb&#10;routes&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/routes.rb&#10;schem&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/db/schema.rb&#10;a&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/models/admission.rb&#10;invoice&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/invoices_controller.rb&#10;templ&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/invoices/_invoice_template.html.erb&#10;modal&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/layouts/modal.html.erb&#10;devel&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/environments/development.rb&#10;appli&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/stylesheets/application.css&#10;invoices/sho&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/invoices/show.html.erb&#10;pati&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/patients_controller.rb&#10;adm&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/controllers/admissions_controller.rb&#10;paymen&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/assets/javascripts/invoice_payments.coffee&#10;app&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/application.yml&#10;application.h&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/app/views/layouts/application.html.erb&#10;ap&#9;FILE&#9;file://C:/Users/Biruk/OneDrive/Documents/Projects/RailsProjects/AWH-HATMS/config/application.yml" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="TEXT" />
@@ -596,12 +728,12 @@
       <workItem from="1527539578162" duration="53720000" />
       <workItem from="1527669657757" duration="5000" />
       <workItem from="1527669739298" duration="7299000" />
-      <workItem from="1527858586507" duration="246000" />
+      <workItem from="1527858586507" duration="18950000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1455065000" />
+    <option name="totallyTimeSpent" value="1473769000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -615,16 +747,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-12" y="-12" width="2584" height="1464" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25382757" sideWeight="0.4923077" order="0" side_tool="false" content_ui="combo" x="1263" y="262" width="409" height="890" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942098" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37636933" sideWeight="0.50483483" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32957292" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32785603" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942098" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33333334" sideWeight="0.4951652" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33881065" sideWeight="0.4951652" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1841257" sideWeight="0.50769234" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3998435" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -633,7 +767,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32785603" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -671,141 +804,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/home/_prescription_drugs_fields.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/_patient_card.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-954">
-          <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/_discharge_list.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/_medications_list.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="21" column="53" lean-forward="false" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/reports/_ward_list.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="7" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/reports/ward_list.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="60" column="20" lean-forward="false" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/reports/patient_card.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-810">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_side_nav.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="55" column="9" lean-forward="true" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="15" column="61" lean-forward="false" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environment.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="54" lean-forward="false" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="78" column="67" lean-forward="false" selection-start-line="78" selection-start-column="67" selection-end-line="78" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models.dot" />
-    <entry file="file://$PROJECT_DIR$/models.png" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/secrets.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="59" column="9" lean-forward="true" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/mailers/invoice_mailer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/application.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/login.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1663">
-          <caret line="106" column="40" lean-forward="true" selection-start-line="106" selection-start-column="40" selection-end-line="106" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/reports/medications_list.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="56" column="8" lean-forward="true" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/policies/admission_policy.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="502">
@@ -903,6 +901,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
           <caret line="572" column="12" lean-forward="true" selection-start-line="572" selection-start-column="12" selection-end-line="572" selection-end-column="12" />
+          <folding>
+            <element signature="e#17958#17964#0#HTML" expanded="false" />
+            <element signature="e#17982#17988#0#HTML" expanded="false" />
+            <element signature="e#18006#18012#0#HTML" expanded="false" />
+            <element signature="e#18114#18120#0#HTML" expanded="false" />
+            <element signature="e#18120#18126#0#HTML" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -910,6 +915,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="577" column="73" lean-forward="true" selection-start-line="577" selection-start-column="73" selection-end-line="577" selection-end-column="73" />
+          <folding>
+            <element signature="e#18574#18580#0#HTML" expanded="false" />
+            <element signature="e#18580#18586#0#HTML" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -924,13 +933,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1512">
           <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/admissions_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="95" column="19" lean-forward="true" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -967,6 +969,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
           <caret line="25" column="15" lean-forward="true" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -974,6 +977,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-821">
           <caret line="108" column="6" lean-forward="false" selection-start-line="108" selection-start-column="6" selection-end-line="108" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -981,14 +985,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
           <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1161">
-          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1008,6 +1004,192 @@
             <folding />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="69" column="6" lean-forward="true" selection-start-line="69" selection-start-column="6" selection-end-line="69" selection-end-column="6" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activesupport-5.1.6/lib/active_support/concern.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="124" column="18" lean-forward="true" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/concerns/devise_whitelist.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="20" column="27" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/concerns/find_admit_patient.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/concerns/default_page_content.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="16" column="3" lean-forward="true" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/admissions_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1581">
+          <caret line="95" column="19" lean-forward="true" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/initializers/mime_types.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/reports/ward_list.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="57" column="5" lean-forward="false" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/person.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="42" column="3" lean-forward="true" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/reports/ward_list.xls.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="54" column="68" lean-forward="true" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="52" column="37" lean-forward="false" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/admission.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1015">
+          <caret line="111" column="31" lean-forward="true" selection-start-line="111" selection-start-column="31" selection-end-line="111" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/reports/medications_list.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="63" column="33" lean-forward="false" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/reports/_medications_list.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="772">
+          <caret line="30" column="43" lean-forward="false" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/reports/_patient_card_details.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="52" column="27" lean-forward="false" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/reports/_ward_list.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-362">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/reports/patient_card.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="50" column="25" lean-forward="false" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/reports/_discharge_list.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/reports/discharge_list.xlsx.axlsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/reports/ward_list.xlsx.axlsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="84" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/locales/en.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="35" column="21" lean-forward="true" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/reports/discharge_list.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="581">
+          <caret line="88" column="6" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/reports_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>

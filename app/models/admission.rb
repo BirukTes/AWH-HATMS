@@ -137,7 +137,7 @@ allswell.hospital@outlook.com"
   # @return [Admission# name : string, id:string]
   def self.patients_option(patient, admission)
     #  Add admission number beginning of the array, NOTICE the end with '|' as delimiter, requires extraction
-    ['Admission #' + admission.id.to_s + ' ' + patient.person.firstName + ' ' + patient.person.lastName,
+    ['Admission #' + admission.id.to_s + ' ' + patient.person.full_name,
      patient.id.to_s + '|' + admission.id.to_s]
   end
 

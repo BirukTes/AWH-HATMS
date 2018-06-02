@@ -103,7 +103,34 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<h2 id="label-Schema+Information">Schema Information</h2>
 
+<p>Table name: patients</p>
+
+<pre class="code ruby"><code class="ruby">id                  :bigint(8)        not null, primary key
+allergies           :string
+diabetes            :boolean          default(FALSE)
+asthma              :boolean          default(FALSE)
+smokes              :boolean          default(FALSE)
+alcoholic           :boolean          default(FALSE)
+medicalTestsResults :text
+nextOfKin           :text
+isPrivate           :boolean          default(FALSE)
+created_at          :datetime         not null
+updated_at          :datetime         not null
+email               :string
+occupation          :string</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -224,14 +251,14 @@
       <pre class="lines">
 
 
-34
-35
-36
-37
-38</pre>
+53
+54
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/patient.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'app/models/patient.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_patient'>find_patient</span><span class='lparen'>(</span><span class='id identifier rubyid_dateOfBirth'>dateOfBirth</span><span class='comma'>,</span> <span class='id identifier rubyid_lastName'>lastName</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Person.html" title="Person (class)">Person</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_person_patient'><span class='object_link'><a href="Person.html#find_person_patient-class_method" title="Person.find_person_patient (method)">find_person_patient</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_dateOfBirth'>dateOfBirth</span><span class='comma'>,</span> <span class='id identifier rubyid_lastName'>lastName</span><span class='rparen'>)</span>
@@ -280,12 +307,12 @@
       <pre class="lines">
 
 
-41
-42
-43</pre>
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/patient.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'app/models/patient.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_patient'>get_patient</span><span class='lparen'>(</span><span class='id identifier rubyid_patient_id'>patient_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_patient_id'>patient_id</span><span class='rparen'>)</span>
@@ -300,7 +327,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri May 25 19:44:39 2018 by
+  Generated on Fri Jun  1 15:12:31 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.12 (ruby-2.4.1).
 </div>

@@ -64,6 +64,9 @@ group :development, :test do
 
   # Model and controller UML class diagram generator
   gem 'railroady'
+
+  # Gives you hints where to improve your docs. One Inch at a time.
+  gem 'inch', require: false
 end
 
 group :development do

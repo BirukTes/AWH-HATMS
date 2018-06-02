@@ -32,6 +32,13 @@ class Person < ApplicationRecord
   validates_associated(:address, presence: true)
 
 
+  # Concatenates the name
+  #
+  # @return [string] the full name
+  def full_name
+    firstName + ' ' + lastName
+  end
+
   # Concatenates the address
   #
   # @return [String] the full address
