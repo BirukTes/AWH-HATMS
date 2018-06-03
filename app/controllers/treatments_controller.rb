@@ -4,8 +4,6 @@ class TreatmentsController < ApplicationController
   # Declaration of respond-able formats
   respond_to(:html, :json)
 
-  # Authorisation callbacks
-  after_action(:verify_authorized)
 
   def index
     authorize(:treatment)

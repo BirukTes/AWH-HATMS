@@ -1,4 +1,4 @@
-<% patient = Patient.get_patient(@prescription.diagnosis.patient.id) if @prescription.diagnosis %>
+<% patient = @prescription.diagnosis.patient if @prescription.diagnosis %>
 <% staff = Staff.find_by(userId: @prescription.issuedBy) %>
 <h1 class="title-container">Prescription for <%= person_full_name_helper(patient) if patient %></h1>
 <div id="prescription_holder">

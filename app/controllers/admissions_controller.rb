@@ -3,14 +3,14 @@ class AdmissionsController < ApplicationController
   before_action(:set_admission, only: [:show, :edit, :update, :destroy, :discharge, :authorise_discharge,
                                        :admit_scheduled, :cancel_scheduled])
 
-  # Authorisation callbacks
-  # Make sure all actions perform authorisation, (individual records),
-  # index retrieves multiple records so exclude
-  after_action(:verify_authorized)
-
-  # Verify authorisation for all admissions (multiple records), which case index only has multiple
+  # Verify authorisation for all admissions (multiple records),
+  # which case index only has multiple
   # after_action(:verify_policy_scoped, only: :index)
 
+  # Declaration of formats
+  respond_to(:html, :js, :json, :xlsx)
+
+  # GETs all the admissions
   def index
     authorize(:admission)
     # Will allow to use the sorting also
@@ -18,12 +18,17 @@ class AdmissionsController < ApplicationController
     @admissions = @search.result.includes(:ward, :patient)
 
     # This method is aware of what format to respond with (as declared above, js, html, json)
-    respond_with(@admissions)
+    respond_with(@admissions) do |format|
+      format.xlsx { render xlsx: 'index', filename: "Admissions#{(' ' + params[:q][:status_eq] if params[:q])}.xlsx",
+                           disposition: 'attachment', xlsx_created_at: Time.now, xlsx_author: 'AllsWell Hospital' }
+    end
   end
 
+  # GETs an admission to view
   def show;
   end
 
+  # GETs the form for new admission
   def new
     authorize(:admission)
     @admission = Admission.new
@@ -58,6 +63,7 @@ class AdmissionsController < ApplicationController
 
   end
 
+  # Creates an admission with given parameters
   def create
     authorize(:admission)
     @admission = Admission.new(admission_params)
@@ -81,8 +87,8 @@ class AdmissionsController < ApplicationController
     end
   end
 
-  # @return [admission]
-  def edit;
+  # GETs the admission to be edited
+  def edit
     # Make sure admission cannot be edited indirectly
     # Only: under admitted and scheduled
     if !@admission.discharged? && (@admission.admitted? || @admission.scheduled?)
@@ -93,6 +99,7 @@ class AdmissionsController < ApplicationController
     end
   end
 
+  # Updates the admission with only current medications and admission note
   def update
     respond_to do |format|
       # TODO other things need consideration such as team, when moved, track history, so disable updating ward instead
@@ -134,8 +141,8 @@ class AdmissionsController < ApplicationController
     end
   end
 
+  # Sets status to admitted and updates ward bed status
   def admit_scheduled
-    # TODO, actual time admitted
     # Admitted, Discharged, Scheduled
     if @admission.admitted!
       redirect_to(@admission, notice: 'Patient admitted')
@@ -145,6 +152,7 @@ class AdmissionsController < ApplicationController
     end
   end
 
+  # Destroys the scheduled admission record
   def cancel_scheduled
     # Delete the record
     if @admission.destroy
@@ -156,7 +164,7 @@ class AdmissionsController < ApplicationController
   def find_and_discharge
     authorize(:admission)
     if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
-      @admission = Admission.where(patient_id: params[:patient_id], ward_id: params[:ward_id], status: 'Discharged').first
+      @admission = Admission.discharged.where(patient_id: params[:patient_id], ward_id: params[:ward_id]).first
       if @admission
         # Redirect to display discharge modal
         redirect_to(discharge_admission_path(@admission.id))
@@ -168,14 +176,7 @@ class AdmissionsController < ApplicationController
     else
       # Extra validation in case otherwise normal should not get past html required attribute
       if params.key?(:ward_id) && params.key?(:patient_id)
-        flash.now[:alert] = case params[:ward_id].blank? || params[:patient_id].blank?
-                              when params[:ward_id].blank?
-                                'Please select Ward'
-                              when params[:patient_id].blank?
-                                'Please select patient'
-                              else
-                                'Please select available fields'
-                            end
+        flash.now[:alert] = fill_in_validation_msg
       end
     end
   end
@@ -229,17 +230,14 @@ class AdmissionsController < ApplicationController
     @admission = Admission.find(params[:id])
   end
 
-  # Selects which message to show
+  # Gets fill in field message
   #
   # @return [string] message
   def fill_in_validation_msg
-    case params[:dateOfBirth].blank? || params[:lastName].blank?
-      when params[:dateOfBirth].blank?
-        'Please fill in the date of birth'
-      when params[:lastName].blank?
-        'Please fill in the last name'
-      else
-        'Please fill in the all fields'
+    # Simplify from a case statement to generalise the message
+    if params[:dateOfBirth].blank? || params[:lastName].blank? ||
+        params[:ward_id].blank? || params[:patient_id].blank?
+      'Please fill in the all fields'
     end
   end
 end

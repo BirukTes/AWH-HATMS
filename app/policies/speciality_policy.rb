@@ -5,7 +5,6 @@ class SpecialityPolicy < ApplicationPolicy
     end
   end
 
-
   def index?
     staff.medical_staff_admin?
   end

@@ -1,0 +1,9 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: ("Wards - " + localize(Date.today, format: :custom).to_s)) do |sheet|
+   sheet.add_row ["Ward Name","Ward No", "Beds", "Available Beds","Gender", "Department", "Private"]
+   @wards.each do |ward|
+       sheet.add_row [ward.name, ward.id, ward.numberOfBeds, ward.bedStatus, ward.patientGender, ward.deptName, ward.isPrivate],
+         :types => [:string,:integer,:integer,:integer,:string,:string,:string]
+   end
+end

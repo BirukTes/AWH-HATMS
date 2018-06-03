@@ -2,8 +2,7 @@
 
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[show edit update destroy receive_payment set_payment_received]
-  # Authorisation callbacks
-  after_action(:verify_authorized)
+
 
   respond_to(:json, :js, :html)
 

@@ -13,6 +13,16 @@ class ApplicationController < ActionController::Base
   # All controllers must be authenticated, a callback
   before_action(:authenticate_staff!)
 
+
+  # Authorisation callback, to check the action requested performs authorisation
+  # Runs all requests unless (if not) devise controller
+  after_action(:verify_authorized, unless: :devise_controller?)
+
+  # Define the method pundit should use to find current u
+  def pundit_user
+    current_staff
+  end
+
   # This defines the responses types, or It is referencing the response that will
   # be sent to the View (which is going to the browser) https://stackoverflow.com/a/9492463/5124710
   respond_to(:html, :json, :js)
@@ -23,10 +33,6 @@ class ApplicationController < ActionController::Base
     respond_with(*args, options, &blk)
   end
 
-  # Define the method pundit should use to find current u
-  def pundit_user
-    current_staff
-  end
 
   # Authorisation error handling
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized

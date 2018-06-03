@@ -1,8 +1,6 @@
 class DiagnosesController < ApplicationController
   before_action :set_diagnosis, only: [:show, :edit, :update, :destroy]
 
-  # Authorisation callbacks
-  after_action(:verify_authorized)
 
   # GET /diagnoses
   # GET /diagnoses.json

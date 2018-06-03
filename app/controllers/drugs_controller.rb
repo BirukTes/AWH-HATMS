@@ -4,6 +4,7 @@ class DrugsController < ApplicationController
   # GET /drugs
   # GET /drugs.json
   def index
+    authorize(:drug)
     @drugs = Drug.all
   end
 
@@ -14,6 +15,7 @@ class DrugsController < ApplicationController
 
   # GET /drugs/new
   def new
+    authorize(:drug)
     @drug = Drug.new
   end
 
@@ -24,6 +26,7 @@ class DrugsController < ApplicationController
   # POST /drugs
   # POST /drugs.json
   def create
+    authorize(:drug)
     @drug = Drug.new(drug_params)
 
     respond_to do |format|
@@ -64,6 +67,7 @@ class DrugsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_drug
+      authorize(:drug)
       @drug = Drug.find(params[:id])
     end
 

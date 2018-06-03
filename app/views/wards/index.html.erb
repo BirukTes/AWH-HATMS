@@ -1,15 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Wards</h1>
+
+<% @page_title = 'Wards' %>
+
 <br/>
 <div class="row">
   <div class="col-1">
-    <div class="btn-group mr-3">
-      <%= button_tag('Print', class: 'btn btn-outline-secondary mr-3 ', onClick: "printJS({ printable: 'wards_holder', type: 'html', header: 'Wards - #{localize(Date.today).to_s}'})") %>
+    <div class="btn-group mr-auto">
+      <% disable_btn_export = @wards.nil? || @wards&.empty? ? 'disabled' : '' %>
+      <%= link_to('Print', '#', onClick: "printJS({ printable: 'wards_holder', type: 'html', header: 'Wards - #{localize(Date.today, format: :custom).to_s}'})",
+                  class: "btn btn-outline-secondary #{disable_btn_export}") %>
+      <%= link_to('Export as Excel', wards_path(format: :xlsx), { class: "btn btn-outline-secondary form-control #{disable_btn_export}", role: 'button' }) %>
     </div>
   </div>
 </div>
 <br/>
+
 <table id="wards_holder" class="table table-bordered table-striped">
   <thead class="thead-light">
   <tr>
@@ -34,8 +41,8 @@
       <td><%= ward.patientGender %></td>
       <td><%= ward.deptName %></td>
       <td class="label label-"><%= ward.isPrivate %></td>
-      <td><%= link_to 'View', ward, class: 'btn btn-secondary' %></td>
-      <td><%= link_to 'Edit', edit_ward_path(ward), class: 'btn btn-secondary' %></td>
+      <td><%= (link_to 'View', ward, class: 'btn btn-secondary') if policy(:ward).show? %></td>
+      <td><%= (link_to 'Edit', edit_ward_path(ward), class: 'btn btn-secondary') if policy(:ward).update? %></td>
     </tr>
   <% end %>
   </tbody>
@@ -44,5 +51,5 @@
 <br>
 
 <% content_for(:navigationButtons) do %>
-  <%= link_to('Register Ward', new_ward_path, class: 'btn btn-primary') %>
+  <%= link_to('Register Ward', new_ward_path, class: 'btn btn-primary') if policy(:ward).new? %>
 <% end %>

@@ -2,8 +2,6 @@
 class PrescriptionsController < ApplicationController
   before_action(:set_prescription, only: [:show, :edit, :update, :destroy])
 
-  # Authorisation callbacks
-  after_action(:verify_authorized)
 
   def index
     # Needs to know the policy, which is of prescription

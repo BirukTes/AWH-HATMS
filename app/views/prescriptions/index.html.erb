@@ -11,7 +11,7 @@
   </thead>
   <tbody>
   <% @prescriptions&.each do |prescription| %>
-    <% patient = Patient.get_patient(prescription.diagnosis.patient.id) if prescription.diagnosis  %>
+    <% patient = prescription.diagnosis.patient if prescription.diagnosis  %>
     <% staff = Staff.find_by(userId: prescription.issuedBy) %>
     <tr>
       <td><%= localize(prescription.date) %></td>

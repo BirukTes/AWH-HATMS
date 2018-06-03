@@ -4,6 +4,7 @@ class SpecialitiesController < ApplicationController
   # GET /specialities
   # GET /specialities.json
   def index
+    authorize(:speciality)
     @specialities = Speciality.all
   end
 
@@ -14,6 +15,7 @@ class SpecialitiesController < ApplicationController
 
   # GET /specialities/new
   def new
+    authorize(:speciality)
     @speciality = Speciality.new
   end
 
@@ -24,6 +26,7 @@ class SpecialitiesController < ApplicationController
   # POST /specialities
   # POST /specialities.json
   def create
+    authorize(:speciality)
     @speciality = Speciality.new(speciality_params)
 
     respond_to do |format|
@@ -64,6 +67,7 @@ class SpecialitiesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_speciality
+      authorize(:speciality)
       @speciality = Speciality.find(params[:id])
     end
 

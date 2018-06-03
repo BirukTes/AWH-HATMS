@@ -9,7 +9,7 @@ class WardPolicy < ApplicationPolicy
     staff.medical_staff_admin?
   end
 
-  def show
+  def show?
     staff.medical_staff_admin? || staff.consultant?
   end
 

@@ -25,19 +25,29 @@ class Ward < ApplicationRecord
   validates(:numberOfBeds, presence: true)
   validates(:patientGender, presence: true)
   validates(:deptName, presence: true)
+  # Ward number cannot be used again
+  validates_uniqueness_of(:wardNumber, scope: :wardNumber)
 
   human_attribute_name(:wardNumber)
   human_attribute_name(:numberOfBeds)
   human_attribute_name(:patientGender)
   human_attribute_name(:deptName)
 
+  after_create(:set_bed_status)
 
-# TODO future refactor should get even wards are full and indicate this in the list
-#
-# Gets the private or non private wards with given patient, gender
-#
-# @params[patient]
-# @return [Wards]
+  # Sets the bed status
+  #
+  def set_bed_status
+    self.bedStatus = self.numberOfBeds
+    self.save
+  end
+
+  # TODO future refactor should get even wards are full and indicate this in the list
+  #
+  # Gets the private or non private wards with given patient, gender
+  #
+  # @params[patient]
+  # @return [Wards]
   def self.ward_options(patient)
     if patient.isPrivate
       where('"patientGender" = ? AND ("bedStatus" != 0 OR "bedStatus" != Null) AND "isPrivate" = true', "#{patient.person.gender}").all

@@ -4,13 +4,16 @@ class PatientsController < ApplicationController
 
   before_action(:set_patient, only: [:show, :edit, :update, :destroy])
 
-  # Authorisation callbacks
-  after_action(:verify_authorized)
 
   # Handles GET method for index page (all patients/collection)
   def index
     authorize(:patient)
     @patients = Patient.all
+
+    respond_with(@patients) do |format|
+      format.xlsx { render xlsx: 'index', filename: 'Patients', disposition: 'attachment',
+                           xlsx_created_at: Time.now, xlsx_author: 'AllsWell Hospital' }
+    end
   end
 
   # Handles GET method for show/view page, the individual patient's page

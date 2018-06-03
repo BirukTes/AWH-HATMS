@@ -1,10 +1,18 @@
 class WardsController < ApplicationController
   before_action :set_ward, only: [:show, :edit, :update, :destroy]
 
+  # Declaration of formats
+  respond_to(:html, :js, :json, :xlsx)
+
   # GET /wards
   # GET /wards.json
   def index
+    authorize(:ward)
     @wards = Ward.all
+    respond_with(@wards) do |format|
+      format.xlsx { render xlsx: 'index', filename: 'Wards.xlsx', disposition: 'attachment',
+                           xlsx_created_at: Time.now, xlsx_author: 'AllsWell Hospital' }
+    end
   end
 
   # GET /wards/1
@@ -14,6 +22,7 @@ class WardsController < ApplicationController
 
   # GET /wards/new
   def new
+    authorize(:ward)
     @ward = Ward.new
   end
 
@@ -24,6 +33,7 @@ class WardsController < ApplicationController
   # POST /wards
   # POST /wards.json
   def create
+    authorize(:ward)
     @ward = Ward.new(ward_params)
 
     respond_to do |format|
@@ -62,13 +72,14 @@ class WardsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ward
-      @ward = Ward.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_ward
+    authorize(:ward)
+    @ward = Ward.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def ward_params
-      params.require(:ward).permit(:name, :wardNumber, :numberOfBeds, :bedStatus, :patientGender, :deptName, :isPrivate)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def ward_params
+    params.require(:ward).permit(:name, :wardNumber, :numberOfBeds, :bedStatus, :patientGender, :deptName, :isPrivate)
+  end
 end

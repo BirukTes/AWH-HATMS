@@ -1,9 +1,11 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
+
   # GET /teams
   # GET /teams.json
   def index
+    authorize(:team)
     @teams = Team.all
   end
 
@@ -14,6 +16,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/new
   def new
+    authorize(:team)
     @team = Team.new
   end
 
@@ -24,6 +27,7 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
+    authorize(:team)
     @team = Team.new(team_params)
 
     respond_to do |format|
@@ -64,6 +68,7 @@ class TeamsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_team
+      authorize(:team)
       @team = Team.find(params[:id])
     end
 

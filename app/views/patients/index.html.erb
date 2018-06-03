@@ -1,6 +1,21 @@
-<% @page_title = 'Patient' %>
+<% @page_title = 'Patients' %>
 
 <h1>Patients</h1>
+
+<br/>
+<div class="row">
+  <div class="col-1">
+    <div class="btn-group mr-auto">
+      <% disable_btn_export = @patients.nil? || @patients&.empty? ? 'disabled' : '' %>
+      <%= link_to('Print', '#', onClick: "printJS({ printable: 'patients_holder', type: 'html', header: 'Patients - #{localize(Date.today, format: :custom).to_s}'})",
+                  class: "btn btn-outline-secondary #{disable_btn_export}") %>
+      <%= link_to('Export as Excel', patients_path(format: :xlsx), { class: "btn btn-outline-secondary form-control #{disable_btn_export}", role: 'button' }) %>
+    </div>
+  </div>
+</div>
+<br/>
+
+<div id="patients_holder">
 <table class="table table-bordered table-striped">
   <thead class="thead-light">
   <tr>
@@ -28,13 +43,13 @@
       </td>
       <td><%= patient.person.telHomeNo %></td>
       <td><%= patient.person.telMobileNo %></td>
-      <td><%= localize(patient.created_at) %></td>
-      <td><%= link_to('View Details', patient_path(patient.id), class: 'btn btn-secondary') %></td>
+      <td><%= localize(patient.created_at.to_date) %></td>
+      <td><%= link_to('View Details', patient_path(patient.id), class: 'btn btn-secondary') if policy(:ward).show? %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
-
+</div>
 <% content_for(:navigationButtons) do %>
-  <%= link_to('Register Patient', new_patient_path, class: 'btn btn-primary') %>
+  <%= link_to('Register Patient', new_patient_path, class: 'btn btn-primary')  if policy(:ward).new? %>
 <% end %>

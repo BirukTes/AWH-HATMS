@@ -4,8 +4,6 @@ class StaffsController < ApplicationController
 
   before_action(:set_staff, only: [:show])
 
-  # Verify authorisation
-  after_action(:verify_authorized)
 
   def index
     authorize(:staff)

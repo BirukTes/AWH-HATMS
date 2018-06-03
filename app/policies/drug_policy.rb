@@ -6,15 +6,15 @@ class DrugPolicy < ApplicationPolicy
   end
 
   def index?
-    staff.medical_staff_admin? || staff.consultant?
+    staff.medical_staff_admin? || staff.ward_sister?
   end
 
   def create?
-    staff.medical_staff_admin? || staff.consultant?
+    staff.medical_staff_admin? || staff.ward_sister?
   end
 
   def update?
-    staff.medical_staff_admin? || staff.consultant?
+    staff.medical_staff_admin? || staff.ward_sister?
   end
 
   def destroy?

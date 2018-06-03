@@ -1,13 +1,26 @@
+<br/>
+<div class="row">
+  <div class="col-1">
+    <div class="btn-group mr-auto">
+      <% disable_btn_export = @admissions.nil? || @admissions&.empty? ? 'disabled' : '' %>
+      <%= link_to('Print', '#', onClick: "printJS({ printable: 'admission_list_holder', type: 'html', header: 'Admissions - #{localize(Date.today, format: :custom).to_s}'})",
+                  class: "btn btn-outline-secondary #{disable_btn_export}") %>
+      <%= link_to('Export as Excel', admissions_path(format: :xlsx), { class: "btn btn-outline-secondary form-control #{disable_btn_export}",
+                                                                       role: 'button' }) %>
+    </div>
+  </div>
+</div>
+<br/>
 <table class="table table-bordered table-striped" role="datatable">
   <thead class="thead-light">
   <tr>
-    <th>Admission Date</th>
-    <th>Admission No</th>
+    <th><%= sort_link(search, :admissionDate, 'Admission Date') %></th>
+    <th><%= sort_link(search, :id, 'Admission No') %></th>
     <th>Patient Name</th>
     <th>Ward Number</th>
     <th>Ward Name</th>
-    <th>Discharge Date</th>
-    <th>Status</th>
+    <th><%= sort_link(search, :dischargeDate, 'Discharge Date') %></th>
+    <th><%= sort_link(search, :status, 'Status') %></th>
     <th colspan="4">Action</th>
   </tr>
   </thead>

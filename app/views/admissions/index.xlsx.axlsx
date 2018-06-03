@@ -1,0 +1,11 @@
+
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: ("Admissions - " + localize(Date.today, format: :custom).to_s)) do |sheet|
+   sheet.add_row ["Admission Date", "Admission No", "Patient Name", "Ward No", "Ward Name","Discharge Date","Status"]
+   @admissions.each do |admission|
+       sheet.add_row [admission.admissionDate,admission.id, admission.patient.person.full_name, admission.ward.id,
+        admission.ward.name, admission.dischargeDate, admission.status],
+         :types => [:time, :integer, :string,:integer,:string,:time, :string]
+   end
+end

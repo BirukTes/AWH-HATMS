@@ -4,6 +4,7 @@ class JobTitlesController < ApplicationController
   # GET /job_titles
   # GET /job_titles.json
   def index
+    authorize(:JobTitle)
     @job_titles = JobTitle.all
   end
 
@@ -14,6 +15,7 @@ class JobTitlesController < ApplicationController
 
   # GET /job_titles/new
   def new
+    authorize(:JobTitle)
     @job_title = JobTitle.new
   end
 
@@ -24,6 +26,7 @@ class JobTitlesController < ApplicationController
   # POST /job_titles
   # POST /job_titles.json
   def create
+    authorize(:JobTitle)
     @job_title = JobTitle.new(job_title_params)
 
     respond_to do |format|
@@ -64,6 +67,7 @@ class JobTitlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job_title
+      authorize(:JobTitle)
       @job_title = JobTitle.find(params[:id])
     end
 
