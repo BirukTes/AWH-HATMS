@@ -48,9 +48,10 @@ class PrescriptionsController < ApplicationController
     end
   end
 
+  # Optimize Nothing should be deleted
   def destroy
-    @prescription.destroy
-    respond_to(:index, notice: 'Treatment Deleted')
+    # @prescription.destroy
+    # redirect_to :index, notice: 'Prescription Deleted'
   end
 
   # Private methods

@@ -3,8 +3,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  # layout('login') if controller_name.eql?('sessions')
-
   # Import modules
   include DeviseWhitelist
   include DefaultPageContent
@@ -25,7 +23,8 @@ class ApplicationController < ActionController::Base
 
   # This defines the responses types, or It is referencing the response that will
   # be sent to the View (which is going to the browser) https://stackoverflow.com/a/9492463/5124710
-  respond_to(:html, :json, :js)
+  # These all the formats used in this application, defined globally
+  respond_to(:html, :json, :js, :xlsx)
 
   def respond_modal_with(*args, &blk)
     options = args.extract_options!

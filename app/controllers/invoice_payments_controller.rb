@@ -1,18 +1,25 @@
 # frozen_string_literal: true
 
 class InvoicePaymentsController < ApplicationController
-  respond_to(:json, :js, :html)
 
   before_action(:set_admission, only: %i[new create])
 
   def new
-    # Get client authorization token,
-    # include :customer_id => a_customer_id to identify previous customer
-    @client_token = Braintree::ClientToken.generate
+    begin
+      # Get client authorization token,
+      # include :customer_id => a_customer_id to identify previous customer
+      @client_token = Braintree::ClientToken.generate
+        # In worst case this will rescued
+    rescue => e
+      Rails.logger.error { "#{e.message} #{e.backtrace.join("\n")}" }
+      Rollbar.report_exception(e)
+    end
 
     respond_modal_with(@client_token)
   end
 
+  # Create this controller, makes transaction to Braintree,
+  # update attributes and send confirmation
   def create
 
     # Get the submitted nonce from params, for testing 'fake-valid-nonce'
@@ -48,41 +55,50 @@ class InvoicePaymentsController < ApplicationController
     #   end
     # end
 
-    # Make transaction to braintree
-    @payment_result = Braintree::Transaction.sale(
-        amount: @admission.invoice.amount,
-        payment_method_nonce: nonce_from_the_client,
-        options: {
-            submit_for_settlement: true
-        })
-
-    response = { success: @payment_result.success? }
-
     respond_to do |format|
-      # Handle the response
-      if @payment_result.success?
-        puts "success trans: #{@payment_result.transaction.id}"
+      # Rescue all that happens in this in case of an error
+      begin
+        # Make transaction to braintree
+        @payment_result = Braintree::Transaction.sale(
+            amount: @admission.invoice.amount,
+            payment_method_nonce: nonce_from_the_client,
+            options: {
+                submit_for_settlement: true
+            })
 
-        response[:transaction_id] = @payment_result.transaction.id
+        response = { success: @payment_result.success? }
 
 
-        # Update attributes
-        update_invoice_received_attributes
+        # Handle the response
+        if @payment_result.success?
+          puts "success trans: #{@payment_result.transaction.id}"
 
-        # Send confirmation
-        deliver_confirmation
+          response[:transaction_id] = @payment_result.transaction.id
 
-        # Redirect
-        format.html { redirect_to(invoice_path(@admission.invoice), notice: 'Payment successful. Confirmation email will be sent to the patient.') }
-      elsif @payment_result.transaction
-        puts('Error processing trans: ')
-        puts("code: #{@payment_result.transaction.processor_response_code}")
-        puts("text: #{@payment_result.transaction.processor_response_text}")
-        format.js { render(:create, result: @payment_result) }
-      else
-        puts(@payment_result.errors)
-        response[:error] = @payment_result.errors.inspect
-        format.js { render(:create, result: @payment_result) }
+          # Update attributes
+          update_invoice_received_attributes
+
+          # Send confirmation
+          deliver_confirmation
+
+          # Redirect
+          format.html { redirect_to(invoice_path(@admission.invoice),
+                                    notice: 'Payment successful. Confirmation email will be sent to the patient.') }
+        elsif @payment_result.transaction
+          puts('Error processing transaction: ')
+          puts("code: #{@payment_result.transaction.processor_response_code}")
+          puts("text: #{@payment_result.transaction.processor_response_text}")
+          format.js { render(:create, result: @payment_result) }
+        else
+          puts(@payment_result.errors)
+          response[:error] = @payment_result.errors.inspect
+          format.js { render(:create, result: @payment_result) }
+        end
+
+          # In worst case this will rescued
+      rescue => e
+        Rails.logger.error { "#{e.message} #{e.backtrace.join("\n")}" }
+        Rollbar.report_exception(e)
       end
     end
   end
@@ -107,4 +123,5 @@ class InvoicePaymentsController < ApplicationController
     # Handled by delayed job (in the background)
     InvoiceMailer.delay.paid_invoice_confirmation(@admission.invoice)
   end
+
 end

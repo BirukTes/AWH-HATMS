@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class ReportsController < ApplicationController
-  # Define respond-able formats
-  respond_to(:html, :js, :json, :xlsx)
 
-  # Based on the filter criteria specified for the reports
+  # Run the method before any action
+  before_action(:perform_authorise)
+
   def ward_list
     @search = Admission.admitted.ransack(params[:q])
     @admissions = @search.result.includes(:ward, :patient)
@@ -45,5 +45,10 @@ class ReportsController < ApplicationController
 
   def report_params
     params.require(:report).permit(:from_date, :to_date, :ward_id)
+  end
+
+  # Call the authorize method of Pundit with corresponding policy name
+  def perform_authorise
+    authorize(:report)
   end
 end

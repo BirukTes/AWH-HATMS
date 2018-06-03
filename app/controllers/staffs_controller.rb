@@ -1,7 +1,4 @@
 class StaffsController < ApplicationController
-  # Define the formats
-  respond_to(:html, :js)
-
   before_action(:set_staff, only: [:show])
 
 

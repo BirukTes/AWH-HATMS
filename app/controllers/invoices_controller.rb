@@ -3,9 +3,6 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[show edit update destroy receive_payment set_payment_received]
 
-
-  respond_to(:json, :js, :html)
-
   # GET /invoices
   # GET /invoices.json
   def index
