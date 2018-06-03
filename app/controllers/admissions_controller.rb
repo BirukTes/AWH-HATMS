@@ -42,15 +42,15 @@ class AdmissionsController < ApplicationController
         # Display message for the current page
         flash.now[:alert] = 'Patient not found'
       else
-        # Check if patient is has any admitted or scheduled
+        # Check if patient is has any admitted or scheduled +check_admission_status+
         # Returns a collection, evaluates the code inside if it is not nil/empty
-        if @patient.admissions.admitted.size > 0
-          @patient = nil
-          flash.now[:alert] = 'Patient is already admitted'
-        elsif @patient.admissions.scheduled.size > 0
-          @patient = nil
-          flash.now[:alert] = 'Patient is already scheduled'
-        end
+        flash.now[:alert] = if @patient.admissions.admitted.size > 0
+                              @patient = nil
+                              'Patient is already admitted'
+                            elsif @patient.admissions.scheduled.size > 0
+                              @patient = nil
+                              'Patient is already scheduled'
+                            end
       end
     elsif params.include?(:rest_patient)
       @patient = nil
@@ -240,4 +240,19 @@ class AdmissionsController < ApplicationController
       'Please fill in the all fields'
     end
   end
+
+    # Checks if patient already admitted or scheduled
+    # FIXME needs a way
+    # @return [String] message admitted or scheduled, other
+    # def check_admission_status(patient)
+    #   # Check if patient is has any admitted or scheduled
+    #   # Returns a collection, evaluates the code inside if it is not nil/empty
+    #   if patient.admissions.admitted.size > 0
+    #     'Patient is already admitted'
+    #   elsif patient.admissions.scheduled.size > 0
+    #     'Patient is already scheduled'
+    #   else
+    #     false
+    #   end
+    # end
 end

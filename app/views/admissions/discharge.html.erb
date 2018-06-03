@@ -11,7 +11,7 @@
     <tr>
       <td>
         <%= admission_discharge_form.label(:dischargeDate,) %><br/>
-        <%= admission_discharge_form.datetime_field(:dischargeDate, min: @admission.admissionDate.to_date.to_s, max: Date.today.to_s, required: true, class: 'form-control') %>
+        <%= admission_discharge_form.datetime_field(:dischargeDate, min: @admission.admissionDate.to_date.to_s, max: (Date.today + 90.days).to_s, required: true, class: 'form-control') %>
       </td>
     </tr>
     <tr>

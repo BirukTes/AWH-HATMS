@@ -1,7 +1,7 @@
 <%# Local disables remote/ajax request so it reload the page %>
-<fieldset class="none-bs-fieldset">
+<fieldset class="none-bs-fieldset" style="width: 70%; !important;">
   <%= form_with(name: nil, url: action_controller_url, method: :get, local: true) do |form| %>
-    <table class="table borderless" style="width: 40%; !important;">
+    <table class="table borderless">
       <tbody>
       <tr>
         <td class="form-group">

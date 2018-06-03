@@ -2,28 +2,26 @@
 <% @page_title = 'Admissions' %>
 
 <%= search_form_for(@search, url: admissions_path, method: :get) do |filter_form| %>
-  <div style="width: 50% !important;">
-    <fieldset class="none-bs-fieldset">
-      <table class="table borderless">
-        <tbody>
-        <tr>
-          <td>
-            <label>Admitted After</label><br/>
-            <%= filter_form.text_field(:admissionDate_gteq, { value: params.dig(:q, :admissionDate_gteq), type: 'date', min: '2000-05-11', max: Date.today.to_s, id: 'filter_admission_by_date', class: 'form-control' }) %>
-          </td>
-          <td>
-            <label>Status</label><br/>
-            <%= filter_form.select(:status_eq, options_for_select(['Scheduled', 'Admitted', 'Discharged'], params.dig(:q, :status_eq)), { id: 'filter_admission_by_status', include_blank: 'All' }, class: 'form-control') %>
-          </td>
-          <td style="padding-top: 1.2em;">
-            <br/>
-            <%= filter_form.submit('Filter', class: 'btn btn-secondary', id: 'enable_form_submit', data: { disable_with: false }) %>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </fieldset>
-  </div>
+  <fieldset class="none-bs-fieldset" style="width: 70% !important;">
+    <table class="table borderless">
+      <tbody>
+      <tr>
+        <td>
+          <label>Admitted After</label><br/>
+          <%= filter_form.text_field(:admissionDate_gteq, { value: params.dig(:q, :admissionDate_gteq), type: 'date', min: '2000-05-11', max: Date.today.to_s, id: 'filter_admission_by_date', class: 'form-control' }) %>
+        </td>
+        <td>
+          <label>Status</label><br/>
+          <%= filter_form.select(:status_eq, options_for_select(['Scheduled', 'Admitted', 'Discharged'], params.dig(:q, :status_eq)), { id: 'filter_admission_by_status', include_blank: 'All' }, class: 'form-control') %>
+        </td>
+        <td style="padding-top: 1.2em;">
+          <br/>
+          <%= filter_form.submit('Filter', class: 'btn btn-secondary', id: 'enable_form_submit', data: { disable_with: false }) %>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </fieldset>
 <% end %>
 
 <div id="admission_list_holder">

@@ -15,11 +15,11 @@ class TreatmentPolicy < ApplicationPolicy
 
   # Override definition in the application policy
   def create?
-    staff.consultant? || staff.doctor?
+    staff.consultant? || staff.doctor? || staff.staff_nurse? || staff.nurse?
   end
 
   def update?
-    staff.consultant? || staff.doctor?
+    staff.consultant? || staff.doctor? || staff.staff_nurse? || staff.nurse?
   end
 
   def destroy?
