@@ -1,21 +1,38 @@
+# frozen_string_literal: true
+
 class ErrorsController < ApplicationController
   # layout 'errors'
   # https://www.driftingruby.com/episodes/custom-error-pages-with-slack-notification
+  #
+  #  FROM comment section of the article above
+  # This pattern is extremely error-prone. There was once a section for implementing custom error pages in the official Rails guides
+  #  that basically suggested the same approach as this episode, which was later removed because of potential issues it could introduce.
+  #  In this episode specifically, there is a number of potential issues:
+  #
+  # It doesn't filter or summarize exception details at all, so depending on how an exception is raised the app would
+  #  end up brute forcing your slack channel with a lot of noisy events
+  #
+  # self.routes only responds to 404 and 500 and can't handle any other HTTP statuses, which results in ActionController::RoutingError
+  # in the case of e.g. ActionController::MethodNotAllowed that is mapped to 405 (good luck on adding every single status to config/routes.rb)
+  #
+  # If the SlackNotifyJob is configured to use an external queue (e.g. sidekiq, RabbitMQ) and an exception occurs due to that queue, it would
+  # raise an exception again and show an empty error page to the user (this is actually taken care of with a begin ... rescue ... end block,
+  # but still this is an issue that shouldn't exist)
+  #
+  # The ErrorsController inherits from ApplicationController. This means that if the ApplicationController raises an exception in a before_action,
+  #  the ErrorsController would raise the same exception again, which results in the same empty error page situation
+  #
+  # A much better way would be to use a service like Sentry and configure it to send events to your slack channel.
 
+  # Handle all not found errors to previous or login, Devise will handle whether authenticated or not
   def not_found
+    # Rollbar will handle reporting
+    redirect_to(request.reffer || 'devise/sessions#new', alert: 'Not found')
   end
 
+  # Handle all internal server errors to previous or login, Devise will handle whether authenticated or not
   def internal_server_error
-    begin
-      # Could be used to make Slack notification
-      # exception = request.env['action_dispatch.exception']
-      # message = exception.message.to_s
-      # source_extract = exception.source_extract.join("\n")
-      # backtrace = exception.backtrace[0..9].join("\n")
-        # SlackNotifyJob.perform_later(message, source_extract, backtrace)
-    ensure
-      # head :internal_server_error
-      render status: 500
-    end
+    # Rollbar will handle reporting
+    redirect_to(request.reffer || 'devise/sessions#new', alert: 'Internal Server Error', status: 500)
   end
 end

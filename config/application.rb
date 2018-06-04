@@ -11,6 +11,9 @@ module AWHHatms
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
+    # Redirect exceptions to routes which will redirect to appropriate controller
+    config.exceptions_app = self.routes
+
     # Set the queue_adapter
     config.active_job.queue_adapter = :delayed_job
 
