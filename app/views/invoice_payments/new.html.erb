@@ -1,9 +1,9 @@
 <% content_for(:modal_title, 'Make Payment') %>
 
 <%= form_with(url: invoice_payments_path, method: :post, html: { id: 'payment-form', data: { modal: true } }) do %>
-  <%= hidden_field_tag(:payment_method_nonce, nil, id: 'nonce') %>
+  <%= hidden_field_tag(:payment_method_nonce, id: 'nonce') %>
   <%= hidden_field_tag(:admission_id, @admission.id, id: 'admission_id') %>
-  <div class="error_holder col-10">
+  <div class="col-10" id="payment_error_holder">
   </div>
   <div class="form-group">
     <div class="row">
@@ -26,7 +26,7 @@
   </div>
   <div class="form-group">
     <div id="dropin-container"></div>
-    <button id="submit-button" class="btn btn-primary form-control" type="submit">Pay</button>
+    <button id="submit-button" class="btn btn-primary" type="submit">Pay Amount</button>
   </div>
 <% end %>
 
@@ -39,7 +39,7 @@
         container: '#dropin-container',
         paypal: {
             flow: 'checkout',
-            amount: "<%= @invoice.amount %>",
+            amount: "<%= @admission.invoice.amount %>",
             currency: 'GBP'
         }
     }, function (createErr, instance) {

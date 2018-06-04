@@ -1,27 +1,34 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Job Titles</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
+<%	 @page_title = 'Job Titles' %>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Title</th>
+    <th colspan="2"></th>
+  </tr>
   </thead>
 
   <tbody>
+  <% if @job_titles || !@job_titles&.empty? %>
     <% @job_titles.each do |job_title| %>
       <tr>
         <td><%= job_title.title %></td>
         <td><%= link_to 'View', job_title %></td>
         <td><%= link_to 'Edit', edit_job_title_path(job_title) %></td>
-        <td><%= link_to 'Destroy', job_title, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!--<td><%# link_to 'Destroy', job_title, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
+  <% else %>
+    <tr>
+      <td colspan="2"><p>No job titles found.</p></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Job Title', new_job_title_path %>
+<% content_for(:navigationButtons) do %>
+  <%= link_to('New Job Title', new_job_title_path, class: 'btn btn-primary') if policy(:jobTitle).new? %>
+<% end %>

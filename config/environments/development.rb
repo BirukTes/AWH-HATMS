@@ -10,7 +10,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports. Allows to production errors
-  config.consider_all_requests_local = false
+  config.consider_all_requests_local = true
 
   # Default URL option, Configure the mailer to create full URLs in emails
   config.action_mailer.default_url_options = { host: 'localhost:3000' }

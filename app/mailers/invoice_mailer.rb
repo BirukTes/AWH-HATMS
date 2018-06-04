@@ -1,36 +1,48 @@
 class InvoiceMailer < ApplicationMailer
 
   def unpaid_invoice_request(invoice)
-    @invoice = invoice
-    @patient = @invoice.admission.patient
+    begin
+      @invoice = invoice
+      @patient = @invoice.admission.patient
 
-    # Generate the PDF Invoice
-    generate_pdf_invoice('invoices/_unpaid_invoice_template.html.erb', 'unpaid_invoice')
+      # Generate the PDF Invoice
+      generate_pdf_invoice('invoices/_unpaid_invoice_template.html.erb', 'unpaid_invoice')
 
-    # Debug using Mailgun::Client.new(Rails.application.secrets.mailgun_api_key, "bin.mailgun.net", "b913673b", ssl = false)
-    mg_client = Mailgun::Client.new(Rails.application.secrets.mailgun_api_key)
+      # Debug using Mailgun::Client.new(Rails.application.secrets.mailgun_api_key, "bin.mailgun.net", "b913673b", ssl = false)
+      mg_client = Mailgun::Client.new(Rails.application.secrets.mailgun_api_key)
 
-    result = mg_client.send_message(Rails.application.secrets.mailgun_domain, unpaid_invoice_message).to_h!
-    result_message = result['message']
+      result = mg_client.send_message(Rails.application.secrets.mailgun_domain, unpaid_invoice_message).to_h!
+      result_message = result['message']
 
-    puts(result_message)
+      puts(result_message)
+    rescue => e
+      Rails.logger.error { "#{e.message} #{e.backtrace.join("\n")}" }
+      Rollbar.report_exception(e)
+      puts 'Exception: mail gun unpaid'
+    end
   end
 
 
   def paid_invoice_confirmation(invoice)
-    @invoice = invoice
-    @patient = @invoice.admission.patient
+    begin
+      @invoice = invoice
+      @patient = @invoice.admission.patient
 
-    # Generate the PDF Invoice
-    generate_pdf_invoice('invoices/_paid_invoice_template.html.erb', 'paid_invoice')
+      # Generate the PDF Invoice
+      generate_pdf_invoice('invoices/_paid_invoice_template.html.erb', 'paid_invoice')
 
-    # Debug using Mailgun::Client.new(Rails.application.secrets.mailgun_api_key, "bin.mailgun.net", "b913673b", ssl = false)
-    mg_client = Mailgun::Client.new(Rails.application.secrets.mailgun_api_key)
+      # Debug using Mailgun::Client.new(Rails.application.secrets.mailgun_api_key, "bin.mailgun.net", "b913673b", ssl = false)
+      mg_client = Mailgun::Client.new(Rails.application.secrets.mailgun_api_key)
 
-    result = mg_client.send_message(Rails.application.secrets.mailgun_domain, paid_invoice_message).to_h!
-    result_message = result['message']
+      result = mg_client.send_message(Rails.application.secrets.mailgun_domain, paid_invoice_message).to_h!
+      result_message = result['message']
 
-    puts(result_message)
+      puts(result_message)
+    rescue StandardError => e
+      Rails.logger.error { "#{e.message} #{e.backtrace.join("\n")}" }
+      Rollbar.report_exception(e)
+      puts 'Exception: mail gun paid'
+    end
   end
 
 

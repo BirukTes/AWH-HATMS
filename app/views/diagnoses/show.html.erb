@@ -21,7 +21,7 @@
   <tr>
     <td><%= content_tag(:p, @diagnosis.title) %></td>
     <td><%= content_tag(:p, @diagnosis.description) %></td>
-    <td><%= link_to('Edit', edit_diagnosis_path(@diagnosis), class: 'form-control btn btn-secondary') %></td>
+    <td><%= link_to('Edit', edit_diagnosis_path(@diagnosis), class: 'form-control btn btn-secondary') if policy(:diagnoses).update? %></td>
   </tr>
   </tbody>
 </table>

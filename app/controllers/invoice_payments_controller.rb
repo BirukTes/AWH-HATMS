@@ -2,7 +2,7 @@
 
 class InvoicePaymentsController < ApplicationController
 
-  before_action(:set_admission, only: %i[new create])
+  before_action(:set_admission, :perform_authorise, only: %i[new create])
 
   def new
     begin
@@ -23,6 +23,7 @@ class InvoicePaymentsController < ApplicationController
   def create
 
     # Get the submitted nonce from params, for testing 'fake-valid-nonce'
+    # nonce_from_the_client = 'fake-valid-nonce'
     nonce_from_the_client = params[:payment_method_nonce]
 
     # Find the patient in case they already created, a lot can be done
@@ -86,7 +87,8 @@ class InvoicePaymentsController < ApplicationController
                                     notice: 'Payment successful. Confirmation email will be sent to the patient.') }
         elsif @payment_result.transaction
           puts('Error processing transaction: ')
-          puts("code: #{@payment_result.transaction.processor_response_code}")
+          # FIXME ActionView::Template::Error: undefined method `processor_response_text' for nil:NilClass
+          puts("code: #{@payment_result.transaction&.processor_response_code}")
           puts("text: #{@payment_result.transaction.processor_response_text}")
           format.js { render(:create, result: @payment_result) }
         else
@@ -96,9 +98,11 @@ class InvoicePaymentsController < ApplicationController
         end
 
           # In worst case this will rescued
-      rescue => e
+      rescue StandardError => e
         Rails.logger.error { "#{e.message} #{e.backtrace.join("\n")}" }
         Rollbar.report_exception(e)
+        puts 'Exception: payment transaction'
+        retry
       end
     end
   end
@@ -124,4 +128,9 @@ class InvoicePaymentsController < ApplicationController
     InvoiceMailer.delay.paid_invoice_confirmation(@admission.invoice)
   end
 
+  # Performs Authorisation
+  def perform_authorise
+    # Against invoice it os
+    authorize(:invoice)
+  end
 end

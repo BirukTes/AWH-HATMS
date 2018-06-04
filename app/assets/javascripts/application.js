@@ -51,8 +51,9 @@ $(document).ready(function () {
     }
 
 
-    // Bootstrap alert clear up, 20sc before removing
-    $(".alert").fadeOut(20000, function () {
+    // Bootstrap alert clear up, 15sc before removing
+    $(".alert").fadeOut(15000, function () {
+        // $(this).slideUp(1000);
         $('#content').animate({inClass: "fade-in"}, 2000, 'linear');
         $(this).remove();
     }).call();

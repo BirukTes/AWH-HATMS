@@ -17,7 +17,7 @@
 <section class="container-fluid">
   <div id="flash">
     <% flash.each do |key, value| %>
-      <div class="flash alert <%= alert_class(key) %>"><%= value if value.is_a?(String) %></div>
+      <div class="flash alert <%= alert_class_helper(key) %>"><%= value if value.is_a?(String) %></div>
     <% end %>
   </div>
   <%= yield %>

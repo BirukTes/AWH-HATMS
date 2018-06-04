@@ -1,5 +1,17 @@
-<% patient = @treatment.patient %>
+<% patient = @treatment.admission.patient %>
 <h1 class="title-container">Note for <%= (person_full_name_helper(patient) if patient) %></h1>
+<br/>
+<div class="row">
+  <div class="col-1">
+    <div class="btn-group mr-auto">
+      <% disable_btn_export = @admissions.nil? || @admissions&.empty? ? 'disabled' : '' %>
+      <%= link_to('Print', '#', onClick: "printJS({ printable: 'note_holder', type: 'html', header: 'Note for #{((person_full_name_helper(patient) if patient) || '') + ', ' + localize(Date.today, format: :custom).to_s}'})",
+                  class: "btn btn-outline-secondary #{disable_btn_export}") %>
+    </div>
+  </div>
+</div>
+<br/>
+
 <table class="table table-bordered table-striped " id="note_holder">
   <thead class="thead-light">
   <tr>
@@ -20,12 +32,14 @@
     <td>
       <%= person_full_name_helper(Staff.find_by(userId: @treatment.issuedBy)) %>
     </td>
-    <td>
-      <%= link_to('Edit', edit_treatment_path(@treatment.id), role: 'button', class: 'btn btn-secondary') %>
-    </td>
-    <td>
-      <%= link_to('Delete', treatment_path(@treatment.id), method: :delete, data: { confirm: "Should this treatment no. #{@treatment.id} be deleted?" }, role: 'button', class: 'btn btn-secondary') %>
-    </td>
+    <% if policy(:treatment).update? %>
+      <td>
+        <%= link_to('Edit', edit_treatment_path(@treatment.id), role: 'button', class: 'btn btn-secondary') %>
+      </td>
+      <td>
+        <%= link_to('Delete', treatment_path(@treatment.id), method: :delete, data: { confirm: "Should this treatment no. #{@treatment.id} be deleted?" }, role: 'button', class: 'btn btn-secondary') %>
+      </td>
+    <% end %>
   </tr>
   <tr>
     <th>Notes</th>
@@ -38,5 +52,4 @@
 
 <%= content_for(:navigationButtons) do %>
   <%= link_to('Back', treatments_path, role: 'button', class: 'btn btn-primary') %>
-  <%= button_tag('Print', onClick: "printJS({printable: 'note_holder', type: 'html', header: 'Note for #{(person_full_name_helper(patient) if patient) + ', ' + localize(Date.today).to_s}'})", class: 'btn btn-secondary') %>
 <% end %>

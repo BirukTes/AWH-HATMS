@@ -2,28 +2,36 @@
 
 <h1>Drugs</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Code</th>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
+<% @page_title = 'Drugs' %>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Code</th>
+    <th>Name</th>
+    <th colspan="2"></th>
+  </tr>
   </thead>
-
   <tbody>
+  <% if @drugs || !@drugs&.empty? %>
     <% @drugs.each do |drug| %>
       <tr>
         <td><%= drug.code %></td>
         <td><%= drug.name %></td>
         <td><%= link_to 'View', drug %></td>
         <td><%= link_to 'Edit', edit_drug_path(drug) %></td>
-        <td><%= link_to 'Destroy', drug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!--<td><%# link_to 'Destroy', drug, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
+  <% else %>
+    <tr>
+      <td colspan="3"><p>No drugs found.</p></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Drug', new_drug_path %>
+<% content_for(:navigationButtons) do %>
+  <%= link_to('New Drug', new_drug_path, class: 'btn btn-primary') if policy(:drug).new? %>
+<% end %>

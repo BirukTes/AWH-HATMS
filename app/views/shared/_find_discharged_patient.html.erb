@@ -1,26 +1,28 @@
+<fieldset class="none-bs-fieldset" style="width: 70%; !important;">
 <%# Local disables remote/ajax request so it reload the page %>
-<%= form_with(name: nil, url: action_controller_url, method: :get, local: true) do |form| %>
-  <table class="table" >
-    <tbody>
-    <tr>
-      <td>
-        <label>Ward</label><br/>
-        <%# TODO add date range, to all date types %>
-        <% %>
-        <%= form.select(:ward_id, wards_option, { include_blank: 'Select patient admission ward' }, { id: 'ward_id_select_find_discharged', required: true }) %>
-      </td>
-      <td>
-        <label>Patient</label><br/>
-        <%= form.select(:patient_id, {}, { include_blank: 'Select patient' }, { id: 'patient_id_select', disabled: true, required: true }) %>
-        <br/>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%#   %>
-        <%= form.submit('Find', class: 'btn btn-primary', id: 'btn_submit_find_discharged', data: { disable_with: false }, disabled: true) %>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-<% end %>
+  <%= form_with(name: nil, url: action_controller_url, method: :get, local: true) do |form| %>
+    <table class="table borderless">
+      <tbody>
+      <tr>
+        <td>
+          <label>Ward</label><br/>
+          <%# TODO add date range, to all date types %>
+          <% %>
+          <%= form.select(:ward_id, wards_option, { include_blank: 'Select patient admission ward' }, { id: 'ward_id_select_find_discharged', required: true, class: 'form-control' }) %>
+        </td>
+        <td>
+          <label>Patient</label><br/>
+          <%= form.select(:patient_id, {}, { include_blank: 'Select patient' }, { id: 'patient_id_select', disabled: true, required: true, class: 'form-control' }) %>
+          <br/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%#   %>
+          <%= form.submit('Find', class: 'btn btn-primary', id: 'btn_submit_find_discharged', data: { disable_with: false }, disabled: true) %>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  <% end %>
+</fieldset>

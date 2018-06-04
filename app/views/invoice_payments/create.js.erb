@@ -2,4 +2,5 @@
 $(".alert").remove();
 
 //display new validation messages
-$('.error_holder').append('<%= escape_javascript("<p class='alert alert-danger'>Error prevented from processing: #{@payment_result.transaction.processor_response_text}</p>")%>');
+$('#payment_error_holder').append('<%= escape_javascript("<p class='alert alert-danger'>Error prevented
+from processing: #{@payment_result.transaction&.processor_response_text}</p>")%>');

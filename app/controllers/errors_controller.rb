@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class ErrorsController < ApplicationController
+  # Skip authorisation for this controller
+  skip_after_action :verify_authorized
+
   # layout 'errors'
   # https://www.driftingruby.com/episodes/custom-error-pages-with-slack-notification
   #

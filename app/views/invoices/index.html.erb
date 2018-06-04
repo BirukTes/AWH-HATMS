@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Invoices</h1>
+
+<% @page_title = 'Invoices' %>
+
 <br>
 <table class="table table-bordered table-striped">
   <thead class="thead-light">
@@ -14,20 +17,26 @@
   </tr>
   </thead>
   <tbody>
-  <% @invoices.each do |invoice| %>
+  <% if @invoices || !@invoices&.empty? %>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= localize(invoice.created_at.to_date) %></td>
+        <td><%= localize(invoice.dateDue) %></td>
+        <td><%= invoice.paymentReceived %></td>
+        <td>
+          <% if invoice.dateReceived %>
+            <%= localize(invoice.dateReceived) %>
+          <% else %>
+            <p>--</p>
+          <% end %>
+        </td>
+        <td><%= person_full_name_helper(invoice.admission.patient) %></td>
+        <td><%= link_to('View Details', invoice, class: 'btn btn-secondary') if policy(:invoice).show? %></td>
+      </tr>
+    <% end %>
+  <% else %>
     <tr>
-      <td><%= localize(invoice.created_at.to_date) %></td>
-      <td><%= localize(invoice.dateDue) %></td>
-      <td><%= invoice.paymentReceived %></td>
-      <td>
-        <% if invoice.dateReceived %>
-          <%= localize(invoice.dateReceived) %>
-        <% else %>
-          <p>--</p>
-        <% end %>
-      </td>
-      <td><%= person_full_name_helper(invoice.admission.patient) %></td>
-      <td><%= link_to('View Details', invoice, class: 'btn btn-secondary') %></td>
+      <td colspan="6"><p>No invoices found.</p></td>
     </tr>
   <% end %>
   </tbody>
@@ -36,5 +45,5 @@
 
 
 <% content_for(:navigationButtons) do %>
-  <%= link_to('New Invoice', new_invoice_path, class: 'btn btn-primary') %>
+  <%= link_to('New Invoice', new_invoice_path, class: 'btn btn-primary') if policy(:invoice).new? %>
 <% end %>

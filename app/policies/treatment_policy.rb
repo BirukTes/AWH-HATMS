@@ -6,11 +6,11 @@ class TreatmentPolicy < ApplicationPolicy
   end
 
   def index?
-    staff.consultant? || staff.doctor? || staff.staff_nurse? || staff.nurse?
+    true
   end
 
   def show?
-    staff.consultant? || staff.doctor? || staff.staff_nurse? || staff.nurse?
+    true
   end
 
   # Override definition in the application policy

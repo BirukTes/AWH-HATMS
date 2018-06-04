@@ -1,4 +1,19 @@
 <h1 class="title-container">Notes</h1>
+<% @page_title = 'Notes' %>
+<br/>
+<div class="row">
+  <div class="col-1">
+    <div class="btn-group mr-auto">
+      <% disable_btn_export = @treatments.nil? || @treatments&.empty? ? 'disabled' : '' %>
+      <%= link_to('Print', '#', onClick: "printJS({ printable: 'notes_holder_index', type: 'html', header: 'Notes - #{localize(Date.today, format: :custom).to_s}'})",
+                  class: "btn btn-outline-secondary #{disable_btn_export}") %>
+      <%#link_to('Export as Excel', admissions_path(format: :xlsx), { class: "btn btn-outline-secondary form-control #{disable_btn_export}",
+                                                                       role: 'button' }) %>
+    </div>
+  </div>
+</div>
+<br/>
+
 <table class="table table-bordered table-striped" id="notes_holder_index">
   <thead class="thead-light">
   <tr>
@@ -10,17 +25,23 @@
   </tr>
   </thead>
   <tbody>
-  <% @treatments&.each do |treatment| %>
-    <% patient = treatment.patient %>
-    <% staff = Staff.find_by(userId: treatment.issuedBy) %>
+  <% if @treatments || !@treatments&.empty? %>
+    <% @treatments&.each do |treatment| %>
+      <% patient = treatment.patient %>
+      <% staff = Staff.find_by(userId: treatment.issuedBy) %>
+      <tr>
+        <td><%= localize(treatment.date) %> </td>
+        <td><%= treatment.id %></td>
+        <td><%= person_full_name_helper(patient) if patient %></td>
+        <td><%= person_full_name_helper(staff) if staff %></td>
+        <td>
+          <%= link_to('View', treatment_path(treatment.id), role: 'button', class: 'btn btn-secondary') %>
+        </td>
+      </tr>
+    <% end %>
+  <% else %>
     <tr>
-      <td><%= localize(treatment.date) %> </td>
-      <td><%= treatment.id %></td>
-      <td><%= person_full_name_helper(patient) if patient %></td>
-      <td><%= person_full_name_helper(staff) if staff %></td>
-      <td>
-        <%= link_to('View', treatment_path(treatment.id), role: 'button', class: 'btn btn-secondary') %>
-      </td>
+      <td colspan="5"><p>No notes found.</p></td>
     </tr>
   <% end %>
   </tbody>
@@ -28,6 +49,5 @@
 
 
 <% content_for(:navigationButtons) do %>
-  <%= link_to 'Make Note', new_treatment_path, class: 'btn btn-primary' %>
-  <%= button_tag('Print', onClick: "printJS({printable: 'notes_holder_index', type: 'html', header: 'Notes - #{localize(Date.today).to_s}'})", class:'btn btn-secondary') %>
+  <%= link_to('Make Note', new_treatment_path, class: 'btn btn-primary') if policy(:treatment).new? %>
 <% end %>

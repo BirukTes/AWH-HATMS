@@ -5,11 +5,11 @@ class DiagnosesPolicy < ApplicationPolicy
     end
   end
   def index?
-    staff.consultant? || staff.doctor? || staff.staff_nurse? || staff.nurse?
+    true
   end
 
   def show?
-    staff.consultant? || staff.doctor? || staff.staff_nurse? || staff.nurse?
+    true
   end
 
   def create?

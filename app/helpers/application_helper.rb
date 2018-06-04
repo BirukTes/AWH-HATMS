@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  # Gets the Bootstrap class for given flash type
+  # Gets the Bootstrap alert class for given flash type
   #
-  # @return [Bootstrap-Alert-Class]
-  def alert_class(flash_type)
+  # @return [String] alert class
+  def alert_class_helper(flash_type)
     case flash_type.to_sym
       when :notice
         'alert-success'

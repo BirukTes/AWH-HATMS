@@ -27,23 +27,27 @@
 
       </ul>
     </li>
-    <% if policy(:diagnoses).index? %>
-      <li class="treatment-side-menu">
-        <a href="#submenu2" data-toggle="collapse"><i class="fas fa-file-medical fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>
-          Treatment </label></a>
-        <ul id="submenu2" class="list-unstyled collapse">
-          <li class="text-light">&nbsp;&nbsp;Diagnosis</li>
-          <li><a href="/diagnoses">View All</a></li>
+    <li class="treatment-side-menu">
+      <a href="#submenu2" data-toggle="collapse"><i class="fas fa-file-medical fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>
+        Treatment </label></a>
+      <ul id="submenu2" class="list-unstyled collapse">
+        <li class="text-light">&nbsp;&nbsp;Diagnosis</li>
+        <li><a href="/diagnoses">View All</a></li>
+        <% if policy(:diagnoses).new? %>
           <li><a href="/diagnoses/new">Diagnose</a></li>
-          <li class="text-light">&nbsp;&nbsp;Drugs</li>
-          <li><a href="/prescriptions">View all</a></li>
+        <% end %>
+        <li class="text-light">&nbsp;&nbsp;Drugs</li>
+        <li><a href="/prescriptions">View all</a></li>
+        <% if policy(:prescription).new? %>
           <li><a href="/prescriptions/new">Prescribe Drug</a></li>
-          <li class="text-light">&nbsp;&nbsp;Notes</li>
-          <li><a href="/treatments">View All</a></li>
+        <% end %>
+        <li class="text-light">&nbsp;&nbsp;Notes</li>
+        <li><a href="/treatments">View All</a></li>
+        <% if policy(:treatment).new? %>
           <li><a href="/treatments/new">Make Notes</a></li>
-        </ul>
-      </li>
-    <% end %>
+        <% end %>
+      </ul>
+    </li>
     <li class="patient-side-menu">
       <a href="#submenu3" data-toggle="collapse"><i class="fas fa-wheelchair fa-2x custom_width_1_3em"></i><label class='lbl-nav col-sm-auto'>
         Patient </label></a>

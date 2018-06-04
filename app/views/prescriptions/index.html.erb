@@ -1,4 +1,19 @@
 <h1 class="title-container">Prescriptions</h1>
+<% @page_title = 'Prescriptions' %>
+<br/>
+<div class="row">
+  <div class="col-1">
+    <div class="btn-group mr-auto">
+      <% disable_btn_export = @prescriptions.nil? || @prescriptions&.empty? ? 'disabled' : '' %>
+      <%= link_to('Print', '#', onClick: "printJS({ printable: 'prescriptions_holder_index', type: 'html', header: 'Prescriptions - #{localize(Date.today, format: :custom).to_s}'})",
+                  class: "btn btn-outline-secondary #{disable_btn_export}") %>
+      <%#link_to('Export as Excel', admissions_path(format: :xlsx), { class: "btn btn-outline-secondary form-control #{disable_btn_export}",
+                                                                       role: 'button' }) %>
+    </div>
+  </div>
+</div>
+<br/>
+
 <table class="table table-bordered table-striped" id="prescriptions_holder_index">
   <thead class="thead-light">
   <tr>
@@ -10,23 +25,28 @@
   </tr>
   </thead>
   <tbody>
-  <% @prescriptions&.each do |prescription| %>
-    <% patient = prescription.diagnosis.patient if prescription.diagnosis  %>
-    <% staff = Staff.find_by(userId: prescription.issuedBy) %>
+  <% if @prescriptions || !@prescriptions&.empty? %>
+    <% @prescriptions&.each do |prescription| %>
+      <% patient = prescription.diagnosis.patient if prescription.diagnosis %>
+      <% staff = Staff.find_by(userId: prescription.issuedBy) %>
+      <tr>
+        <td><%= localize(prescription.date) %></td>
+        <td><%= prescription.id %></td>
+        <td><%= person_full_name_helper(patient) if patient %></td>
+        <td><%= person_full_name_helper(staff) %></td>
+        <td>
+          <%= link_to('View', prescription_path(prescription.id), role: 'button', class: 'btn btn-secondary') %>
+        </td>
+      </tr>
+    <% end %>
+  <% else %>
     <tr>
-      <td><%= localize(prescription.date) %></td>
-      <td><%= prescription.id %></td>
-      <td><%= person_full_name_helper(patient) if patient %></td>
-      <td><%= person_full_name_helper(staff) %></td>
-      <td>
-        <%= link_to('View', prescription_path(prescription.id), role: 'button', class: 'btn btn-primary') %>
-      </td>
+      <td colspan="5"><p>No drug prescriptions found.</p></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <% content_for(:navigationButtons) do %>
-  <%= link_to('Prescribe Drug', new_diagnosis_path, class: 'btn btn-primary') if policy(:diagnoses).new? %>
-  <%= button_tag('Print', onClick: "printJS({printable: 'prescriptions_holder_index', type: 'html', header: 'Diagnoses - #{localize(Date.today).to_s}'})", class: 'btn btn-secondary') %>
+  <%= link_to('Prescribe Drug', new_diagnosis_path, class: 'btn btn-primary') if policy(:prescription).new? %>
 <% end %>
