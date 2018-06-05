@@ -7,7 +7,7 @@
   <div class="col-1">
     <div class="btn-group mr-auto">
       <% disable_btn_export = @patients.nil? || @patients&.empty? ? 'disabled' : '' %>
-      <%= link_to('Print', '#', onClick: "printJS({ printable: 'patients_holder', type: 'html', header: 'Patients - #{localize(Date.today, format: :custom).to_s}'})",
+      <%= link_to('Print', '#', onClick: "printJS({ printable: 'patients_holder', type: 'html', header: 'Patients - #{localize(Date.today, format: :custom).to_s}', ignoreElements:['action']})",
                   class: "btn btn-outline-secondary #{disable_btn_export}") %>
       <%= link_to('Export as Excel', patients_path(format: :xlsx), { class: "btn btn-outline-secondary form-control #{disable_btn_export}", role: 'button' }) %>
     </div>
@@ -16,40 +16,39 @@
 <br/>
 
 <div id="patients_holder">
-<table class="table table-bordered table-striped">
-  <thead class="thead-light">
-  <tr>
-    <th>ID No</th>
-    <th>Full Name</th>
-    <th>Date Of Birth</th>
-    <th>Gender</th>
-    <th>Address</th>
-    <th>Home Telephone No</th>
-    <th>Mobile Telephone No</th>
-    <th>Register Date</th>
-    <th>Action</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @patients&.each do |patient| %>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-light">
     <tr>
-      <td><%= patient.id %></td>
-
-      <td><%= person_full_name_helper(patient) %></td>
-      <td><%= localize(patient.person.dateOfBirth) %></td>
-      <td><%= patient.person.gender %></td>
-      <td><%= patient.person.address.houseNumber + ', ' + patient.person.address.street + ', ' +
-                  patient.person.address.town + ', ' + patient.person.address.postcode %>
-      </td>
-      <td><%= patient.person.telHomeNo %></td>
-      <td><%= patient.person.telMobileNo %></td>
-      <td><%= localize(patient.created_at.to_date) %></td>
-      <td><%= link_to('View Details', patient_path(patient.id), class: 'btn btn-secondary') if policy(:ward).show? %></td>
+      <th>ID No</th>
+      <th>Full Name</th>
+      <th>Date Of Birth</th>
+      <th>Gender</th>
+      <th>Address</th>
+      <th>Home Telephone No</th>
+      <th>Mobile Telephone No</th>
+      <th>Private</th>
+      <th>Register Date</th>
+      <th>Action</th>
     </tr>
-  <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+    <% @patients&.each do |patient| %>
+      <tr>
+        <td><%= patient.id %></td>
+        <td><%= person_full_name_helper(patient) %></td>
+        <td><%= localize(patient.person.dateOfBirth) %></td>
+        <td><%= patient.person.gender %></td>
+        <td><%= patient.person.full_address %></td>
+        <td><%= patient.person.telHomeNo %></td>
+        <td><%= patient.person.telMobileNo %></td>
+        <td><%= patient.isPrivate %></td>
+        <td><%= localize(patient.created_at.to_date) %></td>
+        <td id="action"><%= link_to('View Details', patient_path(patient.id), class: 'btn btn-secondary') if policy(:ward).show? %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </div>
 <% content_for(:navigationButtons) do %>
-  <%= link_to('Register Patient', new_patient_path, class: 'btn btn-primary')  if policy(:ward).new? %>
+  <%= link_to('Register Patient', new_patient_path, class: 'btn btn-primary') if policy(:ward).new? %>
 <% end %>

@@ -10,6 +10,8 @@
     <th>Address</th>
     <th>Home Telephone No</th>
     <th>Mobile Telephone No</th>
+    <th>Private</th>
+    <th>Email</th>
     <th>Register Date</th>
   </tr>
   </thead>
@@ -21,6 +23,8 @@
     <td><%= @patient.person.full_address %> </td>
     <td><%= @patient.person.telHomeNo %></td>
     <td><%= @patient.person.telMobileNo %></td>
+    <td><%= @patient.isPrivate %></td>
+    <td><%= @patient.email || '--' %></td>
     <td><%= localize(@patient.created_at.to_date) %></td>
   </tr>
   </tbody>
@@ -188,7 +192,7 @@
             <% else %>
           <tr>
             <td colspan="5"><p>No invoice found.</p></td>
-            <% if  policy(:admission).new? %>
+            <% if policy(:admission).new? %>
               <%#	 TODO add crate link to new invoice %>
               <td><%# link_to('Create Invoice', new_invoice_path()) %></td>
             <% end %>
@@ -211,4 +215,5 @@
 <%= content_for(:navigationButtons) do %>
   <% session[:patients_show_back_url] = request.referrer if session[:patients_show_back_url].nil? %>
   <%= link_to('Back', session[:patients_show_back_url], role: 'button', class: 'btn btn-primary') %>
+  <%= link_to('Edit', edit_patient_path(@patient), role: 'button', class: 'btn btn-secondary') %>
 <% end %>
