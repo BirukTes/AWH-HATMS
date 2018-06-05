@@ -49,10 +49,10 @@ class PatientsController < ApplicationController
           format.html { redirect_to(new_admission_path(dateOfBirth: @patient.person.dateOfBirth, lastName: @patient.person.lastName),
                                     notice: 'Patient registration successful') }
         else
-          format.html { redirect_to(patients_path(@patient), notice: 'Patient registration successful') }
+          format.html { redirect_to(patients_path, notice: 'Patient registration successful') }
         end
       else
-        format.js { render :new, status: :unprocessable_entity }
+        format.js { render :create, status: :unprocessable_entity }
       end
     end
   end
