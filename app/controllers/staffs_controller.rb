@@ -36,7 +36,7 @@ class StaffsController < ApplicationController
 
   def update
     authorize(:staff)
-
+    binding.pry
     # Remove the password from params so it does not updated if it is blank
     params[:staff].delete(:password) if params[:staff][:password].blank?
     params[:staff].delete(:password_confirmation) if params[:staff][:password_confirmation].blank?
@@ -55,8 +55,8 @@ class StaffsController < ApplicationController
     params.require(:staff).permit(:id, :userId, :team_id, :email, :password, :password_confirmation,
                                   person_attributes: [:id, :firstName, :lastName, :gender, :dateOfBirth, :telHomeNo, :telMobileNo,
                                                       address_attributes: [:id, :houseNumber, :street, :town, :postcode]],
-                                  specialisms_attributes: [:speciality_id],
-                                  jobs_attributes: [:job_title_id])
+                                  specialisms_attributes: [:id, :speciality_id],
+                                  jobs_attributes: [:id, :job_title_id])
   end
 
   def set_staff
