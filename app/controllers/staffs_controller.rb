@@ -36,7 +36,7 @@ class StaffsController < ApplicationController
 
   def update
     authorize(:staff)
-    binding.pry
+
     # Remove the password from params so it does not updated if it is blank
     params[:staff].delete(:password) if params[:staff][:password].blank?
     params[:staff].delete(:password_confirmation) if params[:staff][:password_confirmation].blank?

@@ -34,7 +34,7 @@
                   <% if @minimum_password_length %>
                     <em>(<%= @minimum_password_length %> characters minimum)</em>
                   <% end %><br/>
-                  <%= staff_form.password_field(:password,  required: (true unless action_name == 'edit'), class: 'form-control') %>
+                  <%= staff_form.password_field(:password, required: (true unless action_name == 'edit'), class: 'form-control') %>
                 </div>
               </td>
               <!--Override bootstrap td specifically here-->
@@ -61,7 +61,7 @@
                 <td>
                   <div class="form-group">
                     <%= specialism_fields.label(:speciality_id, 'Speciality') %><br/>
-                    <%= specialism_fields.select(:speciality_id, specialities_option, {include_blank: 'Select Speciality'}, required: true, class: 'form-control',
+                    <%= specialism_fields.select(:speciality_id, specialities_option, { include_blank: 'Select Speciality' }, required: true, class: 'form-control',
                                                  disabled: (true if action_name == 'edit'), readOnly: (true if action_name == 'edit')) %>
                   </div>
                 </td>
@@ -70,7 +70,7 @@
                 <td>
                   <div class="form-group">
                     <%= job_fields.label(:job_title_id, 'Job title') %><br/>
-                    <%= job_fields.select(:job_title_id, job_titles_option, {include_blank: 'Select Job Title'}, required: true, class: 'form-control',
+                    <%= job_fields.select(:job_title_id, job_titles_option, { include_blank: 'Select Job Title' }, required: true, class: 'form-control',
                                           disabled: (true if action_name == 'edit'), readOnly: (true if action_name == 'edit')) %>
                   </div>
                 </td>
@@ -80,7 +80,7 @@
               <td>
                 <div class="form-group">
                   <%= staff_form.label(:team_id) %><br/>
-                  <%= staff_form.select(:team_id, teams_option, {include_blank: 'Select Team'}, required: true, class: 'form-control',
+                  <%= staff_form.select(:team_id, teams_option, { include_blank: 'Select Team' }, required: true, class: 'form-control',
                                         disabled: (true if action_name == 'edit'), readOnly: (true if action_name == 'edit')) %>
                 </div>
               </td>
@@ -96,7 +96,7 @@
     <table class="table borderless">
       <tbody>
       <tr>
-        <td> <%= staff_form.submit('Cancel', { class: 'btn btn-secondary' }) %></td>
+        <td> <%= link_to('Cancel', staffs_path, { class: 'btn btn-secondary' }) %></td>
         <td>  <%= staff_form.submit({ class: 'btn btn-primary' }) %></td>
       </tr>
       </tbody>
