@@ -69,6 +69,9 @@ class Staff < ApplicationRecord
   # delegate(:firstName, :lastName, to: :person, prefix: :pd)
 
 
+  # Manage staff activity with these methods
+  enum active: { active: true, inactive: false }
+
   # Gets the first job title of the staff
   #
   # @return [title:string]

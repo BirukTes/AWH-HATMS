@@ -21,6 +21,7 @@ class Team < ApplicationRecord
 
   # Name is mandatory at model level, as marked as not null on schema
   validates(:name, presence: true)
+  validates_uniqueness_of(:name, scope: :name)
 
   # Optional needs to be created even without it
   # validates(:head, presence: true)
