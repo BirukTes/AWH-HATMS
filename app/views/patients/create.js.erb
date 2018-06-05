@@ -1,10 +1,10 @@
 // Remove old validation messages
-$(".alert").remove();
+$("#error_explanation").remove();
 
 $(document).ready(function(){
     $(window).scrollTop(0);
 });
 
 // Display new validation messages
-$('.error_holder').append('<%= escape_javascript(render('shared/errors', model: @patient))%>');
+$('#error_holder_patient_registration').append('<%= escape_javascript(render('shared/errors', model: @patient))%>');
 

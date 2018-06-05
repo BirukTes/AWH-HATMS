@@ -14,11 +14,11 @@ class PatientPolicy < ApplicationPolicy
   end
 
   def create?
-    staff.medical_staff_admin? || staff.consultant?
+    staff.medical_staff_admin?
   end
 
   def update?
-    staff.medical_staff_admin? || staff.consultant?
+    staff.medical_staff_admin?
   end
 
   def destroy?
