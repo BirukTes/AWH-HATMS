@@ -1,5 +1,5 @@
 class StaffsController < ApplicationController
-  before_action(:set_staff, only: [:show])
+  before_action(:set_staff, only: [:show, :edit, :update])
 
 
   def index
@@ -21,10 +21,28 @@ class StaffsController < ApplicationController
 
   def create
     authorize(:staff)
-    @staff = Staff.new(user_params)
+    @staff = Staff.new(staff_params)
 
-    if @staff.save!
+    if @staff.save
       redirect_to(staffs_path, notice: 'Staff registration successful')
+    else
+      # Will take care of the format
+      respond_with(@staff)
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    authorize(:staff)
+
+    # Remove the password from params so it does not updated if it is blank
+    params[:staff].delete(:password) if params[:staff][:password].blank?
+    params[:staff].delete(:password_confirmation) if params[:staff][:password_confirmation].blank?
+
+    if @staff.update(staff_params)
+      redirect_to(staffs_path, notice: 'Staff update successful')
     else
       # Will take care of the format
       respond_with(@staff)
@@ -33,7 +51,7 @@ class StaffsController < ApplicationController
 
   private
 
-  def user_params
+  def staff_params
     params.require(:staff).permit(:id, :userId, :team_id, :email, :password, :password_confirmation,
                                   person_attributes: [:id, :firstName, :lastName, :gender, :dateOfBirth, :telHomeNo, :telMobileNo,
                                                       address_attributes: [:id, :houseNumber, :street, :town, :postcode]],

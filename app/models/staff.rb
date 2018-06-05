@@ -55,14 +55,14 @@ class Staff < ApplicationRecord
 
   # For nested forms
   # Use for additional validations, reject_if: proc { |attributes| attributes[:attribute].blank? }
-  accepts_nested_attributes_for(:specialisms, allow_destroy: true)
-  accepts_nested_attributes_for(:jobs, allow_destroy: true)
+  accepts_nested_attributes_for(:specialisms, allow_destroy: true, update_only: true)
+  accepts_nested_attributes_for(:jobs, allow_destroy: true, update_only: true)
   accepts_nested_attributes_for(:person, update_only: true, allow_destroy: true)
 
 
-  validates_associated :person, presence: true
-  validates_associated(:specialisms, presence: true)
-  validates_associated(:jobs, presence: true)
+  validates_associated(:person)
+  validates_associated(:specialisms)
+  validates_associated(:jobs)
   validates(:userId, presence: true, uniqueness: { case_sensitive: true })
 
   # Provides access to the parent methods, or the class person, not working

@@ -88,5 +88,6 @@
   <% session[:staffs_show_back_url] = request.referrer if session[:staffs_show_back_url].nil? %>
   <%# Staff can only view their profile, therefore otherwise redirect to home when referrer is not available %>
   <%= link_to('Back', session[:staffs_show_back_url] || home_path, class: 'btn btn-secondary') %>
+  <%= link_to('Edit', edit_staff_path(@staff), class: 'btn btn-secondary') if policy(:staff).update? %>
 <% end %>
 
