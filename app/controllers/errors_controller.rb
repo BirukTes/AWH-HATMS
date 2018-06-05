@@ -30,12 +30,27 @@ class ErrorsController < ApplicationController
   # Handle all not found errors to previous or login, Devise will handle whether authenticated or not
   def not_found
     # Rollbar will handle reporting
-    redirect_to(request.reffer || 'devise/sessions#new', alert: 'Not found')
+    flash[:alert] ='Not found'
+    redirect_to(request.referrer || root_path)
   end
 
   # Handle all internal server errors to previous or login, Devise will handle whether authenticated or not
   def internal_server_error
     # Rollbar will handle reporting
-    redirect_to(request.reffer || 'devise/sessions#new', alert: 'Internal Server Error', status: 500)
+    flash[:alert] ='Not found'
+    redirect_to(request.referrer || root_path, alert: 'Internal Server Error', status: 500)
+  end
+
+  def not_acceptable
+    # Rollbar will handle reporting
+    flash[:alert] ='Not found'
+    redirect_to(request.referrer || root_path)
+  end
+
+  # Handles HTTP status 410:
+  def gone
+    # Rollbar will handle reporting
+    flash[:alert] ='The page is gone'
+    redirect_to(request.referrer || root_path)
   end
 end

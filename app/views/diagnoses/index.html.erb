@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-1">
     <div class="btn-group mr-3">
-      <%= button_tag('Print', class: 'btn btn-outline-secondary mr-3 ', onClick: "printJS({printable: 'diagnoses_holder_index', type: 'html', header: 'Diagnoses - #{localize(Date.today, format: :custom).to_s}'})") %>
+      <%= button_tag('Print', class: 'btn btn-outline-secondary mr-3 ', onClick: "printJS({printable: 'diagnoses_holder_index', type: 'html', header: 'Diagnoses - #{localize(Date.today, format: :custom).to_s}', ignoreElements:['action']})") %>
     </div>
   </div>
 </div>
@@ -14,7 +14,7 @@
     <th>Title</th>
     <th>Description</th>
     <th>Patient Name</th>
-    <th colspan="2"></th>
+    <th colspan="2" id="action">Action</th>
   </tr>
   </thead>
   <tbody>
@@ -24,9 +24,9 @@
       <td><%= diagnosis.title %></td>
       <td><%= diagnosis.description %></td>
       <td><%= person_full_name_helper(diagnosis.admission.patient) %></td>
-      <td><%= link_to('View', diagnosis, class: 'btn btn-secondary') %></td>
+      <td id="action"><%= link_to('View', diagnosis, class: 'btn btn-secondary') %></td>
       <% if policy(:diagnoses).update? %>
-        <td><%= link_to('Edit', edit_diagnosis_path(diagnosis), class: 'btn btn-secondary') %></td>
+        <td id="action"><%= link_to('Edit', edit_diagnosis_path(diagnosis), class: 'btn btn-secondary') %></td>
       <% end %>
     </tr>
   <% end %>

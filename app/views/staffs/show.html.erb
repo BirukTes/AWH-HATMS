@@ -1,6 +1,24 @@
-<h1>Hi <%= person_full_name_helper(@staff) %> </h1>
 <% @page_title = 'Staff | Profile' %>
 
+<% if @staff.id == current_staff.id %>
+  <h1>Hi <%= person_full_name_helper(@staff) %> </h1>
+<% else %>
+  <h1>Staff: <%= person_full_name_helper(@staff) %> </h1>
+<% end %>
+
+<br/>
+<div class="row">
+  <div class="col-1">
+    <div class="btn-group mr-auto">
+      <% disable_btn_export = @staff.nil? || @staff&.blank? ? 'disabled' : '' %>
+      <%= link_to('Print', '#', onClick: "printJS({ printable: 'staff_holder', type: 'html', header: 'Staff - #{localize(Date.today, format: :custom).to_s}', ignoreElements:['action']})",
+                  class: "btn btn-outline-secondary #{disable_btn_export}") %>
+    </div>
+  </div>
+</div>
+<br/>
+
+<div id="staff_holder">
 <table class="table table-bordered table-striped">
   <thead class="thead-light">
   <tr>
@@ -64,6 +82,7 @@
   <% end %>
   </tbody>
 </table>
+</div>
 
 <% content_for(:navigationButtons) do %>
   <% session[:staffs_show_back_url] = request.referrer if session[:staffs_show_back_url].nil? %>
