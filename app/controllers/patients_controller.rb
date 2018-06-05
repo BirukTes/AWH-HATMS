@@ -66,11 +66,12 @@ class PatientsController < ApplicationController
   def update
     respond_to do |format|
       if @patient.update(patient_params)
+        # Update the patient within admission form page
         if params.include?(:update_patient)
           @update_patient_successful = true
           format.js
         else
-          redirect_to(patients_path, notice: 'Patient updated!')
+          format.html { redirect_to(patients_path, notice: 'Patient updated!') }
         end
       else
         if params.include?(:update_patient)
