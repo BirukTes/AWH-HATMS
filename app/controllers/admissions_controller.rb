@@ -7,9 +7,6 @@ class AdmissionsController < ApplicationController
   # which case index only has multiple
   # after_action(:verify_policy_scoped, only: :index)
 
-  # Declaration of formats
-  respond_to(:html, :js, :json, :xlsx)
-
   # GETs all the admissions
   def index
     authorize(:admission)

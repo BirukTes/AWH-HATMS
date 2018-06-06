@@ -28,3 +28,7 @@
   <%= render('admissions/admissions_list', admissions: @admissions, search: @search) %>
 </div>
 
+<% content_for(:navigationButtons) do %>
+  <%= link_to('Admit Patient', new_admission_path, class: 'btn btn-primary') if policy(:admission).new? %>
+<% end %>
+
