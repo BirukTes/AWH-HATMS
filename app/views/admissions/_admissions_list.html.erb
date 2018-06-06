@@ -6,7 +6,7 @@
       <%= link_to('Print', '#', onClick: "printJS({ printable: 'admission_list_holder', type: 'html', header: 'Admissions - #{localize(Date.today, format: :custom).to_s}', ignoreElements:['action']})",
                   class: "btn btn-outline-secondary #{disable_btn_export}", id: "action") %>
       <%= link_to('Export as Excel', admissions_path(format: :xlsx), { class: "btn btn-outline-secondary form-control #{disable_btn_export}",
-                                                                       role: 'button', id: "action" }) %>
+                                                                       role: 'button', id: "action", params: { q: (params[:q] unless params[:q].blank?) } }) %>
     </div>
   </div>
 </div>
@@ -36,7 +36,9 @@
         <td><%= ward.wardNumber %></td>
         <td><%= ward.name %></td>
         <td><%= admission.dischargeDate ? localize(admission.dischargeDate) : '--' %></td>
-        <td><span class="badge <%= admission_badge_class_helper(admission.status) %>"><%= admission.status.humanize %></span></td>
+        <td>
+          <span class="badge <%= admission_badge_class_helper(admission.status) %>"><%= admission.status.humanize %></span>
+        </td>
         <td colspan="4" id="action">
           <table class="borderless">
             <tbody>

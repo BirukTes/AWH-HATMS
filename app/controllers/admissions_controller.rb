@@ -67,7 +67,7 @@ class AdmissionsController < ApplicationController
 
     respond_to do |format|
       # It is important to check it save it
-      if @admission.save!
+      if @admission.save
 
         # if @admission.admissionDate.to_date == Date.today
         # TODO add some way of accepting admission now/today

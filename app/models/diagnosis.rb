@@ -1,3 +1,7 @@
+# Handles diagnosis model, child of admission with access to patient and has many prescriptions
+#
+# @author Bereketab Gulai
+
 # == Schema Information
 #
 # Table name: diagnoses

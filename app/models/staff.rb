@@ -36,7 +36,7 @@ class Staff < ApplicationRecord
   #
   # Authentication keys changes the login identifier, userId, original email
   devise(:database_authenticatable, #:registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
+         :recoverable, :trackable, :validatable, #:rememberable,
          :timeoutable, authentication_keys: [:userId])
 
   # Association to team is nullable/optional

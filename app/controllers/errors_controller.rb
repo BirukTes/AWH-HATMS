@@ -27,30 +27,27 @@ class ErrorsController < ApplicationController
   #
   # A much better way would be to use a service like Sentry and configure it to send events to your slack channel.
 
+  # Rollbar will handle reporting
+
   # Handle all not found errors to previous or login, Devise will handle whether authenticated or not
   def not_found
-    # Rollbar will handle reporting
-    flash[:alert] ='Not found'
-    redirect_to(request.referrer || root_path)
-  end
-
-  # Handle all internal server errors to previous or login, Devise will handle whether authenticated or not
-  def internal_server_error
-    # Rollbar will handle reporting
-    flash[:alert] ='Not found'
-    redirect_to(request.referrer || root_path, alert: 'Internal Server Error', status: 500)
+    flash[:alert] = 'Not found'
+    redirect_to(request.referrer || root_path, status: 404)
   end
 
   def not_acceptable
-    # Rollbar will handle reporting
-    flash[:alert] ='Not found'
-    redirect_to(request.referrer || root_path)
+    flash[:alert] = 'Not found'
+    redirect_to(request.referrer || root_path, status: 406)
   end
 
   # Handles HTTP status 410:
   def gone
-    # Rollbar will handle reporting
-    flash[:alert] ='The page is gone'
-    redirect_to(request.referrer || root_path)
+    flash[:alert] = 'The page is gone'
+    redirect_to(request.referrer || root_path, status: 410)
+  end
+
+  # Handle all internal server errors to previous or login, Devise will handle whether authenticated or not
+  def internal_server_error
+    redirect_to(request.referrer || root_path, alert: 'Internal Server Error', status: 500)
   end
 end
