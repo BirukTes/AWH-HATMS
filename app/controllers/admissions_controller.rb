@@ -67,7 +67,7 @@ class AdmissionsController < ApplicationController
 
     respond_to do |format|
       # It is important to check it save it
-      if @admission.save
+      if @admission.save!
 
         # if @admission.admissionDate.to_date == Date.today
         # TODO add some way of accepting admission now/today
@@ -91,7 +91,7 @@ class AdmissionsController < ApplicationController
     if !@admission.discharged? && (@admission.admitted? || @admission.scheduled?)
       render(:edit)
     else
-      flash[:alert] = 'This admission cannot be edited.'
+      flash.now[:alert] = 'This admission cannot be edited.'
       redirect_to(request.referrer || root_path)
     end
   end

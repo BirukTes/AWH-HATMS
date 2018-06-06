@@ -27,8 +27,9 @@ class Admission < ApplicationRecord
   has_many(:treatments, dependent: :destroy)
 
   validates(:admissionDate, presence: true)
-  validate(:admission_date_in_future?)
-  validate(:discharge_date_in_future?)
+  # FIXME need review
+  # validate(:admission_date_in_future?)
+  # validate(:discharge_date_in_future?)
   validates(:patient_id, presence: true)
   validates(:ward_id, presence: true)
 
@@ -198,6 +199,7 @@ allswell.hospital@outlook.com"
   #
   # @return [boolean] true indicates past, otherwise false
   def discharge_date_in_future?
+    # Past
     if dischargeDate < Time.now
       errors.add(:dischargeDate, 'Discharge date must be in the future or now')
     end
