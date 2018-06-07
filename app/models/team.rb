@@ -1,3 +1,7 @@
+# Allows to create Team, has many allocations to wards, has many ward through allocations
+#
+# @author Bereketab Gulai
+
 # == Schema Information
 #
 # Table name: teams
@@ -18,6 +22,7 @@ class Team < ApplicationRecord
 
   # One-to-many
   has_many :staffs
+
 
   # Name is mandatory at model level, as marked as not null on schema
   validates(:name, presence: true)

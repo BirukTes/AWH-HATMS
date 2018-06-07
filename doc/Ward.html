@@ -6,7 +6,7 @@
 <title>
   Class: Ward
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.13
   
 </title>
 
@@ -169,6 +169,39 @@ the list.</p>
       
     </ul>
   
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_bed_status-instance_method" title="#set_bed_status (instance method)">#<strong>set_bed_status</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Sets the bed status.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
 
 
   
@@ -227,18 +260,18 @@ the list</p>
       <pre class="lines">
 
 
-41
-42
-43
-44
-45
-46
-47
-48
-49</pre>
+51
+52
+53
+54
+55
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/ward.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'app/models/ward.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ward_options'>ward_options</span><span class='lparen'>(</span><span class='id identifier rubyid_patient'>patient</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_patient'>patient</span><span class='period'>.</span><span class='id identifier rubyid_isPrivate'>isPrivate</span>
@@ -256,12 +289,61 @@ the list</p>
     
   </div>
 
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="set_bed_status-instance_method">
+  
+    #<strong>set_bed_status</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Sets the bed status</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/ward.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_bed_status'>set_bed_status</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_bedStatus'>bedStatus</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_numberOfBeds'>numberOfBeds</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
 </div>
 
       <div id="footer">
-  Generated on Fri Jun  1 15:12:30 2018 by
+  Generated on Wed Jun  6 23:09:02 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.1).
+  0.9.13 (ruby-2.4.1).
 </div>
 
     </div>

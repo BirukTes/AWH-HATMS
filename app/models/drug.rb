@@ -1,4 +1,4 @@
-# Handles drug model
+# Handles drug model, has many medications and prescriptions through junction medications
 #
 # @author Bereketab Gulai
 

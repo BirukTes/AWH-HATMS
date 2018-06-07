@@ -1,4 +1,5 @@
-# Handles diagnosis model, child of admission with access to patient and has many prescriptions
+# Handles diagnosis model, child of admission with access to patient and
+# has many prescriptions,has access to patient through admission parent
 #
 # @author Bereketab Gulai
 
@@ -19,10 +20,7 @@ class Diagnosis < ApplicationRecord
   has_many :prescriptions
   has_one(:patient, through: :admission)
 
+  # Validates all fields
   validates(:title, presence: true)
   validates(:description, presence: true)
-
-  def self.policy_class
-    DiagnosisPolicy
-  end
 end

@@ -1,3 +1,9 @@
+# Model modified to be considered as notes holder for a patient during their admission
+#
+# @note name still kept to reserve the requirement, should take change in future maintenance
+#
+# @author Bereketab Gulai
+
 # == Schema Information
 #
 # Table name: treatments
@@ -11,12 +17,10 @@
 #  admission_id :bigint(8)
 #
 
-# @author Bereketab Gulai
-#
-#
+# TODO Name of treatment requires changing
 class Treatment < ApplicationRecord
   belongs_to :admission
-  has_one :patient, through: :admission
+  has_one (:patient, through: :admission)
 
   validates(:note, presence: true)
 end

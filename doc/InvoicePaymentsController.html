@@ -6,7 +6,7 @@
 <title>
   Class: InvoicePaymentsController
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.13
   
 </title>
 
@@ -135,7 +135,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Create this controller, makes transaction to Braintree, update attributes
+and send confirmation.</p>
+</div></span>
   
 </li>
 
@@ -217,7 +220,19 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create this controller, makes transaction to Braintree, update attributes
+and send confirmation</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
@@ -301,20 +316,22 @@
 98
 99
 100
-101</pre>
+101
+102
+103
+104
+105
+106
+107
+108</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/invoice_payments_controller.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
 
-  <span class='comment'># Initialise Braintree
-</span>  <span class='id identifier rubyid_gateway'>gateway</span> <span class='op'>=</span> <span class='const'>Braintree</span><span class='op'>::</span><span class='const'>Gateway</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>environment:</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_application'>application</span><span class='period'>.</span><span class='id identifier rubyid_secrets'>secrets</span><span class='period'>.</span><span class='id identifier rubyid_braintree_environment'>braintree_environment</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='comma'>,</span>
-                                   <span class='label'>merchant_id:</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_application'>application</span><span class='period'>.</span><span class='id identifier rubyid_secrets'>secrets</span><span class='period'>.</span><span class='id identifier rubyid_braintree_merchant_id'>braintree_merchant_id</span><span class='comma'>,</span>
-                                   <span class='label'>public_key:</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_application'>application</span><span class='period'>.</span><span class='id identifier rubyid_secrets'>secrets</span><span class='period'>.</span><span class='id identifier rubyid_braintree_public_key'>braintree_public_key</span><span class='comma'>,</span>
-                                   <span class='label'>private_key:</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_application'>application</span><span class='period'>.</span><span class='id identifier rubyid_secrets'>secrets</span><span class='period'>.</span><span class='id identifier rubyid_braintree_private_key'>braintree_private_key</span><span class='rparen'>)</span>
-
   <span class='comment'># Get the submitted nonce from params, for testing &#39;fake-valid-nonce&#39;
+</span>  <span class='comment'># nonce_from_the_client = &#39;fake-valid-nonce&#39;
 </span>  <span class='id identifier rubyid_nonce_from_the_client'>nonce_from_the_client</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:payment_method_nonce</span><span class='rbracket'>]</span>
 
   <span class='comment'># Find the patient in case they already created, a lot can be done
@@ -347,41 +364,53 @@
 </span>  <span class='comment'>#   end
 </span>  <span class='comment'># end
 </span>
-  <span class='comment'># Make transaction to braintree
-</span>  <span class='ivar'>@payment_result</span> <span class='op'>=</span> <span class='id identifier rubyid_gateway'>gateway</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_sale'>sale</span><span class='lparen'>(</span>
-      <span class='label'>amount:</span> <span class='ivar'>@admission</span><span class='period'>.</span><span class='id identifier rubyid_invoice'>invoice</span><span class='period'>.</span><span class='id identifier rubyid_amount'>amount</span><span class='comma'>,</span>
-      <span class='label'>payment_method_nonce:</span> <span class='id identifier rubyid_nonce_from_the_client'>nonce_from_the_client</span><span class='comma'>,</span>
-      <span class='label'>options:</span> <span class='lbrace'>{</span>
-          <span class='label'>submit_for_settlement:</span> <span class='kw'>true</span>
-      <span class='rbrace'>}</span><span class='rparen'>)</span>
-
-  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>success:</span> <span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_success?'>success?</span> <span class='rbrace'>}</span>
-
   <span class='id identifier rubyid_respond_to'>respond_to</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_format'>format</span><span class='op'>|</span>
-    <span class='comment'># Handle the response
-</span>    <span class='kw'>if</span> <span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_success?'>success?</span>
-      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>success trans: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='comment'># Rescue all that happens in this in case of an error
+</span>    <span class='kw'>begin</span>
+      <span class='comment'># Make transaction to braintree
+</span>      <span class='ivar'>@payment_result</span> <span class='op'>=</span> <span class='const'>Braintree</span><span class='op'>::</span><span class='const'>Transaction</span><span class='period'>.</span><span class='id identifier rubyid_sale'>sale</span><span class='lparen'>(</span>
+          <span class='label'>amount:</span> <span class='ivar'>@admission</span><span class='period'>.</span><span class='id identifier rubyid_invoice'>invoice</span><span class='period'>.</span><span class='id identifier rubyid_amount'>amount</span><span class='comma'>,</span>
+          <span class='label'>payment_method_nonce:</span> <span class='id identifier rubyid_nonce_from_the_client'>nonce_from_the_client</span><span class='comma'>,</span>
+          <span class='label'>options:</span> <span class='lbrace'>{</span>
+              <span class='label'>submit_for_settlement:</span> <span class='kw'>true</span>
+          <span class='rbrace'>}</span><span class='rparen'>)</span>
 
-      <span class='id identifier rubyid_response'>response</span><span class='lbracket'>[</span><span class='symbol'>:transaction_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+      <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>success:</span> <span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_success?'>success?</span> <span class='rbrace'>}</span>
 
 
-      <span class='comment'># Update attributes
-</span>      <span class='id identifier rubyid_update_invoice_received_attributes'>update_invoice_received_attributes</span>
+      <span class='comment'># Handle the response
+</span>      <span class='kw'>if</span> <span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_success?'>success?</span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>success trans: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
 
-      <span class='comment'># Send confirmation
-</span>      <span class='id identifier rubyid_deliver_confirmation'>deliver_confirmation</span>
+        <span class='id identifier rubyid_response'>response</span><span class='lbracket'>[</span><span class='symbol'>:transaction_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
 
-      <span class='comment'># Redirect
-</span>      <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_html'>html</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_invoice_path'>invoice_path</span><span class='lparen'>(</span><span class='ivar'>@admission</span><span class='period'>.</span><span class='id identifier rubyid_invoice'>invoice</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>notice:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Payment successful. Confirmation email will be sent to the patient.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
-    <span class='kw'>elsif</span> <span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span>
-      <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Error processing trans: </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>code: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_processor_response_code'>processor_response_code</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>text: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_processor_response_text'>processor_response_text</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_js'>js</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='symbol'>:create</span><span class='comma'>,</span> <span class='label'>result:</span> <span class='ivar'>@payment_result</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
-    <span class='kw'>else</span>
-      <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_response'>response</span><span class='lbracket'>[</span><span class='symbol'>:error</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span>
-      <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_js'>js</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='symbol'>:create</span><span class='comma'>,</span> <span class='label'>result:</span> <span class='ivar'>@payment_result</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+        <span class='comment'># Update attributes
+</span>        <span class='id identifier rubyid_update_invoice_received_attributes'>update_invoice_received_attributes</span>
+
+        <span class='comment'># Send confirmation
+</span>        <span class='id identifier rubyid_deliver_confirmation'>deliver_confirmation</span>
+
+        <span class='comment'># Redirect
+</span>        <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_html'>html</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_invoice_path'>invoice_path</span><span class='lparen'>(</span><span class='ivar'>@admission</span><span class='period'>.</span><span class='id identifier rubyid_invoice'>invoice</span><span class='rparen'>)</span><span class='comma'>,</span>
+                                  <span class='label'>notice:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Payment successful. Confirmation email will be sent to the patient.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+      <span class='kw'>elsif</span> <span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span>
+        <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Error processing transaction: </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+        <span class='comment'># FIXME ActionView::Template::Error: undefined method `processor_response_text&#39; for nil:NilClass
+</span>        <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>code: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span><span class='op'>&amp;.</span><span class='id identifier rubyid_processor_response_code'>processor_response_code</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>text: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_processor_response_text'>processor_response_text</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_js'>js</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='symbol'>:create</span><span class='comma'>,</span> <span class='label'>result:</span> <span class='ivar'>@payment_result</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_response'>response</span><span class='lbracket'>[</span><span class='symbol'>:error</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@payment_result</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span>
+        <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_js'>js</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='symbol'>:create</span><span class='comma'>,</span> <span class='label'>result:</span> <span class='ivar'>@payment_result</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+      <span class='kw'>end</span>
+
+        <span class='comment'># In worst case this will rescued
+</span>    <span class='kw'>rescue</span> <span class='const'>StandardError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+      <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_error'>error</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_backtrace'>backtrace</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+      <span class='const'>Rollbar</span><span class='period'>.</span><span class='id identifier rubyid_report_exception'>report_exception</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Exception: payment transaction</span><span class='tstring_end'>&#39;</span></span>
+      <span class='kw'>retry</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -405,6 +434,7 @@
       <pre class="lines">
 
 
+7
 8
 9
 10
@@ -416,27 +446,24 @@
 16
 17
 18
-19
-20
-21</pre>
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/invoice_payments_controller.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/invoice_payments_controller.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
-  <span class='comment'># Initial Braintree Gateway and assign to variable
-</span>  <span class='id identifier rubyid_gateway'>gateway</span> <span class='op'>=</span> <span class='const'>Braintree</span><span class='op'>::</span><span class='const'>Gateway</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>environment:</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_application'>application</span><span class='period'>.</span><span class='id identifier rubyid_secrets'>secrets</span><span class='period'>.</span><span class='id identifier rubyid_braintree_environment'>braintree_environment</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='comma'>,</span>
-                                   <span class='label'>merchant_id:</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_application'>application</span><span class='period'>.</span><span class='id identifier rubyid_secrets'>secrets</span><span class='period'>.</span><span class='id identifier rubyid_braintree_merchant_id'>braintree_merchant_id</span><span class='comma'>,</span>
-                                   <span class='label'>public_key:</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_application'>application</span><span class='period'>.</span><span class='id identifier rubyid_secrets'>secrets</span><span class='period'>.</span><span class='id identifier rubyid_braintree_public_key'>braintree_public_key</span><span class='comma'>,</span>
-                                   <span class='label'>private_key:</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_application'>application</span><span class='period'>.</span><span class='id identifier rubyid_secrets'>secrets</span><span class='period'>.</span><span class='id identifier rubyid_braintree_private_key'>braintree_private_key</span><span class='rparen'>)</span>
-
-  <span class='comment'># Get client authorization token,
-</span>  <span class='comment'># include :customer_id =&gt; a_customer_id to identify previous customer
-</span>  <span class='ivar'>@client_token</span> <span class='op'>=</span> <span class='id identifier rubyid_gateway'>gateway</span><span class='period'>.</span><span class='id identifier rubyid_client_token'>client_token</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span>
+  <span class='kw'>begin</span>
+    <span class='comment'># Get client authorization token,
+</span>    <span class='comment'># include :customer_id =&gt; a_customer_id to identify previous customer
+</span>    <span class='ivar'>@client_token</span> <span class='op'>=</span> <span class='const'>Braintree</span><span class='op'>::</span><span class='const'>ClientToken</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span>
+      <span class='comment'># In worst case this will rescued
+</span>  <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+    <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_error'>error</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_backtrace'>backtrace</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+    <span class='const'>Rollbar</span><span class='period'>.</span><span class='id identifier rubyid_report_exception'>report_exception</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
   <span class='id identifier rubyid_respond_modal_with'>respond_modal_with</span><span class='lparen'>(</span><span class='ivar'>@client_token</span><span class='rparen'>)</span>
-  <span class='comment'># render layout: &#39;layouts/modal&#39;
-</span><span class='kw'>end</span></pre>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -447,9 +474,9 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jun  1 15:12:35 2018 by
+  Generated on Wed Jun  6 23:09:07 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.1).
+  0.9.13 (ruby-2.4.1).
 </div>
 
     </div>

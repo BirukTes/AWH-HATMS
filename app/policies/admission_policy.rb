@@ -28,7 +28,7 @@ class AdmissionPolicy < ApplicationPolicy
   end
 
   def discharge?
-    staff.doctor? || staff.consultant?
+    (staff.doctor? || staff.consultant?) #&& member_of_ward?
   end
 
   def admit_scheduled?
@@ -48,7 +48,10 @@ class AdmissionPolicy < ApplicationPolicy
     staff.doctor? || staff.consultant?
   end
 
-  def search?
-    true
-  end
+# private
+
+# TODO team should be of ward
+# def member_of_ward?
+# if staff.team == record.allocations
+# end
 end

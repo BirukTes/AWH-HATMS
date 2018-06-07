@@ -6,7 +6,7 @@
 <title>
   Class: SpecialitiesController
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.13
   
 </title>
 
@@ -358,8 +358,6 @@
       <pre class="lines">
 
 
-26
-27
 28
 29
 30
@@ -370,12 +368,16 @@
 35
 36
 37
-38</pre>
+38
+39
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/specialities_controller.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/specialities_controller.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
+  <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:speciality</span><span class='rparen'>)</span>
   <span class='ivar'>@speciality</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Speciality.html" title="Speciality (class)">Speciality</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_speciality_params'>speciality_params</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_respond_to'>respond_to</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_format'>format</span><span class='op'>|</span>
@@ -419,16 +421,16 @@
       <pre class="lines">
 
 
-56
-57
-58
 59
 60
 61
-62</pre>
+62
+63
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/specialities_controller.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/specialities_controller.rb', line 59</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='ivar'>@speciality</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span>
@@ -468,11 +470,11 @@
       <pre class="lines">
 
 
-21
-22</pre>
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/specialities_controller.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/specialities_controller.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit'>edit</span>
 <span class='kw'>end</span></pre>
@@ -509,12 +511,14 @@
 
 6
 7
-8</pre>
+8
+9</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/specialities_controller.rb', line 6</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
+  <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:speciality</span><span class='rparen'>)</span>
   <span class='ivar'>@specialities</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Speciality.html" title="Speciality (class)">Speciality</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -548,14 +552,16 @@
       <pre class="lines">
 
 
-16
 17
-18</pre>
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/specialities_controller.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/specialities_controller.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:speciality</span><span class='rparen'>)</span>
   <span class='ivar'>@speciality</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Speciality.html" title="Speciality (class)">Speciality</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -589,11 +595,11 @@
       <pre class="lines">
 
 
-12
-13</pre>
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/specialities_controller.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/specialities_controller.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
 <span class='kw'>end</span></pre>
@@ -628,9 +634,6 @@
       <pre class="lines">
 
 
-42
-43
-44
 45
 46
 47
@@ -638,10 +641,13 @@
 49
 50
 51
-52</pre>
+52
+53
+54
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/specialities_controller.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/specialities_controller.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='id identifier rubyid_respond_to'>respond_to</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_format'>format</span><span class='op'>|</span>
@@ -664,9 +670,9 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jun  1 15:12:35 2018 by
+  Generated on Wed Jun  6 23:09:06 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.1).
+  0.9.13 (ruby-2.4.1).
 </div>
 
     </div>

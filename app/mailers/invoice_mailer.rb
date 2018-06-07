@@ -1,5 +1,8 @@
 class InvoiceMailer < ApplicationMailer
 
+  # Sends the unpaid invoice to the patient
+  #
+  # @param (invoice) - the invoice to send
   def unpaid_invoice_request(invoice)
     begin
       @invoice = invoice
@@ -22,7 +25,9 @@ class InvoiceMailer < ApplicationMailer
     end
   end
 
-
+  # Sends the paid invoice to the patient
+  #
+  # @param (invoice) - the invoice to send
   def paid_invoice_confirmation(invoice)
     begin
       @invoice = invoice
@@ -48,6 +53,7 @@ class InvoiceMailer < ApplicationMailer
 
   private
 
+  # Creates a massage for the unpaid invoice
   def unpaid_invoice_message
     data = {}
     data[:from] = Rails.application.secrets.mail_from
@@ -64,7 +70,7 @@ class InvoiceMailer < ApplicationMailer
     data
   end
 
-  #
+  # Creates a massage for the paid invoice
   def paid_invoice_message
     data = {}
     data[:from] = Rails.application.secrets.mail_from
@@ -79,8 +85,8 @@ class InvoiceMailer < ApplicationMailer
 
   # Generates a PDF for given invoice template
   #
-  # @params (template)
-  # @params (invoice_name)
+  # @param (template) - the template that will be used to generate (paid/unpaid)
+  # @param (invoice_name) - the name of the file (paid/unpaid)
   def generate_pdf_invoice(template, invoice_name)
     # enqueue our custom job object that uses delayed_job methods
     ActionView::Base.send(:define_method, :protect_against_forgery?) { false }
@@ -95,6 +101,7 @@ class InvoiceMailer < ApplicationMailer
       include ApplicationHelper
     end
 
+    # Render the template and store to variable
     pdf_html = av.render(template: template, layout: 'layouts/pdf.html.erb', locals: { invoice: @invoice })
 
     # use wicked_pdf gem to create PDF from the doc HTML

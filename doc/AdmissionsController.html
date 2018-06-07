@@ -6,7 +6,7 @@
 <title>
   Class: AdmissionsController
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.13
   
 </title>
 
@@ -135,7 +135,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Sets status to admitted and updates ward bed status.</p>
+</div></span>
   
 </li>
 
@@ -182,7 +184,9 @@ directly.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Destroys the scheduled admission record.</p>
+</div></span>
   
 </li>
 
@@ -204,7 +208,9 @@ directly.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Creates an admission with given parameters.</p>
+</div></span>
   
 </li>
 
@@ -260,7 +266,7 @@ directly.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#edit-instance_method" title="#edit (instance method)">#<strong>edit</strong>  &#x21d2; admission </a>
+      <a href="#edit-instance_method" title="#edit (instance method)">#<strong>edit</strong>  &#x21d2; Object </a>
     
 
     
@@ -274,7 +280,9 @@ directly.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>GETs the admission to be edited.</p>
+</div></span>
   
 </li>
 
@@ -321,8 +329,7 @@ directly.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Verify authorisation for all admissions (multiple records), which case
-index only has multiple after_action(:verify_policy_scoped, only: :index).</p>
+<p>GETs all the admissions.</p>
 </div></span>
   
 </li>
@@ -345,7 +352,9 @@ index only has multiple after_action(:verify_policy_scoped, only: :index).</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>GETs the form for new admission.</p>
+</div></span>
   
 </li>
 
@@ -367,7 +376,9 @@ index only has multiple after_action(:verify_policy_scoped, only: :index).</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>GETs an admission to view.</p>
+</div></span>
   
 </li>
 
@@ -389,7 +400,9 @@ index only has multiple after_action(:verify_policy_scoped, only: :index).</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Updates the admission with only current medications and admission note.</p>
+</div></span>
   
 </li>
 
@@ -449,29 +462,38 @@ index only has multiple after_action(:verify_policy_scoped, only: :index).</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Sets status to admitted and updates ward bed status</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
+142
+143
 144
 145
 146
 147
 148
 149
-150
-151
-152
-153</pre>
+150</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 144</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 142</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_admit_scheduled'>admit_scheduled</span>
-  <span class='comment'># TODO, actual time admitted
-</span>  <span class='comment'># Admitted, Discharged, Scheduled
+  <span class='comment'># Admitted, Discharged, Scheduled
 </span>  <span class='kw'>if</span> <span class='ivar'>@admission</span><span class='period'>.</span><span class='id identifier rubyid_admitted!'>admitted!</span>
     <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='ivar'>@admission</span><span class='comma'>,</span> <span class='label'>notice:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Patient admitted</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 
@@ -513,6 +535,15 @@ directly</p>
       <pre class="lines">
 
 
+191
+192
+193
+194
+195
+196
+197
+198
+199
 200
 201
 202
@@ -520,19 +551,10 @@ directly</p>
 204
 205
 206
-207
-208
-209
-210
-211
-212
-213
-214
-215
-216</pre>
+207</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 200</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 191</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_authorise_discharge'>authorise_discharge</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:admission</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:dischargeDate</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
@@ -565,21 +587,32 @@ directly</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Destroys the scheduled admission record</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
+153
+154
 155
 156
 157
-158
-159
-160</pre>
+158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 155</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 153</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cancel_scheduled'>cancel_scheduled</span>
   <span class='comment'># Delete the record
@@ -601,12 +634,27 @@ directly</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Creates an admission with given parameters</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
+64
+65
+66
+67
 68
 69
 70
@@ -624,14 +672,10 @@ directly</p>
 82
 83
 84
-85
-86
-87
-88
-89</pre>
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:admission</span><span class='rparen'>)</span>
@@ -686,6 +730,9 @@ directly</p>
       <pre class="lines">
 
 
+128
+129
+130
 131
 132
 133
@@ -694,13 +741,10 @@ directly</p>
 136
 137
 138
-139
-140
-141
-142</pre>
+139</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 128</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='comment'># Admitted / Discharged
@@ -747,12 +791,12 @@ directly</p>
       <pre class="lines">
 
 
-193
-194
-195</pre>
+184
+185
+186</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 193</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 184</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_discharge'>discharge</span>
   <span class='id identifier rubyid_respond_modal_with'>respond_modal_with</span><span class='lparen'>(</span><span class='ivar'>@admission</span><span class='rparen'>)</span>
@@ -765,7 +809,7 @@ directly</p>
       <div class="method_details ">
   <h3 class="signature " id="edit-instance_method">
   
-    #<strong>edit</strong>  &#x21d2; <tt>admission</tt> 
+    #<strong>edit</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -774,24 +818,13 @@ directly</p>
 </h3><div class="docstring">
   <div class="discussion">
     
+<p>GETs the admission to be edited</p>
+
 
   </div>
 </div>
 <div class="tags">
   
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>admission</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
 
 </div><table class="source_code">
   <tr>
@@ -799,27 +832,27 @@ directly</p>
       <pre class="lines">
 
 
+88
+89
+90
+91
 92
 93
 94
 95
 96
-97
-98
-99
-100
-101</pre>
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 88</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_edit'>edit</span><span class='semicolon'>;</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_edit'>edit</span>
   <span class='comment'># Make sure admission cannot be edited indirectly
 </span>  <span class='comment'># Only: under admitted and scheduled
 </span>  <span class='kw'>if</span> <span class='op'>!</span><span class='ivar'>@admission</span><span class='period'>.</span><span class='id identifier rubyid_discharged?'>discharged?</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='ivar'>@admission</span><span class='period'>.</span><span class='id identifier rubyid_admitted?'>admitted?</span> <span class='op'>||</span> <span class='ivar'>@admission</span><span class='period'>.</span><span class='id identifier rubyid_scheduled?'>scheduled?</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='symbol'>:edit</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>This admission cannot be edited.</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_flash'>flash</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>This admission cannot be edited.</span><span class='tstring_end'>&#39;</span></span>
     <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_referrer'>referrer</span> <span class='op'>||</span> <span class='id identifier rubyid_root_path'>root_path</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -854,6 +887,8 @@ directly</p>
       <pre class="lines">
 
 
+161
+162
 163
 164
 165
@@ -870,24 +905,15 @@ directly</p>
 176
 177
 178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188</pre>
+179</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 163</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 161</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_and_discharge'>find_and_discharge</span>
   <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:admission</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='symbol'>:ward_id</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='symbol'>:patient_id</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@patient</span><span class='period'>.</span><span class='id identifier rubyid_eql?'>eql?</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='rparen'>)</span>
-    <span class='ivar'>@admission</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>patient_id:</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:patient_id</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>ward_id:</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:ward_id</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Discharged</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+    <span class='ivar'>@admission</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_discharged'>discharged</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>patient_id:</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:patient_id</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>ward_id:</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:ward_id</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
     <span class='kw'>if</span> <span class='ivar'>@admission</span>
       <span class='comment'># Redirect to display discharge modal
 </span>      <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_discharge_admission_path'>discharge_admission_path</span><span class='lparen'>(</span><span class='ivar'>@admission</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -899,14 +925,7 @@ directly</p>
   <span class='kw'>else</span>
     <span class='comment'># Extra validation in case otherwise normal should not get past html required attribute
 </span>    <span class='kw'>if</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='symbol'>:ward_id</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='symbol'>:patient_id</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_flash'>flash</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:ward_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>||</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:patient_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
-                            <span class='kw'>when</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:ward_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
-                              <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Please select Ward</span><span class='tstring_end'>&#39;</span></span>
-                            <span class='kw'>when</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:patient_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
-                              <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Please select patient</span><span class='tstring_end'>&#39;</span></span>
-                            <span class='kw'>else</span>
-                              <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Please select available fields</span><span class='tstring_end'>&#39;</span></span>
-                          <span class='kw'>end</span>
+      <span class='id identifier rubyid_flash'>flash</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_fill_in_validation_msg'>fill_in_validation_msg</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -927,8 +946,7 @@ directly</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Verify authorisation for all admissions (multiple records), which case
-index only has multiple after_action(:verify_policy_scoped, only: :index)</p>
+<p>GETs all the admissions</p>
 
 
   </div>
@@ -942,6 +960,9 @@ index only has multiple after_action(:verify_policy_scoped, only: :index)</p>
       <pre class="lines">
 
 
+11
+12
+13
 14
 15
 16
@@ -953,7 +974,7 @@ index only has multiple after_action(:verify_policy_scoped, only: :index)</p>
 22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
   <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:admission</span><span class='rparen'>)</span>
@@ -962,7 +983,10 @@ index only has multiple after_action(:verify_policy_scoped, only: :index)</p>
   <span class='ivar'>@admissions</span> <span class='op'>=</span> <span class='ivar'>@search</span><span class='period'>.</span><span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_includes'>includes</span><span class='lparen'>(</span><span class='symbol'>:ward</span><span class='comma'>,</span> <span class='symbol'>:patient</span><span class='rparen'>)</span>
 
   <span class='comment'># This method is aware of what format to respond with (as declared above, js, html, json)
-</span>  <span class='id identifier rubyid_respond_with'>respond_with</span><span class='lparen'>(</span><span class='ivar'>@admissions</span><span class='rparen'>)</span>
+</span>  <span class='id identifier rubyid_respond_with'>respond_with</span><span class='lparen'>(</span><span class='ivar'>@admissions</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_format'>format</span><span class='op'>|</span>
+    <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_xlsx'>xlsx</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span> <span class='label'>xlsx:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>index</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>filename:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Admissions</span><span class='embexpr_beg'>#{</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:q</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:status_eq</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:q</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>.xlsx</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                         <span class='label'>disposition:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>attachment</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>xlsx_created_at:</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='comma'>,</span> <span class='label'>xlsx_author:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>AllsWell Hospital</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -978,14 +1002,23 @@ index only has multiple after_action(:verify_policy_scoped, only: :index)</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GETs the form for new admission</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-27
-28
 29
 30
 31
@@ -1018,15 +1051,10 @@ index only has multiple after_action(:verify_policy_scoped, only: :index)</p>
 58
 59
 60
-61
-62
-63
-64
-65
-66</pre>
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
   <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:admission</span><span class='rparen'>)</span>
@@ -1041,29 +1069,22 @@ index only has multiple after_action(:verify_policy_scoped, only: :index)</p>
       <span class='comment'># Display message for the current page
 </span>      <span class='id identifier rubyid_flash'>flash</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Patient not found</span><span class='tstring_end'>&#39;</span></span>
     <span class='kw'>else</span>
-      <span class='comment'># Check if patient is has any admitted or scheduled
+      <span class='comment'># Check if patient is has any admitted or scheduled +check_admission_status+
 </span>      <span class='comment'># Returns a collection, evaluates the code inside if it is not nil/empty
-</span>      <span class='kw'>if</span> <span class='ivar'>@patient</span><span class='period'>.</span><span class='id identifier rubyid_admissions'>admissions</span><span class='period'>.</span><span class='id identifier rubyid_admitted'>admitted</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;</span> <span class='int'>0</span>
-        <span class='ivar'>@patient</span> <span class='op'>=</span> <span class='kw'>nil</span>
-        <span class='id identifier rubyid_flash'>flash</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Patient is already admitted</span><span class='tstring_end'>&#39;</span></span>
-      <span class='kw'>elsif</span> <span class='ivar'>@patient</span><span class='period'>.</span><span class='id identifier rubyid_admissions'>admissions</span><span class='period'>.</span><span class='id identifier rubyid_scheduled'>scheduled</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;</span> <span class='int'>0</span>
-        <span class='ivar'>@patient</span> <span class='op'>=</span> <span class='kw'>nil</span>
-        <span class='id identifier rubyid_flash'>flash</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Patient is already scheduled</span><span class='tstring_end'>&#39;</span></span>
-      <span class='kw'>end</span>
+</span>      <span class='id identifier rubyid_flash'>flash</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='ivar'>@patient</span><span class='period'>.</span><span class='id identifier rubyid_admissions'>admissions</span><span class='period'>.</span><span class='id identifier rubyid_admitted'>admitted</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+                            <span class='ivar'>@patient</span> <span class='op'>=</span> <span class='kw'>nil</span>
+                            <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Patient is already admitted</span><span class='tstring_end'>&#39;</span></span>
+                          <span class='kw'>elsif</span> <span class='ivar'>@patient</span><span class='period'>.</span><span class='id identifier rubyid_admissions'>admissions</span><span class='period'>.</span><span class='id identifier rubyid_scheduled'>scheduled</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+                            <span class='ivar'>@patient</span> <span class='op'>=</span> <span class='kw'>nil</span>
+                            <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Patient is already scheduled</span><span class='tstring_end'>&#39;</span></span>
+                          <span class='kw'>end</span>
     <span class='kw'>end</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='symbol'>:rest_patient</span><span class='rparen'>)</span>
     <span class='ivar'>@patient</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='kw'>else</span>
     <span class='comment'># Extra validation in case otherwise normal should not get past html required attribute
 </span>    <span class='kw'>if</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='symbol'>:dateOfBirth</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='symbol'>:lastName</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_flash'>flash</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:dateOfBirth</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>||</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:lastName</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
-                            <span class='kw'>when</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:dateOfBirth</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
-                              <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Please fill in the date of birth</span><span class='tstring_end'>&#39;</span></span>
-                            <span class='kw'>when</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:lastName</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
-                              <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Please fill in the last name</span><span class='tstring_end'>&#39;</span></span>
-                            <span class='kw'>else</span>
-                              <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Please fill in the all fields</span><span class='tstring_end'>&#39;</span></span>
-                          <span class='kw'>end</span>
+      <span class='id identifier rubyid_flash'>flash</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_fill_in_validation_msg'>fill_in_validation_msg</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
@@ -1082,17 +1103,28 @@ index only has multiple after_action(:verify_policy_scoped, only: :index)</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GETs an admission to view</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-24
-25</pre>
+25
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span><span class='semicolon'>;</span>
 <span class='kw'>end</span></pre>
@@ -1110,12 +1142,26 @@ index only has multiple after_action(:verify_policy_scoped, only: :index)</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Updates the admission with only current medications and admission note</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
+100
+101
+102
 103
 104
 105
@@ -1138,13 +1184,10 @@ index only has multiple after_action(:verify_policy_scoped, only: :index)</p>
 122
 123
 124
-125
-126
-127
-128</pre>
+125</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 103</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/admissions_controller.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='id identifier rubyid_respond_to'>respond_to</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_format'>format</span><span class='op'>|</span>
@@ -1182,9 +1225,9 @@ index only has multiple after_action(:verify_policy_scoped, only: :index)</p>
 </div>
 
       <div id="footer">
-  Generated on Fri Jun  1 15:12:34 2018 by
+  Generated on Wed Jun  6 23:09:06 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.1).
+  0.9.13 (ruby-2.4.1).
 </div>
 
     </div>

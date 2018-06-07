@@ -1,3 +1,7 @@
+# Holds patient information, has one personal detail polymoriphic association
+#
+# @author Bereketab Gulai
+
 # == Schema Information
 #
 # Table name: patients
@@ -29,15 +33,12 @@ class Patient < ApplicationRecord
   has_many :invoices, through: :admissions
   has_many :diagnoses, through: :admissions
   has_many :prescriptions, through: :diagnoses
-
-  # TODO Name of treatment requires changing
+  # Now named +notes+
   has_many :treatments, through: :admissions
-
 
 
   # To allow creation of person/personal details during creation patient
   accepts_nested_attributes_for(:person, update_only: true, allow_destroy: true)
-
 
 
   # The only field required for this class
@@ -46,17 +47,19 @@ class Patient < ApplicationRecord
   validates_associated(:person, presence: true)
 
 
-
   # Finds a patient with date of birth and last name
   #
-  # @return [Patient] otherwise nil, no patient with details
+  # @param (dateOfBirth) - date of birth to search for
+  # @param (lastName) - last name to search for
+  # @return [Patient] - otherwise nil, no patient with details
   def self.find_patient(dateOfBirth, lastName)
-      person = Person.find_person_patient(dateOfBirth, lastName)
+    person = Person.find_person_patient(dateOfBirth, lastName)
 
-      person ? find(person.personalDetail_id) : nil
+    person ? find(person.personalDetail_id) : nil
   end
 
 
+  # Provides methods to decorate patient
   # def self.decorate
   #   # Optimise subsequent calls with memoisation (||=)
   #   @decorate ||= PatientDecorator.new(self)

@@ -1,3 +1,7 @@
+# Provides a junction for staff and job titles
+#
+# @author Bereketab Gulai
+
 # == Schema Information
 #
 # Table name: jobs

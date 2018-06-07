@@ -6,7 +6,7 @@
 <title>
   Class: ErrorsController
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.13
   
 </title>
 
@@ -121,7 +121,56 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#gone-instance_method" title="#gone (instance method)">#<strong>gone</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Handles HTTP status 410:.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#internal_server_error-instance_method" title="#internal_server_error (instance method)">#<strong>internal_server_error</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Handle all internal server errors to previous or login, Devise will handle
+whether authenticated or not.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#not_acceptable-instance_method" title="#not_acceptable (instance method)">#<strong>not_acceptable</strong>  &#x21d2; Object </a>
     
 
     
@@ -158,8 +207,8 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>layout &#39;errors&#39; <a
-href="https://www.driftingruby.com/episodes/custom-error-pages-with-slack-notification">www.driftingruby.com/episodes/custom-error-pages-with-slack-notification</a>.</p>
+<p>Handle all not found errors to previous or login, Devise will handle
+whether authenticated or not.</p>
 </div></span>
   
 </li>
@@ -212,9 +261,94 @@ href="https://www.driftingruby.com/episodes/custom-error-pages-with-slack-notifi
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="internal_server_error-instance_method">
+  <h3 class="signature first" id="gone-instance_method">
+  
+    #<strong>gone</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Handles HTTP status 410:</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/errors_controller.rb', line 44</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gone'>gone</span>
+  <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>The page is gone</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_referrer'>referrer</span> <span class='op'>||</span> <span class='id identifier rubyid_root_path'>root_path</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='int'>410</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="internal_server_error-instance_method">
   
     #<strong>internal_server_error</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Handle all internal server errors to previous or login, Devise will handle
+whether authenticated or not</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/errors_controller.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_internal_server_error'>internal_server_error</span>
+  <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_referrer'>referrer</span> <span class='op'>||</span> <span class='id identifier rubyid_root_path'>root_path</span><span class='comma'>,</span> <span class='label'>alert:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Internal Server Error</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>status:</span> <span class='int'>500</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="not_acceptable-instance_method">
+  
+    #<strong>not_acceptable</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -226,33 +360,17 @@ href="https://www.driftingruby.com/episodes/custom-error-pages-with-slack-notifi
       <pre class="lines">
 
 
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19</pre>
+38
+39
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/errors_controller.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/errors_controller.rb', line 38</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_internal_server_error'>internal_server_error</span>
-  <span class='kw'>begin</span>
-    <span class='id identifier rubyid_exception'>exception</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_env'>env</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>action_dispatch.exception</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='id identifier rubyid_exception'>exception</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-    <span class='id identifier rubyid_source_extract'>source_extract</span> <span class='op'>=</span> <span class='id identifier rubyid_exception'>exception</span><span class='period'>.</span><span class='id identifier rubyid_source_extract'>source_extract</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_backtrace'>backtrace</span> <span class='op'>=</span> <span class='id identifier rubyid_exception'>exception</span><span class='period'>.</span><span class='id identifier rubyid_backtrace'>backtrace</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>..</span><span class='int'>9</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-      <span class='comment'># SlackNotifyJob.perform_later(message, source_extract, backtrace)
-</span>  <span class='kw'>ensure</span>
-    <span class='comment'># head :internal_server_error
-</span>    <span class='id identifier rubyid_render'>render</span> <span class='label'>status:</span> <span class='int'>500</span>
-  <span class='kw'>end</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_not_acceptable'>not_acceptable</span>
+  <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Not found</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_referrer'>referrer</span> <span class='op'>||</span> <span class='id identifier rubyid_root_path'>root_path</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='int'>406</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -271,8 +389,8 @@ href="https://www.driftingruby.com/episodes/custom-error-pages-with-slack-notifi
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>layout &#39;errors&#39; <a
-href="https://www.driftingruby.com/episodes/custom-error-pages-with-slack-notification">www.driftingruby.com/episodes/custom-error-pages-with-slack-notification</a></p>
+<p>Handle all not found errors to previous or login, Devise will handle
+whether authenticated or not</p>
 
 
   </div>
@@ -286,13 +404,17 @@ href="https://www.driftingruby.com/episodes/custom-error-pages-with-slack-notifi
       <pre class="lines">
 
 
-5
-6</pre>
+33
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/errors_controller.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/errors_controller.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_not_found'>not_found</span>
+  <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Not found</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_referrer'>referrer</span> <span class='op'>||</span> <span class='id identifier rubyid_root_path'>root_path</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='int'>404</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -304,9 +426,9 @@ href="https://www.driftingruby.com/episodes/custom-error-pages-with-slack-notifi
 </div>
 
       <div id="footer">
-  Generated on Fri Jun  1 15:12:33 2018 by
+  Generated on Wed Jun  6 23:09:05 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.1).
+  0.9.13 (ruby-2.4.1).
 </div>
 
     </div>

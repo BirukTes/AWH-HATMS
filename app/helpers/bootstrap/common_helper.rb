@@ -1,3 +1,4 @@
+
 module Bootstrap::CommonHelper
   ArgumentError = Class.new(::ArgumentError)
 

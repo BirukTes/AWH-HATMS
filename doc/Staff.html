@@ -6,7 +6,7 @@
 <title>
   Class: Staff
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.13
   
 </title>
 
@@ -106,6 +106,27 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
+<h2 id="label-Schema+Information">Schema Information</h2>
+
+<p>Table name: staffs</p>
+
+<pre class="code ruby"><code class="ruby">id                     :bigint(8)        not null, primary key
+email                  :string           default(&quot;&quot;), not null
+encrypted_password     :string           default(&quot;&quot;), not null
+reset_password_token   :string
+reset_password_sent_at :datetime
+remember_created_at    :datetime
+sign_in_count          :integer          default(0), not null
+current_sign_in_at     :datetime
+last_sign_in_at        :datetime
+current_sign_in_ip     :inet
+last_sign_in_ip        :inet
+userId                 :string           not null
+team_id                :bigint(8)        not null
+created_at             :datetime         not null
+updated_at             :datetime         not null
+active                 :boolean          default(FALSE), not null</code></pre>
+
 <p>Defines a staff, having relationship with Person(parent at database level),
 Job Title(role), Speciality, Team(Can be owner), others include join tables</p>
 
@@ -867,9 +888,9 @@ Job Title(role), Speciality, Team(Can be owner), others include join tables</p>
 </div>
 
       <div id="footer">
-  Generated on Fri Jun  1 15:12:30 2018 by
+  Generated on Wed Jun  6 23:09:02 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.1).
+  0.9.13 (ruby-2.4.1).
 </div>
 
     </div>

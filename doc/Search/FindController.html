@@ -6,7 +6,7 @@
 <title>
   Class: Search::FindController
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.13
   
 </title>
 
@@ -133,7 +133,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Finds the admitted diagnosed patients in the ward GET.</p>
+</div></span>
   
 </li>
 
@@ -155,7 +157,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Finds the admitted patients in the ward GET.</p>
+</div></span>
   
 </li>
 
@@ -177,7 +181,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Finds the discharge patients without invoice in the ward GET.</p>
+</div></span>
   
 </li>
 
@@ -199,7 +205,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Finds the admitted discharge unauthorised patients GET.</p>
+</div></span>
   
 </li>
 
@@ -223,28 +231,43 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Finds the admitted diagnosed patients in the ward GET</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32</pre>
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/search/find_controller.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/search/find_controller.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_admitted_diagnosed_patients_in_ward'>find_admitted_diagnosed_patients_in_ward</span>
+  <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:diagnoses</span><span class='comma'>,</span> <span class='symbol'>:new?</span><span class='rparen'>)</span>
+
   <span class='kw'>if</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:ward_id_selected</span><span class='rbracket'>]</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:patient_id_selected</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_admission'>admission</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_admitted_diagnosed_patients'><span class='object_link'><a href="../Admission.html#find_admitted_diagnosed_patients-class_method" title="Admission.find_admitted_diagnosed_patients (method)">find_admitted_diagnosed_patients</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:ward_id_selected</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:patient_id_selected</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 
@@ -269,24 +292,39 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Finds the admitted patients in the ward GET</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-14
-15
-16
-17
-18
-19
-20</pre>
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/search/find_controller.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/search/find_controller.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_admitted_patients_in_ward'>find_admitted_patients_in_ward</span>
+  <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:admission</span><span class='comma'>,</span> <span class='symbol'>:index?</span><span class='rparen'>)</span>
+
   <span class='kw'>if</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:ward_id_selected</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_patients'>patients</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_admitted_patients'><span class='object_link'><a href="../Admission.html#find_admitted_patients-class_method" title="Admission.find_admitted_patients (method)">find_admitted_patients</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:ward_id_selected</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 
@@ -307,24 +345,39 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Finds the discharge patients without invoice in the ward GET</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-6
-7
 8
 9
 10
 11
-12</pre>
+12
+13
+14
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/search/find_controller.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/search/find_controller.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_discharged_without_invoice_patients_in_ward'>find_discharged_without_invoice_patients_in_ward</span>
+  <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:invoice</span><span class='comma'>,</span> <span class='symbol'>:new?</span><span class='rparen'>)</span>
+
   <span class='kw'>if</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:ward_id_selected</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_patients_option'>patients_option</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_discharged_without_invoice_patients'><span class='object_link'><a href="../Admission.html#find_discharged_without_invoice_patients-class_method" title="Admission.find_discharged_without_invoice_patients (method)">find_discharged_without_invoice_patients</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:ward_id_selected</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 
@@ -345,24 +398,39 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Finds the admitted discharge unauthorised patients GET</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-34
-35
-36
-37
-38
-39
-40</pre>
+48
+49
+50
+51
+52
+53
+54
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/search/find_controller.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/search/find_controller.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_patients_discharge_unauthorised'>find_patients_discharge_unauthorised</span>
+  <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:admission</span><span class='comma'>,</span> <span class='symbol'>:discharge?</span><span class='rparen'>)</span>
+
   <span class='kw'>if</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:ward_id_selected</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_patients_option'>patients_option</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_discharge_unauthorised_admitted_patients'><span class='object_link'><a href="../Admission.html#find_discharge_unauthorised_admitted_patients-class_method" title="Admission.find_discharge_unauthorised_admitted_patients (method)">find_discharge_unauthorised_admitted_patients</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:ward_id_selected</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 
@@ -379,9 +447,9 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jun  1 15:12:34 2018 by
+  Generated on Wed Jun  6 23:09:06 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.1).
+  0.9.13 (ruby-2.4.1).
 </div>
 
     </div>

@@ -1,5 +1,14 @@
 # frozen_string_literal: true
 
+# Defines a staff, having relationship with Person(parent at database level), Job Title(role),
+# Speciality, Team(Can be owner), others include join tables
+#
+# Implement Devise for authentication, using user id and password, and +active+ status
+#
+#
+# @author Bereketab Gulai
+
+
 # == Schema Information
 #
 # Table name: staffs
@@ -20,13 +29,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  active                 :boolean          default(FALSE), not null
-# @author Bereketab Gulai
-#
-#
-# Defines a staff, having relationship with Person(parent at database level), Job Title(role),
-# Speciality, Team(Can be owner), others include join tables
-#
-# Implement Devise for authentication, using user id and password, and +active+ status
+
 class Staff < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable,

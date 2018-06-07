@@ -5,7 +5,7 @@
   <div class="col-1">
     <div class="btn-group mr-auto">
       <% disable_btn_export = @treatments.nil? || @treatments&.empty? ? 'disabled' : '' %>
-      <%= link_to('Print', '#', onClick: "printJS({ printable: 'notes_holder_index', type: 'html', header: 'Notes - #{localize(Date.today, format: :custom).to_s}'})",
+      <%= link_to('Print', '#', onClick: "printJS({ printable: 'notes_holder_index', type: 'html', header: 'Notes - #{localize(Date.today, format: :custom).to_s}', ignoreElements:['action']})",
                   class: "btn btn-outline-secondary #{disable_btn_export}") %>
       <%#link_to('Export as Excel', admissions_path(format: :xlsx), { class: "btn btn-outline-secondary form-control #{disable_btn_export}",
                                                                        role: 'button' }) %>
@@ -21,11 +21,11 @@
     <th>Note No</th>
     <th>Patient Name</th>
     <th>Issued By</th>
-    <th>Action</th>
+    <th id="action">Action</th>
   </tr>
   </thead>
   <tbody>
-  <% if @treatments || !@treatments&.empty? %>
+  <% if @treatments && !@treatments&.empty? %>
     <% @treatments&.each do |treatment| %>
       <% patient = treatment.patient %>
       <% staff = Staff.find_by(userId: treatment.issuedBy) %>
@@ -34,7 +34,7 @@
         <td><%= treatment.id %></td>
         <td><%= person_full_name_helper(patient) if patient %></td>
         <td><%= person_full_name_helper(staff) if staff %></td>
-        <td>
+        <td id="action">
           <%= link_to('View', treatment_path(treatment.id), role: 'button', class: 'btn btn-secondary') %>
         </td>
       </tr>

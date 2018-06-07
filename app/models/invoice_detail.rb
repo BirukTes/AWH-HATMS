@@ -1,3 +1,7 @@
+# Holds the details for a referenced invoice
+#
+# @author Bereketab Gulai
+
 # == Schema Information
 #
 # Table name: invoice_details
@@ -18,6 +22,7 @@ class InvoiceDetail < ApplicationRecord
 
   human_attribute_name(:unitPrice)
 
+  # Validates all attributes
   validates(:treatment, presence: true)
   validates(:quantity, presence: true)
   validates(:unitPrice, presence: true)

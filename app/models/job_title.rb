@@ -1,3 +1,7 @@
+# Holds jobs titles, has many jobs and staff through the association of jobs
+#
+# @author Bereketab Gulai
+
 # == Schema Information
 #
 # Table name: job_titles
@@ -13,5 +17,5 @@ class JobTitle < ApplicationRecord
   has_many :jobs
   has_many :staffs, through: :jobs
 
-  validates :title, presence: true
+  validates(:title, presence: true)
 end

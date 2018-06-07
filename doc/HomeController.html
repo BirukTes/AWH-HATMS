@@ -6,7 +6,7 @@
 <title>
   Class: HomeController
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.13
   
 </title>
 
@@ -212,10 +212,10 @@
       <pre class="code"><span class="info file"># File 'app/controllers/home_controller.rb', line 2</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
+  <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:home</span><span class='comma'>,</span> <span class='symbol'>:index?</span><span class='rparen'>)</span>
   <span class='comment'># The presenter contains all the necessary methods
 </span>  <span class='comment'># This keeps the scope the methods local to this controller and it is view
 </span>  <span class='ivar'>@home_presenter</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="HomePresenter.html" title="HomePresenter (module)">HomePresenter</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HomePresenter/IndexPresenter.html" title="HomePresenter::IndexPresenter (class)">IndexPresenter</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-  <span class='ivar'>@search</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -227,9 +227,9 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jun  1 15:12:32 2018 by
+  Generated on Wed Jun  6 23:09:04 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.1).
+  0.9.13 (ruby-2.4.1).
 </div>
 
     </div>
