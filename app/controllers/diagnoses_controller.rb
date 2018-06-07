@@ -70,11 +70,12 @@ class DiagnosesController < ApplicationController
   # DELETE /diagnoses/1
   # DELETE /diagnoses/1.json
   def destroy
-    @diagnosis.destroy
-    respond_to do |format|
-      format.html { redirect_to diagnoses_url, notice: 'Diagnosis was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # Do not destroy, find solution
+    # @diagnosis.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to diagnoses_url, notice: 'Diagnosis was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

@@ -1,6 +1,7 @@
 <h1>Editing Team</h1>
-
 <%= render 'form', team: @team %>
 
-<%= link_to 'View', @team %> |
-<%= link_to 'Back', teams_path %>
+<% content_for(:navigationButtons) do %>
+  <%= link_to('View', @team, class: 'btn btn-secondary') %> &nbsp;
+  <%= link_to('Back', teams_path, class: 'btn btn-secondary') %>
+<% end %>

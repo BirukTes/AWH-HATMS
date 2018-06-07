@@ -57,11 +57,12 @@ class JobTitlesController < ApplicationController
   # DELETE /job_titles/1
   # DELETE /job_titles/1.json
   def destroy
-    @job_title.destroy
-    respond_to do |format|
-      format.html { redirect_to job_titles_url, notice: 'Job title was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # Do not destroy, find solution
+    # @job_title.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to job_titles_url, notice: 'Job title was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

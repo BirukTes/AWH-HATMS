@@ -17,6 +17,7 @@ class DiagnosesPolicy < ApplicationPolicy
   end
 
   def update?
+    # FIXME staff needs to be the one that created the record, add issueBy to table
     staff.consultant? || staff.doctor? || staff.staff_nurse? || staff.nurse?
   end
 

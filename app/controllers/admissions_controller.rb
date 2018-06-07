@@ -144,6 +144,8 @@ class AdmissionsController < ApplicationController
     if @admission.admitted!
       redirect_to(@admission, notice: 'Patient admitted')
 
+      # TODO cancel scheduled admission reminder: https://stackoverflow.com/questions/3638250/how-to-cancel-scheduled-job-with-delayed-job-in-rails
+
       # Update Ward Status, Decrement
       @admission.update_bed_status_minus
     end

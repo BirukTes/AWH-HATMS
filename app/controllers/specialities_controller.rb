@@ -57,11 +57,12 @@ class SpecialitiesController < ApplicationController
   # DELETE /specialities/1
   # DELETE /specialities/1.json
   def destroy
-    @speciality.destroy
-    respond_to do |format|
-      format.html { redirect_to specialities_url, notice: 'Speciality was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # Do not destroy, find solution
+    # @speciality.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to specialities_url, notice: 'Speciality was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

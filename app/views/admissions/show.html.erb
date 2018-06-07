@@ -79,8 +79,8 @@
 
 <% content_for(:navigationButtons) do %>
   <%# session[:admissions_show_back_url] = request.referrer unless session[:admissions_show_back_url] %>
-  <%= link_to('Back',admissions_path, class: 'btn btn-secondary') %>
-
+  <%= link_to('Back', admissions_path, class: 'btn btn-secondary') %>
+  &nbsp;
   <% if (@admission.dischargeDate.nil? || @admission.admitted?) && policy(:admission).update? %>
     <td>
       <%= link_to('Edit', edit_admission_path(@admission.id), role: 'button', class: 'btn btn-secondary') %>

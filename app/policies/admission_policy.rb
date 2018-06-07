@@ -28,7 +28,8 @@ class AdmissionPolicy < ApplicationPolicy
   end
 
   def discharge?
-    (staff.doctor? || staff.consultant?) #&& member_of_ward?
+    # FIXME staff needs to be member of ward/team
+  (staff.doctor? || staff.consultant?) #&& member_of_ward?
   end
 
   def admit_scheduled?

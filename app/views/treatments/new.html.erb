@@ -13,3 +13,7 @@
 <% else %>
   <%= render 'shared/find_admitted_patient', action_controller_url: new_treatment_path %>
 <% end %>
+
+<% content_for(:navigationButtons) do %>
+  <%= link_to 'Cancel', treatments_path, class: 'btn btn-secondary' %>
+<% end %>

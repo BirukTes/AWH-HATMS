@@ -1,6 +1,8 @@
 <h1>Editing Diagnosis</h1>
 
-<%= render 'form', diagnose: @diagnosis %>
+<%= render 'form', diagnosis: @diagnosis %>
 
-<%= link_to 'View', @diagnosis %> |
-<%= link_to 'Back', diagnoses_path %>
+<% content_for(:navigationButtons) do %>
+  <%= link_to('View', @diagnosis, class: 'btn btn-secondary') %>&nbsp;
+  <%= link_to('Back', diagnoses_path, class: 'btn btn-secondary') %>
+<% end %>

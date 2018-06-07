@@ -58,11 +58,12 @@ class TeamsController < ApplicationController
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
-    @team.destroy
-    respond_to do |format|
-      format.html { redirect_to teams_url, notice: 'Team was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # Do not destroy, find solution
+    # @team.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to teams_url, notice: 'Team was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

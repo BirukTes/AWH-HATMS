@@ -1,9 +1,10 @@
+<br>
 <%= form_with(model: diagnosis, local: true) do |form| %>
   <div class="col-10" id="error_holder_diagnosis">
     <%= render('shared/errors', model: diagnosis) %>
   </div>
 
-  <%= form.hidden_field(:admission_id, value: diagnosis.admission_id || admission.id) %>
+  <%= form.hidden_field(:admission_id, value: diagnosis&.admission_id || admission&.id) %>
 
   <div class="row">
     <div class="col-2 offset-1">
@@ -20,7 +21,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2 offset-6">
+    <div class="col-2 offset-5">
       <div class="actions form-group">
         <%= form.submit(class: 'form-control btn btn-primary') %>
       </div>

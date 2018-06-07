@@ -2,5 +2,7 @@
 
 <%= render 'form', drug: @drug %>
 
-<%= link_to 'View', @drug %> |
-<%= link_to 'Back', drugs_path %>
+<% content_for(:navigationButtons) do %>
+  <%= link_to('View', @drug, class: 'btn btn-secondary') %> &nbsp;
+  <%= link_to('Back', drugs_path, class: 'btn btn-secondary') %>
+<% end %>

@@ -57,11 +57,12 @@ class DrugsController < ApplicationController
   # DELETE /drugs/1
   # DELETE /drugs/1.json
   def destroy
-    @drug.destroy
-    respond_to do |format|
-      format.html { redirect_to drugs_url, notice: 'Drug was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # Do not destroy, find solution
+    # @drug.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to drugs_url, notice: 'Drug was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

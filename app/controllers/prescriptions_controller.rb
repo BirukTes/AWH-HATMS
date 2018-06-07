@@ -6,7 +6,7 @@ class PrescriptionsController < ApplicationController
   def index
     # Needs to know the policy, which is of prescription
     authorize(:prescription)
-    @prescriptions = Diagnosis.all
+    @prescriptions = Prescription.all
   end
 
   def show

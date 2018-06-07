@@ -4,11 +4,11 @@
 
 <% if @patient %>
   <fieldset class="none-bs-fieldset">
-  <legend class="none-bs-legend">Patient Details</legend>
-  <div id="admission_patient_holder">
-    <%= render('patients/form', patient: @patient) %>
-  </div>
-</fieldset>
+    <legend class="none-bs-legend">Patient Details</legend>
+    <div id="admission_patient_holder">
+      <%= render('patients/form', patient: @patient) %>
+    </div>
+  </fieldset>
 
   <fieldset class="none-bs-fieldset">
     <legend class="none-bs-legend">Admission</legend>
@@ -19,4 +19,8 @@
   <fieldset class="none-bs-fieldset" style="width: 70%; !important;">
     <%= render('find_form') %>
   </fieldset>
+<% end %>
+
+<% content_for(:navigationButtons) do %>
+  <%= link_to 'Cancel', admissions_path, class: 'btn btn-secondary' %>
 <% end %>

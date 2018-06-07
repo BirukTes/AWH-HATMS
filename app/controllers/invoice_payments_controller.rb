@@ -134,3 +134,53 @@ class InvoicePaymentsController < ApplicationController
     authorize(:invoice)
   end
 end
+
+# Console Tested code: Working
+#
+# def create
+#   # Get the submitted nonce from params, for testing 'fake-valid-nonce'
+#   nonce_from_the_client = 'fake-valid-nonce'
+#
+#     # Rescue all that happens in this in case of an error
+#     begin
+#       # Make transaction to braintree
+#       @payment_result = Braintree::Transaction.sale(
+#           amount: '0.1',
+#           payment_method_nonce: nonce_from_the_client,
+#           options: {
+#               submit_for_settlement: true
+#           })
+#
+#       response = { success: @payment_result.success? }
+#
+#
+#       # Handle the response
+#       if @payment_result.success?
+#         puts "success trans: #{@payment_result.transaction.id}"
+#
+#         response[:transaction_id] = @payment_result.transaction.id
+#
+#         puts 'Update attributes'
+#
+#         puts 'Send confirmation'
+#
+#         # Redirect
+#         puts 'Payment successful. Confirmation email will be sent to the patient.'
+#       elsif @payment_result.transaction
+#         puts('Error processing transaction: ')
+#         # FIXME ActionView::Template::Error: undefined method `processor_response_text' for nil:NilClass
+#         puts("code: #{@payment_result.transaction&.processor_response_code}")
+#         puts("text: #{@payment_result.transaction.processor_response_text}")
+#       else
+#         puts(@payment_result.errors)
+#         response[:error] = @payment_result.errors.inspect
+#       end
+#
+#         # In worst case this will rescued
+#     rescue StandardError => e
+#       Rails.logger.error { "#{e.message} #{e.backtrace.join("\n")}" }
+#       Rollbar.report_exception(e)
+#       puts 'Exception: payment transaction'
+#       retry
+#     end
+# end

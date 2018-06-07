@@ -19,7 +19,8 @@ class TreatmentPolicy < ApplicationPolicy
   end
 
   def update?
-    staff.consultant? || staff.doctor? || staff.staff_nurse? || staff.nurse?
+    # FIXME staff needs to be the one that created the record, use issueBy
+  staff.consultant? || staff.doctor? || staff.staff_nurse? || staff.nurse?
   end
 
   def destroy?

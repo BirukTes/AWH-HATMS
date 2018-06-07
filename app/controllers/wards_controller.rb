@@ -64,11 +64,12 @@ class WardsController < ApplicationController
   # DELETE /wards/1
   # DELETE /wards/1.json
   def destroy
-    @ward.destroy
-    respond_to do |format|
-      format.html { redirect_to wards_url, notice: 'Ward was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # Do not destroy, find solution
+    # @ward.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to wards_url, notice: 'Ward was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

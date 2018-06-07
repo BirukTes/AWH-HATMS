@@ -3,3 +3,7 @@
 <% patient = @treatment.patient %>
 <h1>Note update for <%= person_full_name_helper(patient) %></h1>
 <%= render 'form', treatment: @treatment, patient: patient%>
+
+<% content_for(:navigationButtons) do %>
+  <%= link_to 'Cancel', treatments_path, class: 'btn btn-secondary' %>
+<% end %>

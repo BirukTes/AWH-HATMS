@@ -89,11 +89,12 @@ class InvoicesController < ApplicationController
   # DELETE /invoices/1
   # DELETE /invoices/1.json
   def destroy
-    @invoice.destroy
-    respond_to do |format|
-      format.html { redirect_to invoices_url, notice: 'Invoice was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # Do not destroy, find solution
+    # @invoice.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to invoices_url, notice: 'Invoice was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   def receive_payment
