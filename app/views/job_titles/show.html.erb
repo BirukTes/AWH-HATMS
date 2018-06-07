@@ -1,9 +1,19 @@
-<p>
-  <strong>Title:</strong>
-  <%= @job_title.title %>
-</p>
+<br>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Title</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>   <%= @job_title.title %>     </td>
+  </tr>
+  </tbody>
+</table>
+
 <% content_for(:navigationButtons) do %>
-  <%= link_to('Edit',  edit_job_title_path(@job_title), class: 'btn btn-secondary') %>
+  <%= link_to('Edit', edit_job_title_path(@job_title), class: 'btn btn-secondary') %>
   &nbsp;
   <%= link_to('Back', job_titles_path, class: 'btn btn-secondary') %>
 <% end %>

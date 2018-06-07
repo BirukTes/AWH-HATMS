@@ -1,7 +1,16 @@
-<p>
-  <strong>Speciality:</strong>
-  <%= @speciality.speciality %>
-</p>
+<br>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Speciality</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td> <%= @speciality.speciality %></td>
+  </tr>
+  </tbody>
+</table>
 
 <% content_for(:navigationButtons) do %>
   <%= link_to('Edit', edit_speciality_path(@speciality), class: 'btn btn-secondary') %>

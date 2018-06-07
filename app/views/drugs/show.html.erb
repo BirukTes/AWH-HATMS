@@ -1,12 +1,18 @@
-<p>
-  <strong>Code:</strong>
-  <%= @drug.code %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @drug.name %>
-</p>
+<br>
+<table class="table table-bordered table-striped">
+  <thead class="thead-light">
+  <tr>
+    <th>Drug Code</th>
+    <th>Drug Name</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> <%= @drug.code %> </td>
+      <td> <%= @drug.name %> </td>
+    </tr>
+  </tbody>
+</table>
 
 <% content_for(:navigationButtons) do %>
   <%= link_to('Edit', edit_drug_path(@drug), class: 'btn btn-secondary') %>
