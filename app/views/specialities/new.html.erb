@@ -2,4 +2,6 @@
 
 <%= render 'form', speciality: @speciality %>
 
-<%= link_to 'Back', specialities_path %>
+<% content_for(:navigationButtons) do %>
+  <%= link_to 'Cancel', specialities_path, class: 'btn btn-secondary' %>
+<% end %>

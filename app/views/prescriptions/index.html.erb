@@ -48,5 +48,5 @@
 </table>
 
 <% content_for(:navigationButtons) do %>
-  <%= link_to('Prescribe Drug', new_diagnosis_path, class: 'btn btn-primary') if policy(:prescription).new? %>
+  <%= link_to('Prescribe Drug', new_prescription_path, class: 'btn btn-primary') if policy(:prescription).new? %>
 <% end %>
