@@ -9,6 +9,10 @@ class SpecialityPolicy < ApplicationPolicy
     staff.medical_staff_admin?
   end
 
+  def show?
+    staff.medical_staff_admin?
+  end
+
   def create?
     staff.medical_staff_admin?
   end

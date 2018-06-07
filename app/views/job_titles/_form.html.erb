@@ -4,19 +4,19 @@
       <h2><%= pluralize(job_title.errors.count, "error") %> prohibited this job_title from being saved:</h2>
 
       <ul>
-      <% job_title.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% job_title.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group  col-3">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :job_title_title %>
+    <%= form.text_field :title, id: :job_title_title, class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class=" col">
+    <%= form.submit(class: 'btn btn-primary') %>
   </div>
 <% end %>

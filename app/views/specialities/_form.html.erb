@@ -4,19 +4,19 @@
       <h2><%= pluralize(speciality.errors.count, "error") %> prohibited this speciality from being saved:</h2>
 
       <ul>
-      <% speciality.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% speciality.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group  col-3">
     <%= form.label :speciality %>
-    <%= form.text_field :speciality, id: :speciality_speciality %>
+    <%= form.text_field :speciality, id: :speciality_speciality, class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class=" col">
+    <%= form.submit(class: 'btn btn-primary') %>
   </div>
 <% end %>

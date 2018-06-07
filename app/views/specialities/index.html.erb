@@ -14,8 +14,8 @@
     <% @specialities.each do |speciality| %>
       <tr>
         <td><%= speciality.speciality %></td>
-        <td><%= link_to 'View', speciality %></td>
-        <td><%= link_to 'Edit', edit_speciality_path(speciality) %></td>
+        <td><%= link_to('View', speciality, class: 'btn btn-secondary') %></td>
+        <td><%= link_to('Edit', edit_speciality_path(speciality), class: 'btn btn-secondary') %></td>
         <!--<td><%# link_to 'Destroy', speciality, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>

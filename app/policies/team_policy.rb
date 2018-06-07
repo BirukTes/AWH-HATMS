@@ -10,6 +10,7 @@ class TeamPolicy < ApplicationPolicy
     true
   end
 
+  # Extend
   def show?
     true
   end

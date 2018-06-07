@@ -15,7 +15,7 @@
   </tr>
   </thead>
   <tbody>
-  <% if @invoices || !@invoices&.empty? %>
+  <% if @invoices && !@invoices&.empty? %>
     <% @invoices.each do |invoice| %>
       <tr>
         <td><%= localize(invoice.created_at.to_date) %></td>

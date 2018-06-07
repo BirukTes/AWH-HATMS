@@ -10,13 +10,13 @@
   </tr>
   </thead>
   <tbody>
-  <% if @drugs || !@drugs&.empty? %>
+  <% if @drugs && !@drugs&.empty? %>
     <% @drugs.each do |drug| %>
       <tr>
         <td><%= drug.code %></td>
         <td><%= drug.name %></td>
-        <td><%= link_to 'View', drug %></td>
-        <td><%= link_to 'Edit', edit_drug_path(drug) %></td>
+        <td><%= link_to('View', drug, class: 'btn btn-secondary') %></td>
+        <td><%= link_to('Edit', edit_drug_path(drug), class: 'btn btn-secondary') %></td>
         <!--<td><%# link_to 'Destroy', drug, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>

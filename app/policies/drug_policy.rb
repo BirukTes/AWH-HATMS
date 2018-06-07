@@ -9,6 +9,10 @@ class DrugPolicy < ApplicationPolicy
     staff.medical_staff_admin? || staff.ward_sister?
   end
 
+  def show?
+    staff.medical_staff_admin? || staff.ward_sister?
+  end
+
   def create?
     staff.medical_staff_admin? || staff.ward_sister?
   end

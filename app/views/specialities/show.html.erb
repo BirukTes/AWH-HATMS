@@ -3,5 +3,8 @@
   <%= @speciality.speciality %>
 </p>
 
-<%= link_to 'Edit', edit_speciality_path(@speciality) %> |
-<%= link_to 'Back', specialities_path %>
+<% content_for(:navigationButtons) do %>
+  <%= link_to('Edit', edit_speciality_path(@speciality), class: 'btn btn-secondary') %>
+  &nbsp;
+  <%= link_to('Back', specialities_path, class: 'btn btn-secondary') %>
+<% end %>

@@ -4,24 +4,24 @@
       <h2><%= pluralize(drug.errors.count, "error") %> prohibited this drug from being saved:</h2>
 
       <ul>
-      <% drug.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% drug.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group col-3">
     <%= form.label :code %>
-    <%= form.text_field :code, id: :drug_code %>
+    <%= form.text_field :code, id: :drug_code, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-3">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :drug_name %>
+    <%= form.text_field :name, id: :drug_name, class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="col">
+    <%= form.submit(class: 'btn btn-primary') %>
   </div>
 <% end %>

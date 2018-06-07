@@ -2,6 +2,8 @@
   <strong>Title:</strong>
   <%= @job_title.title %>
 </p>
-
-<%= link_to 'Edit', edit_job_title_path(@job_title) %> |
-<%= link_to 'Back', job_titles_path %>
+<% content_for(:navigationButtons) do %>
+  <%= link_to('Edit',  edit_job_title_path(@job_title), class: 'btn btn-secondary') %>
+  &nbsp;
+  <%= link_to('Back', job_titles_path, class: 'btn btn-secondary') %>
+<% end %>
