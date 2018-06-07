@@ -17,6 +17,7 @@
   <table class="table table-bordered table-striped">
     <thead class="thead-light">
     <tr>
+      <th>Full Name</th>
       <th>User Id</th>
       <th>Speciality</th>
       <th>Job Title</th>
@@ -29,6 +30,7 @@
     <%# & symbol used as safe navigation or exits if object is null %>
     <% @staffs&.each do |staff| %>
       <tr>
+        <td><%= staff.person.full_name %></td>
         <td><%= staff.userId %></td>
         <% staff&.specialities.each do |speciality| %>
           <td><%= speciality.speciality %></td>
