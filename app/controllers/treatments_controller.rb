@@ -17,12 +17,12 @@ class TreatmentsController < ApplicationController
     authorize(:treatment)
     @treatment = Treatment.new
 
-    if params.include?(:ward_id) && params.include?(:patient_id) && @patient.eql?(nil)
+    if params.include?(:ward_id) && params.include?(:patient_id) && @admission.eql?(nil)
       admission_id_extract = params[:patient_id].split('|')[1]
       @admission = Admission.find(admission_id_extract)
 
     elsif params.include?(:rest_patient)
-      @patient = nil
+      @admission = nil
     end
   end
 
@@ -31,7 +31,7 @@ class TreatmentsController < ApplicationController
     @treatment = Treatment.new(treatment_params)
 
     if @treatment.save
-      redirect_to(treatments_path, notice: 'Note saved')
+      redirect_to(treatments_path, notice: 'Note was successfully created')
     else
       respond_with(@treatment)
     end
@@ -42,7 +42,7 @@ class TreatmentsController < ApplicationController
 
   def update
     if @treatment.update(treatment_params)
-      redirect_to(treatments_path, notice: 'Note update successful')
+      redirect_to(treatments_path, notice: 'Note was successfully updated')
     else
       respond_with(:create)
     end
@@ -50,7 +50,7 @@ class TreatmentsController < ApplicationController
 
   def destroy
     @treatment.destroy
-    redirect_to(:index, notice: 'Note deleted successfully')
+    redirect_to(:index, notice: 'Note was successfully deleted')
   end
 
   private

@@ -5,8 +5,8 @@
 <% staff = Staff.find_by(userId: treatment.issuedBy) if treatment.issuedBy %>
 
 <%= form_with(model: treatment, validate: true) do |treatment_form| %>
-  <%= treatment_form.hidden_field(:admission_id, value: treatment.admission.id||(admission.id if admission)  ) %>
-  <%= treatment_form.hidden_field(:date, value: Date.today) %>
+  <%= treatment_form.hidden_field(:admission_id, value: treatment&.admission&.id||(admission&.id if admission)  ) %>
+  <%= treatment_form.hidden_field(:date, value: treatment.date || Date.today) %>
   <%#	 Helper method %>
   <%= treatment_form.hidden_field(:issuedBy, value: (treatment.issuedBy) || current_staff.userId) %>
   <table class="table borderless">
