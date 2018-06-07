@@ -20,7 +20,7 @@
 # TODO Name of treatment requires changing
 class Treatment < ApplicationRecord
   belongs_to :admission
-  has_one (:patient, through: :admission)
+  has_one(:patient, through: :admission)
 
   validates(:note, presence: true)
 end
