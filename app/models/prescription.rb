@@ -1,3 +1,7 @@
+# Allows to make diagnosis prescription
+#
+# @author Bereketab Gulai
+
 # == Schema Information
 #
 # Table name: prescriptions
@@ -22,6 +26,7 @@ class Prescription < ApplicationRecord
   human_attribute_name(:treatmentLength)
   human_attribute_name(:issuedBy)
 
+  # Validates all fields
   validates(:date, presence: true)
   validates(:dosage, presence: true)
   validates(:treatmentLength, presence: true)

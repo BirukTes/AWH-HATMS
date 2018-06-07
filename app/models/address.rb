@@ -1,3 +1,7 @@
+# Holds the address for class person
+#
+# @author Bereketab Gulai
+
 # == Schema Information
 #
 # Table name: addresses

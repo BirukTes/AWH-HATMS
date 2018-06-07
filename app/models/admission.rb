@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# Allows admission of patient, contains class methods to retrieve patients
+#
+# @author Bereketab Gulai
+
 # == Schema Information
 #
 # Table name: admissions
@@ -15,7 +19,6 @@
 #  updated_at         :datetime         not null
 #  status             :string
 #
-
 
 class Admission < ApplicationRecord
   # Only association here, no composite key

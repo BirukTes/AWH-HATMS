@@ -6,7 +6,7 @@
 <title>
   Class: PrescriptionsController
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.13
   
 </title>
 
@@ -169,7 +169,9 @@ creation, deletion and more</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Optimize Nothing should be deleted.</p>
+</div></span>
   
 </li>
 
@@ -345,17 +347,17 @@ creation, deletion and more</p>
       <pre class="lines">
 
 
+31
+32
 33
 34
 35
 36
 37
-38
-39
-40</pre>
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/prescriptions_controller.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/prescriptions_controller.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:prescription</span><span class='rparen'>)</span>
@@ -379,24 +381,35 @@ creation, deletion and more</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Optimize Nothing should be deleted</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
+52
 53
 54
-55
-56</pre>
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/prescriptions_controller.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/prescriptions_controller.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
-  <span class='ivar'>@prescription</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span>
-  <span class='id identifier rubyid_respond_to'>respond_to</span><span class='lparen'>(</span><span class='symbol'>:index</span><span class='comma'>,</span> <span class='label'>notice:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Treatment Deleted</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
+  <span class='comment'># @prescription.destroy
+</span>  <span class='comment'># redirect_to :index, notice: &#39;Prescription Deleted&#39;
+</span><span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -417,11 +430,11 @@ creation, deletion and more</p>
       <pre class="lines">
 
 
-42
-43</pre>
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/prescriptions_controller.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/prescriptions_controller.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit'>edit</span>
 <span class='kw'>end</span></pre>
@@ -445,14 +458,14 @@ creation, deletion and more</p>
       <pre class="lines">
 
 
+6
+7
 8
 9
-10
-11
-12</pre>
+10</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/prescriptions_controller.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/prescriptions_controller.rb', line 6</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
   <span class='comment'># Needs to know the policy, which is of prescription
@@ -479,6 +492,8 @@ creation, deletion and more</p>
       <pre class="lines">
 
 
+15
+16
 17
 18
 19
@@ -491,12 +506,10 @@ creation, deletion and more</p>
 26
 27
 28
-29
-30
-31</pre>
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/prescriptions_controller.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/prescriptions_controller.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
   <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:prescription</span><span class='rparen'>)</span>
@@ -533,11 +546,11 @@ creation, deletion and more</p>
       <pre class="lines">
 
 
-14
-15</pre>
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/prescriptions_controller.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/prescriptions_controller.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
 <span class='kw'>end</span></pre>
@@ -561,16 +574,16 @@ creation, deletion and more</p>
       <pre class="lines">
 
 
+43
+44
 45
 46
 47
 48
-49
-50
-51</pre>
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/prescriptions_controller.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/prescriptions_controller.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='kw'>if</span> <span class='ivar'>@prescription</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_prescription_params'>prescription_params</span><span class='rparen'>)</span>
@@ -589,9 +602,9 @@ creation, deletion and more</p>
 </div>
 
       <div id="footer">
-  Generated on Fri Jun  1 15:12:35 2018 by
+  Generated on Wed Jun  6 23:09:06 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.1).
+  0.9.13 (ruby-2.4.1).
 </div>
 
     </div>

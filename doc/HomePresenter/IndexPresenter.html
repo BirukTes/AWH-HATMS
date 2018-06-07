@@ -6,7 +6,7 @@
 <title>
   Class: HomePresenter::IndexPresenter
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.13
   
 </title>
 
@@ -402,12 +402,12 @@
       <pre class="lines">
 
 
+11
 12
-13
-14</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_admissions_admitted'>admissions_admitted</span>
   <span class='const'><span class='object_link'><a href="../Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_admitted'>admitted</span><span class='period'>.</span><span class='id identifier rubyid_ransack'>ransack</span><span class='period'>.</span><span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_limit'>limit</span><span class='lparen'>(</span><span class='int'>5</span><span class='rparen'>)</span>
@@ -434,15 +434,13 @@
 
 7
 8
-9
-10</pre>
+9</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_admissions_all_count'>admissions_all_count</span>
-  <span class='comment'>#TODO Should not get all admissions, refactor to discharged or admitted
-</span>  <span class='const'><span class='object_link'><a href="../Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span>
+  <span class='const'><span class='object_link'><a href="../Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -464,12 +462,12 @@
       <pre class="lines">
 
 
+19
 20
-21
-22</pre>
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_admissions_discharged'>admissions_discharged</span>
   <span class='const'><span class='object_link'><a href="../Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_discharged'>discharged</span><span class='period'>.</span><span class='id identifier rubyid_ransack'>ransack</span><span class='period'>.</span><span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_limit'>limit</span><span class='lparen'>(</span><span class='int'>5</span><span class='rparen'>)</span>
@@ -494,12 +492,12 @@
       <pre class="lines">
 
 
+15
 16
-17
-18</pre>
+17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_admissions_scheduled'>admissions_scheduled</span>
   <span class='const'><span class='object_link'><a href="../Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scheduled'>scheduled</span><span class='period'>.</span><span class='id identifier rubyid_ransack'>ransack</span><span class='period'>.</span><span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_limit'>limit</span><span class='lparen'>(</span><span class='int'>5</span><span class='rparen'>)</span>
@@ -524,12 +522,12 @@
       <pre class="lines">
 
 
+35
 36
-37
-38</pre>
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_job_titles_count'>job_titles_count</span>
   <span class='const'><span class='object_link'><a href="../JobTitle.html" title="JobTitle (class)">JobTitle</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span>
@@ -554,12 +552,12 @@
       <pre class="lines">
 
 
+23
 24
-25
-26</pre>
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_patients_count'>patients_count</span>
   <span class='const'><span class='object_link'><a href="../Patient.html" title="Patient (class)">Patient</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span>
@@ -584,12 +582,12 @@
       <pre class="lines">
 
 
+39
 40
-41
-42</pre>
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_specialities_count'>specialities_count</span>
   <span class='const'><span class='object_link'><a href="../Speciality.html" title="Speciality (class)">Speciality</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span>
@@ -614,12 +612,12 @@
       <pre class="lines">
 
 
+27
 28
-29
-30</pre>
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_staffs_count'>staffs_count</span>
   <span class='const'><span class='object_link'><a href="../Staff.html" title="Staff (class)">Staff</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span>
@@ -644,12 +642,12 @@
       <pre class="lines">
 
 
+31
 32
-33
-34</pre>
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_teams_count'>teams_count</span>
   <span class='const'><span class='object_link'><a href="../Team.html" title="Team (class)">Team</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span>
@@ -674,14 +672,14 @@
       <pre class="lines">
 
 
+47
 48
 49
 50
-51
-52</pre>
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ward_all_beds'>ward_all_beds</span>
   <span class='const'><span class='object_link'><a href="../Ward.html" title="Ward (class)">Ward</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ward'>ward</span><span class='op'>|</span>
@@ -708,14 +706,14 @@
       <pre class="lines">
 
 
+53
 54
 55
 56
-57
-58</pre>
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ward_available_beds'>ward_available_beds</span>
   <span class='const'><span class='object_link'><a href="../Ward.html" title="Ward (class)">Ward</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ward'>ward</span><span class='op'>|</span>
@@ -742,12 +740,12 @@
       <pre class="lines">
 
 
+43
 44
-45
-46</pre>
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/home_presenter.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_wards_count'>wards_count</span>
   <span class='const'><span class='object_link'><a href="../Ward.html" title="Ward (class)">Ward</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span>
@@ -762,9 +760,9 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jun  1 15:12:32 2018 by
+  Generated on Wed Jun  6 23:09:04 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.1).
+  0.9.13 (ruby-2.4.1).
 </div>
 
     </div>

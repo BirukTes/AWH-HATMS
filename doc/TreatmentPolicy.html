@@ -6,7 +6,7 @@
 <title>
   Class: TreatmentPolicy
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.13
   
 </title>
 
@@ -316,7 +316,7 @@
       <pre class="code"><span class="info file"># File 'app/policies/treatment_policy.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create?'>create?</span>
-  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_doctor?'>doctor?</span>
+  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_doctor?'>doctor?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_staff_nurse?'>staff_nurse?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_nurse?'>nurse?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -420,7 +420,7 @@
       <pre class="code"><span class="info file"># File 'app/policies/treatment_policy.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index?'>index?</span>
-  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_doctor?'>doctor?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_staff_nurse?'>staff_nurse?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_nurse?'>nurse?</span>
+  <span class='kw'>true</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -472,7 +472,7 @@
       <pre class="code"><span class="info file"># File 'app/policies/treatment_policy.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show?'>show?</span>
-  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_doctor?'>doctor?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_staff_nurse?'>staff_nurse?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_nurse?'>nurse?</span>
+  <span class='kw'>true</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -524,7 +524,7 @@
       <pre class="code"><span class="info file"># File 'app/policies/treatment_policy.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update?'>update?</span>
-  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_doctor?'>doctor?</span>
+  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_doctor?'>doctor?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_staff_nurse?'>staff_nurse?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_nurse?'>nurse?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -536,9 +536,9 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jun  1 15:12:32 2018 by
+  Generated on Wed Jun  6 23:09:04 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.1).
+  0.9.13 (ruby-2.4.1).
 </div>
 
     </div>

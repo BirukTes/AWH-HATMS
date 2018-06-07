@@ -1,3 +1,7 @@
+# Provides properties used by patient and staff class at he database level
+#
+# @author Bereketab Gulai
+
 # == Schema Information
 #
 # Table name: people
@@ -55,8 +59,8 @@ class Person < ApplicationRecord
   # Class method, can be accessed without instantiation
   # Gets the a patient with the details
   #
-  # @param dateOfBirth
-  # @param lastName
+  # @param (dateOfBirth) - date of birth to search for
+  # @param (lastName) - last name to search for
   # @return [Person] person object, specific to the patient
   def self.find_person_patient(dateOfBirth, lastName)
     # Make sure they  are not null

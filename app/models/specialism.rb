@@ -1,3 +1,7 @@
+# Provides junction between staff and speciality
+#
+# @author Bereketab Gulai
+
 # == Schema Information
 #
 # Table name: specialisms
@@ -14,6 +18,6 @@ class Specialism < ApplicationRecord
   # self.primary_keys :staff, :speciality
 
   # Association
-  belongs_to :staff
-  belongs_to :speciality
+  belongs_to(:staff)
+  belongs_to(:speciality)
 end

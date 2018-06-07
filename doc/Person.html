@@ -6,7 +6,7 @@
 <title>
   Class: Person
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.13
   
 </title>
 
@@ -201,6 +201,30 @@ the details.</p>
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#full_name-instance_method" title="#full_name (instance method)">#<strong>full_name</strong>  &#x21d2; string </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Concatenates the name.</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -288,13 +312,13 @@ the details</p>
       <pre class="lines">
 
 
-54
-55
-56
-57</pre>
+61
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/person.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'app/models/person.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_person_patient'>find_person_patient</span><span class='lparen'>(</span><span class='id identifier rubyid_dateOfBirth'>dateOfBirth</span><span class='comma'>,</span> <span class='id identifier rubyid_lastName'>lastName</span><span class='rparen'>)</span>
   <span class='comment'># Make sure they  are not null
@@ -355,18 +379,18 @@ the details</p>
       <pre class="lines">
 
 
-38
-39
-40
-41
-42
-43
-44
 45
-46</pre>
+46
+47
+48
+49
+50
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/person.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'app/models/person.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_full_address'>full_address</span>
   <span class='comment'># Check in case of null, otherwise this should not be the case address must be provided
@@ -382,14 +406,73 @@ the details</p>
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="full_name-instance_method">
+  
+    #<strong>full_name</strong>  &#x21d2; <tt>string</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Concatenates the name</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>string</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the full name</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/person.rb', line 38</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_full_name'>full_name</span>
+  <span class='id identifier rubyid_firstName'>firstName</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_lastName'>lastName</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Fri Jun  1 15:12:31 2018 by
+  Generated on Wed Jun  6 23:09:02 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.1).
+  0.9.13 (ruby-2.4.1).
 </div>
 
     </div>

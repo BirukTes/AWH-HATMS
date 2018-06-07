@@ -1,3 +1,7 @@
+# Allows to create Ward, has many allocations to teams and admissions to patients
+#
+# @author Bereketab Gulai
+
 # == Schema Information
 #
 # Table name: wards

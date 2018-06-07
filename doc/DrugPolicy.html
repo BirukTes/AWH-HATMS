@@ -6,7 +6,7 @@
 <title>
   Class: DrugPolicy
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.13
   
 </title>
 
@@ -290,7 +290,7 @@
       <pre class="code"><span class="info file"># File 'app/policies/drug_policy.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create?'>create?</span>
-  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span>
+  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_ward_sister?'>ward_sister?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -394,7 +394,7 @@
       <pre class="code"><span class="info file"># File 'app/policies/drug_policy.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index?'>index?</span>
-  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span>
+  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_ward_sister?'>ward_sister?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -446,7 +446,7 @@
       <pre class="code"><span class="info file"># File 'app/policies/drug_policy.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update?'>update?</span>
-  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span>
+  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_ward_sister?'>ward_sister?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -458,9 +458,9 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jun  1 15:12:31 2018 by
+  Generated on Wed Jun  6 23:09:03 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.4.1).
+  0.9.13 (ruby-2.4.1).
 </div>
 
     </div>

@@ -6,7 +6,7 @@ class DiagnosesController < ApplicationController
   # GET /diagnoses.json
   def index
     authorize(:diagnoses)
-    @diagnoses = Diagnosis.all
+    @diagnoses = nil
   end
 
   # GET /diagnoses/1
@@ -78,6 +78,7 @@ class DiagnosesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_diagnosis
     authorize(:diagnoses)

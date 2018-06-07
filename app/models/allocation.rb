@@ -1,3 +1,7 @@
+# Provides junction between teams and wards
+#
+# @author Bereketab Gulai
+
 # == Schema Information
 #
 # Table name: allocations

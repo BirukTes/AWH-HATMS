@@ -1,3 +1,7 @@
+# Provides junction between prescriptin and drugs
+#
+# @author Bereketab Gulai
+
 # == Schema Information
 #
 # Table name: medications

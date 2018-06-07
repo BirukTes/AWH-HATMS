@@ -25,7 +25,7 @@
   </tr>
   </thead>
   <tbody>
-  <% if @prescriptions || !@prescriptions&.empty? %>
+  <% if @prescriptions && !@prescriptions&.empty? %>
     <% @prescriptions&.each do |prescription| %>
       <% patient = prescription.diagnosis.patient if prescription.diagnosis %>
       <% staff = Staff.find_by(userId: prescription.issuedBy) %>
