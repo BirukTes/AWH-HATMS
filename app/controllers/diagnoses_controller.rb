@@ -6,7 +6,7 @@ class DiagnosesController < ApplicationController
   # GET /diagnoses.json
   def index
     authorize(:diagnoses)
-    @diagnoses = nil
+    @diagnoses = Diagnosis.all
   end
 
   # GET /diagnoses/1
