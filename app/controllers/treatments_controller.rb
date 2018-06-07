@@ -1,10 +1,6 @@
 class TreatmentsController < ApplicationController
   before_action(:set_treatment, only: [:show, :edit, :update, :destroy])
 
-  # Declaration of respond-able formats
-  respond_to(:html, :json)
-
-
   def index
     authorize(:treatment)
     @treatments = Treatment.all
@@ -50,7 +46,7 @@ class TreatmentsController < ApplicationController
 
   def destroy
     @treatment.destroy
-    redirect_to(:index, notice: 'Note was successfully deleted')
+    redirect_to(treatments_path, notice: 'Note was successfully deleted')
   end
 
   private

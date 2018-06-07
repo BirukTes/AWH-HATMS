@@ -37,7 +37,7 @@
         <%= link_to('Edit', edit_treatment_path(@treatment.id), role: 'button', class: 'btn btn-secondary') %>
       </td>
       <td>
-        <%= link_to('Delete', treatment_path(@treatment.id), method: :delete, data: { confirm: "Should this treatment no. #{@treatment.id} be deleted?" }, role: 'button', class: 'btn btn-secondary') %>
+        <%= link_to('Delete', treatment_path(@treatment.id), method: :delete, data: { confirm: "Should this Note no. #{@treatment.id} be deleted?" }, role: 'button', class: 'btn btn-secondary') %>
       </td>
     <% end %>
   </tr>
