@@ -1,3 +1,6 @@
+# Defines policy for teams controller actions
+#
+# @author Bereketab Gulai
 class TeamPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve

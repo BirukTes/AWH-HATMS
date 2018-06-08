@@ -1,3 +1,6 @@
+# Defines policy for invoices controller actions
+#
+# @author Bereketab Gulai
 class InvoicePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
@@ -37,6 +40,4 @@ class InvoicePolicy < ApplicationPolicy
   def send_mail?
     staff.medical_staff_admin?
   end
-
-
 end

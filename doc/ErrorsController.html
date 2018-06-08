@@ -103,7 +103,37 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Handles common (404) system errors to and attempts to redirect back or root
+path</p>
 
+<p>FIXME redirection is causing issue provide better method</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Bereketab Gulai</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
 
 
 
@@ -286,13 +316,13 @@ whether authenticated or not.</p>
       <pre class="lines">
 
 
-44
-45
-46
-47</pre>
+48
+49
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/errors_controller.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/errors_controller.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gone'>gone</span>
   <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>The page is gone</span><span class='tstring_end'>&#39;</span></span>
@@ -330,12 +360,12 @@ whether authenticated or not</p>
       <pre class="lines">
 
 
-50
-51
-52</pre>
+54
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/errors_controller.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/errors_controller.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_internal_server_error'>internal_server_error</span>
   <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_referrer'>referrer</span> <span class='op'>||</span> <span class='id identifier rubyid_root_path'>root_path</span><span class='comma'>,</span> <span class='label'>alert:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Internal Server Error</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>status:</span> <span class='int'>500</span><span class='rparen'>)</span>
@@ -360,16 +390,16 @@ whether authenticated or not</p>
       <pre class="lines">
 
 
-38
-39
-40
-41</pre>
+42
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/errors_controller.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/errors_controller.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_not_acceptable'>not_acceptable</span>
-  <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Not found</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Not acceptable</span><span class='tstring_end'>&#39;</span></span>
   <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_referrer'>referrer</span> <span class='op'>||</span> <span class='id identifier rubyid_root_path'>root_path</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='int'>406</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -404,13 +434,13 @@ whether authenticated or not</p>
       <pre class="lines">
 
 
-33
-34
-35
-36</pre>
+36
+37
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/errors_controller.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/errors_controller.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_not_found'>not_found</span>
   <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:alert</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Not found</span><span class='tstring_end'>&#39;</span></span>
@@ -426,7 +456,7 @@ whether authenticated or not</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Jun  6 23:09:05 2018 by
+  Generated on Fri Jun  8 04:41:13 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.13 (ruby-2.4.1).
 </div>

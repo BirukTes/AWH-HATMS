@@ -1,3 +1,6 @@
+# Handles view, create and update of job titles system
+#
+# @author Bereketab Gulai
 class JobTitlesController < ApplicationController
   before_action :set_job_title, only: [:show, :edit, :update, :destroy]
 

@@ -1,3 +1,6 @@
+# Handles diagnosis management system, to view, create and update
+#
+# @author Bereketab Gulai
 class DiagnosesController < ApplicationController
   before_action :set_diagnosis, only: [:show, :edit, :update, :destroy]
 

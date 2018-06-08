@@ -203,7 +203,43 @@ occupation          :string</code></pre>
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>-</span>
+      
+      
+        <span class='type'>(<tt>dateOfBirth</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>date of birth to search for</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>-</span>
+      
+      
+        <span class='type'>(<tt>lastName</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>last name to search for</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -215,8 +251,9 @@ occupation          :string</code></pre>
       
       
         &mdash;
-        <div class='inline'>
+        <div class='inline'><ul><li>
 <p>otherwise nil, no patient with details</p>
+</li></ul>
 </div>
       
     </li>
@@ -229,19 +266,19 @@ occupation          :string</code></pre>
       <pre class="lines">
 
 
-53
-54
 55
 56
-57</pre>
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/patient.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'app/models/patient.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_patient'>find_patient</span><span class='lparen'>(</span><span class='id identifier rubyid_dateOfBirth'>dateOfBirth</span><span class='comma'>,</span> <span class='id identifier rubyid_lastName'>lastName</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Person.html" title="Person (class)">Person</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_person_patient'><span class='object_link'><a href="Person.html#find_person_patient-class_method" title="Person.find_person_patient (method)">find_person_patient</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_dateOfBirth'>dateOfBirth</span><span class='comma'>,</span> <span class='id identifier rubyid_lastName'>lastName</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Person.html" title="Person (class)">Person</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_person_patient'><span class='object_link'><a href="Person.html#find_person_patient-class_method" title="Person.find_person_patient (method)">find_person_patient</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_dateOfBirth'>dateOfBirth</span><span class='comma'>,</span> <span class='id identifier rubyid_lastName'>lastName</span><span class='rparen'>)</span>
 
-    <span class='id identifier rubyid_person'>person</span> <span class='op'>?</span> <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_personalDetail_id'>personalDetail_id</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>nil</span>
+  <span class='id identifier rubyid_person'>person</span> <span class='op'>?</span> <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_personalDetail_id'>personalDetail_id</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>nil</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -253,7 +290,7 @@ occupation          :string</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Wed Jun  6 23:09:02 2018 by
+  Generated on Fri Jun  8 04:41:10 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.13 (ruby-2.4.1).
 </div>

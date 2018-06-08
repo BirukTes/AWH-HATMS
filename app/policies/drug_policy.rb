@@ -1,3 +1,6 @@
+# Defines policy for drugs controller actions
+#
+# @author Bereketab Gulai
 class DrugPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve

@@ -83,7 +83,18 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Bootsrap modal helper, provides methods header, footer, title, body</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
   
     <h2>
       Constant Summary
@@ -270,9 +281,6 @@
       <pre class="lines">
 
 
-13
-14
-15
 16
 17
 18
@@ -281,10 +289,13 @@
 21
 22
 23
-24</pre>
+24
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/modal_helper.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/modal_helper.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_modal'>modal</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_canonicalize_options'>canonicalize_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -318,12 +329,12 @@
       <pre class="lines">
 
 
-46
-47
-48</pre>
+49
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/modal_helper.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/modal_helper.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_modal_body'>modal_body</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_bootstrap_generator'>bootstrap_generator</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>modal-body</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:div</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -348,9 +359,6 @@
       <pre class="lines">
 
 
-50
-51
-52
 53
 54
 55
@@ -358,10 +366,13 @@
 57
 58
 59
-60</pre>
+60
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/modal_helper.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/modal_helper.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_modal_footer'>modal_footer</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_canonicalize_options'>canonicalize_options</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_extract_options!'>extract_options!</span><span class='rparen'>)</span>
@@ -394,9 +405,6 @@
       <pre class="lines">
 
 
-26
-27
-28
 29
 30
 31
@@ -408,10 +416,13 @@
 37
 38
 39
-40</pre>
+40
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/modal_helper.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/modal_helper.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_modal_header'>modal_header</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_canonicalize_options'>canonicalize_options</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_extract_options!'>extract_options!</span><span class='rparen'>)</span>
@@ -448,12 +459,12 @@
       <pre class="lines">
 
 
-42
-43
-44</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/modal_helper.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/modal_helper.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_modal_title'>modal_title</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_bootstrap_generator'>bootstrap_generator</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>modal-title</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:h4</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -478,17 +489,17 @@
       <pre class="lines">
 
 
-4
-5
-6
 7
 8
 9
 10
-11</pre>
+11
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/modal_helper.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/modal_helper.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_modal_trigger'>modal_trigger</span><span class='lparen'>(</span><span class='id identifier rubyid_text'>text</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_canonicalize_options'>canonicalize_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -508,7 +519,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jun  6 23:09:02 2018 by
+  Generated on Fri Jun  8 04:41:10 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.13 (ruby-2.4.1).
 </div>

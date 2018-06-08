@@ -83,7 +83,18 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Bootsrap card helper, provides card methods head, title, body and more</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -115,7 +126,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Container.</p>
+</div></span>
   
 </li>
 
@@ -137,7 +150,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Card body.</p>
+</div></span>
   
 </li>
 
@@ -159,7 +174,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Header.</p>
+</div></span>
   
 </li>
 
@@ -181,7 +198,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Card list.</p>
+</div></span>
   
 </li>
 
@@ -203,7 +222,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>List items.</p>
+</div></span>
   
 </li>
 
@@ -225,7 +246,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Subtitle.</p>
+</div></span>
   
 </li>
 
@@ -247,7 +270,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Card text.</p>
+</div></span>
   
 </li>
 
@@ -269,7 +294,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Title.</p>
+</div></span>
   
 </li>
 
@@ -292,22 +319,33 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Container</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-2
-3
-4
-5
 6
 7
-8</pre>
+8
+9
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 2</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 6</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_card'>card</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_canonicalize_options'>canonicalize_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -330,18 +368,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Card body</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-22
-23
-24</pre>
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_card_body'>card_body</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_bootstrap_generator'>bootstrap_generator</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>card-body</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:div</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -360,18 +409,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Header</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-10
-11
-12</pre>
+15
+16
+17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_card_header'>card_header</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_bootstrap_generator'>bootstrap_generator</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>card-header</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:h5</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -390,18 +450,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Card list</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-29
-30
-31</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_card_list'>card_list</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_bootstrap_generator'>bootstrap_generator</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>list-group list-group-flush</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:ul</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -420,18 +491,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>List items</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-33
-34
-35</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_card_list_item'>card_list_item</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_bootstrap_generator'>bootstrap_generator</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>list-group-item</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:li</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -450,18 +532,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Subtitle</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-18
-19
-20</pre>
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_card_subtitle'>card_subtitle</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_bootstrap_generator'>bootstrap_generator</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>card-subtitle mb-2 text-muted</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:h6</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -480,18 +573,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Card text</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-25
-26
-27</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_card_text'>card_text</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_bootstrap_generator'>bootstrap_generator</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>card-text</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:p</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -510,18 +614,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Title</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-14
-15
-16</pre>
+20
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/bootstrap/card_helper.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_card_title'>card_title</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_bootstrap_generator'>bootstrap_generator</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>card-title</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:h2</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -536,7 +651,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jun  6 23:09:02 2018 by
+  Generated on Fri Jun  8 04:41:10 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.13 (ruby-2.4.1).
 </div>

@@ -1,5 +1,6 @@
-# frozen_string_literal: true
-
+# General helper methods for application views
+#
+# @author Bereketab Gulai
 module ApplicationHelper
   # Gets the Bootstrap alert class for given flash type
   #
@@ -66,10 +67,14 @@ module ApplicationHelper
     end
   end
 
+  # All but limited to 8
   def all_staffs
     Staff.all.limit(8)
   end
 
+  # Staff option
+  #
+  # @return [[Array]] - option id and name
   def staffs_option (filter_by = nil)
     case filter_by
       when 'consultant'
@@ -78,9 +83,9 @@ module ApplicationHelper
             ['(' + staff.userId + ')' + ' ' + staff.person.firstName + ' ' + staff.person.lastName, staff.userId]
           end
         end
-        []
+        [] # return empty array
       else
-        []
+        [] # return empty array
     end
   end
 
@@ -98,13 +103,16 @@ module ApplicationHelper
 
   # Maps wards to name and id
   #
-  # @return [[ward name, ward id]]
+  # @return [[ward name, ward id]] - Jagged Array
   def map_wards_option(wards)
     wards.map do |ward|
       [decorate_ward_name(ward), ward.id]
     end
   end
 
+  # Decorate wards names to distinguish
+  #
+  # @return [String] - Decoration
   def decorate_ward_name(ward)
     if !ward.isPrivate && ward.patientGender.eql?('Male')
       '(Male) ' + ward.name

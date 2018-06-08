@@ -103,7 +103,34 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Handles staff management system, to view, create and update</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Bereketab Gulai</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
 
 
 
@@ -135,7 +162,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>POSTs registration form to create staff.</p>
+</div></span>
   
 </li>
 
@@ -157,7 +186,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>GETs edit form.</p>
+</div></span>
   
 </li>
 
@@ -179,7 +210,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>GETs staffs page.</p>
+</div></span>
   
 </li>
 
@@ -201,7 +234,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>GETs registration page.</p>
+</div></span>
   
 </li>
 
@@ -223,7 +258,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>GETs staff profile.</p>
+</div></span>
   
 </li>
 
@@ -245,7 +282,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>POST method, uses edit form data to update staff.</p>
+</div></span>
   
 </li>
 
@@ -305,26 +344,37 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>POSTs registration form to create staff</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-22
-23
-24
-25
-26
-27
 28
 29
 30
 31
-32</pre>
+32
+33
+34
+35
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/staffs_controller.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/staffs_controller.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:staff</span><span class='rparen'>)</span>
@@ -351,17 +401,28 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GETs edit form</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-34
-35</pre>
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/staffs_controller.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/staffs_controller.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit'>edit</span>
 <span class='kw'>end</span></pre>
@@ -379,19 +440,30 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GETs staffs page</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-5
-6
-7
-8</pre>
+8
+9
+10
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/staffs_controller.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/staffs_controller.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
   <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:staff</span><span class='rparen'>)</span>
@@ -411,23 +483,34 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GETs registration page</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-13
-14
-15
-16
-17
 18
 19
-20</pre>
+20
+21
+22
+23
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/staffs_controller.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/staffs_controller.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
   <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:staff</span><span class='rparen'>)</span>
@@ -451,17 +534,28 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GETs staff profile</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-10
-11</pre>
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/staffs_controller.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/staffs_controller.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
 <span class='kw'>end</span></pre>
@@ -479,29 +573,40 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>POST method, uses edit form data to update staff</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-37
-38
-39
-40
-41
-42
-43
-44
 45
 46
 47
 48
 49
-50</pre>
+50
+51
+52
+53
+54
+55
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/staffs_controller.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/staffs_controller.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:staff</span><span class='rparen'>)</span>
@@ -527,7 +632,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jun  6 23:09:05 2018 by
+  Generated on Fri Jun  8 04:41:13 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.13 (ruby-2.4.1).
 </div>

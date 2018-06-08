@@ -1,3 +1,6 @@
+# Defines policy for prescriptions controller actions
+#
+# @author Bereketab Gulai
 class PrescriptionPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve

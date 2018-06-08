@@ -103,7 +103,34 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Handles treatement/notes system, to view, create and update</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Bereketab Gulai</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
 
 
 
@@ -135,7 +162,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>POSTs note creation.</p>
+</div></span>
   
 </li>
 
@@ -157,7 +186,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>DELETE method to destroy.</p>
+</div></span>
   
 </li>
 
@@ -179,7 +210,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>GETs edit form.</p>
+</div></span>
   
 </li>
 
@@ -201,7 +234,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>GETs all notes.</p>
+</div></span>
   
 </li>
 
@@ -223,7 +258,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>GETs create note form.</p>
+</div></span>
   
 </li>
 
@@ -245,7 +282,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>GETs individual note.</p>
+</div></span>
   
 </li>
 
@@ -267,7 +306,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>POST method, receives edit form to create note.</p>
+</div></span>
   
 </li>
 
@@ -327,32 +368,43 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>POSTs note creation</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-29
-30
-31
 32
 33
 34
 35
 36
 37
-38</pre>
+38
+39
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/treatments_controller.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/treatments_controller.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:treatment</span><span class='rparen'>)</span>
   <span class='ivar'>@treatment</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Treatment.html" title="Treatment (class)">Treatment</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_treatment_params'>treatment_params</span><span class='rparen'>)</span>
 
   <span class='kw'>if</span> <span class='ivar'>@treatment</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
-    <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_treatments_path'>treatments_path</span><span class='comma'>,</span> <span class='label'>notice:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Note saved</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_treatments_path'>treatments_path</span><span class='comma'>,</span> <span class='label'>notice:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Note was successfully created</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_respond_with'>respond_with</span><span class='lparen'>(</span><span class='ivar'>@treatment</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -371,23 +423,34 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>DELETE method to destroy</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-51
-52
-53
-54</pre>
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/treatments_controller.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/treatments_controller.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='ivar'>@treatment</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span>
-  <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='symbol'>:index</span><span class='comma'>,</span> <span class='label'>notice:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Note deleted successfully</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_treatments_path'>treatments_path</span><span class='comma'>,</span> <span class='label'>notice:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Note was successfully deleted</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -403,17 +466,28 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GETs edit form</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-40
-41</pre>
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/treatments_controller.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/treatments_controller.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit'>edit</span>
 <span class='kw'>end</span></pre>
@@ -431,7 +505,18 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GETs all notes</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
@@ -463,14 +548,23 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GETs create note form</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-16
-17
 18
 19
 20
@@ -480,21 +574,23 @@
 24
 25
 26
-27</pre>
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/treatments_controller.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/treatments_controller.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
   <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:treatment</span><span class='rparen'>)</span>
   <span class='ivar'>@treatment</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Treatment.html" title="Treatment (class)">Treatment</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 
-  <span class='kw'>if</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='symbol'>:ward_id</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='symbol'>:patient_id</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@patient</span><span class='period'>.</span><span class='id identifier rubyid_eql?'>eql?</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='symbol'>:ward_id</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='symbol'>:patient_id</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@admission</span><span class='period'>.</span><span class='id identifier rubyid_eql?'>eql?</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_admission_id_extract'>admission_id_extract</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:patient_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>|</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
     <span class='ivar'>@admission</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_admission_id_extract'>admission_id_extract</span><span class='rparen'>)</span>
 
   <span class='kw'>elsif</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='symbol'>:rest_patient</span><span class='rparen'>)</span>
-    <span class='ivar'>@patient</span> <span class='op'>=</span> <span class='kw'>nil</span>
+    <span class='ivar'>@admission</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -511,17 +607,28 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GETs individual note</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-13
-14</pre>
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/treatments_controller.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/treatments_controller.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
 <span class='kw'>end</span></pre>
@@ -539,26 +646,37 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>POST method, receives edit form to create note</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-43
-44
-45
-46
-47
 48
-49</pre>
+49
+50
+51
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/treatments_controller.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/treatments_controller.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='kw'>if</span> <span class='ivar'>@treatment</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_treatment_params'>treatment_params</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_treatments_path'>treatments_path</span><span class='comma'>,</span> <span class='label'>notice:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Note update successful</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_redirect_to'>redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_treatments_path'>treatments_path</span><span class='comma'>,</span> <span class='label'>notice:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Note was successfully updated</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_respond_with'>respond_with</span><span class='lparen'>(</span><span class='symbol'>:create</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -573,7 +691,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jun  6 23:09:06 2018 by
+  Generated on Fri Jun  8 04:41:14 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.13 (ruby-2.4.1).
 </div>

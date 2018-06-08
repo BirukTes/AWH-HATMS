@@ -1,3 +1,6 @@
+# Handles patient system, with methods to view, create and update
+#
+# @author Bereketab Gulai
 class PatientsController < ApplicationController
   # Permitted formats
   respond_to(:html, :js, :json)

@@ -1,4 +1,10 @@
+# Helper for prescriptions views
+#
+# @author Bereketab Gulai
 module PrescriptionsHelper
+
+  # Drug options
+  # OPTIMIZE requires fixing
   def drug_options
     # Remove the drugs which cannot be used again for today
     if !@diagnosis.prescriptions.all.empty?
@@ -21,6 +27,9 @@ module PrescriptionsHelper
 
   private
 
+  # All drugs
+  #
+  # @return [[Array]] - name - id
   def get_all_drugs
     # Otherwise return all, limit to 10
     Drug.all.limit(10).map do |drug|

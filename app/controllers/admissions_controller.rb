@@ -1,3 +1,6 @@
+# Handles admission system, to view, create and update
+#
+# @author Bereketab Gulai
 class AdmissionsController < ApplicationController
   # Sets the admission object for the following actions
   before_action(:set_admission, only: [:show, :edit, :update, :destroy, :discharge, :authorise_discharge,

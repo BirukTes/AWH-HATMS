@@ -1,3 +1,6 @@
+# Defines policy for treatments controller actions
+#
+# @author Bereketab Gulai
 class TreatmentPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve

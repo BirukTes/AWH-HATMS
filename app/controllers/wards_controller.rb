@@ -1,8 +1,8 @@
+# Handles ward management system, to view, create and update
+#
+# @author Bereketab Gulai
 class WardsController < ApplicationController
   before_action :set_ward, only: [:show, :edit, :update, :destroy]
-
-  # Declaration of formats
-  respond_to(:html, :js, :json, :xlsx)
 
   # GET /wards
   # GET /wards.json

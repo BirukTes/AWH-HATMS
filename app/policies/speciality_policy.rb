@@ -1,3 +1,6 @@
+# Defines policy for specialities controller actions
+#
+# @author Bereketab Gulai
 class SpecialityPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve

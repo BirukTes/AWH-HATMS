@@ -1,3 +1,6 @@
+# Handles speciality management system, with methods to view, create and update
+#
+# @author Bereketab Gulai
 class SpecialitiesController < ApplicationController
   before_action :set_speciality, only: [:show, :edit, :update, :destroy]
 

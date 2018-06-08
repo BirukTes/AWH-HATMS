@@ -1,5 +1,8 @@
-# frozen_string_literal: true
-
+# Handles common (404) system errors to and attempts to redirect back or root path
+#
+# FIXME redirection is causing issue provide better method
+#
+# @author Bereketab Gulai
 class ErrorsController < ApplicationController
   # Skip authorisation for this controller
   skip_after_action :verify_authorized
@@ -35,8 +38,9 @@ class ErrorsController < ApplicationController
     redirect_to(request.referrer || root_path, status: 404)
   end
 
+  #
   def not_acceptable
-    flash[:alert] = 'Not found'
+    flash[:alert] = 'Not acceptable'
     redirect_to(request.referrer || root_path, status: 406)
   end
 

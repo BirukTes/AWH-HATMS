@@ -101,7 +101,34 @@
   
 </div>
 
-<h2>Defined Under Namespace</h2>
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Defines policy for diagnses controller actions</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Bereketab Gulai</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><h2>Defined Under Namespace</h2>
 <p class="children">
   
     
@@ -304,12 +331,12 @@
       <pre class="lines">
 
 
-15
-16
-17</pre>
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/diagnoses_policy.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'app/policies/diagnoses_policy.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create?'>create?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_doctor?'>doctor?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_staff_nurse?'>staff_nurse?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_nurse?'>nurse?</span>
@@ -356,12 +383,12 @@
       <pre class="lines">
 
 
-23
-24
-25</pre>
+28
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/diagnoses_policy.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'app/policies/diagnoses_policy.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy?'>destroy?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span>
@@ -408,12 +435,12 @@
       <pre class="lines">
 
 
-7
-8
-9</pre>
+11
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/diagnoses_policy.rb', line 7</span>
+      <pre class="code"><span class="info file"># File 'app/policies/diagnoses_policy.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index?'>index?</span>
   <span class='kw'>true</span>
@@ -460,12 +487,12 @@
       <pre class="lines">
 
 
-11
-12
-13</pre>
+15
+16
+17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/diagnoses_policy.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'app/policies/diagnoses_policy.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show?'>show?</span>
   <span class='kw'>true</span>
@@ -512,15 +539,17 @@
       <pre class="lines">
 
 
-19
-20
-21</pre>
+23
+24
+25
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/diagnoses_policy.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'app/policies/diagnoses_policy.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update?'>update?</span>
-  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_doctor?'>doctor?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_staff_nurse?'>staff_nurse?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_nurse?'>nurse?</span>
+  <span class='comment'># FIXME staff needs to be the one that created the record, add issueBy to table
+</span>  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_doctor?'>doctor?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_staff_nurse?'>staff_nurse?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_nurse?'>nurse?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -532,7 +561,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jun  6 23:09:04 2018 by
+  Generated on Fri Jun  8 04:41:12 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.13 (ruby-2.4.1).
 </div>

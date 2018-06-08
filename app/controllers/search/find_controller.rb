@@ -1,5 +1,9 @@
+# Handles find forms, methods used during, diagnosis,
+# prescription, making notes, invoices
+#
+# @author Bereketab Gulai
 class Search::FindController < ApplicationController
-  # Json only for now
+  # Json only
   respond_to :json
 
 

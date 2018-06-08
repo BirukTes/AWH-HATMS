@@ -1,3 +1,6 @@
+# Handles drug management system, to view, create and update
+#
+# @author Bereketab Gulai
 class DrugsController < ApplicationController
   before_action :set_drug, only: [:show, :edit, :update, :destroy]
 

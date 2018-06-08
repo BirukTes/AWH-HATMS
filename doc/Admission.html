@@ -103,7 +103,31 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<h2 id="label-Schema+Information">Schema Information</h2>
 
+<p>Table name: admissions</p>
+
+<pre class="code ruby"><code class="ruby">id                 :bigint(8)        not null, primary key
+admissionDate      :datetime         not null
+dischargeDate      :datetime
+currentMedications :text
+admissionNote      :text
+ward_id            :bigint(8)
+patient_id         :bigint(8)
+created_at         :datetime         not null
+updated_at         :datetime         not null
+status             :string</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -447,13 +471,13 @@
       <pre class="lines">
 
 
-103
-104
-105
-106</pre>
+106
+107
+108
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 103</span>
+      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 106</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_admitted_diagnosed_patients'>find_admitted_diagnosed_patients</span><span class='lparen'>(</span><span class='id identifier rubyid_ward_id'>ward_id</span><span class='comma'>,</span> <span class='id identifier rubyid_patient_id'>patient_id</span><span class='rparen'>)</span>
   <span class='comment'># Get the current admissions, extract the patient id and find them
@@ -503,15 +527,15 @@
       <pre class="lines">
 
 
-92
-93
-94
 95
 96
-97</pre>
+97
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_admitted_patients'>find_admitted_patients</span><span class='lparen'>(</span><span class='id identifier rubyid_ward_id'>ward_id</span><span class='rparen'>)</span>
   <span class='comment'># Get the current admissions, extract the patient id and find them
@@ -563,15 +587,15 @@
       <pre class="lines">
 
 
-127
-128
-129
 130
 131
-132</pre>
+132
+133
+134
+135</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 127</span>
+      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 130</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_discharge_unauthorised_admitted_patients'>find_discharge_unauthorised_admitted_patients</span><span class='lparen'>(</span><span class='id identifier rubyid_ward_id'>ward_id</span><span class='rparen'>)</span>
   <span class='comment'># ...Extract the admission id and find them
@@ -623,19 +647,19 @@
       <pre class="lines">
 
 
-112
-113
-114
 115
 116
 117
 118
 119
 120
-121</pre>
+121
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 112</span>
+      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 115</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_discharged_without_invoice_patients'>find_discharged_without_invoice_patients</span><span class='lparen'>(</span><span class='id identifier rubyid_ward_id'>ward_id</span><span class='rparen'>)</span>
   <span class='comment'># This is returned as [[ Ad# name, id],[Ad# name, id]], jagged array
@@ -694,14 +718,14 @@
       <pre class="lines">
 
 
-141
-142
-143
 144
-145</pre>
+145
+146
+147
+148</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 141</span>
+      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 144</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_patients_option'>patients_option</span><span class='lparen'>(</span><span class='id identifier rubyid_patient'>patient</span><span class='comma'>,</span> <span class='id identifier rubyid_admission'>admission</span><span class='rparen'>)</span>
   <span class='comment'>#  Add admission number beginning of the array, NOTICE the end with &#39;|&#39; as delimiter, requires extraction
@@ -741,12 +765,12 @@
       <pre class="lines">
 
 
-151
-152
-153</pre>
+154
+155
+156</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 151</span>
+      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 154</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_set_status_discharge'>set_status_discharge</span><span class='lparen'>(</span><span class='id identifier rubyid_admission_id'>admission_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_admission_id'>admission_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_auto_discharge'>auto_discharge</span>
@@ -788,15 +812,15 @@
       <pre class="lines">
 
 
-157
-158
-159
 160
 161
-162</pre>
+162
+163
+164
+165</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 157</span>
+      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 160</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_auto_discharge'>auto_discharge</span>
   <span class='comment'># Admitted / Discharged
@@ -835,9 +859,6 @@
       <pre class="lines">
 
 
-49
-50
-51
 52
 53
 54
@@ -861,10 +882,13 @@
 72
 73
 74
-75</pre>
+75
+76
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reminder'>reminder</span>
   <span class='id identifier rubyid_account_sid'>account_sid</span> <span class='op'>=</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_application'>application</span><span class='period'>.</span><span class='id identifier rubyid_secrets'>secrets</span><span class='period'>.</span><span class='id identifier rubyid_twilio_account_sid'>twilio_account_sid</span>
@@ -924,9 +948,6 @@ allswell.hospital@outlook.com</span><span class='tstring_end'>&quot;</span></spa
       <pre class="lines">
 
 
-182
-183
-184
 185
 186
 187
@@ -936,10 +957,13 @@ allswell.hospital@outlook.com</span><span class='tstring_end'>&quot;</span></spa
 191
 192
 193
-194</pre>
+194
+195
+196
+197</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 182</span>
+      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 185</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_bed_status_add'>update_bed_status_add</span>
   <span class='comment'># Defines lambda Proc to update the bed status
@@ -985,9 +1009,6 @@ allswell.hospital@outlook.com</span><span class='tstring_end'>&quot;</span></spa
       <pre class="lines">
 
 
-165
-166
-167
 168
 169
 170
@@ -999,10 +1020,13 @@ allswell.hospital@outlook.com</span><span class='tstring_end'>&quot;</span></spa
 176
 177
 178
-179</pre>
+179
+180
+181
+182</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 165</span>
+      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 168</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_bed_status_minus'>update_bed_status_minus</span>
   <span class='comment'># Defines lambda Proc to update the bed status with new value if it is nil or 0,
@@ -1063,13 +1087,13 @@ allswell.hospital@outlook.com</span><span class='tstring_end'>&quot;</span></spa
       <pre class="lines">
 
 
-80
-81
-82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'app/models/admission.rb', line 83</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_when_to_run'>when_to_run</span>
   <span class='id identifier rubyid_minutes_before_appointment'>minutes_before_appointment</span> <span class='op'>=</span> <span class='int'>5</span><span class='period'>.</span><span class='id identifier rubyid_minutes'>minutes</span>
@@ -1085,7 +1109,7 @@ allswell.hospital@outlook.com</span><span class='tstring_end'>&quot;</span></spa
 </div>
 
       <div id="footer">
-  Generated on Wed Jun  6 23:09:03 2018 by
+  Generated on Fri Jun  8 04:41:11 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.13 (ruby-2.4.1).
 </div>

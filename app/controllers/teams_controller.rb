@@ -1,3 +1,6 @@
+# Handles team management system, to view, create and update
+#
+# @author Bereketab Gulai
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 

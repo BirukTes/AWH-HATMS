@@ -103,7 +103,34 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Handles patient system, with methods to view, create and update</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Bereketab Gulai</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
 
 
 
@@ -360,9 +387,6 @@ form</p>
       <pre class="lines">
 
 
-41
-42
-43
 44
 45
 46
@@ -377,10 +401,13 @@ form</p>
 55
 56
 57
-58</pre>
+58
+59
+60
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/patients_controller.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/patients_controller.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:patient</span><span class='rparen'>)</span>
@@ -431,14 +458,14 @@ form</p>
       <pre class="lines">
 
 
-89
-90
-91
 92
-93</pre>
+93
+94
+95
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/patients_controller.rb', line 89</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/patients_controller.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='comment'># TODO instead suspend, patients are not be deleted
@@ -476,11 +503,11 @@ form</p>
       <pre class="lines">
 
 
-62
-63</pre>
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/patients_controller.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/patients_controller.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit'>edit</span>
 <span class='kw'>end</span></pre>
@@ -515,18 +542,18 @@ form</p>
       <pre class="lines">
 
 
-9
-10
-11
 12
 13
 14
 15
 16
-17</pre>
+17
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/patients_controller.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/patients_controller.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
   <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:patient</span><span class='rparen'>)</span>
@@ -568,9 +595,6 @@ form</p>
       <pre class="lines">
 
 
-24
-25
-26
 27
 28
 29
@@ -582,10 +606,13 @@ form</p>
 35
 36
 37
-38</pre>
+38
+39
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/patients_controller.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/patients_controller.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
   <span class='id identifier rubyid_authorize'>authorize</span><span class='lparen'>(</span><span class='symbol'>:patient</span><span class='rparen'>)</span>
@@ -633,11 +660,11 @@ form</p>
       <pre class="lines">
 
 
-20
-21</pre>
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/patients_controller.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/patients_controller.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
 <span class='kw'>end</span></pre>
@@ -672,9 +699,6 @@ form</p>
       <pre class="lines">
 
 
-66
-67
-68
 69
 70
 71
@@ -692,10 +716,13 @@ form</p>
 83
 84
 85
-86</pre>
+86
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/patients_controller.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/patients_controller.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='id identifier rubyid_respond_to'>respond_to</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_format'>format</span><span class='op'>|</span>
@@ -728,7 +755,7 @@ form</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Jun  6 23:09:05 2018 by
+  Generated on Fri Jun  8 04:41:14 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.13 (ruby-2.4.1).
 </div>

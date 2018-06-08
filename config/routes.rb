@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Main Router
 Rails.application.routes.draw do
   namespace :reports do
     get :ward_list
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
     end
     collection do
       post :set_payment_received
-      get :send_mail
+      # get :send_mail
     end
   end
   resources :wards do

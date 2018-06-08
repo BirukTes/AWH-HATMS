@@ -1,3 +1,6 @@
+# Bootsrap modal helper, provides methods header, footer, title, body
+#
+# @ref https://www.driftingruby.com/episodes/bootstrap-framework-and-ruby-on-rails
 module Bootstrap::ModalHelper
   ArgumentError = Class.new(StandardError)
 

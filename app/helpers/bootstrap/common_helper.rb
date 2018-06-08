@@ -1,4 +1,6 @@
-
+# Bootsrap common helper, provides methods shared between card and modal helpers
+#
+# Refs: https://www.driftingruby.com/episodes/bootstrap-framework-and-ruby-on-rails
 module Bootstrap::CommonHelper
   ArgumentError = Class.new(::ArgumentError)
 
@@ -22,19 +24,22 @@ module Bootstrap::CommonHelper
 
   # Returns a new Array of String from _arg_.
   # @example
-  # arrayify_and_stringify_elements(nil) #=> []
-  # arrayify_and_stringify_elements('foo') #=> ["foo"]
-  # arrayify_and_stringify_elements('foo bar') #=> ["foo", "bar"]
-  # arrayify_and_stringify_elements([:foo, 'bar']) #=> ["foo", "bar"]
+  #         arrayify_and_stringify_elements(nil) #=> []
+  #         arrayify_and_stringify_elements('foo') #=> ["foo"]
+  #         arrayify_and_stringify_elements('foo bar') #=> ["foo", "bar"]
+  #         arrayify_and_stringify_elements([:foo, 'bar']) #=> ["foo", "bar"]
   # @param [String, Array] arg
   # @return [Array of String]
   def arrayify_and_stringify_elements(arg)
     return false if arg == false
 
     case
-      when arg.blank? then []
-      when arg.is_a?(Array) then arg
-      else arg.to_s.strip.split(/\s/)
+      when arg.blank? then
+        []
+      when arg.is_a?(Array) then
+        arg
+      else
+        arg.to_s.strip.split(/\s/)
     end.map(&:to_s)
   end
 
@@ -43,8 +48,8 @@ module Bootstrap::CommonHelper
   # @example
   # caret(id: 'my-id') #=>
   # @return [String]
-  def caret(options={})
-    options= canonicalize_options(options)
+  def caret(options = {})
+    options = canonicalize_options(options)
     options = ensure_class(options, 'caret')
     content_tag(:span, nil, options)
   end
@@ -80,6 +85,7 @@ module Bootstrap::CommonHelper
     args
   end
 
+  # Generates the html with given bootstrap class
   def bootstrap_generator(*args, bs_class, element, &block)
     options = canonicalize_options(args.extract_options!)
     options = ensure_class(options, bs_class)

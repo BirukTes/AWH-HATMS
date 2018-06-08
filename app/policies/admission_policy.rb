@@ -1,3 +1,6 @@
+# Defines policy for admissions controller actions
+#
+# @author Bereketab Gulai
 class AdmissionPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve

@@ -1,9 +1,13 @@
+# Defines policy for diagnses controller actions
+#
+# @author Bereketab Gulai
 class DiagnosesPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope
     end
   end
+
   def index?
     true
   end

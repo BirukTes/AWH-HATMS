@@ -1,3 +1,6 @@
+# Defines policy for patients controller actions
+#
+# @author Bereketab Gulai
 class PatientPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve

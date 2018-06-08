@@ -1,4 +1,6 @@
 # Prescriptions Controller, manages all drup prescriptions requests, index, creation, deletion and more
+#
+# @author Bereketab Gulai
 class PrescriptionsController < ApplicationController
   before_action(:set_prescription, only: [:show, :edit, :update, :destroy])
 

@@ -127,33 +127,11 @@ created_at             :datetime         not null
 updated_at             :datetime         not null
 active                 :boolean          default(FALSE), not null</code></pre>
 
-<p>Defines a staff, having relationship with Person(parent at database level),
-Job Title(role), Speciality, Team(Can be owner), others include join tables</p>
-
-<p>Implement Devise for authentication, using user id and password, and
-<code>active</code> status</p>
-
 
   </div>
 </div>
 <div class="tags">
   
-<p class="tag_title">Author:</p>
-<ul class="author">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'>
-<p>Bereketab Gulai</p>
-</div>
-      
-    </li>
-  
-</ul>
 
 </div>
 
@@ -431,16 +409,16 @@ Job Title(role), Speciality, Team(Can be owner), others include join tables</p>
       <pre class="lines">
 
 
-118
-119
-120
 121
 122
 123
-124</pre>
+124
+125
+126
+127</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 118</span>
+      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 121</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_active_for_authentication?'>active_for_authentication?</span>
   <span class='comment'># Uncomment the below debug statement to view the properties of the returned self model values.
@@ -491,12 +469,12 @@ Job Title(role), Speciality, Team(Can be owner), others include join tables</p>
       <pre class="lines">
 
 
-91
-92
-93</pre>
+94
+95
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 94</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_consultant?'>consultant?</span>
   <span class='id identifier rubyid_is_job?'>is_job?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Consultant</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -543,12 +521,12 @@ Job Title(role), Speciality, Team(Can be owner), others include join tables</p>
       <pre class="lines">
 
 
-96
-97
-98</pre>
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 96</span>
+      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 99</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_doctor?'>doctor?</span>
   <span class='id identifier rubyid_is_job?'>is_job?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Doctor</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -597,12 +575,12 @@ Job Title(role), Speciality, Team(Can be owner), others include join tables</p>
       <pre class="lines">
 
 
-86
-87
-88</pre>
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 89</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span>
   <span class='id identifier rubyid_is_job?'>is_job?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Medical Records Staff</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -649,12 +627,12 @@ Job Title(role), Speciality, Team(Can be owner), others include join tables</p>
       <pre class="lines">
 
 
-106
-107
-108</pre>
+109
+110
+111</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 106</span>
+      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 109</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_nurse?'>nurse?</span>
   <span class='id identifier rubyid_is_job?'>is_job?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Nurse</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -703,13 +681,13 @@ Job Title(role), Speciality, Team(Can be owner), others include join tables</p>
       <pre class="lines">
 
 
-78
-79
-80
-81</pre>
+81
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_role_name'>role_name</span>
   <span class='comment'># First one only for now
@@ -757,12 +735,12 @@ Job Title(role), Speciality, Team(Can be owner), others include join tables</p>
       <pre class="lines">
 
 
-101
-102
-103</pre>
+104
+105
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 101</span>
+      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 104</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_staff_nurse?'>staff_nurse?</span>
   <span class='id identifier rubyid_is_job?'>is_job?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Staff Nurse</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -816,12 +794,12 @@ Job Title(role), Speciality, Team(Can be owner), others include join tables</p>
       <pre class="lines">
 
 
-129
-130
-131</pre>
+132
+133
+134</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 129</span>
+      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 132</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_timeout_in'>timeout_in</span>
   <span class='int'>30</span><span class='period'>.</span><span class='id identifier rubyid_minutes'>minutes</span>
@@ -868,12 +846,12 @@ Job Title(role), Speciality, Team(Can be owner), others include join tables</p>
       <pre class="lines">
 
 
-111
-112
-113</pre>
+114
+115
+116</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 111</span>
+      <pre class="code"><span class="info file"># File 'app/models/staff.rb', line 114</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ward_sister?'>ward_sister?</span>
   <span class='id identifier rubyid_is_job?'>is_job?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Ward Sister</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -888,7 +866,7 @@ Job Title(role), Speciality, Team(Can be owner), others include join tables</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Jun  6 23:09:02 2018 by
+  Generated on Fri Jun  8 04:41:10 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.13 (ruby-2.4.1).
 </div>

@@ -1,15 +1,20 @@
+# Handles staff management system, to view, create and update
+#
+# @author Bereketab Gulai
 class StaffsController < ApplicationController
   before_action(:set_staff, only: [:show, :edit, :update])
 
-
+  # GETs staffs page
   def index
     authorize(:staff)
     @staffs = Staff.all
   end
 
+  # GETs staff profile
   def show
   end
 
+  # GETs registration page
   def new
     authorize(:staff)
     @staff = Staff.new
@@ -19,6 +24,7 @@ class StaffsController < ApplicationController
     @staff.jobs.build
   end
 
+  # POSTs registration form to create staff
   def create
     authorize(:staff)
     @staff = Staff.new(staff_params)
@@ -31,9 +37,11 @@ class StaffsController < ApplicationController
     end
   end
 
+  # GETs edit form
   def edit
   end
 
+  # POST method, uses edit form data to update staff
   def update
     authorize(:staff)
 
@@ -51,6 +59,7 @@ class StaffsController < ApplicationController
 
   private
 
+  # Permitted params
   def staff_params
     params.require(:staff).permit(:id, :userId, :team_id, :email, :password, :password_confirmation,
                                   person_attributes: [:id, :firstName, :lastName, :gender, :dateOfBirth, :telHomeNo, :telMobileNo,
@@ -59,6 +68,7 @@ class StaffsController < ApplicationController
                                   jobs_attributes: [:id, :job_title_id])
   end
 
+  # Sets and authorises staff record
   def set_staff
     @staff = Staff.find(params[:id])
 

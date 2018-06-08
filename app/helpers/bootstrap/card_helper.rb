@@ -1,6 +1,6 @@
-# Bootsrap helper
+# Bootsrap card helper, provides card methods head, title, body and more
 #
-#
+# @ref https://www.driftingruby.com/episodes/bootstrap-framework-and-ruby-on-rails
 module Bootstrap::CardHelper
   # Container
   def card(options = {})

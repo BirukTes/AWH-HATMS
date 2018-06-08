@@ -1,3 +1,6 @@
+# Defines policy for wards controller actions
+#
+# @author Bereketab Gulai
 class WardPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
@@ -6,11 +9,11 @@ class WardPolicy < ApplicationPolicy
   end
 
   def index?
-    staff.medical_staff_admin?
+    true
   end
 
   def show?
-    staff.medical_staff_admin? || staff.consultant?
+    true
   end
 
   def create?

@@ -101,7 +101,34 @@
   
 </div>
 
-<h2>Defined Under Namespace</h2>
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Defines policy for admissions controller actions</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Bereketab Gulai</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><h2>Defined Under Namespace</h2>
 <p class="children">
   
     
@@ -312,28 +339,6 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#search%3F-instance_method" title="#search? (instance method)">#<strong>search?</strong>  &#x21d2; Boolean </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#show%3F-instance_method" title="#show? (instance method)">#<strong>show?</strong>  &#x21d2; Boolean </a>
     
 
@@ -438,12 +443,12 @@
       <pre class="lines">
 
 
-34
-35
-36</pre>
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_admit_scheduled?'>admit_scheduled?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span>
@@ -490,12 +495,12 @@
       <pre class="lines">
 
 
-47
-48
-49</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_authorise_discharge?'>authorise_discharge?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_doctor?'>doctor?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span>
@@ -542,12 +547,12 @@
       <pre class="lines">
 
 
-38
-39
-40</pre>
+42
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cancel_scheduled?'>cancel_scheduled?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span>
@@ -596,12 +601,12 @@
       <pre class="lines">
 
 
-14
-15
-16</pre>
+17
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create?'>create?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span>
@@ -648,12 +653,12 @@
       <pre class="lines">
 
 
-26
-27
-28</pre>
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy?'>destroy?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_doctor?'>doctor?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span>
@@ -700,16 +705,18 @@
       <pre class="lines">
 
 
-30
-31
-32</pre>
+33
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_discharge?'>discharge?</span>
-  <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_doctor?'>doctor?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span>
-<span class='kw'>end</span></pre>
+  <span class='comment'># FIXME staff needs to be member of ward/team
+</span><span class='lparen'>(</span><span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_doctor?'>doctor?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span><span class='rparen'>)</span> <span class='comment'>#&amp;&amp; member_of_ward?
+</span><span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -752,12 +759,12 @@
       <pre class="lines">
 
 
-43
-44
-45</pre>
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_and_discharge?'>find_and_discharge?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_doctor?'>doctor?</span> <span class='op'>||</span> <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_consultant?'>consultant?</span>
@@ -804,69 +811,17 @@
       <pre class="lines">
 
 
-8
-9
-10
-11</pre>
+11
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index?'>index?</span>
   <span class='comment'># All staff
 </span>  <span class='kw'>true</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="search?-instance_method">
-  
-    #<strong>search?</strong>  &#x21d2; <tt>Boolean</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-51
-52
-53</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 51</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_search?'>search?</span>
-  <span class='kw'>true</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -910,12 +865,12 @@
       <pre class="lines">
 
 
-18
-19
-20</pre>
+21
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show?'>show?</span>
   <span class='kw'>true</span>
@@ -962,12 +917,12 @@
       <pre class="lines">
 
 
-22
-23
-24</pre>
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/policies/admission_policy.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update?'>update?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span>
@@ -982,7 +937,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jun  6 23:09:04 2018 by
+  Generated on Fri Jun  8 04:41:12 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.13 (ruby-2.4.1).
 </div>

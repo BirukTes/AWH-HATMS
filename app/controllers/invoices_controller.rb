@@ -1,5 +1,6 @@
-# frozen_string_literal: true
-
+# Handles invoicing system, to view, create and update
+#
+# @author Bereketab Gulai
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[show edit update destroy receive_payment set_payment_received]
 
@@ -17,10 +18,6 @@ class InvoicesController < ApplicationController
     # invoice.update_attribute(:status, 'queued')
     respond_to do |format|
       format.html
-      format.pdf do
-        render pdf: 'PDF'
-        # Excluding ".pdf" extension.
-      end
     end
   end
 
@@ -97,12 +94,12 @@ class InvoicesController < ApplicationController
     # end
   end
 
+  # GETs the received payment with a modal
   def receive_payment
-    # binding.pry
-    # render layout: 'layouts/modal'
     respond_modal_with(@invoice)
   end
 
+  # Sets the received attribute
   def set_payment_received
     if params[:invoice][:dateReceived]
       if @invoice.update(dateReceived: params[:invoice][:dateReceived], paymentReceived: true)
@@ -116,13 +113,12 @@ class InvoicesController < ApplicationController
     end
   end
 
-  def send_mail
-    authorize(:invoice)
-    # InvoiceMailer.send_invoice(Patient.new).deliver
-  end
-
-  def pdf_invoice;
-  end
+  # Sends invoice email to the client
+  # Not needed, auto-sent after creation
+  # def send_mail
+  #   authorize(:invoice)
+  #   # InvoiceMailer.send_invoice(Patient.new).deliver
+  # end
 
   private
 

@@ -1,9 +1,13 @@
-# frozen_string_literal: true
-
+# Handles payment system, new and create methods
+#
+# @author Bereketab Gulai
 class InvoicePaymentsController < ApplicationController
 
   before_action(:set_admission, :perform_authorise, only: %i[new create])
 
+  # Initiates Braintree the and gets the payment view
+  #
+  # GET method
   def new
     begin
       # Get client authorization token,
@@ -20,6 +24,8 @@ class InvoicePaymentsController < ApplicationController
 
   # Create this controller, makes transaction to Braintree,
   # update attributes and send confirmation
+  #
+  # POST method
   def create
 
     # Get the submitted nonce from params, for testing 'fake-valid-nonce'
@@ -59,7 +65,7 @@ class InvoicePaymentsController < ApplicationController
     respond_to do |format|
       # Rescue all that happens in this in case of an error
       begin
-        # Make transaction to braintree
+        # Make transaction to braintree TODO use the method provided in braintree repo instead
         @payment_result = Braintree::Transaction.sale(
             amount: @admission.invoice.amount,
             payment_method_nonce: nonce_from_the_client,
@@ -109,20 +115,24 @@ class InvoicePaymentsController < ApplicationController
 
   private
 
+  # Permitted params
   def invoice_payment_params
     params.require(:invoice_payment).permit(:payment_method_nonce, :admission_id)
   end
 
+  # Sets admission
   def set_admission
     # Retrieve the admission
     @admission = Admission.find(params[:admission_id]) if params[:admission_id]
   end
 
+  # Updates invoice received attributes
   def update_invoice_received_attributes
     # Mark receiving of payment
     @admission.invoice.update(paymentReceived: true, dateReceived: Date.today)
   end
 
+  # Schedules confirmation to send
   def deliver_confirmation
     # Handled by delayed job (in the background)
     InvoiceMailer.delay.paid_invoice_confirmation(@admission.invoice)
@@ -168,7 +178,6 @@ end
 #         puts 'Payment successful. Confirmation email will be sent to the patient.'
 #       elsif @payment_result.transaction
 #         puts('Error processing transaction: ')
-#         # FIXME ActionView::Template::Error: undefined method `processor_response_text' for nil:NilClass
 #         puts("code: #{@payment_result.transaction&.processor_response_code}")
 #         puts("text: #{@payment_result.transaction.processor_response_text}")
 #       else

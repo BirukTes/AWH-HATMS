@@ -1,3 +1,6 @@
+# Defines policy for staffs controller actions
+#
+# @author Bereketab Gulai
 class StaffPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve

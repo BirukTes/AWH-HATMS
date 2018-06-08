@@ -103,7 +103,34 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Handles reports system, to view, create and update</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Bereketab Gulai</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
 
 
 
@@ -135,7 +162,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>GET discharge list with conditions in params Supports XLSX.</p>
+</div></span>
   
 </li>
 
@@ -157,7 +186,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>GET medications list with conditions in params.</p>
+</div></span>
   
 </li>
 
@@ -179,7 +210,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>GET patient card with conditions in params.</p>
+</div></span>
   
 </li>
 
@@ -201,7 +234,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>GET ward list with conditions in params Supports XLSX.</p>
+</div></span>
   
 </li>
 
@@ -261,27 +296,38 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GET discharge list with conditions in params Supports XLSX</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-26
-27
-28
-29
-30
-31
 32
 33
 34
 35
 36
-37</pre>
+37
+38
+39
+40
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/reports_controller.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/reports_controller.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_discharge_list'>discharge_list</span>
   <span class='ivar'>@search</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_admitted'>admitted</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='period'>.</span><span class='id identifier rubyid_not'>not</span><span class='lparen'>(</span><span class='label'>dischargeDate:</span> <span class='kw'>nil</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_ransack'>ransack</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:q</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -309,19 +355,30 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GET medications list with conditions in params</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-21
-22
-23
-24</pre>
+25
+26
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/reports_controller.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/reports_controller.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_medications_list'>medications_list</span>
   <span class='ivar'>@search</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_admitted'>admitted</span><span class='period'>.</span><span class='id identifier rubyid_ransack'>ransack</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:q</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -341,19 +398,30 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GET patient card with conditions in params</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-39
-40
-41
-42</pre>
+46
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/reports_controller.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/reports_controller.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_patient_card'>patient_card</span>
   <span class='ivar'>@search</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_admitted'>admitted</span><span class='period'>.</span><span class='id identifier rubyid_ransack'>ransack</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:q</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -373,15 +441,23 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GET ward list with conditions in params Supports XLSX</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-8
-9
-10
 11
 12
 13
@@ -390,10 +466,13 @@
 16
 17
 18
-19</pre>
+19
+20
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/reports_controller.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/reports_controller.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ward_list'>ward_list</span>
   <span class='ivar'>@search</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Admission.html" title="Admission (class)">Admission</a></span></span><span class='period'>.</span><span class='id identifier rubyid_admitted'>admitted</span><span class='period'>.</span><span class='id identifier rubyid_ransack'>ransack</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:q</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -417,7 +496,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jun  6 23:09:05 2018 by
+  Generated on Fri Jun  8 04:41:13 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.13 (ruby-2.4.1).
 </div>

@@ -99,7 +99,49 @@
   
 </div>
 
-<div id="subclasses">
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Provides methods for Pundit authorisation system</p>
+
+<p>Pundit also allows to authorize on a record by record, in this project this
+will not be the case only who has access to the action or function, by user
+role.</p>
+
+<p>All methods return either true on the given condition In this case, project
+True - Indicates a specific logged in staff has access to the action or
+function False - Indicates a specific logged in staff has no access to the
+action or function</p>
+
+<p>If a method returns the value &#39;true&#39; by itself without condition -
+all staff can access it, Inversely as &#39;false&#39; - No staff</p>
+
+<p>All methods or some are overridden by subclasses (policies) according to
+their needs</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Bereketab Gulai</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
   <p class="children"><span class='object_link'><a href="AdmissionPolicy.html" title="AdmissionPolicy (class)">AdmissionPolicy</a></span>, <span class='object_link'><a href="DiagnosesPolicy.html" title="DiagnosesPolicy (class)">DiagnosesPolicy</a></span>, <span class='object_link'><a href="DrugPolicy.html" title="DrugPolicy (class)">DrugPolicy</a></span>, <span class='object_link'><a href="InvoicePolicy.html" title="InvoicePolicy (class)">InvoicePolicy</a></span>, <span class='object_link'><a href="JobTitlePolicy.html" title="JobTitlePolicy (class)">JobTitlePolicy</a></span>, <span class='object_link'><a href="PatientPolicy.html" title="PatientPolicy (class)">PatientPolicy</a></span>, <span class='object_link'><a href="PrescriptionPolicy.html" title="PrescriptionPolicy (class)">PrescriptionPolicy</a></span>, <span class='object_link'><a href="SpecialityPolicy.html" title="SpecialityPolicy (class)">SpecialityPolicy</a></span>, <span class='object_link'><a href="StaffPolicy.html" title="StaffPolicy (class)">StaffPolicy</a></span>, <span class='object_link'><a href="TeamPolicy.html" title="TeamPolicy (class)">TeamPolicy</a></span>, <span class='object_link'><a href="TreatmentPolicy.html" title="TreatmentPolicy (class)">TreatmentPolicy</a></span>, <span class='object_link'><a href="WardPolicy.html" title="WardPolicy (class)">WardPolicy</a></span></p>
 </div>
@@ -425,13 +467,13 @@
       <pre class="lines">
 
 
-18
-19
-20
-21</pre>
+22
+23
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_staff'>staff</span><span class='comma'>,</span> <span class='id identifier rubyid_record'>record</span><span class='rparen'>)</span>
   <span class='ivar'>@staff</span> <span class='op'>=</span> <span class='id identifier rubyid_staff'>staff</span>
@@ -493,12 +535,12 @@
       <pre class="lines">
 
 
-16
-17
-18</pre>
+20
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_record'>record</span>
   <span class='ivar'>@record</span>
@@ -554,12 +596,12 @@
       <pre class="lines">
 
 
-16
-17
-18</pre>
+20
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_staff'>staff</span>
   <span class='ivar'>@staff</span>
@@ -613,12 +655,12 @@
       <pre class="lines">
 
 
-31
-32
-33</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create?'>create?</span>
   <span class='kw'>false</span>
@@ -665,12 +707,12 @@
       <pre class="lines">
 
 
-47
-48
-49</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy?'>destroy?</span>
   <span class='kw'>false</span>
@@ -717,12 +759,12 @@
       <pre class="lines">
 
 
-43
-44
-45</pre>
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit?'>edit?</span>
   <span class='id identifier rubyid_update?'>update?</span>
@@ -769,12 +811,12 @@
       <pre class="lines">
 
 
-23
-24
-25</pre>
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index?'>index?</span>
   <span class='kw'>false</span>
@@ -821,12 +863,12 @@
       <pre class="lines">
 
 
-35
-36
-37</pre>
+39
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new?'>new?</span>
   <span class='id identifier rubyid_create?'>create?</span>
@@ -851,12 +893,12 @@
       <pre class="lines">
 
 
-51
-52
-53</pre>
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_scope'>scope</span>
   <span class='const'>Pundit</span><span class='period'>.</span><span class='id identifier rubyid_policy_scope!'>policy_scope!</span><span class='lparen'>(</span><span class='id identifier rubyid_staff'>staff</span><span class='comma'>,</span> <span class='id identifier rubyid_record'>record</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span>
@@ -903,12 +945,12 @@
       <pre class="lines">
 
 
-27
-28
-29</pre>
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show?'>show?</span>
   <span class='kw'>false</span>
@@ -955,12 +997,12 @@
       <pre class="lines">
 
 
-39
-40
-41</pre>
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'app/policies/application_policy.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update?'>update?</span>
   <span class='kw'>false</span>
@@ -975,7 +1017,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jun  6 23:09:04 2018 by
+  Generated on Fri Jun  8 04:41:12 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.13 (ruby-2.4.1).
 </div>

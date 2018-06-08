@@ -1,5 +1,7 @@
-# frozen_string_literal: true
-
+# Provides  functionality to controllers all as a parent,
+# Runs code with high priority, here such as Auth
+#
+# @author Bereketab Gulai
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 

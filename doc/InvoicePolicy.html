@@ -101,7 +101,34 @@
   
 </div>
 
-<h2>Defined Under Namespace</h2>
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Defines policy for invoices controller actions</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Bereketab Gulai</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><h2>Defined Under Namespace</h2>
 <p class="children">
   
     
@@ -372,12 +399,12 @@
       <pre class="lines">
 
 
-17
-18
-19</pre>
+20
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create?'>create?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span>
@@ -424,12 +451,12 @@
       <pre class="lines">
 
 
-25
-26
-27</pre>
+28
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy?'>destroy?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span>
@@ -478,12 +505,12 @@
       <pre class="lines">
 
 
-9
-10
-11</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index?'>index?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span>
@@ -530,12 +557,12 @@
       <pre class="lines">
 
 
-29
-30
-31</pre>
+32
+33
+34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_receive_payment?'>receive_payment?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span>
@@ -582,12 +609,12 @@
       <pre class="lines">
 
 
-37
-38
-39</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_send_mail?'>send_mail?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span>
@@ -634,12 +661,12 @@
       <pre class="lines">
 
 
-33
-34
-35</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_payment_received?'>set_payment_received?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span>
@@ -686,12 +713,12 @@
       <pre class="lines">
 
 
-13
-14
-15</pre>
+16
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show?'>show?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span>
@@ -738,12 +765,12 @@
       <pre class="lines">
 
 
-21
-22
-23</pre>
+24
+25
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'app/policies/invoice_policy.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update?'>update?</span>
   <span class='id identifier rubyid_staff'>staff</span><span class='period'>.</span><span class='id identifier rubyid_medical_staff_admin?'>medical_staff_admin?</span>
@@ -758,7 +785,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jun  6 23:09:03 2018 by
+  Generated on Fri Jun  8 04:41:11 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.13 (ruby-2.4.1).
 </div>

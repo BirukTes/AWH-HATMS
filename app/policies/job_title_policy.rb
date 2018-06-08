@@ -1,3 +1,6 @@
+# Defines policy for job titles controller actions
+#
+# @author Bereketab Gulai
 class JobTitlePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve

@@ -1,3 +1,6 @@
+# Sends unpaid and paid invoices attaching PDF
+#
+# @author Bereketab Gulai
 class InvoiceMailer < ApplicationMailer
 
   # Sends the unpaid invoice to the patient
